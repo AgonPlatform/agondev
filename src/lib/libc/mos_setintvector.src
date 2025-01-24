@@ -1,0 +1,15 @@
+	.assume	adl =1
+	.include "mos_api.inc"
+	.section .text
+	.global  _mos_setintvector
+_mos_setintvector:
+	push	ix
+	ld 	ix, 0
+	add 	ix, sp
+	ld 	de, (ix+6)			; Interrupt vector number to set
+	ld	hl, (ix+9)			; Address of new interrupt vector
+	ld a,	mos_setintvector
+	rst.lil	08h				; Set an interrupt vector (Requires MOS 1.03 or above)
+	ld	sp, ix
+	pop	ix
+	ret

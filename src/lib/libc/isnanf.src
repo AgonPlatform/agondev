@@ -1,0 +1,18 @@
+	.assume	adl=1
+
+	.section	.text
+	.global	__isnanf
+__isnanf:
+	ld	iy,0
+	add	iy,sp
+	ld	hl,(iy+3)
+	adc	hl,hl
+	jr	z,.l
+	ld	hl,(iy+5)
+	add	hl,hl
+.l:
+	inc	h
+	ld	hl,0
+	ret	nz
+	inc	hl
+	ret

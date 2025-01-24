@@ -1,0 +1,15 @@
+	.assume	adl =1
+	.include "mos_api.inc"
+	.section .text
+	.global  _mos_fputc
+_mos_fputc:
+	push	ix
+	ld	ix, 0
+	add	ix, sp
+	ld	c, (ix+6)			; filehandle
+	ld	b, (ix+9)			; character to write
+	ld	a, mos_fputc
+	rst.lil	08h				; returns nothing
+	ld	sp, ix
+	pop	ix
+	ret	

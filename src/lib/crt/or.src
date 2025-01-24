@@ -1,0 +1,65 @@
+	.assume	adl=1
+
+	.section	.text
+	.global	__lor
+
+.ifdef PREFER_OS_CRT
+
+__lor := 0001D8h
+
+.else
+
+__lor:
+; CC: 28*r(PC)+11*r(SPL)+10*w(SPL)+1
+	push	af
+	or	a, e
+	ld	e, a
+;	jr	__ior.hijack_lor
+;	virtual
+;		ld	a, 0
+;		load .ld_a: byte from $$
+;	end virtual
+;	db	.ld_a	; push af -> ld a,*
+
+    db 0x3E ; Only the first opcode for <LD A, *>
+	.extern	__ior
+
+.endif
+
+	.section	.text
+	.global	__ior
+
+.ifdef PREFER_OS_CRT
+
+__ior := 000168h
+
+.else
+
+__ior:
+; CC: 24*r(PC)+11*r(SPL)+10*w(SPL)+1
+	push	af
+	.local	__ior.hijack_lor
+.hijack_lor:
+	push	hl
+	scf
+	sbc	hl, hl
+	add	hl, sp
+	push	bc
+	ld	a, (hl)
+	inc	hl
+	ld	sp, hl
+	inc	hl
+	inc	hl
+	or	a, (hl)
+	ld	(hl), a
+	pop	hl
+	ld	a, h
+	or	a, b
+	ld	h, a
+	ld	a, l
+	or	a, c
+	ld	l, a
+	pop	af
+	ret
+
+.endif

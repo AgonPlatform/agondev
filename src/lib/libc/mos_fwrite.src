@@ -1,0 +1,17 @@
+	.assume	adl =1
+	.include "mos_api.inc"
+	.section .text
+	.global  _mos_fwrite
+_mos_fwrite:
+	push	ix
+	ld 	ix, 0
+	add 	ix, sp
+	ld 	bc, (ix+6)			; file handle
+	ld	hl, (ix+9)			; buffer address
+	ld	de, (ix+12)			; number of bytes to write
+	ld a,	mos_fwrite
+	rst.lil	08h
+	ex	de, hl				; number of bytes written
+	ld	sp, ix
+	pop	ix
+	ret

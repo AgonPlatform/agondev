@@ -1,0 +1,16 @@
+	.assume	adl =1
+	.include "mos_api.inc"
+	.section .text
+	.global	_mos_load
+_mos_load:
+	push	ix
+	ld 	ix, 0
+	add 	ix, sp
+	ld 	hl, (ix+6)			; address of filename (zero terminated)
+	ld	de, (ix+9)			; address at which to load
+	ld	bc, (ix+12)			; maximum allowed size
+	ld a,	mos_load
+	rst.lil	08h				; Load a file from SD card
+	ld	sp, ix
+	pop	ix
+	ret

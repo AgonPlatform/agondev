@@ -1,0 +1,16 @@
+	.assume	adl=1
+
+	.section	.text
+	.global	__ladd_b_fast
+__ladd_b_fast:
+	add	a, l
+	ld	l, a
+	ret	nc
+	inc	h
+	ret	nz
+	;ld	bc, 1 shl 16
+    ld bc, 0b10000000000000000 
+	add	hl, bc
+	ret	nc
+	inc	e
+	ret

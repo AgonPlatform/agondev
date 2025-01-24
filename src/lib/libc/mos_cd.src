@@ -1,0 +1,14 @@
+	.assume	adl =1
+	.include "mos_api.inc"
+	.section .text
+	.global	_mos_cd
+_mos_cd:
+	push	ix
+	ld 	ix, 0
+	add 	ix, sp
+	ld 	hl, (ix+6)			; address of pathname (zero terminated)
+	ld a,	mos_cd
+	rst.lil	08h				; Change current directory on the SD card
+	ld	sp, ix
+	pop	ix
+	ret

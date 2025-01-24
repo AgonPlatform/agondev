@@ -1,0 +1,15 @@
+	.assume	adl=1
+
+	.section	.text
+	.global	_isalpha
+_isalpha:
+	pop	de
+	ex	(sp),hl
+	push	de
+	ld	a,l
+	sub	a,65
+	res	5,a
+	add	a,-26
+	sbc	hl,hl
+	inc	hl
+	ret

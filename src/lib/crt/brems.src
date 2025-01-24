@@ -1,0 +1,25 @@
+	.assume	adl=1
+
+	.section	.text
+	.global	__brems
+__brems:
+; I: A=dividend, C=divisor
+; O: a=A%C
+
+	push	hl
+
+	ld	l, a
+	push	hl
+	call	__bdvrms_abs.hijack_a_l_dividend
+
+	pop	af
+
+	ld	a, h
+	pop	hl
+	ret	p
+
+	neg
+	ret
+
+
+	.extern	__bdvrms_abs.hijack_a_l_dividend

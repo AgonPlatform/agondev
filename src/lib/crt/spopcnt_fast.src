@@ -1,0 +1,40 @@
+	.assume	adl=1
+
+	.section	.text
+	.global	__spopcnt_fast
+__spopcnt_fast:
+	; Inlined implementation of __spopcnt
+	; Destroys: HL
+	add	hl, hl
+	add	hl, hl
+	add	hl, hl
+	add	hl, hl
+	add	hl, hl
+	add	hl, hl
+	add	hl, hl
+	add	hl, hl
+
+	ld	a, h
+	ld	h, l
+	cpl
+	ld	l, a
+
+	add	hl, hl
+	sbc	a, h
+	add	hl, hl
+	sbc	a, h
+	add	hl, hl
+	sbc	a, h
+	add	hl, hl
+	sbc	a, h
+	add	hl, hl
+	sbc	a, h
+	add	hl, hl
+	sbc	a, h
+	add	hl, hl
+	sbc	a, h
+
+	add	hl, hl
+	cpl
+	adc	a, 9
+	ret

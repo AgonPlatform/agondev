@@ -1,0 +1,13 @@
+	.assume	adl=1
+
+	.section	.text
+	.global	_isdigit
+_isdigit:
+	pop	de
+	ex	(sp),hl
+	push	de
+	ld	a,l
+	sub	a,48
+	sub	a,10
+	sbc	hl,hl
+	ret

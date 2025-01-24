@@ -1,0 +1,11 @@
+	.assume	adl =1
+	.include "mos_api.inc"
+	.section .text
+	.global  _getsysvar_rtc
+_getsysvar_rtc:					; Returns pointer rather than value
+	push	ix
+	ld	a, mos_sysvars
+	rst.lil	08h
+	lea 	hl, ix+sysvar_rtc+0
+	pop	ix
+	ret

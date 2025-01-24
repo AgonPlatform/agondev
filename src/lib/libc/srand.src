@@ -1,0 +1,12 @@
+	.assume	adl=1
+
+	.section	.text
+	.global	_srand
+_srand:
+	pop	bc
+	ex	(sp),hl
+	push	bc
+	xor	a,a
+	jp	__setstate
+
+	.extern	__setstate

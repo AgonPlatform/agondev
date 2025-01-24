@@ -1,0 +1,15 @@
+	.assume	adl=1
+
+	.section	.text
+	.global	_iscntrl
+_iscntrl:
+	pop	de
+	ex	(sp),hl
+	push	de
+	ld	a,l
+	cp	a,127
+	ret	z
+	add	a,-32
+	sbc	hl,hl
+	inc	hl
+	ret

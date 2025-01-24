@@ -1,0 +1,14 @@
+	.assume	adl=1
+
+	.section	.text
+	.global	_isprint
+_isprint:
+	pop	de
+	ex	(sp),hl
+	push	de
+	ld	a,l
+	sub	a,32
+	add	a,-95
+	sbc	hl,hl
+	inc	hl
+	ret

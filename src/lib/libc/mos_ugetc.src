@@ -1,0 +1,16 @@
+	.assume	adl =1
+	.include "mos_api.inc"
+	.section .text
+	.global  _mos_ugetc
+_mos_ugetc:
+	push	ix
+	ld	hl, 0
+	ld	a, mos_ugetc			; Read a byte from UART1
+	rst.lil	08h
+	ld	l, a
+	jr	nc, _mos_ugetc_exit
+	ld	h, 01h				; error, return >255 in hl	
+
+_mos_ugetc_exit:
+	pop		ix
+	ret

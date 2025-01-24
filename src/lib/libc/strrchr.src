@@ -1,0 +1,30 @@
+	.assume	adl=1
+
+	.section	.text
+	.global	_strrchr
+_strrchr:
+	;pop	bc,hl,de
+    pop bc
+    pop hl
+    pop de
+	;push	de,hl,bc
+    push de
+    push hl
+    push bc
+	xor	a,a
+	ld	bc,0
+	cpir
+	ld	a,e
+	ex	de,hl
+	sbc	hl,hl
+	sbc	hl,bc
+	push	hl
+	pop	bc
+	ex	de,hl
+	dec	hl
+	cpdr
+	inc	hl
+	ret	z
+	push	bc
+	pop	hl
+	ret

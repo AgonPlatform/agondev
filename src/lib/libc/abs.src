@@ -1,0 +1,15 @@
+	.assume	adl=1
+
+	.section	.text
+	.global	_abs
+_abs:
+	pop	hl
+	pop	de
+	push	de
+	push	hl
+	or	a,a
+	sbc	hl,hl
+	sbc	hl,de
+	ret	p
+	ex	de,hl
+	ret

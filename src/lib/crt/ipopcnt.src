@@ -1,0 +1,19 @@
+	.assume	adl=1
+
+	.section	.text
+	.global	__ipopcnt
+__ipopcnt:
+	push	hl
+	; Calculate 8-popcount(L)-popcount(HLU), and set HLU=H, L=0
+	call	__popcnt_common_init_full
+	; Subtract output carry and H (which will be added back in)
+	sbc	a, h
+	; Accumulate popcount(L)-popcount(HLU)+H-L=H-popcount(HLU)
+	call	__popcnt_common_iter
+	; Subtract final value from 8, and accumulate output carry
+	cpl
+	adc	a, 9
+	pop	hl
+	ret
+
+	.extern	__popcnt_common_init_full, __popcnt_common_iter

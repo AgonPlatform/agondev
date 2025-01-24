@@ -1,0 +1,11 @@
+	.assume	adl =1
+	.include "mos_api.inc"
+	.section .text
+	.global  _getsysvar_cursorX
+_getsysvar_cursorX:
+	push	ix
+	ld	a, mos_sysvars			; MOS Call for mos_sysvars
+	rst.lil	08h				; returns pointer to sysvars in ixu
+	ld	a, (ix+sysvar_cursorX)
+	pop	ix
+	ret

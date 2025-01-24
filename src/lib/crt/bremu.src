@@ -1,0 +1,21 @@
+	.assume	adl=1
+
+	.section	.text
+	.global	__bremu
+__bremu:
+; I: A=dividend, C=divisor
+; O: a=A%C
+
+	push	bc
+	push	hl
+
+	ld	b, a
+	call	__bdvrmu
+	ld	a, h
+
+	pop	hl
+	pop	bc
+	ret
+
+
+	.extern	__bdvrmu

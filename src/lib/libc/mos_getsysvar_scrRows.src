@@ -1,0 +1,11 @@
+	.assume	adl =1
+	.include "mos_api.inc"
+	.section .text
+	.global  _getsysvar_scrRows
+_getsysvar_scrRows:
+	push	ix
+	ld	a, mos_sysvars
+	rst.lil	08h
+	ld	a, (ix+sysvar_scrRows)
+	pop	ix
+	ret

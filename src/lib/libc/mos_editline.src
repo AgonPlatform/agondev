@@ -1,0 +1,16 @@
+	.assume	adl =1
+	.include "mos_api.inc"
+	.section .text
+	.global	_mos_editline
+_mos_editline:
+	push	ix
+	ld 	ix, 0
+	add 	ix, sp
+	ld 	hl, (ix+6)			; Address of the buffer
+	ld	bc, (ix+9)			; Buffer length
+	ld      e,  (ix+12) 			; 0 to not clear buffer, 1 to clear
+	ld a,	mos_editline
+	rst.lil	08h				; Invoke the line editor
+	ld	sp, ix
+	pop	ix
+	ret

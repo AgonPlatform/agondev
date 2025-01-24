@@ -1,0 +1,10 @@
+	.assume	adl =1
+	.include "mos_api.inc"
+	.section .text
+	.global  _mos_uclose
+_mos_uclose:
+	push	ix
+	ld	a, mos_uclose
+	rst.lil	08h
+	pop	ix
+	ret

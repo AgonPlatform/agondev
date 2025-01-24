@@ -1,0 +1,48 @@
+	.assume	adl=1
+
+	.section	.text
+	.global	_strndup
+_strndup:
+	pop	bc
+	pop	de
+	ex	(sp),hl
+	push	de
+	push	bc
+
+	push	de
+
+	push	hl
+	push	de
+	call	_strnlen
+	pop	de
+	pop	de
+
+	inc	hl
+	push	hl
+
+	push	hl
+	call	_malloc
+	pop	de
+
+	pop	bc
+	pop	de
+
+	add	hl, bc
+	xor	a, a
+	sbc	hl, bc
+	ret	z
+
+	ld	(hl), a
+	cpi
+	dec	hl
+	ret	po
+
+	push	hl
+	ex	de, hl
+	ldir
+	ld	(de), a
+	pop	hl
+	ret
+
+	.extern	_strnlen
+	.extern	_malloc

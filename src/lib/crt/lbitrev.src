@@ -1,0 +1,20 @@
+	.assume	adl=1
+
+	.section	.text
+	.global	__lbitrev
+__lbitrev:
+	push	af
+	call	__internal_bitrev_byte	; a=HLU', UHL=HL0
+	ld	l, e			; uhl=HLE
+	ld	e, a			; e=HLU'
+	call	__internal_bitrev_byte	; a=H', uhl=LE0
+	ld	l, a			; uhl=LEH'
+	call	__internal_bitrev_byte	; a=L', uhl=EH'0
+	ld	l, e			; uhl=EH'HLU'
+	ld	e, a			; e=L'
+	call	__internal_bitrev_byte	; a=E', uhl=H'HLU'
+	ld	l, a			; uhl=H'HLU'E'
+	pop	af
+	ret
+
+	.extern	__internal_bitrev_byte

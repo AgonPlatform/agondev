@@ -1,0 +1,16 @@
+	.assume	adl =1
+	.include "mos_api.inc"
+	.section	.text
+	.global	_putch, __putch
+_putch:
+__putch:
+	push 	ix
+	ld 	ix, 0
+	add 	ix, sp
+	ld 	a, (ix+6)
+	rst.lil	10h
+	ld	hl, 0
+	ld	l, a
+	ld	sp, ix
+	pop	ix
+	ret

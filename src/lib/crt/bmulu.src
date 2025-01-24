@@ -1,0 +1,10 @@
+	.assume	adl=1
+
+	.section	.text
+	.global	__bmulu
+__bmulu:
+	push	bc
+	mlt	bc
+	ld	a,c
+	pop	bc
+	ret

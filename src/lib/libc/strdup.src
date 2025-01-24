@@ -1,0 +1,38 @@
+	.assume	adl=1
+
+	.section	.text
+	.global	_strdup
+_strdup:
+	pop	de
+	ex	(sp), hl
+	push	de
+
+	push	hl
+
+	push	hl
+	call	_strlen
+	pop	de
+
+	inc	hl
+	push	hl
+
+	push	hl
+	call	_malloc
+	pop	de
+
+	pop	bc
+	pop	de
+
+	add	hl, bc
+	or	a, a
+	sbc	hl, bc
+	ret	z
+
+	push	hl
+	ex	de, hl
+	ldir
+	pop	hl
+	ret
+
+	.extern	_strlen
+	.extern	_malloc

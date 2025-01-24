@@ -1,0 +1,19 @@
+	.assume	adl=1
+
+	.section	.text
+	.global	_isxdigit
+_isxdigit:
+	pop	de
+	ex	(sp),hl
+	push	de
+	ld	a,l
+	sub	a,48
+	add	a,-10
+	sbc	hl,hl
+	inc	hl
+	ret	z
+	sub	a,65-(48+10)
+	res	5,a
+	cp	a,6
+	adc	hl,hl
+	ret

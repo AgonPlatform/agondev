@@ -1,0 +1,14 @@
+	.assume	adl =1
+	.include "mos_api.inc"
+	.section .text
+	.global  _mos_fgetc
+_mos_fgetc:					; Note: does not return carry flag, which set for EOF
+	push	ix
+	ld	ix, 0
+	add	ix, sp
+	ld	c, (ix+6)			; filehandle
+	ld	a, mos_fgetc
+	rst.lil	08h				; returns character in A (mos_fgetc returns zero on error)
+	ld	sp, ix
+	pop	ix
+	ret	

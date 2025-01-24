@@ -1,0 +1,16 @@
+	.assume	adl=1
+
+	.section	.text
+	.global	_isspace
+_isspace:
+	pop	de
+	ex	(sp),hl
+	push	de
+	ld	a,l
+	cp	a,32
+	ret	z
+	sub	a,9
+	add	a,-5
+	sbc	hl,hl
+	inc	hl
+	ret

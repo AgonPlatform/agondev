@@ -1,0 +1,23 @@
+	.assume	adl=1
+
+	.section	.text
+	.global	_ispunct
+_ispunct:
+	pop	de
+	ex	(sp),hl
+	push	de
+	ld	a,l
+	sub	a,33
+	cp	a,48-33
+	ret	c
+	sub	a,58-33
+	cp	a,65-58
+	ret	c
+	sub	a,91-58
+	cp	a,97-91
+	ret	c
+	sub	a,123-91
+	cp	a,127-123
+	ret	c
+	sbc	hl,hl
+	ret

@@ -1,0 +1,19 @@
+	.assume	adl=1
+
+	.section	.text
+	.global	__isinff
+__isinff:
+	ld	iy,0
+	add	iy,sp
+	ld	hl,(iy+3)
+	adc	hl,hl
+	jr	nz,.finite
+	ld	a,(iy+6)
+	rla
+	inc	a
+	inc	hl
+	ret	z
+.finite:
+	or	a,a
+	sbc	hl,hl
+	ret

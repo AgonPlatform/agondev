@@ -1,0 +1,54 @@
+	.assume	adl=1
+
+	.section	.text
+	.global	__lpopcnt_fast
+__lpopcnt_fast:
+	; Inlined implementation of __lpopcnt
+	; Destroys: HL
+	ld	a, l
+	cpl
+	ld	l, a
+	sub	a, h
+	sub	a, h
+
+	add	hl, hl
+	sbc	a, h
+	add	hl, hl
+	sbc	a, h
+	add	hl, hl
+	sbc	a, h
+	add	hl, hl
+	sbc	a, h
+	add	hl, hl
+	sbc	a, h
+	add	hl, hl
+	sbc	a, h
+	add	hl, hl
+	sbc	a, h
+
+	add	hl, hl
+	ld	h, a
+	ld	a, e
+	cpl
+	ld	l, a
+	sbc	a, h
+
+	add	hl, hl
+	sbc	a, h
+	add	hl, hl
+	sbc	a, h
+	add	hl, hl
+	sbc	a, h
+	add	hl, hl
+	sbc	a, h
+	add	hl, hl
+	sbc	a, h
+	add	hl, hl
+	sbc	a, h
+	add	hl, hl
+	sbc	a, h
+
+	add	hl, hl
+	cpl
+	adc	a, 17
+	ret

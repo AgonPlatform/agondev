@@ -1,0 +1,17 @@
+	.assume	adl =1
+	.include "mos_api.inc"
+	.section .text
+	.global  _mos_fread
+_mos_fread:
+	push	ix
+	ld 	ix, 0
+	add 	ix, sp
+	ld 	bc, (ix+6)			; file handle
+	ld	hl, (ix+9)			; buffer address
+	ld	de, (ix+12)			; number of bytes to read
+	ld a,	mos_fread
+	rst.lil	08h
+	ex	de, hl				; number of bytes read
+	ld	sp, ix
+	pop	ix
+	ret

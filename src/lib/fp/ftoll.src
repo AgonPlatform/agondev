@@ -1,0 +1,22 @@
+	.assume	adl=1
+
+	.section	.text
+    .global __ftoll, __ftoull, __dtoll, __dtoull
+__ftoll:
+__ftoull:
+__dtoll:
+__dtoull:
+	ld      e, a
+	ld	d, a
+	;push	iy, de, bc
+    push iy
+    push de
+    push bc
+	call	__ftoll_c
+	;pop	af, af, iy
+    pop af
+    pop af
+    pop iy
+	ret
+
+	extern	__ftoll_c

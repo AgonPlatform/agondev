@@ -1,0 +1,20 @@
+	.assume	adl=1
+
+	.section	.text
+	.global	_atoll
+_atoll:
+	pop	bc
+	ex	(sp),hl
+	push	bc
+	ld	bc,10
+	push	bc
+	ld	c,b
+	push	bc
+	push	hl
+	call	_strtoll
+	pop	af
+	pop	af
+	pop	af
+	ret
+
+	.extern	_strtoll

@@ -1,0 +1,12 @@
+	.assume	adl =1
+	.include "mos_api.inc"
+	.section .text
+	.global  _mos_getkbmap
+_mos_getkbmap:
+	push	ix
+	ld a,	mos_getkbmap
+	rst.lil	08h
+	push	ix
+	pop		hl
+	pop		ix
+	ret

@@ -1,0 +1,13 @@
+	.assume	adl=1
+
+	.section	.text
+	.global	_isgraph
+_isgraph:
+	pop	de
+	ex	(sp),hl
+	push	de
+	ld	a,l
+	sub	a,33
+	sub	a,94
+	sbc	hl,hl
+	ret

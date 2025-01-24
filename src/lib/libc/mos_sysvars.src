@@ -1,0 +1,11 @@
+	.assume	adl =1
+	.include "mos_api.inc"
+	.section .text
+	.global	_mos_sysvars
+_mos_sysvars:
+	push	ix
+	ld a,	mos_sysvars
+	rst.lil	08h				; Fetch a pointer to the system variables
+	lea 	hl, ix+0
+	pop	ix
+	ret

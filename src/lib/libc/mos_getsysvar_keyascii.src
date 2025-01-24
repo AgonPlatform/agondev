@@ -1,0 +1,12 @@
+	.assume	adl =1
+	.include "mos_api.inc"
+	.section .text
+	.global  _getsysvar_keyascii
+_getsysvar_keyascii:
+	push	ix
+	ld	a, mos_sysvars
+	rst.lil	08h
+	ld	a, (ix+sysvar_keyascii)
+	pop	ix
+	ret
+    

@@ -1,0 +1,12 @@
+	.assume	adl=1
+
+	.section	.text
+	.global	_isascii
+_isascii:
+	pop	de
+	ex	(sp),hl
+	push	de
+	sla	l
+	sbc	hl,hl
+	inc	hl
+	ret

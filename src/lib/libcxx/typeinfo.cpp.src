@@ -1,0 +1,2565 @@
+	.section	.text,"ax",@progbits
+	.assume	adl = 1
+	.section	.text,"ax",@progbits
+	.global	__ZNSt9type_infoD2Ev
+__ZNSt9type_infoD2Ev:
+	call	__frameset0
+	pop	ix
+	ret
+	.section	.text,"ax",@progbits
+
+	.section	.text,"ax",@progbits
+	.global	__ZNSt9type_infoD0Ev
+__ZNSt9type_infoD0Ev:
+	call	__frameset0
+	ld	hl, (ix + 6)
+	ld	(ix + 6), hl
+	pop	ix
+	jp	__ZdlPv
+	.section	.text,"ax",@progbits
+
+	.section	.text,"ax",@progbits
+	.global	__ZN10__cxxabiv123__fundamental_type_infoD0Ev
+__ZN10__cxxabiv123__fundamental_type_infoD0Ev:
+	call	__frameset0
+	ld	hl, (ix + 6)
+	ld	(ix + 6), hl
+	pop	ix
+	jp	__ZdlPv
+	.section	.text,"ax",@progbits
+
+	.section	.text,"ax",@progbits
+	.global	__ZN10__cxxabiv117__array_type_infoD0Ev
+__ZN10__cxxabiv117__array_type_infoD0Ev:
+	call	__frameset0
+	ld	hl, (ix + 6)
+	ld	(ix + 6), hl
+	pop	ix
+	jp	__ZdlPv
+	.section	.text,"ax",@progbits
+
+	.section	.text,"ax",@progbits
+	.global	__ZN10__cxxabiv120__function_type_infoD0Ev
+__ZN10__cxxabiv120__function_type_infoD0Ev:
+	call	__frameset0
+	ld	hl, (ix + 6)
+	ld	(ix + 6), hl
+	pop	ix
+	jp	__ZdlPv
+	.section	.text,"ax",@progbits
+
+	.section	.text,"ax",@progbits
+	.global	__ZN10__cxxabiv116__enum_type_infoD0Ev
+__ZN10__cxxabiv116__enum_type_infoD0Ev:
+	call	__frameset0
+	ld	hl, (ix + 6)
+	ld	(ix + 6), hl
+	pop	ix
+	jp	__ZdlPv
+	.section	.text,"ax",@progbits
+
+	.section	.text,"ax",@progbits
+	.global	__ZN10__cxxabiv117__class_type_infoD0Ev
+__ZN10__cxxabiv117__class_type_infoD0Ev:
+	call	__frameset0
+	ld	hl, (ix + 6)
+	ld	(ix + 6), hl
+	pop	ix
+	jp	__ZdlPv
+	.section	.text,"ax",@progbits
+
+	.section	.text,"ax",@progbits
+	.global	__ZN10__cxxabiv120__si_class_type_infoD0Ev
+__ZN10__cxxabiv120__si_class_type_infoD0Ev:
+	call	__frameset0
+	ld	hl, (ix + 6)
+	ld	(ix + 6), hl
+	pop	ix
+	jp	__ZdlPv
+	.section	.text,"ax",@progbits
+
+	.section	.text,"ax",@progbits
+	.global	__ZN10__cxxabiv121__vmi_class_type_infoD0Ev
+__ZN10__cxxabiv121__vmi_class_type_infoD0Ev:
+	call	__frameset0
+	ld	hl, (ix + 6)
+	ld	(ix + 6), hl
+	pop	ix
+	jp	__ZdlPv
+	.section	.text,"ax",@progbits
+
+	.section	.text,"ax",@progbits
+	.global	__ZN10__cxxabiv117__pbase_type_infoD0Ev
+__ZN10__cxxabiv117__pbase_type_infoD0Ev:
+	call	__frameset0
+	ld	hl, (ix + 6)
+	ld	(ix + 6), hl
+	pop	ix
+	jp	__ZdlPv
+	.section	.text,"ax",@progbits
+
+	.section	.text,"ax",@progbits
+	.global	__ZN10__cxxabiv119__pointer_type_infoD0Ev
+__ZN10__cxxabiv119__pointer_type_infoD0Ev:
+	call	__frameset0
+	ld	hl, (ix + 6)
+	ld	(ix + 6), hl
+	pop	ix
+	jp	__ZdlPv
+	.section	.text,"ax",@progbits
+
+	.section	.text,"ax",@progbits
+	.global	__ZN10__cxxabiv129__pointer_to_member_type_infoD0Ev
+__ZN10__cxxabiv129__pointer_to_member_type_infoD0Ev:
+	call	__frameset0
+	ld	hl, (ix + 6)
+	ld	(ix + 6), hl
+	pop	ix
+	jp	__ZdlPv
+	.section	.text,"ax",@progbits
+
+	.section	.text,"ax",@progbits
+	.global	___dynamic_cast
+___dynamic_cast:
+	ld	hl, -25
+	call	__frameset
+	ld	bc, (ix + 6)
+	ld	de, (ix + 9)
+	ld	iy, 0
+	lea	hl, ix - 19
+	ld	(ix - 22), hl
+	ld	(ix - 19), bc
+	ld	(ix - 16), de
+	ld	de, (ix + 12)
+	ld	(ix - 13), de
+	ld	hl, (ix + 15)
+	ld	(ix - 10), hl
+	ld	(ix - 7), iy
+	ld	(ix - 4), iy
+	ld	(ix - 1), 0
+	push	bc
+	pop	hl
+	ld	bc, (hl)
+	push	bc
+	pop	iy
+	ld	de, (iy - 6)
+	add	hl, de
+	ld	(ix - 25), hl
+	ld	iy, (iy - 3)
+	lea	bc, iy+0
+	ld	hl, (iy + 3)
+	ld	iy, (ix + 12)
+	ld	de, (iy + 3)
+	or	a, a
+	sbc	hl, de
+	jr	nz, BB12_3
+	ld	(ix - 1), 16
+	push	bc
+	pop	hl
+	ld	iy, (hl)
+	ld	iy, (iy + 6)
+	ld	de, 1
+	push	de
+	ld	de, (ix - 25)
+	push	de
+	push	de
+	ld	de, (ix - 22)
+	push	de
+	push	hl
+	call	__indcall
+	ld	hl, 0
+	pop	de
+	pop	de
+	pop	de
+	pop	de
+	pop	de
+	ld	a, (ix - 1)
+	and	a, 1
+	bit	0, a
+	jp	z, BB12_18
+	ld	hl, (ix - 25)
+	jp	BB12_18
+BB12_3:
+	push	bc
+	pop	hl
+	ld	iy, (hl)
+	ld	iy, (iy + 9)
+	ld	de, 1
+	push	de
+	ld	de, (ix - 25)
+	push	de
+	ld	de, (ix - 22)
+	push	de
+	push	hl
+	call	__indcall
+	pop	hl
+	pop	hl
+	pop	hl
+	pop	hl
+	ld	de, (ix - 7)
+	push	de
+	pop	hl
+	add	hl, bc
+	or	a, a
+	sbc	hl, bc
+	jr	nz, BB12_7
+	ld	de, (ix - 4)
+	push	de
+	pop	hl
+	ld	bc, (ix - 22)
+	or	a, a
+	sbc	hl, bc
+	jr	z, BB12_8
+	ld	a, (ix - 1)
+	and	a, 6
+	cp	a, 6
+	jr	z, BB12_17
+	ld	de, 0
+	jr	BB12_17
+BB12_7:
+	push	de
+	pop	hl
+	ld	bc, (ix - 22)
+	or	a, a
+	sbc	hl, bc
+	jr	nz, BB12_9
+BB12_8:
+	ld	hl, 0
+	jr	BB12_18
+BB12_9:
+	ld	c, (ix - 1)
+	ld	a, c
+	and	a, 1
+	bit	0, a
+	jr	nz, BB12_17
+	ld	hl, (ix - 4)
+	add	hl, bc
+	or	a, a
+	sbc	hl, bc
+	ld	l, -1
+	ld	h, 0
+	ld	a, l
+	jr	nz, BB12_12
+	ld	a, h
+BB12_12:
+	bit	1, c
+	ld	b, l
+	jr	z, BB12_14
+	ld	b, h
+BB12_14:
+	or	a, b
+	bit	2, c
+	jr	z, BB12_16
+	ld	l, h
+BB12_16:
+	or	a, l
+	bit	0, a
+	ld	hl, 0
+	jr	nz, BB12_18
+BB12_17:
+	ex	de, hl
+BB12_18:
+	ld	sp, ix
+	pop	ix
+	ret
+	.section	.text,"ax",@progbits
+
+	.section	.text,"ax",@progbits
+	.global	__ZNK10__cxxabiv117__class_type_info21__search_above_targetEPNS_19__dynamic_cast_infoEPKvS4_b
+__ZNK10__cxxabiv117__class_type_info21__search_above_targetEPNS_19__dynamic_cast_infoEPKvS4_b:
+	ld	hl, -1
+	call	__frameset
+	ld	hl, (ix + 6)
+	ld	de, (ix + 9)
+	ld	a, (ix + 18)
+	and	a, 1
+	ld	(ix - 1), a
+	push	de
+	pop	iy
+	ld	bc, (iy + 3)
+	push	hl
+	pop	iy
+	ld	hl, (iy + 3)
+	push	bc
+	pop	iy
+	ld	bc, (iy + 3)
+	push	de
+	pop	iy
+	or	a, a
+	sbc	hl, bc
+	jr	nz, BB13_12
+	ld	bc, (ix + 15)
+	ld	d, (iy + 18)
+	set	6, (iy + 18)
+	ld	hl, (iy)
+	or	a, a
+	sbc	hl, bc
+	jr	nz, BB13_12
+	ld	a, d
+	or	a, 96
+	ld	c, a
+	ld	hl, (iy + 12)
+	add	hl, bc
+	or	a, a
+	sbc	hl, bc
+	jr	nz, BB13_4
+	ld	hl, (ix + 12)
+	ld	(iy + 12), hl
+	ld	a, c
+	and	a, -2
+	add	a, (ix - 1)
+	ld	c, a
+	jr	BB13_5
+BB13_4:
+	ld	b, d
+	ld	de, (ix + 12)
+	or	a, a
+	sbc	hl, de
+	jr	nz, BB13_10
+BB13_5:
+	ld	b, 7
+	ld	a, c
+	and	a, 1
+	or	a, (ix - 1)
+	ld	e, a
+	ld	a, c
+	and	a, 126
+	ld	l, a
+	ld	a, e
+	add	a, l
+	ld	l, a
+	bit	4, c
+	ld	d, 0
+	ld	h, d
+	jr	z, BB13_7
+	ld	h, e
+BB13_7:
+	ld	a, c
+	call	__bshru
+	ld	e, a
+	ld	a, h
+	or	a, e
+	bit	0, a
+	jr	z, BB13_9
+	ld	d, -128
+BB13_9:
+	ld	a, l
+	add	a, d
+	jr	BB13_11
+BB13_10:
+	lea	hl, iy+0
+	ld	(iy + 12), hl
+	ld	a, b
+	or	a, -32
+BB13_11:
+	ld	(iy + 18), a
+BB13_12:
+	inc	sp
+	pop	ix
+	ret
+	.section	.text,"ax",@progbits
+
+	.section	.text,"ax",@progbits
+	.global	__ZNK10__cxxabiv117__class_type_info21__search_below_targetEPNS_19__dynamic_cast_infoEPKvb
+__ZNK10__cxxabiv117__class_type_info21__search_below_targetEPNS_19__dynamic_cast_infoEPKvb:
+	ld	hl, -7
+	call	__frameset
+	ld	hl, (ix + 6)
+	ld	iy, (ix + 9)
+	xor	a, a
+	ld	bc, (iy + 3)
+	push	hl
+	pop	iy
+	ld	de, (iy + 3)
+	push	bc
+	pop	iy
+	ld	bc, (iy + 3)
+	push	de
+	pop	hl
+	ld	iy, (ix + 9)
+	sbc	hl, bc
+	jr	nz, BB14_5
+	ld	hl, (iy)
+	ld	de, (ix + 12)
+	or	a, a
+	sbc	hl, de
+	jr	nz, BB14_13
+	ld	l, (iy + 18)
+	ld	a, l
+	and	a, 2
+	ld	e, a
+	bit	0, (ix + 15)
+	jr	z, BB14_4
+	ld	e, 2
+BB14_4:
+	ld	a, l
+	and	a, -3
+	jr	BB14_11
+BB14_5:
+	ld	iy, (iy + 6)
+	ld	bc, (iy + 3)
+	ex	de, hl
+	or	a, a
+	sbc	hl, bc
+	ld	iy, (ix + 9)
+	jr	nz, BB14_13
+	ld	e, 4
+	ld	hl, (iy + 12)
+	ld	(ix - 3), hl
+	ld	bc, (ix + 12)
+	or	a, a
+	sbc	hl, bc
+	jr	z, BB14_8
+	ld	hl, (iy + 15)
+	ld	(ix - 6), hl
+	or	a, a
+	sbc	hl, bc
+	jr	nz, BB14_14
+BB14_8:
+	ld	l, (iy + 18)
+	ld	a, l
+	and	a, 4
+	bit	0, (ix + 15)
+	jr	nz, BB14_10
+	ld	e, a
+BB14_10:
+	ld	a, l
+	and	a, -5
+BB14_11:
+	ld	l, a
+	ld	a, e
+	add	a, l
+BB14_12:
+	ld	(iy + 18), a
+BB14_13:
+	ld	sp, ix
+	pop	ix
+	ret
+BB14_14:
+	ld	d, (iy + 18)
+	bit	0, (ix + 15)
+	jr	nz, BB14_16
+	ld	e, a
+BB14_16:
+	ld	a, d
+	and	a, 115
+	add	a, e
+	ld	(ix - 7), a
+	ld	hl, (ix - 6)
+	add	hl, bc
+	or	a, a
+	sbc	hl, bc
+	jr	z, BB14_18
+	lea	bc, iy+0
+BB14_18:
+	ld	(iy + 15), bc
+	ld	a, d
+	and	a, 1
+	xor	a, 1
+	ld	hl, (ix - 3)
+	add	hl, bc
+	or	a, a
+	sbc	hl, bc
+	jr	z, BB14_20
+	ld	l, 0
+	jr	BB14_21
+BB14_20:
+	ld	l, -1
+BB14_21:
+	or	a, l
+	ld	e, a
+	ld	a, d
+	and	a, -128
+	ld	l, a
+	bit	0, e
+	jr	nz, BB14_23
+	ld	l, -128
+BB14_23:
+	ld	a, (ix - 7)
+	add	a, l
+	add	a, 8
+	jr	BB14_12
+	.section	.text,"ax",@progbits
+
+	.section	.text,"ax",@progbits
+	.global	__ZNK10__cxxabiv120__si_class_type_info21__search_above_targetEPNS_19__dynamic_cast_infoEPKvS4_b
+__ZNK10__cxxabiv120__si_class_type_info21__search_above_targetEPNS_19__dynamic_cast_infoEPKvS4_b:
+	call	__frameset0
+	ld	hl, (ix + 6)
+	ld	iy, (ix + 9)
+	ld	a, (ix + 18)
+	ld	de, (iy + 3)
+	push	hl
+	pop	bc
+	push	hl
+	pop	iy
+	ld	hl, (iy + 3)
+	push	de
+	pop	iy
+	ld	de, (iy + 3)
+	or	a, a
+	sbc	hl, de
+	jr	nz, BB15_2
+	ld	l, a
+	push	hl
+	ld	hl, (ix + 15)
+	push	hl
+	ld	hl, (ix + 12)
+	push	hl
+	ld	hl, (ix + 9)
+	push	hl
+	push	bc
+	call	__ZNK10__cxxabiv117__class_type_info21__search_above_targetEPNS_19__dynamic_cast_infoEPKvS4_b
+	jr	BB15_3
+BB15_2:
+	push	bc
+	pop	iy
+	ld	hl, (iy + 6)
+	ld	iy, (hl)
+	ld	iy, (iy + 6)
+	ld	e, a
+	push	de
+	ld	de, (ix + 15)
+	push	de
+	ld	de, (ix + 12)
+	push	de
+	ld	de, (ix + 9)
+	push	de
+	push	hl
+	call	__indcall
+BB15_3:
+	pop	hl
+	pop	hl
+	pop	hl
+	pop	hl
+	pop	hl
+	pop	ix
+	ret
+	.section	.text,"ax",@progbits
+
+	.section	.text,"ax",@progbits
+	.global	__ZNK10__cxxabiv120__si_class_type_info21__search_below_targetEPNS_19__dynamic_cast_infoEPKvb
+__ZNK10__cxxabiv120__si_class_type_info21__search_below_targetEPNS_19__dynamic_cast_infoEPKvb:
+	ld	hl, -4
+	call	__frameset
+	ld	hl, (ix + 6)
+	ld	iy, (ix + 9)
+	xor	a, a
+	ld	bc, (iy + 3)
+	push	hl
+	pop	iy
+	ld	de, (iy + 3)
+	push	bc
+	pop	iy
+	ld	bc, (iy + 3)
+	push	de
+	pop	hl
+	sbc	hl, bc
+	jr	nz, BB16_2
+	ld	l, (ix + 15)
+	push	hl
+	ld	hl, (ix + 12)
+	push	hl
+	ld	hl, (ix + 9)
+	push	hl
+	ld	hl, (ix + 6)
+	push	hl
+	call	__ZNK10__cxxabiv117__class_type_info21__search_below_targetEPNS_19__dynamic_cast_infoEPKvb
+	jr	BB16_10
+BB16_2:
+	ld	iy, (ix + 9)
+	ld	iy, (iy + 6)
+	ld	bc, (iy + 3)
+	ex	de, hl
+	or	a, a
+	sbc	hl, bc
+	jr	nz, BB16_9
+	ld	e, 4
+	ld	iy, (ix + 9)
+	ld	hl, (iy + 12)
+	ld	bc, (ix + 12)
+	or	a, a
+	sbc	hl, bc
+	jr	z, BB16_5
+	ld	hl, (iy + 15)
+	ld	(ix - 3), hl
+	or	a, a
+	sbc	hl, bc
+	jr	nz, BB16_12
+BB16_5:
+	ld	l, (iy + 18)
+	ld	a, l
+	and	a, 4
+	bit	0, (ix + 15)
+	jr	nz, BB16_7
+	ld	e, a
+BB16_7:
+	ld	a, l
+	and	a, -5
+	ld	l, a
+	ld	a, e
+	add	a, l
+BB16_8:
+	ld	(iy + 18), a
+	jr	BB16_11
+BB16_9:
+	ld	iy, (ix + 6)
+	ld	hl, (iy + 6)
+	ld	iy, (hl)
+	ld	iy, (iy + 9)
+	ld	e, (ix + 15)
+	push	de
+	ld	de, (ix + 12)
+	push	de
+	ld	de, (ix + 9)
+	push	de
+	push	hl
+	call	__indcall
+BB16_10:
+	pop	hl
+	pop	hl
+	pop	hl
+	pop	hl
+BB16_11:
+	ld	sp, ix
+	pop	ix
+	ret
+BB16_12:
+	ld	l, (iy + 18)
+	bit	0, (ix + 15)
+	jr	nz, BB16_14
+	ld	e, a
+BB16_14:
+	ld	(ix - 4), a
+	ld	a, l
+	and	a, -5
+	add	a, e
+	ld	e, a
+	bit	3, l
+	jr	nz, BB16_17
+	ld	a, e
+	and	a, -97
+	ld	iy, (ix + 9)
+	ld	(iy + 18), a
+	ld	iy, (ix + 6)
+	ld	hl, (iy + 6)
+	ld	iy, (hl)
+	ld	iy, (iy + 6)
+	ld	de, 1
+	push	de
+	push	bc
+	push	bc
+	ld	de, (ix + 9)
+	push	de
+	push	hl
+	call	__indcall
+	ld	iy, (ix + 9)
+	pop	hl
+	pop	hl
+	pop	hl
+	pop	hl
+	pop	hl
+	ld	l, (iy + 18)
+	ld	a, l
+	ld	b, 3
+	call	__bshru
+	and	a, 8
+	ld	e, a
+	ld	a, l
+	and	a, -9
+	ld	c, a
+	ld	a, e
+	add	a, c
+	xor	a, 8
+	ld	e, a
+	ld	(iy + 18), e
+	ld	a, l
+	and	a, 96
+	cp	a, 96
+	jr	z, BB16_11
+	ld	hl, (iy + 15)
+	ld	bc, (ix + 12)
+	jr	BB16_18
+BB16_17:
+	ld	hl, (ix - 3)
+	ld	iy, (ix + 9)
+BB16_18:
+	add	hl, bc
+	or	a, a
+	sbc	hl, bc
+	jr	z, BB16_20
+	lea	bc, iy+0
+BB16_20:
+	ld	(iy + 15), bc
+	ld	a, e
+	and	a, 1
+	bit	0, a
+	jr	z, BB16_23
+	ld	hl, (iy + 12)
+	add	hl, bc
+	or	a, a
+	sbc	hl, bc
+	jr	z, BB16_23
+	ld	a, -128
+	ld	(ix - 4), a
+BB16_23:
+	ld	a, e
+	or	a, (ix - 4)
+	jp	BB16_8
+	.section	.text,"ax",@progbits
+
+	.section	.text,"ax",@progbits
+	.global	__ZNK10__cxxabiv121__vmi_class_type_info21__search_above_targetEPNS_19__dynamic_cast_infoEPKvS4_b
+__ZNK10__cxxabiv121__vmi_class_type_info21__search_above_targetEPNS_19__dynamic_cast_infoEPKvS4_b:
+	ld	hl, -11
+	call	__frameset
+	ld	hl, (ix + 6)
+	ld	iy, (ix + 9)
+	ld	bc, (ix + 15)
+	ld	a, (ix + 18)
+	ld	de, (iy + 3)
+	push	hl
+	pop	iy
+	ld	hl, (iy + 3)
+	push	de
+	pop	iy
+	ld	de, (iy + 3)
+	or	a, a
+	sbc	hl, de
+	jr	nz, BB17_2
+	ld	l, a
+	push	hl
+	push	bc
+	ld	hl, (ix + 12)
+	push	hl
+	ld	hl, (ix + 9)
+	push	hl
+	ld	hl, (ix + 6)
+	push	hl
+	call	__ZNK10__cxxabiv117__class_type_info21__search_above_targetEPNS_19__dynamic_cast_infoEPKvS4_b
+	pop	hl
+	pop	hl
+	pop	hl
+	pop	hl
+	pop	hl
+	jp	BB17_12
+BB17_2:
+	ld	b, 5
+	ld	l, 6
+	ld	iy, (ix + 9)
+	ld	e, (iy + 18)
+	ld	d, a
+	ld	a, e
+	call	__bshru
+	and	a, 1
+	ld	(ix - 1), a
+	ld	a, e
+	ld	b, l
+	call	__bshru
+	and	a, 1
+	ld	(ix - 5), a
+	ld	iy, (ix + 6)
+	ld	hl, (iy + 9)
+	lea	bc, iy + 12
+	ld	(ix - 4), bc
+	dec	hl
+	ld	(ix - 8), hl
+	ld	l, d
+	ld	iy, (ix + 9)
+	ld	(ix - 11), hl
+BB17_3:
+	ld	a, e
+	and	a, -97
+	ld	(iy + 18), a
+	push	hl
+	ld	hl, (ix + 15)
+	push	hl
+	ld	hl, (ix + 12)
+	push	hl
+	push	iy
+	ld	hl, (ix - 4)
+	push	hl
+	call	__ZNK10__cxxabiv122__base_class_type_info21__search_above_targetEPNS_19__dynamic_cast_infoEPKvS4_b
+	ld	iy, (ix + 9)
+	pop	hl
+	pop	hl
+	pop	hl
+	pop	hl
+	pop	hl
+	ld	e, (iy + 18)
+	ld	a, e
+	and	a, 32
+	ld	c, a
+	ld	iyh, 5
+	ld	b, iyh
+	call	__bshru
+	or	a, (ix - 1)
+	ld	h, a
+	ld	a, e
+	and	a, 64
+	ld	d, a
+	ld	b, 6
+	call	__bshru
+	or	a, (ix - 5)
+	ld	l, a
+	ld	a, e
+	cp	a, 0
+	call	pe, __setflag
+	ld	iyl, b
+	jp	m, BB17_11
+	ld	(ix - 1), h
+	ld	b, l
+	ld	hl, (ix - 8)
+	add	hl, bc
+	or	a, a
+	sbc	hl, bc
+	ld	l, b
+	ld	h, (ix - 1)
+	jr	z, BB17_11
+	ld	a, c
+	or	a, a
+	jr	nz, BB17_8
+	ld	a, d
+	or	a, a
+	jr	z, BB17_10
+	ld	a, iyl
+	ld	c, iyh
+	ld	iy, (ix + 6)
+	ld	d, l
+	ld	hl, (iy + 6)
+	ld	iyh, c
+	ld	iyl, a
+	ld	a, d
+	ld	bc, 1
+	call	__iand
+	bit	0, l
+	ld	l, a
+	ld	h, (ix - 1)
+	jr	z, BB17_11
+	jr	BB17_10
+BB17_8:
+	ld	a, e
+	and	a, 1
+	bit	0, a
+	jr	nz, BB17_11
+	ld	a, iyl
+	ex	de, hl
+	ld	e, iyh
+	ex	de, hl
+	ld	iy, (ix + 6)
+	bit	1, (iy + 6)
+	ex	de, hl
+	ld	iyh, e
+	ex	de, hl
+	ld	l, b
+	ld	iyl, a
+	jr	z, BB17_11
+BB17_10:
+	ld	(ix - 5), l
+	ld	iy, (ix - 4)
+	lea	iy, iy + 7
+	ld	(ix - 4), iy
+	ld	bc, (ix - 8)
+	dec	bc
+	ld	(ix - 8), bc
+	ld	iy, (ix + 9)
+	ld	hl, (ix - 11)
+	jp	BB17_3
+BB17_11:
+	ld	a, h
+	ld	c, l
+	ld	b, iyh
+	call	__bshl
+	ld	l, a
+	ld	a, e
+	and	a, -97
+	ld	e, a
+	ld	a, c
+	ld	b, iyl
+	call	__bshl
+	ld	c, a
+	ld	a, l
+	and	a, -96
+	ld	l, a
+	ld	a, c
+	or	a, e
+	or	a, l
+	ld	iy, (ix + 9)
+	ld	(iy + 18), a
+BB17_12:
+	ld	sp, ix
+	pop	ix
+	ret
+	.section	.text,"ax",@progbits
+
+	.section	.text,"ax",@progbits
+	.global	__ZNK10__cxxabiv122__base_class_type_info21__search_above_targetEPNS_19__dynamic_cast_infoEPKvS4_b
+__ZNK10__cxxabiv122__base_class_type_info21__search_above_targetEPNS_19__dynamic_cast_infoEPKvS4_b:
+	ld	hl, -16
+	call	__frameset
+	ld	iy, (ix + 6)
+	ld	hl, (ix + 9)
+	ld	(ix - 6), hl
+	ld	hl, (ix + 12)
+	ld	(ix - 9), hl
+	ld	hl, (ix + 15)
+	ld	(ix - 3), hl
+	ld	a, (ix + 18)
+	ld	(ix - 13), a
+	ld	bc, 1
+	xor	a, a
+	ld	hl, (iy)
+	ld	(ix - 12), hl
+	ld	hl, (iy + 3)
+	ld	d, (iy + 6)
+	push	hl
+	pop	iy
+	ld	e, d
+	call	__land
+	bit	0, l
+	jr	nz, BB18_2
+	ld	l, 8
+	lea	bc, iy+0
+	ld	a, d
+	call	__lshru
+	jr	BB18_3
+BB18_2:
+	ld	hl, (ix - 3)
+	ld	hl, (hl)
+	ld	(ix - 16), hl
+	ld	l, 8
+	lea	bc, iy+0
+	ld	a, d
+	call	__lshru
+	ld	hl, (ix - 16)
+	add	hl, bc
+	ld	bc, (hl)
+BB18_3:
+	ld	hl, (ix - 3)
+	add	hl, bc
+	ld	a, iyl
+	push	hl
+	pop	bc
+	bit	1, a
+	jr	nz, BB18_5
+	ld	l, 0
+	jr	BB18_6
+BB18_5:
+	ld	l, -1
+BB18_6:
+	ld	a, (ix - 13)
+	and	a, l
+	ld	hl, (ix - 12)
+	ld	iy, (hl)
+	ld	iy, (iy + 6)
+	ld	(ix + 6), hl
+	ld	de, (ix - 6)
+	ld	(ix + 9), de
+	ld	de, (ix - 9)
+	ld	(ix + 12), de
+	ld	(ix + 15), bc
+	ld	(ix + 18), a
+	ld	sp, ix
+	pop	ix
+	jp	(iy)
+	.section	.text,"ax",@progbits
+
+	.section	.text,"ax",@progbits
+	.global	__ZNK10__cxxabiv121__vmi_class_type_info21__search_below_targetEPNS_19__dynamic_cast_infoEPKvb
+__ZNK10__cxxabiv121__vmi_class_type_info21__search_below_targetEPNS_19__dynamic_cast_infoEPKvb:
+	ld	hl, -11
+	call	__frameset
+	ld	hl, (ix + 6)
+	ld	iy, (ix + 9)
+	xor	a, a
+	ld	bc, (iy + 3)
+	push	hl
+	pop	iy
+	ld	de, (iy + 3)
+	push	bc
+	pop	iy
+	ld	bc, (iy + 3)
+	push	de
+	pop	hl
+	sbc	hl, bc
+	jr	nz, BB19_2
+	ld	l, (ix + 15)
+	push	hl
+	ld	hl, (ix + 12)
+	push	hl
+	ld	hl, (ix + 9)
+	push	hl
+	ld	hl, (ix + 6)
+	push	hl
+	call	__ZNK10__cxxabiv117__class_type_info21__search_below_targetEPNS_19__dynamic_cast_infoEPKvb
+	pop	hl
+	pop	hl
+	pop	hl
+	pop	hl
+	jp	BB19_19
+BB19_2:
+	ld	hl, (ix + 6)
+	push	hl
+	pop	iy
+	ld	hl, (iy + 9)
+	ld	(ix - 3), hl
+	lea	hl, iy + 12
+	ld	(ix - 6), hl
+	ld	iy, (ix + 9)
+	ld	iy, (iy + 6)
+	ld	bc, (iy + 3)
+	ex	de, hl
+	or	a, a
+	sbc	hl, bc
+	jr	nz, BB19_9
+	ld	e, 4
+	ld	iy, (ix + 9)
+	ld	hl, (iy + 12)
+	ld	bc, (ix + 12)
+	or	a, a
+	sbc	hl, bc
+	jr	z, BB19_5
+	ld	iy, (ix + 9)
+	ld	bc, (iy + 15)
+	push	bc
+	pop	hl
+	ld	iyl, e
+	ld	de, (ix + 12)
+	or	a, a
+	sbc	hl, de
+	ld	e, iyl
+	jp	nz, BB19_20
+BB19_5:
+	ld	iy, (ix + 9)
+	ld	l, (iy + 18)
+	ld	a, l
+	and	a, 4
+	bit	0, (ix + 15)
+	jr	nz, BB19_7
+	ld	e, a
+BB19_7:
+	ld	a, l
+	and	a, -5
+	ld	l, a
+	ld	a, e
+	add	a, l
+BB19_8:
+	ld	iy, (ix + 9)
+	ld	(iy + 18), a
+	jp	BB19_19
+BB19_9:
+	ld	iy, (ix + 6)
+	ld	de, (iy + 6)
+	ld	a, e
+	bit	1, a
+	ld	iy, (ix + 9)
+	jr	nz, BB19_16
+	ld	hl, (iy + 12)
+	add	hl, bc
+	or	a, a
+	sbc	hl, bc
+	jr	nz, BB19_16
+	ex	de, hl
+	ld	bc, 1
+	call	__iand
+	bit	0, l
+	ld	a, (ix + 15)
+	jp	nz, BB19_33
+	ld	l, a
+	ld	(ix - 9), hl
+BB19_13:
+	ld	hl, (ix - 9)
+	push	hl
+	ld	hl, (ix + 12)
+	push	hl
+	push	iy
+	ld	hl, (ix - 6)
+	push	hl
+	call	__ZNK10__cxxabiv122__base_class_type_info21__search_below_targetEPNS_19__dynamic_cast_infoEPKvb
+	ld	iy, (ix + 9)
+	pop	hl
+	pop	hl
+	pop	hl
+	pop	hl
+	ld	a, (iy + 18)
+	cp	a, 0
+	call	pe, __setflag
+	jp	m, BB19_19
+	ld	hl, (ix - 3)
+	dec	hl
+	ld	(ix - 3), hl
+	add	hl, bc
+	or	a, a
+	sbc	hl, bc
+	jr	z, BB19_19
+	lea	hl, iy+0
+	ld	iy, (ix - 6)
+	lea	iy, iy + 7
+	ld	(ix - 6), iy
+	push	hl
+	pop	iy
+	ld	hl, (iy + 12)
+	add	hl, bc
+	or	a, a
+	sbc	hl, bc
+	jr	z, BB19_13
+	jr	BB19_19
+BB19_16:
+	ld	hl, (ix - 3)
+	dec	hl
+	ld	(ix - 3), hl
+	ld	c, (ix + 15)
+BB19_17:
+	push	bc
+	ld	hl, (ix + 12)
+	push	hl
+	push	iy
+	ld	hl, (ix - 6)
+	push	hl
+	call	__ZNK10__cxxabiv122__base_class_type_info21__search_below_targetEPNS_19__dynamic_cast_infoEPKvb
+	ld	c, (ix + 15)
+	ld	iy, (ix + 9)
+	pop	hl
+	pop	hl
+	pop	hl
+	pop	hl
+	ld	a, (iy + 18)
+	cp	a, 0
+	call	pe, __setflag
+	jp	m, BB19_19
+	lea	hl, iy+0
+	ld	iy, (ix - 6)
+	lea	iy, iy + 7
+	ld	(ix - 6), iy
+	push	hl
+	pop	iy
+	ld	hl, (ix - 3)
+	push	hl
+	pop	de
+	dec	de
+	add	hl, bc
+	or	a, a
+	sbc	hl, bc
+	ld	(ix - 3), de
+	jr	nz, BB19_17
+BB19_19:
+	ld	sp, ix
+	pop	ix
+	ret
+BB19_20:
+	ld	iy, (ix + 9)
+	ld	l, (iy + 18)
+	bit	0, (ix + 15)
+	jr	nz, BB19_22
+	ld	e, a
+BB19_22:
+	ld	(ix - 9), a
+	ld	a, l
+	and	a, -5
+	add	a, e
+	ld	e, a
+	bit	3, l
+	jp	nz, BB19_39
+	ld	l, 1
+	xor	a, a
+	ld	(ix - 10), a
+	ld	a, l
+BB19_24:
+	ld	(ix - 11), a
+	ld	a, e
+	and	a, -97
+	ld	iy, (ix + 9)
+	ld	(iy + 18), a
+	ld	hl, 1
+	push	hl
+	ld	hl, (ix + 12)
+	push	hl
+	push	hl
+	push	iy
+	ld	hl, (ix - 6)
+	push	hl
+	call	__ZNK10__cxxabiv122__base_class_type_info21__search_above_targetEPNS_19__dynamic_cast_infoEPKvS4_b
+	ld	iy, (ix + 9)
+	pop	hl
+	pop	hl
+	pop	hl
+	pop	hl
+	pop	hl
+	ld	e, (iy + 18)
+	ld	a, e
+	cp	a, 0
+	call	pe, __setflag
+	jp	m, BB19_40
+	bit	6, e
+	jr	nz, BB19_28
+	ld	a, (ix - 11)
+BB19_27:
+	ld	iy, (ix - 6)
+	lea	iy, iy + 7
+	ld	(ix - 6), iy
+	ld	hl, (ix - 3)
+	dec	hl
+	ld	(ix - 3), hl
+	add	hl, bc
+	or	a, a
+	sbc	hl, bc
+	jr	nz, BB19_24
+	jp	BB19_41
+BB19_28:
+	ld	iy, (ix + 6)
+	ld	hl, (iy + 6)
+	bit	5, e
+	jr	nz, BB19_30
+	ld	bc, 1
+	call	__iand
+	bit	0, l
+	ld	a, b
+	jr	z, BB19_32
+	jr	BB19_27
+BB19_30:
+	ld	a, l
+	bit	1, a
+	ld	a, 1
+	ld	(ix - 10), a
+	ld	a, 0
+	jr	nz, BB19_27
+	ld	a, 1
+	ld	(ix - 10), a
+BB19_32:
+	xor	a, a
+	jr	BB19_41
+BB19_33:
+	ld	hl, (ix - 3)
+	dec	hl
+	ld	(ix - 3), hl
+	ld	l, a
+	ld	(ix - 9), hl
+BB19_34:
+	push	hl
+	ld	hl, (ix + 12)
+	push	hl
+	push	iy
+	ld	hl, (ix - 6)
+	push	hl
+	call	__ZNK10__cxxabiv122__base_class_type_info21__search_below_targetEPNS_19__dynamic_cast_infoEPKvb
+	ld	iy, (ix + 9)
+	pop	hl
+	pop	hl
+	pop	hl
+	pop	hl
+	ld	a, (iy + 18)
+	cp	a, 0
+	call	pe, __setflag
+	jp	m, BB19_19
+	ld	hl, (ix - 3)
+	add	hl, bc
+	or	a, a
+	sbc	hl, bc
+	jp	z, BB19_19
+	and	a, 1
+	bit	0, a
+	jr	z, BB19_38
+	ld	hl, (iy + 12)
+	add	hl, bc
+	or	a, a
+	sbc	hl, bc
+	jp	nz, BB19_19
+BB19_38:
+	lea	hl, iy+0
+	ld	iy, (ix - 6)
+	lea	iy, iy + 7
+	ld	(ix - 6), iy
+	push	hl
+	pop	iy
+	ld	hl, (ix - 3)
+	dec	hl
+	ld	(ix - 3), hl
+	ld	hl, (ix - 9)
+	jr	BB19_34
+BB19_39:
+	push	bc
+	pop	hl
+	jr	BB19_43
+BB19_40:
+	ld	a, (ix - 11)
+BB19_41:
+	ld	b, 3
+	call	__bshl
+	and	a, 8
+	ld	l, a
+	ld	a, e
+	and	a, -9
+	ld	e, a
+	ld	a, l
+	add	a, e
+	ld	e, a
+	ld	iy, (ix + 9)
+	ld	(iy + 18), e
+	ld	a, (ix - 10)
+	and	a, 1
+	bit	0, a
+	jp	nz, BB19_19
+	ld	iy, (ix + 9)
+	ld	hl, (iy + 15)
+BB19_43:
+	add	hl, bc
+	or	a, a
+	sbc	hl, bc
+	ld	hl, (ix + 12)
+	jr	z, BB19_45
+	ld	hl, (ix + 9)
+BB19_45:
+	ld	iy, (ix + 9)
+	ld	(iy + 15), hl
+	ld	a, e
+	and	a, 1
+	bit	0, a
+	jr	z, BB19_48
+	ld	iy, (ix + 9)
+	ld	hl, (iy + 12)
+	add	hl, bc
+	or	a, a
+	sbc	hl, bc
+	jr	z, BB19_48
+	ld	a, -128
+	ld	(ix - 9), a
+BB19_48:
+	ld	a, e
+	or	a, (ix - 9)
+	jp	BB19_8
+	.section	.text,"ax",@progbits
+
+	.section	.text,"ax",@progbits
+	.global	__ZNK10__cxxabiv122__base_class_type_info21__search_below_targetEPNS_19__dynamic_cast_infoEPKvb
+__ZNK10__cxxabiv122__base_class_type_info21__search_below_targetEPNS_19__dynamic_cast_infoEPKvb:
+	ld	hl, -13
+	call	__frameset
+	ld	iy, (ix + 6)
+	ld	hl, (ix + 9)
+	ld	(ix - 6), hl
+	ld	hl, (ix + 12)
+	ld	(ix - 3), hl
+	ld	a, (ix + 15)
+	ld	(ix - 10), a
+	ld	bc, 1
+	xor	a, a
+	ld	hl, (iy)
+	ld	(ix - 9), hl
+	ld	hl, (iy + 3)
+	ld	d, (iy + 6)
+	push	hl
+	pop	iy
+	ld	e, d
+	call	__land
+	bit	0, l
+	jr	nz, BB20_2
+	ld	l, 8
+	lea	bc, iy+0
+	ld	a, d
+	call	__lshru
+	jr	BB20_3
+BB20_2:
+	ld	hl, (ix - 3)
+	ld	hl, (hl)
+	ld	(ix - 13), hl
+	ld	l, 8
+	lea	bc, iy+0
+	ld	a, d
+	call	__lshru
+	ld	hl, (ix - 13)
+	add	hl, bc
+	ld	bc, (hl)
+BB20_3:
+	ld	hl, (ix - 3)
+	add	hl, bc
+	ld	a, iyl
+	push	hl
+	pop	bc
+	bit	1, a
+	jr	nz, BB20_5
+	ld	l, 0
+	jr	BB20_6
+BB20_5:
+	ld	l, -1
+BB20_6:
+	ld	a, (ix - 10)
+	and	a, l
+	ld	hl, (ix - 9)
+	ld	iy, (hl)
+	ld	iy, (iy + 9)
+	ld	(ix + 6), hl
+	ld	de, (ix - 6)
+	ld	(ix + 9), de
+	ld	(ix + 12), bc
+	ld	(ix + 15), a
+	ld	sp, ix
+	pop	ix
+	jp	(iy)
+	.section	.text,"ax",@progbits
+
+	.section	.text,"ax",@progbits
+	.global	__ZNK10__cxxabiv122__base_class_type_info24__adjust_current_pointerEPKv
+__ZNK10__cxxabiv122__base_class_type_info24__adjust_current_pointerEPKv:
+	ld	hl, -6
+	call	__frameset
+	ld	de, (ix + 6)
+	ld	bc, 1
+	xor	a, a
+	push	de
+	pop	iy
+	ld	hl, (iy + 3)
+	ld	d, (iy + 6)
+	ld	(ix - 3), hl
+	ld	e, d
+	call	__land
+	bit	0, l
+	jr	nz, BB21_2
+	ld	l, 8
+	ld	bc, (ix - 3)
+	ld	a, d
+	call	__lshru
+	ld	hl, (ix + 9)
+	jr	BB21_3
+BB21_2:
+	ld	iy, (ix + 9)
+	ld	hl, (iy)
+	ld	(ix - 6), hl
+	ld	l, 8
+	ld	bc, (ix - 3)
+	ld	a, d
+	call	__lshru
+	ld	hl, (ix - 6)
+	add	hl, bc
+	ld	bc, (hl)
+	lea	hl, iy+0
+BB21_3:
+	add	hl, bc
+	ld	sp, ix
+	pop	ix
+	ret
+	.section	.text,"ax",@progbits
+
+	.section	.text,"ax",@progbits
+	.global	___cxa_bad_cast
+___cxa_bad_cast:
+	ld	hl, _.str
+	push	hl
+	call	__ZSt19__terminate_messagePKc
+	pop	hl
+	.section	.text,"ax",@progbits
+
+	.section	.text,"ax",@progbits
+	.global	___cxa_bad_typeid
+___cxa_bad_typeid:
+	ld	hl, _.str.1
+	push	hl
+	call	__ZSt19__terminate_messagePKc
+	pop	hl
+	.section	.text,"ax",@progbits
+
+	.section	.rodata,"a",@progbits
+	.local	_.str
+_.str:
+	db	"std::bad_cast", 0
+
+	.section	.rodata,"a",@progbits
+	.local	_.str.1
+_.str.1:
+	db	"std::bad_typeid", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTVSt9type_info
+__ZTVSt9type_info:
+	d24	0
+	d24	0
+	d24	__ZNSt9type_infoD2Ev
+	d24	__ZNSt9type_infoD0Ev
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTVN10__cxxabiv123__fundamental_type_infoE
+__ZTVN10__cxxabiv123__fundamental_type_infoE:
+	d24	0
+	d24	0
+	d24	__ZNSt9type_infoD2Ev
+	d24	__ZN10__cxxabiv123__fundamental_type_infoD0Ev
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSv
+__ZTSv:
+	db	"v", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIv
+__ZTIv:
+	d24	__ZTVN10__cxxabiv123__fundamental_type_infoE+6
+	d24	__ZTSv
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSPv
+__ZTSPv:
+	db	"Pv", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIPv
+__ZTIPv:
+	d24	__ZTVN10__cxxabiv119__pointer_type_infoE+6
+	d24	__ZTSPv
+	d24	0
+	d24	__ZTIv
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSPKv
+__ZTSPKv:
+	db	"PKv", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIPKv
+__ZTIPKv:
+	d24	__ZTVN10__cxxabiv119__pointer_type_infoE+6
+	d24	__ZTSPKv
+	d24	1
+	d24	__ZTIv
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSDn
+__ZTSDn:
+	db	"Dn", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIDn
+__ZTIDn:
+	d24	__ZTVN10__cxxabiv123__fundamental_type_infoE+6
+	d24	__ZTSDn
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSPDn
+__ZTSPDn:
+	db	"PDn", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIPDn
+__ZTIPDn:
+	d24	__ZTVN10__cxxabiv119__pointer_type_infoE+6
+	d24	__ZTSPDn
+	d24	0
+	d24	__ZTIDn
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSPKDn
+__ZTSPKDn:
+	db	"PKDn", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIPKDn
+__ZTIPKDn:
+	d24	__ZTVN10__cxxabiv119__pointer_type_infoE+6
+	d24	__ZTSPKDn
+	d24	1
+	d24	__ZTIDn
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSb
+__ZTSb:
+	db	"b", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIb
+__ZTIb:
+	d24	__ZTVN10__cxxabiv123__fundamental_type_infoE+6
+	d24	__ZTSb
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSPb
+__ZTSPb:
+	db	"Pb", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIPb
+__ZTIPb:
+	d24	__ZTVN10__cxxabiv119__pointer_type_infoE+6
+	d24	__ZTSPb
+	d24	0
+	d24	__ZTIb
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSPKb
+__ZTSPKb:
+	db	"PKb", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIPKb
+__ZTIPKb:
+	d24	__ZTVN10__cxxabiv119__pointer_type_infoE+6
+	d24	__ZTSPKb
+	d24	1
+	d24	__ZTIb
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSw
+__ZTSw:
+	db	"w", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIw
+__ZTIw:
+	d24	__ZTVN10__cxxabiv123__fundamental_type_infoE+6
+	d24	__ZTSw
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSPw
+__ZTSPw:
+	db	"Pw", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIPw
+__ZTIPw:
+	d24	__ZTVN10__cxxabiv119__pointer_type_infoE+6
+	d24	__ZTSPw
+	d24	0
+	d24	__ZTIw
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSPKw
+__ZTSPKw:
+	db	"PKw", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIPKw
+__ZTIPKw:
+	d24	__ZTVN10__cxxabiv119__pointer_type_infoE+6
+	d24	__ZTSPKw
+	d24	1
+	d24	__ZTIw
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSc
+__ZTSc:
+	db	"c", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIc
+__ZTIc:
+	d24	__ZTVN10__cxxabiv123__fundamental_type_infoE+6
+	d24	__ZTSc
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSPc
+__ZTSPc:
+	db	"Pc", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIPc
+__ZTIPc:
+	d24	__ZTVN10__cxxabiv119__pointer_type_infoE+6
+	d24	__ZTSPc
+	d24	0
+	d24	__ZTIc
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSPKc
+__ZTSPKc:
+	db	"PKc", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIPKc
+__ZTIPKc:
+	d24	__ZTVN10__cxxabiv119__pointer_type_infoE+6
+	d24	__ZTSPKc
+	d24	1
+	d24	__ZTIc
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSh
+__ZTSh:
+	db	"h", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIh
+__ZTIh:
+	d24	__ZTVN10__cxxabiv123__fundamental_type_infoE+6
+	d24	__ZTSh
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSPh
+__ZTSPh:
+	db	"Ph", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIPh
+__ZTIPh:
+	d24	__ZTVN10__cxxabiv119__pointer_type_infoE+6
+	d24	__ZTSPh
+	d24	0
+	d24	__ZTIh
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSPKh
+__ZTSPKh:
+	db	"PKh", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIPKh
+__ZTIPKh:
+	d24	__ZTVN10__cxxabiv119__pointer_type_infoE+6
+	d24	__ZTSPKh
+	d24	1
+	d24	__ZTIh
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSa
+__ZTSa:
+	db	"a", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIa
+__ZTIa:
+	d24	__ZTVN10__cxxabiv123__fundamental_type_infoE+6
+	d24	__ZTSa
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSPa
+__ZTSPa:
+	db	"Pa", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIPa
+__ZTIPa:
+	d24	__ZTVN10__cxxabiv119__pointer_type_infoE+6
+	d24	__ZTSPa
+	d24	0
+	d24	__ZTIa
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSPKa
+__ZTSPKa:
+	db	"PKa", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIPKa
+__ZTIPKa:
+	d24	__ZTVN10__cxxabiv119__pointer_type_infoE+6
+	d24	__ZTSPKa
+	d24	1
+	d24	__ZTIa
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSs
+__ZTSs:
+	db	"s", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIs
+__ZTIs:
+	d24	__ZTVN10__cxxabiv123__fundamental_type_infoE+6
+	d24	__ZTSs
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSPs
+__ZTSPs:
+	db	"Ps", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIPs
+__ZTIPs:
+	d24	__ZTVN10__cxxabiv119__pointer_type_infoE+6
+	d24	__ZTSPs
+	d24	0
+	d24	__ZTIs
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSPKs
+__ZTSPKs:
+	db	"PKs", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIPKs
+__ZTIPKs:
+	d24	__ZTVN10__cxxabiv119__pointer_type_infoE+6
+	d24	__ZTSPKs
+	d24	1
+	d24	__ZTIs
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSt
+__ZTSt:
+	db	"t", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIt
+__ZTIt:
+	d24	__ZTVN10__cxxabiv123__fundamental_type_infoE+6
+	d24	__ZTSt
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSPt
+__ZTSPt:
+	db	"Pt", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIPt
+__ZTIPt:
+	d24	__ZTVN10__cxxabiv119__pointer_type_infoE+6
+	d24	__ZTSPt
+	d24	0
+	d24	__ZTIt
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSPKt
+__ZTSPKt:
+	db	"PKt", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIPKt
+__ZTIPKt:
+	d24	__ZTVN10__cxxabiv119__pointer_type_infoE+6
+	d24	__ZTSPKt
+	d24	1
+	d24	__ZTIt
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSi
+__ZTSi:
+	db	"i", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIi
+__ZTIi:
+	d24	__ZTVN10__cxxabiv123__fundamental_type_infoE+6
+	d24	__ZTSi
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSPi
+__ZTSPi:
+	db	"Pi", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIPi
+__ZTIPi:
+	d24	__ZTVN10__cxxabiv119__pointer_type_infoE+6
+	d24	__ZTSPi
+	d24	0
+	d24	__ZTIi
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSPKi
+__ZTSPKi:
+	db	"PKi", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIPKi
+__ZTIPKi:
+	d24	__ZTVN10__cxxabiv119__pointer_type_infoE+6
+	d24	__ZTSPKi
+	d24	1
+	d24	__ZTIi
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSj
+__ZTSj:
+	db	"j", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIj
+__ZTIj:
+	d24	__ZTVN10__cxxabiv123__fundamental_type_infoE+6
+	d24	__ZTSj
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSPj
+__ZTSPj:
+	db	"Pj", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIPj
+__ZTIPj:
+	d24	__ZTVN10__cxxabiv119__pointer_type_infoE+6
+	d24	__ZTSPj
+	d24	0
+	d24	__ZTIj
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSPKj
+__ZTSPKj:
+	db	"PKj", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIPKj
+__ZTIPKj:
+	d24	__ZTVN10__cxxabiv119__pointer_type_infoE+6
+	d24	__ZTSPKj
+	d24	1
+	d24	__ZTIj
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSl
+__ZTSl:
+	db	"l", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIl
+__ZTIl:
+	d24	__ZTVN10__cxxabiv123__fundamental_type_infoE+6
+	d24	__ZTSl
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSPl
+__ZTSPl:
+	db	"Pl", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIPl
+__ZTIPl:
+	d24	__ZTVN10__cxxabiv119__pointer_type_infoE+6
+	d24	__ZTSPl
+	d24	0
+	d24	__ZTIl
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSPKl
+__ZTSPKl:
+	db	"PKl", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIPKl
+__ZTIPKl:
+	d24	__ZTVN10__cxxabiv119__pointer_type_infoE+6
+	d24	__ZTSPKl
+	d24	1
+	d24	__ZTIl
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSm
+__ZTSm:
+	db	"m", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIm
+__ZTIm:
+	d24	__ZTVN10__cxxabiv123__fundamental_type_infoE+6
+	d24	__ZTSm
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSPm
+__ZTSPm:
+	db	"Pm", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIPm
+__ZTIPm:
+	d24	__ZTVN10__cxxabiv119__pointer_type_infoE+6
+	d24	__ZTSPm
+	d24	0
+	d24	__ZTIm
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSPKm
+__ZTSPKm:
+	db	"PKm", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIPKm
+__ZTIPKm:
+	d24	__ZTVN10__cxxabiv119__pointer_type_infoE+6
+	d24	__ZTSPKm
+	d24	1
+	d24	__ZTIm
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSx
+__ZTSx:
+	db	"x", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIx
+__ZTIx:
+	d24	__ZTVN10__cxxabiv123__fundamental_type_infoE+6
+	d24	__ZTSx
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSPx
+__ZTSPx:
+	db	"Px", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIPx
+__ZTIPx:
+	d24	__ZTVN10__cxxabiv119__pointer_type_infoE+6
+	d24	__ZTSPx
+	d24	0
+	d24	__ZTIx
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSPKx
+__ZTSPKx:
+	db	"PKx", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIPKx
+__ZTIPKx:
+	d24	__ZTVN10__cxxabiv119__pointer_type_infoE+6
+	d24	__ZTSPKx
+	d24	1
+	d24	__ZTIx
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSy
+__ZTSy:
+	db	"y", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIy
+__ZTIy:
+	d24	__ZTVN10__cxxabiv123__fundamental_type_infoE+6
+	d24	__ZTSy
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSPy
+__ZTSPy:
+	db	"Py", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIPy
+__ZTIPy:
+	d24	__ZTVN10__cxxabiv119__pointer_type_infoE+6
+	d24	__ZTSPy
+	d24	0
+	d24	__ZTIy
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSPKy
+__ZTSPKy:
+	db	"PKy", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIPKy
+__ZTIPKy:
+	d24	__ZTVN10__cxxabiv119__pointer_type_infoE+6
+	d24	__ZTSPKy
+	d24	1
+	d24	__ZTIy
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSn
+__ZTSn:
+	db	"n", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIn
+__ZTIn:
+	d24	__ZTVN10__cxxabiv123__fundamental_type_infoE+6
+	d24	__ZTSn
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSPn
+__ZTSPn:
+	db	"Pn", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIPn
+__ZTIPn:
+	d24	__ZTVN10__cxxabiv119__pointer_type_infoE+6
+	d24	__ZTSPn
+	d24	0
+	d24	__ZTIn
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSPKn
+__ZTSPKn:
+	db	"PKn", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIPKn
+__ZTIPKn:
+	d24	__ZTVN10__cxxabiv119__pointer_type_infoE+6
+	d24	__ZTSPKn
+	d24	1
+	d24	__ZTIn
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSo
+__ZTSo:
+	db	"o", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIo
+__ZTIo:
+	d24	__ZTVN10__cxxabiv123__fundamental_type_infoE+6
+	d24	__ZTSo
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSPo
+__ZTSPo:
+	db	"Po", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIPo
+__ZTIPo:
+	d24	__ZTVN10__cxxabiv119__pointer_type_infoE+6
+	d24	__ZTSPo
+	d24	0
+	d24	__ZTIo
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSPKo
+__ZTSPKo:
+	db	"PKo", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIPKo
+__ZTIPKo:
+	d24	__ZTVN10__cxxabiv119__pointer_type_infoE+6
+	d24	__ZTSPKo
+	d24	1
+	d24	__ZTIo
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSDh
+__ZTSDh:
+	db	"Dh", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIDh
+__ZTIDh:
+	d24	__ZTVN10__cxxabiv123__fundamental_type_infoE+6
+	d24	__ZTSDh
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSPDh
+__ZTSPDh:
+	db	"PDh", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIPDh
+__ZTIPDh:
+	d24	__ZTVN10__cxxabiv119__pointer_type_infoE+6
+	d24	__ZTSPDh
+	d24	0
+	d24	__ZTIDh
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSPKDh
+__ZTSPKDh:
+	db	"PKDh", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIPKDh
+__ZTIPKDh:
+	d24	__ZTVN10__cxxabiv119__pointer_type_infoE+6
+	d24	__ZTSPKDh
+	d24	1
+	d24	__ZTIDh
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSf
+__ZTSf:
+	db	"f", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIf
+__ZTIf:
+	d24	__ZTVN10__cxxabiv123__fundamental_type_infoE+6
+	d24	__ZTSf
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSPf
+__ZTSPf:
+	db	"Pf", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIPf
+__ZTIPf:
+	d24	__ZTVN10__cxxabiv119__pointer_type_infoE+6
+	d24	__ZTSPf
+	d24	0
+	d24	__ZTIf
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSPKf
+__ZTSPKf:
+	db	"PKf", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIPKf
+__ZTIPKf:
+	d24	__ZTVN10__cxxabiv119__pointer_type_infoE+6
+	d24	__ZTSPKf
+	d24	1
+	d24	__ZTIf
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSd
+__ZTSd:
+	db	"d", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTId
+__ZTId:
+	d24	__ZTVN10__cxxabiv123__fundamental_type_infoE+6
+	d24	__ZTSd
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSPd
+__ZTSPd:
+	db	"Pd", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIPd
+__ZTIPd:
+	d24	__ZTVN10__cxxabiv119__pointer_type_infoE+6
+	d24	__ZTSPd
+	d24	0
+	d24	__ZTId
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSPKd
+__ZTSPKd:
+	db	"PKd", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIPKd
+__ZTIPKd:
+	d24	__ZTVN10__cxxabiv119__pointer_type_infoE+6
+	d24	__ZTSPKd
+	d24	1
+	d24	__ZTId
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSe
+__ZTSe:
+	db	"e", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIe
+__ZTIe:
+	d24	__ZTVN10__cxxabiv123__fundamental_type_infoE+6
+	d24	__ZTSe
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSPe
+__ZTSPe:
+	db	"Pe", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIPe
+__ZTIPe:
+	d24	__ZTVN10__cxxabiv119__pointer_type_infoE+6
+	d24	__ZTSPe
+	d24	0
+	d24	__ZTIe
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSPKe
+__ZTSPKe:
+	db	"PKe", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIPKe
+__ZTIPKe:
+	d24	__ZTVN10__cxxabiv119__pointer_type_infoE+6
+	d24	__ZTSPKe
+	d24	1
+	d24	__ZTIe
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSg
+__ZTSg:
+	db	"g", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIg
+__ZTIg:
+	d24	__ZTVN10__cxxabiv123__fundamental_type_infoE+6
+	d24	__ZTSg
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSPg
+__ZTSPg:
+	db	"Pg", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIPg
+__ZTIPg:
+	d24	__ZTVN10__cxxabiv119__pointer_type_infoE+6
+	d24	__ZTSPg
+	d24	0
+	d24	__ZTIg
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSPKg
+__ZTSPKg:
+	db	"PKg", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIPKg
+__ZTIPKg:
+	d24	__ZTVN10__cxxabiv119__pointer_type_infoE+6
+	d24	__ZTSPKg
+	d24	1
+	d24	__ZTIg
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSDu
+__ZTSDu:
+	db	"Du", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIDu
+__ZTIDu:
+	d24	__ZTVN10__cxxabiv123__fundamental_type_infoE+6
+	d24	__ZTSDu
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSPDu
+__ZTSPDu:
+	db	"PDu", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIPDu
+__ZTIPDu:
+	d24	__ZTVN10__cxxabiv119__pointer_type_infoE+6
+	d24	__ZTSPDu
+	d24	0
+	d24	__ZTIDu
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSPKDu
+__ZTSPKDu:
+	db	"PKDu", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIPKDu
+__ZTIPKDu:
+	d24	__ZTVN10__cxxabiv119__pointer_type_infoE+6
+	d24	__ZTSPKDu
+	d24	1
+	d24	__ZTIDu
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSDs
+__ZTSDs:
+	db	"Ds", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIDs
+__ZTIDs:
+	d24	__ZTVN10__cxxabiv123__fundamental_type_infoE+6
+	d24	__ZTSDs
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSPDs
+__ZTSPDs:
+	db	"PDs", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIPDs
+__ZTIPDs:
+	d24	__ZTVN10__cxxabiv119__pointer_type_infoE+6
+	d24	__ZTSPDs
+	d24	0
+	d24	__ZTIDs
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSPKDs
+__ZTSPKDs:
+	db	"PKDs", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIPKDs
+__ZTIPKDs:
+	d24	__ZTVN10__cxxabiv119__pointer_type_infoE+6
+	d24	__ZTSPKDs
+	d24	1
+	d24	__ZTIDs
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSDi
+__ZTSDi:
+	db	"Di", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIDi
+__ZTIDi:
+	d24	__ZTVN10__cxxabiv123__fundamental_type_infoE+6
+	d24	__ZTSDi
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSPDi
+__ZTSPDi:
+	db	"PDi", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIPDi
+__ZTIPDi:
+	d24	__ZTVN10__cxxabiv119__pointer_type_infoE+6
+	d24	__ZTSPDi
+	d24	0
+	d24	__ZTIDi
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTSPKDi
+__ZTSPKDi:
+	db	"PKDi", 0
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTIPKDi
+__ZTIPKDi:
+	d24	__ZTVN10__cxxabiv119__pointer_type_infoE+6
+	d24	__ZTSPKDi
+	d24	1
+	d24	__ZTIDi
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTVN10__cxxabiv117__array_type_infoE
+__ZTVN10__cxxabiv117__array_type_infoE:
+	d24	0
+	d24	0
+	d24	__ZNSt9type_infoD2Ev
+	d24	__ZN10__cxxabiv117__array_type_infoD0Ev
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTVN10__cxxabiv120__function_type_infoE
+__ZTVN10__cxxabiv120__function_type_infoE:
+	d24	0
+	d24	0
+	d24	__ZNSt9type_infoD2Ev
+	d24	__ZN10__cxxabiv120__function_type_infoD0Ev
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTVN10__cxxabiv116__enum_type_infoE
+__ZTVN10__cxxabiv116__enum_type_infoE:
+	d24	0
+	d24	0
+	d24	__ZNSt9type_infoD2Ev
+	d24	__ZN10__cxxabiv116__enum_type_infoD0Ev
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTVN10__cxxabiv117__class_type_infoE
+__ZTVN10__cxxabiv117__class_type_infoE:
+	d24	0
+	d24	0
+	d24	__ZNSt9type_infoD2Ev
+	d24	__ZN10__cxxabiv117__class_type_infoD0Ev
+	d24	__ZNK10__cxxabiv117__class_type_info21__search_above_targetEPNS_19__dynamic_cast_infoEPKvS4_b
+	d24	__ZNK10__cxxabiv117__class_type_info21__search_below_targetEPNS_19__dynamic_cast_infoEPKvb
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTVN10__cxxabiv120__si_class_type_infoE
+__ZTVN10__cxxabiv120__si_class_type_infoE:
+	d24	0
+	d24	0
+	d24	__ZNSt9type_infoD2Ev
+	d24	__ZN10__cxxabiv120__si_class_type_infoD0Ev
+	d24	__ZNK10__cxxabiv120__si_class_type_info21__search_above_targetEPNS_19__dynamic_cast_infoEPKvS4_b
+	d24	__ZNK10__cxxabiv120__si_class_type_info21__search_below_targetEPNS_19__dynamic_cast_infoEPKvb
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTVN10__cxxabiv121__vmi_class_type_infoE
+__ZTVN10__cxxabiv121__vmi_class_type_infoE:
+	d24	0
+	d24	0
+	d24	__ZNSt9type_infoD2Ev
+	d24	__ZN10__cxxabiv121__vmi_class_type_infoD0Ev
+	d24	__ZNK10__cxxabiv121__vmi_class_type_info21__search_above_targetEPNS_19__dynamic_cast_infoEPKvS4_b
+	d24	__ZNK10__cxxabiv121__vmi_class_type_info21__search_below_targetEPNS_19__dynamic_cast_infoEPKvb
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTVN10__cxxabiv117__pbase_type_infoE
+__ZTVN10__cxxabiv117__pbase_type_infoE:
+	d24	0
+	d24	0
+	d24	__ZNSt9type_infoD2Ev
+	d24	__ZN10__cxxabiv117__pbase_type_infoD0Ev
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTVN10__cxxabiv119__pointer_type_infoE
+__ZTVN10__cxxabiv119__pointer_type_infoE:
+	d24	0
+	d24	0
+	d24	__ZNSt9type_infoD2Ev
+	d24	__ZN10__cxxabiv119__pointer_type_infoD0Ev
+
+	.section	.rodata,"a",@progbits
+	.global	__ZTVN10__cxxabiv129__pointer_to_member_type_infoE
+__ZTVN10__cxxabiv129__pointer_to_member_type_infoE:
+	d24	0
+	d24	0
+	d24	__ZNSt9type_infoD2Ev
+	d24	__ZN10__cxxabiv129__pointer_to_member_type_infoD0Ev
+
+	.section	.text,"ax",@progbits
+	.global	__ZNSt9type_infoD1Ev
+
+	.section	.text,"ax",@progbits
+	.global	__ZN10__cxxabiv123__fundamental_type_infoD2Ev
+
+	.section	.text,"ax",@progbits
+	.global	__ZN10__cxxabiv123__fundamental_type_infoD1Ev
+
+	.section	.text,"ax",@progbits
+	.global	__ZN10__cxxabiv117__array_type_infoD2Ev
+
+	.section	.text,"ax",@progbits
+	.global	__ZN10__cxxabiv117__array_type_infoD1Ev
+
+	.section	.text,"ax",@progbits
+	.global	__ZN10__cxxabiv120__function_type_infoD2Ev
+
+	.section	.text,"ax",@progbits
+	.global	__ZN10__cxxabiv120__function_type_infoD1Ev
+
+	.section	.text,"ax",@progbits
+	.global	__ZN10__cxxabiv116__enum_type_infoD2Ev
+
+	.section	.text,"ax",@progbits
+	.global	__ZN10__cxxabiv116__enum_type_infoD1Ev
+
+	.section	.text,"ax",@progbits
+	.global	__ZN10__cxxabiv117__class_type_infoD2Ev
+
+	.section	.text,"ax",@progbits
+	.global	__ZN10__cxxabiv117__class_type_infoD1Ev
+
+	.section	.text,"ax",@progbits
+	.global	__ZN10__cxxabiv120__si_class_type_infoD2Ev
+
+	.section	.text,"ax",@progbits
+	.global	__ZN10__cxxabiv120__si_class_type_infoD1Ev
+
+	.section	.text,"ax",@progbits
+	.global	__ZN10__cxxabiv121__vmi_class_type_infoD2Ev
+
+	.section	.text,"ax",@progbits
+	.global	__ZN10__cxxabiv121__vmi_class_type_infoD1Ev
+
+	.section	.text,"ax",@progbits
+	.global	__ZN10__cxxabiv117__pbase_type_infoD2Ev
+
+	.section	.text,"ax",@progbits
+	.global	__ZN10__cxxabiv117__pbase_type_infoD1Ev
+
+	.section	.text,"ax",@progbits
+	.global	__ZN10__cxxabiv119__pointer_type_infoD2Ev
+
+	.section	.text,"ax",@progbits
+	.global	__ZN10__cxxabiv119__pointer_type_infoD1Ev
+
+	.section	.text,"ax",@progbits
+	.global	__ZN10__cxxabiv129__pointer_to_member_type_infoD2Ev
+
+	.section	.text,"ax",@progbits
+	.global	__ZN10__cxxabiv129__pointer_to_member_type_infoD1Ev
+
+	.ident	"clang version 15.0.0 (https://github.com/jacobly0/llvm-project 5f8512f22751066573aa48ac848a6d2195838ac3)"
+	.extern	__Unwind_SjLj_Register
+	.extern	__ZSt19__terminate_messagePKc
+	.extern	__indcall
+	.extern	__setflag
+	.extern	__iand
+	.extern	__ZdlPv
+	.extern	__lshru
+	.extern	__frameset
+	.extern	__Unwind_SjLj_Unregister
+	.extern	__bshl
+	.extern	__land
+	.extern	__bshru
+	.extern	__frameset0

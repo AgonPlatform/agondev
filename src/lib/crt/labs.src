@@ -1,0 +1,16 @@
+	.assume	adl=1
+
+	.section	.text
+	.global	_labs
+_labs:
+	pop	bc
+	pop	hl
+	pop	de
+	push	de
+	push	hl
+	push	bc
+	bit	7, e
+	ret	z
+	jp	__lneg
+
+	.extern	__lneg

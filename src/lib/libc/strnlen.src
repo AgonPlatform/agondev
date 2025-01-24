@@ -1,0 +1,23 @@
+	.assume	adl=1
+
+	.section	.text
+	.global	_strnlen
+_strnlen:
+	pop	hl
+	pop	de
+	pop	bc
+	push	bc
+	push	de
+	push	hl
+	xor	a, a
+	sbc	hl, hl
+	sbc	hl, bc
+	ret	z
+	add	hl, bc
+	sbc	hl, de
+	ex	de, hl
+	cpir
+	add	hl, de
+	ret	z
+	inc	hl
+	ret

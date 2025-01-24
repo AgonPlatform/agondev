@@ -1,0 +1,13 @@
+	.assume	adl=1
+
+	.section	.text
+	.global	_islower
+_islower:
+	pop	de
+	ex	(sp),hl
+	push	de
+	ld	a,l
+	sub	a,97
+	sub	a,26
+	sbc	hl,hl
+	ret

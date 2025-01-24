@@ -1,0 +1,25 @@
+	.assume	adl=1
+
+	.section	.text
+	.global	__bdivs
+__bdivs:
+; I: B=dividend, C=divisor
+; O: a=B/C
+
+	push	hl
+
+	ld	l, b
+	call	__bdvrms_abs
+
+	ld	a, c
+	xor	a, b
+
+	ld	a, l
+	pop	hl
+	ret	p
+
+	neg
+	ret
+
+
+	.extern	__bdvrms_abs

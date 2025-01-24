@@ -1,0 +1,21 @@
+	.assume	adl=1
+
+	.section	.text
+	.global	_div
+_div:
+	pop	de
+	pop	iy
+	pop	hl
+	pop	bc
+	push	de
+	push	de
+	push	de
+	push	de
+
+	call	__idvrms
+	ld	(iy), hl
+	ld	(iy + 3), de
+
+	ret
+
+	.extern	__idvrms

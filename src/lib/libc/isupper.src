@@ -1,0 +1,13 @@
+	.assume	adl=1
+
+	.section	.text
+	.global	_isupper
+_isupper:
+	pop	de
+	ex	(sp),hl
+	push	de
+	ld	a,l
+	sub	a,65
+	sub	a,26
+	sbc	hl,hl
+	ret

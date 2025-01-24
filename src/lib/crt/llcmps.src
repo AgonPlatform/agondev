@@ -1,0 +1,33 @@
+	.assume	adl=1
+
+	.section	.text
+	.global	__llcmps
+__llcmps:
+	push	iy
+	ld	iy, 0
+	add	iy, sp
+	push	bc
+	push	hl
+	ld	l, c
+	ld	h, b
+	ld	bc, (iy + 12)
+	sbc.s	hl, bc
+	pop	hl
+	jr	nz, .finish
+	ld	bc, (iy + 9)
+	ex	de, hl
+	sbc	hl, bc
+	add	hl, bc
+	ex	de, hl
+	jr	nz, .finish_unsigned
+	ld	bc, (iy + 6)
+	sbc	hl, bc
+	add	hl, bc
+.finish_unsigned:
+	ld	b, a
+	sbc	a, a
+	ld	a, b
+.finish:
+	pop	bc
+	pop	iy
+	ret

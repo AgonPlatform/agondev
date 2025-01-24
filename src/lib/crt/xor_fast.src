@@ -1,0 +1,40 @@
+	.assume	adl=1
+
+	.section	.text
+	.global	__lxor_fast
+__lxor_fast:
+; CC: 24*r(PC)+8*r(SPL)+7*w(SPL)+1
+	xor	a, e
+	ld	e, a
+	.extern	__ixor_fast
+
+	.section	.text
+	.global	__ixor_fast
+__ixor_fast:
+; CC: 22*r(PC)+8*r(SPL)+7*w(SPL)+1
+	push	hl
+	scf
+	sbc	hl, hl
+	add	hl, sp
+	push	bc
+	ld	a, (hl)
+	inc	hl
+	ld	sp, hl
+	inc	hl
+	inc	hl
+	xor	a, (hl)
+	ld	(hl), a
+	pop	hl
+	.extern	__sxor_fast
+
+	.section	.text
+	.global	__sxor_fast
+__sxor_fast:
+; CC: 8*r(PC)+3*r(SPL)+1
+	ld	a, h
+	xor	a, b
+	ld	h, a
+	ld	a, l
+	xor	a, c
+	ld	l, a
+	ret

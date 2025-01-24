@@ -1,0 +1,20 @@
+	.assume	adl=1
+
+	.section	.text
+	.global	__bdivu
+__bdivu:
+; I: B=dividend, C=divisor
+; O: a=B/C
+
+	push	bc
+	push	hl
+
+	call	__bdvrmu
+	ld	a, l
+
+	pop	hl
+	pop	bc
+	ret
+
+
+	.extern	__bdvrmu
