@@ -683,7 +683,8 @@ fini_array:
 
     extern _parse_option
     extern PROG_NAME
-    .section data
+    .section .data
+    .global _exit.sp
 _exit.sp:
 
     d24 0
