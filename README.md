@@ -36,7 +36,7 @@ The linker will link all objects together with the provided libaries (libc / ago
 3) Perform a 'make clean;make all' to build the Agon libraries
 
 ## Known limits
-- My LLVM fork (https://github.com/envenomator/llvm-project) does not emit the special 'jq' mnemonic that the FASMG assembler used in CEDev/AgDev automagically translates to either 'jp' or 'jr'. GNU AS doesn't support this at this moment; so clang is set up to only emit 'jp' for now
+- My LLVM fork (https://github.com/envenomator/llvm-project) it set up to never output the special 'JQ' meta mnemonic, that a back-end assembler can translate to either 'JR' or 'JP' depending on the distance. Any potential 'JQ' emits are always translated to 'JP', as the GNU Assembler doesn't support 'JQ'. I haven't seen any 'JQ' being emitted in any of my test; it may be that it's behaviour has changed somewhere in the past, however I'd like to make sure it never poses a problem with a GNU Assembler back-end. I do see that the LLVM compiler emits both 'JR' and 'JP' mnemonics where appropriate.
 
 ## Unknown limits
 unknown_limits = INFINITE - known_limits;
