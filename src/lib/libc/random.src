@@ -1,3 +1,22 @@
+	.assume	adl=1
+	.section	.text
+	.global	_rand
+	.global _srand
+_rand:
+	call	_random
+	ld	de,8388608
+	sbc	hl,de
+	ret	p
+	add	hl,de
+	ret
+
+_srand:
+	pop	bc
+	ex	(sp),hl
+	push	bc
+	xor	a,a
+	jp	__setstate
+
 ; ---
 ; uint32_t random(void)
 ; ---
@@ -107,7 +126,7 @@ _random:
 ; void srandom(uint32_t seed)
 ; ---
 
-_MemClear := 00210E0h
+;_MemClear := 00210E0h
 
 	.section	.text
 	.global	_srandom
