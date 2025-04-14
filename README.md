@@ -30,6 +30,13 @@ All source files need to be placed under a project's <b>./src</b> directory.
 
 The linker will link all objects together with the provided libaries (libc / agon / fp / crt) and create a binary in <b>./bin</b>
 
+## Makefile options
+The following options can be set in the user's project Makefile:
+- RAM_START - sets the load/start address of the compiled program. This option will default to 0x040000
+- RAM_SIZE - sets the amount of memory available to the program. This option will default to 0x070000. The init routine will set the stackpointer to RAM_START + RAM_END
+- LDHAS_ARG_PROCESSING - if set to 0, this will make use of simple commandline processing of program arguments. If set to 1, this will make use of additional code to process redirection and quoting.
+- LDHAS_EXIT_HANDLER - set this to 1, to print out an error text based on the program's exit code, before returning to MOS. MOS interprets anything non-zero a file-error. If your program prints it's own error messages upon exit, set this option to 0. 
+
 ## Build toolchain from source
 1) clone this repo
 2) Run the make_llvmtools.sh shell script. This isn't robust, but should do the trick. You need the essentials for compiling and making stuff, e.g. using apt-get install build-essential, but also ninja. This is a hefty build that takes a long time and a lot of memory. About 30min on my AMD 4650, taking up 14-15GB of memory. When it finishes, all binary tools are in the ./bin folder

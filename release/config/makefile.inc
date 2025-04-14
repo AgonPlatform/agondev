@@ -1,4 +1,8 @@
-# verbosity - comment to show all output
+# Memory layout defaults if not set by the user
+RAM_START ?= 0x40000
+RAM_SIZE  ?= 0x70000
+
+# verbosity - comment next line to show all output
 V = @
 
 # Tool directories
@@ -16,9 +20,11 @@ TARGET=ez80-none-elf
 ## Compiler
 CC=$(TOOLBINDIR)/ez80-none-elf-clang
 CFLAGS=-target $(TARGET) -Oz -Wa,-march=$(ARCH) -I $(INCLUDEDIR)
+
 ## Assembler
 ASM=$(TOOLBINDIR)/ez80-none-elf-as
 ASMFLAGS=-march=$(ARCH)
+
 ## Linker
 LINKER=$(TOOLBINDIR)/ez80-none-elf-ld
 ifeq ($(LDHAS_ARG_PROCESSING),1)
@@ -29,7 +35,8 @@ ifeq ($(LDHAS_EXIT_HANDLER), 1)
 else
     LINKER_EXIT=-defsym=_has_exit_handler=0
 endif
-LINKERFLAGS=$(LINKER_ARG) $(LINKER_EXIT) -Map=$(BINDIR)/$(NAME).map -T $(LINKERCONFIG) --oformat binary -o 
+MEMCONFIG=-defsym=RAM_START=$(RAM_START) -defsym=RAM_SIZE=$(RAM_SIZE)
+LINKERFLAGS=$(MEMCONFIG) $(LINKER_ARG) $(LINKER_EXIT) -Map=$(BINDIR)/$(NAME).map -T $(LINKERCONFIG) --oformat binary -o 
 LINKERLIBFLAGS=-L$(LIBDIR) -\( -l c -l agon -l crt -l fp -\) 
 SETPROGNAME=$(TOOLBINDIR)/agondev-setname
 
@@ -49,6 +56,7 @@ OBJS=$(patsubst $(SRCDIR)/%.asm, $(OBJDIR)/%.o, $(wildcard $(SRCDIR)/*.asm)) \
 
 # Default rule
 all: $(BINDIR) $(OBJDIR) $(BINARY)
+	@echo [Start address $(RAM_START)]
 	@echo [Setting name \'$(NAME).bin\' in binary]
 	$(V)$(SETPROGNAME) $(BINARY) >/dev/null
 	@echo [Done]
