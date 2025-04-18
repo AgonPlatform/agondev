@@ -16,3 +16,4 @@ _ffs_getlabel:
     ld      sp, ix
     pop     ix
     ret
+    

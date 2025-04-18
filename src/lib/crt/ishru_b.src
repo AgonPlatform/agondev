@@ -25,3 +25,4 @@ __ishru_b:
 	ret
 
 	.extern	__ishru
+	

@@ -14,3 +14,4 @@ _ffs_ftruncate:
     ld      sp, ix
     pop     ix
     ret
+    

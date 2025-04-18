@@ -16,7 +16,7 @@ returned, and errno is set appropriately.
 
 time_t time(time_t *timer)
 {
-    volatile RTC_DATA *rtc = getsysvar_rtc();
+    volatile SYSVAR_RTCDATA *rtc = getsysvar_rtc();
 
     static char rtc_buffer[33];
     mos_getrtc( rtc_buffer );         // Seems that need to call mos_getrtc() to update sysvar_rtc

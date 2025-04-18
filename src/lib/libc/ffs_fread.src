@@ -18,3 +18,4 @@ _ffs_fread:
     ld      sp, ix
     pop     ix
     ret
+    

@@ -53,3 +53,4 @@ call_fputc:
 	.extern	_outchar
 	.extern	_stdout
 	.extern  _fputc
+	

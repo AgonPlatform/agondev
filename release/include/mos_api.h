@@ -16,6 +16,7 @@
  * 18/11/2023:		Added mos_setkbvector, mos_getkbmap, mos_i2c_open, mos_i2c_close, mos_i2c_write, mos_i2c_read
  * 05/04/2024:		Added more mos sysvars, and expanded SYSVAR struct
  * 18/04/2025:      Added the remaining ffs_* functions as defined in MOS up to version 3.0
+ *                  Changed RTC_DATA to SYSVAR_RTCDATA, added vdp_time_t struct
  */
 
 #ifndef _MOS_H
@@ -130,7 +131,8 @@ typedef enum {
 #define sysvar_vkeycode	        0x17	// 1: Virtual key code from FabGL
 #define sysvar_vkeydown			0x18	// 1: Virtual key state from FabGL (0=up, 1=down)
 #define sysvar_vkeycount	    0x19	// 1: Incremented every time a key packet is received
-#define sysvar_rtc		        0x1A	// 8: Real time clock data
+#define sysvar_rtc		        0x1A	// 6: Real time clock data
+#define sysvar_spare            0x20    // 2: Spare, previously used by rtc
 #define sysvar_keydelay	        0x22	// 2: Keyboard repeat delay
 #define sysvar_keyrate		    0x24	// 2: Keyboard repeat reat
 #define sysvar_keyled		    0x26	// 1: Keyboard LED status
@@ -143,6 +145,7 @@ typedef enum {
 #define sysvar_mouseWheel		0x2E	// 1: Mouse wheel delta
 #define sysvar_mouseXDelta		0x2F	// 2: Mouse X delta
 #define sysvar_mouseYDelta		0x31	// 2: Mouse Y delta
+#define sysvar_gp               0x37	// 1: General poll packet data
 
 // Flags for the VDP protocol - sysvar_vdp_pflags
 #define vdp_pflag_cursor        0x01
@@ -153,21 +156,27 @@ typedef enum {
 #define vdp_pflag_rtc           0x20
 #define vdp_pflag_mouse			0x40
 
-// Stucture / union for accessing RTC data
+// Stucture for accessing sysvar RTC data used for mos_getrc / mos_setrtc
+typedef struct {
+    uint8_t year;               // offset since 1980
+    uint8_t month;              // (0-11)
+    uint8_t day;                // (1-31)
+    uint8_t hour;               // (0-23)
+    uint8_t minute;             // (0-59)
+    uint8_t second;             // (0-59)
+} SYSVAR_RTCDATA;
 
-typedef union {
-    uint64_t rtc_data;
-    struct {
-        uint8_t year;               // offset since 1980
-        uint8_t month;              // (0-11)
-        uint8_t day;                // (1-31)
-        uint8_t day_of_year;        // (0-365) - *** but doesn't fit in 1 byte - wraps round ***
-        uint8_t day_of_week;        // (0-6)
-        uint8_t hour;               // (0-23)
-        uint8_t minute;             // (0-59)
-        uint8_t second;             // (0-59)
-    };
-} RTC_DATA;
+// Structure used in returning mos_unpackrtc MOS 3.0+
+typedef struct {
+    uint16_t year;
+    uint8_t  month;
+    uint8_t  day;
+    uint8_t  dayOfWeek;
+    uint16_t dayOfYear;
+    uint8_t  hour;
+    uint8_t  minute;
+    uint8_t  second;
+} vdp_time_t;
 
 // Structure for accesing SYSVAR
 
@@ -198,7 +207,8 @@ typedef struct {
     uint8_t vkeycode;
     uint8_t vkeydown;
     uint8_t vkeycount;
-    RTC_DATA rtc;
+    SYSVAR_RTCDATA rtc;
+    uint16_t spare;
     uint16_t keydelay;
     uint16_t keyrate;
     uint8_t keyled;
@@ -343,7 +353,7 @@ extern uint8_t  getsysvar_scrpixelIndex();
 extern uint8_t  getsysvar_vkeycode();
 extern uint8_t  getsysvar_vkeydown();
 extern uint8_t  getsysvar_vkeycount();
-extern volatile RTC_DATA* getsysvar_rtc();  // mos_getrtc() needs to be called to update the values
+extern volatile SYSVAR_RTCDATA* getsysvar_rtc();  // mos_getrtc() needs to be called to update the values
 extern uint16_t getsysvar_keydelay();
 extern uint16_t getsysvar_keyrate();
 extern uint8_t  getsysvar_keyled();
@@ -385,7 +395,7 @@ extern uint8_t  mos_i2c_write(uint8_t i2c_address, uint8_t size, unsigned char *
 extern uint8_t  mos_i2c_read(uint8_t i2c_address, uint8_t size, unsigned char * buffer);
 extern uint8_t  mos_port_read(uint8_t port); 	// read from the GPIO port specified
 extern uint8_t  mos_port_write(uint8_t port, uint8_t data); 	// write data to the GPIO port specified
-// extern void     mos_unpackrtc(RTC_DATA *buffer);
+extern void     mos_unpackrtc(vdp_time_t *buffer, uint8_t flags);
 // extern uint8_t  mos_flseek_p(uint8_t filehandle, uint32_t *offset);
 
 // String functions

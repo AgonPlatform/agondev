@@ -14,3 +14,4 @@ _ffs_unlink:
     ld      sp, ix
     pop     ix
     ret
+    

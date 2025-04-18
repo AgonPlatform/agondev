@@ -18,3 +18,4 @@ _ffs_fwrite:
     ld      sp, ix
     pop     ix
     ret
+    

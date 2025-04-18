@@ -26,3 +26,4 @@ __ishl_b:
 	ret
 
 	.extern	__ishl
+	
