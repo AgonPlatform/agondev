@@ -2,8 +2,9 @@
 ; Title:	AGON MOS - API for user projects
 ; Author:	Dean Belfield
 ; Created:	03/08/2022
-; Last Updated:	18/11/2023
+; Last Updated:	18/04/2025
 ; Adjusted for fasmg assembler (Paul Cawte, 16/06/2023)
+; Adjusted for MOS 3.0 API (Jeroen Venema, 18/04/2025)
 ;
 ; Modinfo:
 ; 05/08/2022:	Added mos_feof
@@ -22,154 +23,182 @@
 ; 13/04/2023:	Added FatFS file structures (FFOBJID, FIL, DIR, FILINFO)
 ; 15/04/2023:	Added mos_getfil, mos_fread, mos_fwrite and mos_flseek
 ; 18/11/2023:	Added _mos_setkbvector, _mos_getkbmap, _mos_i2c_open, _mos_i2c_close, _mos_i2c_write, _mos_i2c_read
+; 18/04/2025:   Added remaining ffs_* API values in MOS 2.20 / 3.0
 
 ; VDP control (VDU 23, 0, n)
 ;
-vdp_gp			:= 	080h
-vdp_keycode		:= 	081h
-vdp_cursor		:=	082h
-vdp_scrchar		:=	083h
-vdp_scrpixel		:=	084h
-vdp_audio		:=	085h
-vdp_mode		:=	086h
-vdp_rtc			:=	087h
-vdp_keystate		:=	088h
-vdp_logicalcoords	:=	0C0h
-vdp_terminalmode	:=	0FFh
+vdp_gp                  := 080h
+vdp_keycode             := 081h
+vdp_cursor              := 082h
+vdp_scrchar             := 083h
+vdp_scrpixel            := 084h
+vdp_audio               := 085h
+vdp_mode                := 086h
+vdp_rtc                 := 087h
+vdp_keystate            := 088h
+vdp_logicalcoords       := 0C0h
+vdp_terminalmode        := 0FFh
 
 ; MOS high level functions
 ;
-mos_getkey		:=	000h
-mos_load		:=	001h
-mos_save		:=	002h
-mos_cd			:=	003h
-mos_dir			:=	004h
-mos_del 		:=	005h
-mos_ren			:=	006h
-mos_mkdir		:=	007h
-mos_sysvars		:=	008h
-mos_editline		:=	009h
-mos_fopen		:=	00Ah
-mos_fclose		:=	00Bh
-mos_fgetc		:=	00Ch
-mos_fputc		:=	00Dh
-mos_feof		:=	00Eh
-mos_getError		:=	00Fh
-mos_oscli		:=	010h
-mos_copy		:=	011h
-mos_getrtc		:=	012h
-mos_setrtc		:=	013h
-mos_setintvector	:=	014h
-mos_uopen		:=	015h
-mos_uclose		:=	016h
-mos_ugetc		:=	017h
-mos_uputc		:= 	018h
-mos_getfil		:=	019h
-mos_fread		:=	01Ah
-mos_fwrite		:=	01Bh
-mos_flseek		:=	01Ch
-mos_setkbvector	:=	01Dh
-mos_getkbmap	:=	01Eh
-mos_i2c_open	:=  01Fh
-mos_i2c_close	:=  020h
-mos_i2c_write	:=  021h
-mos_i2c_read	:=  022h
+mos_getkey              := 000h
+mos_load                := 001h
+mos_save                := 002h
+mos_cd                  := 003h
+mos_dir                 := 004h
+mos_del                 := 005h
+mos_ren                 := 006h
+mos_mkdir               := 007h
+mos_sysvars             := 008h
+mos_editline            := 009h
+mos_fopen               := 00Ah
+mos_fclose              := 00Bh
+mos_fgetc               := 00Ch
+mos_fputc               := 00Dh
+mos_feof                := 00Eh
+mos_getError            := 00Fh
+mos_oscli               := 010h
+mos_copy                := 011h
+mos_getrtc              := 012h
+mos_setrtc              := 013h
+mos_setintvector        := 014h
+mos_uopen               := 015h
+mos_uclose              := 016h
+mos_ugetc               := 017h
+mos_uputc               := 018h
+mos_getfil              := 019h
+mos_fread               := 01Ah
+mos_fwrite              := 01Bh
+mos_flseek              := 01Ch
+mos_setkbvector         := 01Dh
+mos_getkbmap            := 01Eh
+mos_i2c_open            := 01Fh
+mos_i2c_close           := 020h
+mos_i2c_write           := 021h
+mos_i2c_read            := 022h
+mos_unpackrtc           := 023h
+mos_flseek_p            := 024h
+mos_pmatch              := 028h
+mos_getargument         := 029h
+mos_extractstring       := 02Ah
+mos_extractnumber       := 02Bh
+mos_escapestring        := 02Ch
+mos_setvarval           := 030h
+mos_readvarval          := 031h
+mos_gsinit              := 032h
+mos_gsread              := 033h
+mos_gstrans             := 034h
+mos_substituteargs      := 035h
+mos_evaluateexpression  := 036h
+mos_resolvepath         := 038h
+mos_getdirforpath       := 039h
+mos_getleafname         := 03Ah
+mos_isdirectory         := 03Bh
+mos_getabsolutepath     := 03Ch
+mos_clearvdpflags       := 040h
+mos_waitforvdpflags     := 041h
+mos_getfunction         := 050h
+sd_getunlockcode        := 070h
+sd_init                 := 071h
+sd_readblocks           := 072h
+sd_writeblocks          := 073h
 
 ; FatFS file access functions
 ;
-ffs_fopen		:=	080h
-ffs_fclose		:=	081h
-ffs_fread		:=	082h
-ffs_fwrite		:=	083h
-ffs_flseek		:=	084h
-ffs_ftruncate		:=	085h
-ffs_fsync		:=	086h
-ffs_fforward		:=	087h
-ffs_fexpand		:=	088h
-ffs_fgets		:=	089h
-ffs_fputc		:=	08Ah
-ffs_fputs		:=	08Bh
-ffs_fprintf		:=	08Ch
-ffs_ftell		:=	08Dh
-ffs_feof		:=	08Eh
-ffs_fsize		:=	08Fh
-ffs_ferror		:=	090h
+ffs_fopen               := 080h
+ffs_fclose              := 081h
+ffs_fread               := 082h
+ffs_fwrite              := 083h
+ffs_flseek              := 084h
+ffs_ftruncate           := 085h
+ffs_fsync               := 086h
+ffs_fforward            := 087h
+ffs_fexpand             := 088h
+ffs_fgets               := 089h
+ffs_fputc               := 08Ah
+ffs_fputs               := 08Bh
+ffs_fprintf             := 08Ch
+ffs_ftell               := 08Dh
+ffs_feof                := 08Eh
+ffs_fsize               := 08Fh
+ffs_ferror              := 090h
 
 ; FatFS directory access functions
 ;
-ffs_dopen		:=	091h
-ffs_dclose		:=	092h
-ffs_dread		:=	093h
-ffs_dfindfirst		:=	094h
-ffs_dfindnext		:=	095h
+ffs_dopen               := 091h
+ffs_dclose              := 092h
+ffs_dread               := 093h
+ffs_dfindfirst          := 094h
+ffs_dfindnext           := 095h
 
 ; FatFS file and directory management functions
 ;
-ffs_stat		:=	096h
-ffs_unlink		:=	097h
-ffs_rename		:=	098h
-ffs_chmod		:=	099h
-ffs_utime		:=	09Ah
-ffs_mkdir		:=	09Bh
-ffs_chdir		:=	09Ch
-ffs_chdrive		:=	09Dh
-ffs_getcwd		:=	09Eh
+ffs_stat                := 096h
+ffs_unlink              := 097h
+ffs_rename              := 098h
+ffs_chmod               := 099h
+ffs_utime               := 09Ah
+ffs_mkdir               := 09Bh
+ffs_chdir               := 09Ch
+ffs_chdrive             := 09Dh
+ffs_getcwd              := 09Eh
 
 ; FatFS volume management and system configuration functions
 ;
-ffs_mount		:=	09Fh
-ffs_mkfs		:=	0A0h
-ffs_fdisk		:=	0A1h
-ffs_getfree		:=	0A2h
-ffs_getlabel		:=	0A3h
-ffs_setlabel		:=	0A4h
-ffs_setcp		:=	0A5h
-	
+ffs_mount               := 09Fh
+ffs_mkfs                := 0A0h
+ffs_fdisk               := 0A1h
+ffs_getfree             := 0A2h
+ffs_getlabel            := 0A3h
+ffs_setlabel            := 0A4h
+ffs_setcp               := 0A5h
+ffs_flseek_p            := 0A6h
+
 ; File access modes
 ;
-fa_read			:=	001h
-fa_write		:=	002h
-fa_open_existing	:=	000h
-fa_create_new		:=	004h
-fa_create_always	:=	008h
-fa_open_always		:=	010h
-fa_open_append		:=	030h
+fa_read	                := 001h
+fa_write                := 002h
+fa_open_existing        := 000h
+fa_create_new           := 004h
+fa_create_always        := 008h
+fa_open_always          := 010h
+fa_open_append          := 030h
 	
 ; System variable indexes for api_sysvars
 ; Index into _sysvars in globals.asm
 ;
-sysvar_time		:=	000h	; 4: Clock timer in centiseconds (incremented by 2 every VBLANK)
-sysvar_vdp_pflags	:=	004h	; 1: Flags to indicate completion of VDP commands
-sysvar_keyascii		:=	005h	; 1: ASCII keycode, or 0 .if no key is pressed
-sysvar_keymods		:=	006h	; 1: Keycode modifiers
-sysvar_cursorX		:=	007h	; 1: Cursor X position
-sysvar_cursorY		:=	008h	; 1: Cursor Y position
-sysvar_scrchar		:=	009h	; 1: Character read from screen
-sysvar_scrpixel 	:=	00Ah	; 3: Pixel data read from screen (R,B,G)
-sysvar_audioChannel	:=	00Dh	; 1: Audio channel 
-sysvar_audioSuccess	:=	00Eh	; 1: Audio channel note queued (0 = no, 1 = yes)
-sysvar_scrWidth 	:=	00Fh	; 2: Screen width in pixels
-sysvar_scrHeight	:=	011h	; 2: Screen height in pixels
-sysvar_scrCols		:=	013h	; 1: Screen columns in characters
-sysvar_scrRows		:=	014h	; 1: Screen rows in characters
-sysvar_scrColours	:=	015h	; 1: Number of colours displayed
-sysvar_scrpixelIndex	:=	016h	; 1: Index of pixel data read from screen
-sysvar_vkeycode 	:=	017h	; 1: Virtual key code from FabGL
-sysvar_vkeydown		:=	018h	; 1: Virtual key state from FabGL (0=up, 1=down)
-sysvar_vkeycount	:=	019h	; 1: Incremented every time a key packet is received
-sysvar_rtc		:=	01Ah	; 8: Real time clock data
-sysvar_keydelay		:=	022h	; 2: Keyboard repeat delay
-sysvar_keyrate		:=	024h	; 2: Keyboard repeat reat
-sysvar_keyled		:=	026h	; 1: Keyboard LED status
+sysvar_time             := 000h	; 4: Clock timer in centiseconds (incremented by 2 every VBLANK)
+sysvar_vdp_pflags       := 004h	; 1: Flags to indicate completion of VDP commands
+sysvar_keyascii         := 005h	; 1: ASCII keycode, or 0 .if no key is pressed
+sysvar_keymods          := 006h	; 1: Keycode modifiers
+sysvar_cursorX          := 007h	; 1: Cursor X position
+sysvar_cursorY          := 008h	; 1: Cursor Y position
+sysvar_scrchar          := 009h	; 1: Character read from screen
+sysvar_scrpixel         := 00Ah	; 3: Pixel data read from screen (R,B,G)
+sysvar_audioChannel     := 00Dh	; 1: Audio channel 
+sysvar_audioSuccess     := 00Eh	; 1: Audio channel note queued (0 = no, 1 = yes)
+sysvar_scrWidth         := 00Fh	; 2: Screen width in pixels
+sysvar_scrHeight        := 011h	; 2: Screen height in pixels
+sysvar_scrCols          := 013h	; 1: Screen columns in characters
+sysvar_scrRows          := 014h	; 1: Screen rows in characters
+sysvar_scrColours       := 015h	; 1: Number of colours displayed
+sysvar_scrpixelIndex	:= 016h	; 1: Index of pixel data read from screen
+sysvar_vkeycode         := 017h	; 1: Virtual key code from FabGL
+sysvar_vkeydown         := 018h	; 1: Virtual key state from FabGL (0=up, 1=down)
+sysvar_vkeycount        := 019h	; 1: Incremented every time a key packet is received
+sysvar_rtc              := 01Ah	; 8: Real time clock data
+sysvar_keydelay         := 022h	; 2: Keyboard repeat delay
+sysvar_keyrate          := 024h	; 2: Keyboard repeat reat
+sysvar_keyled           := 026h	; 1: Keyboard LED status
 	
 ; Flags for the VDP protocol
 ;
-vdp_pflag_cursor	:=	0b00000001
-vdp_pflag_scrchar	:=	0b00000010
-vdp_pflag_point		:=	0b00000100
-vdp_pflag_audio		:=	0b00001000
-vdp_pflag_mode		:=	0b00010000
-vdp_pflag_rtc		:=	0b00100000
+vdp_pflag_cursor        := 0b00000001
+vdp_pflag_scrchar       := 0b00000010
+vdp_pflag_point         := 0b00000100
+vdp_pflag_audio         := 0b00001000
+vdp_pflag_mode          := 0b00010000
+vdp_pflag_rtc           := 0b00100000
 
 ;
 ; FatFS structures

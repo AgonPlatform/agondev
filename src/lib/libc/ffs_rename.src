@@ -1,0 +1,17 @@
+	.assume	adl=1
+	.include "mos_api.inc"
+	.section .text
+	.global	_ffs_rename
+_ffs_rename:
+    push    ix
+    ld      ix, 0
+    add     ix, sp
+    
+    ld      hl, (ix+6)          ; Pointer to a zero-terminated source file path string
+    ld      de, (ix+9)          ; Pointer to a zero-terminated destination file path string
+    ld      a,  ffs_rename
+    rst.lil 08h                 ; returns FRESULT in A
+
+    ld      sp, ix
+    pop     ix
+    ret

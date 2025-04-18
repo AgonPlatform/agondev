@@ -1,0 +1,18 @@
+	.assume	adl=1
+	.include "mos_api.inc"
+	.section .text
+	.global	_ffs_getlabel
+_ffs_getlabel:
+    push    ix
+    ld      ix, 0
+    add     ix, sp
+    
+    ld      hl, (ix+6)          ; Pointer to a path string (ideally caller should set this to zero)
+    ld      de, (ix+9)          ; Pointer to a buffer to store the label in (for safety and future proofing this should be 23 bytes long)
+    ld      bc, (ix+12)         ; Pointer to a block of memory to store the 32-bit volume serial number
+    ld      a,  ffs_getlabel
+    rst.lil 08h                 ; returns FRESULT in A
+
+    ld      sp, ix
+    pop     ix
+    ret

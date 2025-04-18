@@ -1,0 +1,17 @@
+    .assume    adl =1
+    .include "mos_api.inc"
+    .section .text
+    .global  _ffs_dopen
+_ffs_dopen:
+    push    ix
+    ld      ix, 0
+    add     ix, sp
+
+    ld      hl, (ix+6)            ; pointer to DIR handle
+    ld      de, (ix+9)            ; pointer to 0-terminated directory path in memory
+    ld      a,  ffs_dopen
+    rst.lil 08h                   ; returns FRESULT in A
+
+    ld      sp, ix
+    pop     ix
+    ret

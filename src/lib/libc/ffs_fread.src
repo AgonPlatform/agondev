@@ -1,0 +1,20 @@
+	.assume	adl=1
+	.include "mos_api.inc"
+	.section .text
+	.global	_ffs_fread
+_ffs_fread:
+    push    ix
+    ld      ix, 0
+    add     ix, sp
+    
+    ld      hl, (ix+6)          ; Pointer to a FIL structure
+    ld      de, (ix+9)          ; Pointer to a buffer to store the data in
+    ld      bc, (ix+12)         ; Number of bytes to read (typically the size of the buffer)
+    ld      a,  ffs_fread
+    rst.lil 08h
+
+    push    bc
+    pop     hl                  ; Number of bytes read
+    ld      sp, ix
+    pop     ix
+    ret

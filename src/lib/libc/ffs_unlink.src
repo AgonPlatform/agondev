@@ -1,0 +1,16 @@
+	.assume	adl=1
+	.include "mos_api.inc"
+	.section .text
+	.global	_ffs_unlink
+_ffs_unlink:
+    push    ix
+    ld      ix, 0
+    add     ix, sp
+    
+    ld      hl, (ix+6)          ; Pointer to a zero-terminated file path string
+    ld      a,  ffs_unlink
+    rst.lil 08h                 ; returns FRESULT in A
+
+    ld      sp, ix
+    pop     ix
+    ret

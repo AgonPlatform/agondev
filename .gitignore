@@ -4,3 +4,6 @@ llvm-build/
 obj/
 release/bin
 release/lib
+
+# Thumbnails
+._*

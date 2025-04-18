@@ -1,8 +1,8 @@
 /*
- * Title:			AGON MOS - MOS c header interface
+ * Title:			AGON MOS - MOS C header interface
  * Author:			Jeroen Venema
  * Created:			15/10/2022
- * Last Updated:	05/04/2024
+ * Last Updated:	18/04/2025
  * 
  * Modinfo:
  * 15/10/2022:		Added putch, getch
@@ -15,13 +15,55 @@
  * 22/07/2023:      Added structure for SYSVAR
  * 18/11/2023:		Added mos_setkbvector, mos_getkbmap, mos_i2c_open, mos_i2c_close, mos_i2c_write, mos_i2c_read
  * 05/04/2024:		Added more mos sysvars, and expanded SYSVAR struct
+ * 18/04/2025:      Added the remaining ffs_* functions as defined in MOS up to version 3.0
  */
 
 #ifndef _MOS_H
 #define _MOS_H
 #include <stdint.h>
 
-typedef uint8_t BYTE;
+// FatFS Functional configurations as set during MOS compilation (see MOS ffconf.h)
+#define FFCONF_DEF	86631	/* Revision ID */
+#define FF_FS_READONLY	0
+#define FF_FS_MINIMIZE	0
+#define FF_USE_FIND		1
+#define FF_USE_MKFS		0
+#define FF_USE_FASTSEEK	0
+#define FF_USE_EXPAND	0
+#define FF_USE_CHMOD	0
+#define FF_USE_LABEL	1
+#define FF_USE_FORWARD	0
+#define FF_USE_STRFUNC	1
+#define FF_PRINT_LLI	0
+#define FF_PRINT_FLOAT	0
+#define FF_STRF_ENCODE	0
+#define FF_CODE_PAGE	437
+#define FF_USE_LFN		2
+#define FF_MAX_LFN		255
+#define FF_LFN_UNICODE	0
+#define FF_LFN_BUF		255
+#define FF_SFN_BUF		12
+#define FF_FS_RPATH		2
+#define FF_VOLUMES		1
+#define FF_STR_VOLUME_ID	0
+#define FF_VOLUME_STRS		"RAM","NAND","CF","SD","SD2","USB","USB2","USB3"
+#define FF_MULTI_PARTITION	0
+#define FF_MIN_SS		512
+#define FF_MAX_SS		512
+#define FF_LBA64		0
+#define FF_MIN_GPT		0x10000000
+#define FF_USE_TRIM		0
+#define FF_FS_TINY		1
+#define FF_FS_EXFAT		0
+#define FF_FS_NORTC		0
+#define FF_NORTC_MON	1
+#define FF_NORTC_MDAY	1
+#define FF_NORTC_YEAR	2020
+#define FF_FS_NOFSINFO	0
+#define FF_FS_LOCK		0
+#define FF_FS_REENTRANT	0
+#define FF_FS_TIMEOUT	1000
+#define FF_SYNC_t		HANDLE
 
 // File access modes - from mos_api.inc
 #define FA_READ				    0x01
@@ -174,19 +216,19 @@ typedef struct {
 // UART settings for open_UART1
 typedef struct {
    int24_t baudRate ;				    //!< The baudrate to be used.
-   BYTE dataBits ;				        //!< The number of databits per character to be used.
-   BYTE stopBits ;				        //!< The number of stopbits to be used.
-   BYTE parity ;				        //!< The parity bit option to be used.
-   BYTE flowcontrol ;
-   BYTE eir ;
+   uint8_t dataBits ;				        //!< The number of databits per character to be used.
+   uint8_t stopBits ;				        //!< The number of stopbits to be used.
+   uint8_t parity ;				        //!< The parity bit option to be used.
+   uint8_t flowcontrol ;
+   uint8_t eir ;
 } UART ;
 
 // File Object ID and allocation information (FFOBJID)
 typedef struct {
 	uint24_t*   fs;		    /* Pointer to the hosting volume of this object */
 	uint16_t	id;		    /* Hosting volume mount ID */
-	BYTE	    attr;		/* Object attribute */
-	BYTE	    stat;		/* Object chain status (b1-0: =0:not contiguous, =2:contiguous, =3:fragmented in this session, b2:sub-directory stretched) */
+	uint8_t	    attr;		/* Object attribute */
+	uint8_t	    stat;		/* Object chain status (b1-0: =0:not contiguous, =2:contiguous, =3:fragmented in this session, b2:sub-directory stretched) */
 	uint32_t	sclust;	    /* Object data start cluster (0:no cluster or root directory) */
 	uint32_t	objsize;    /* Object size (valid when sclust != 0) */
 } FFOBJID;
@@ -194,8 +236,8 @@ typedef struct {
 // File object structure (FIL)
 typedef struct {
 	FFOBJID	    obj;       /* Object identifier (must be the 1st member to detect invalid object pointer) */
-	BYTE	    flag;      /* File status flags */
-	BYTE	    err;       /* Abort flag (error code) */
+	uint8_t	    flag;      /* File status flags */
+	uint8_t	    err;       /* Abort flag (error code) */
 	uint32_t	fptr;      /* File read/write pointer (Zeroed on file open) */
 	uint32_t	clust;     /* Current cluster of fpter (invalid when fptr is 0) */
 	uint32_t	sect;      /* Sector number appearing in buf[] (0:invalid) */
@@ -208,22 +250,68 @@ typedef struct {
 	uint32_t	fsize;			/* File size */
 	uint16_t	fdate;			/* Modified date */
 	uint16_t	ftime;			/* Modified time */
-	BYTE	    fattrib;		/* File attribute */
+	uint8_t	    fattrib;		/* File attribute */
 	char	    altname[13];	/* Alternative file name */
 	char	    fname[256]; 	/* Primary file name */
 } FILINFO;
 
 /* Directory information structure (DIR) */
-
 typedef struct {
-	FFOBJID	obj;			/* Object identifier */
+	FFOBJID	    obj;			/* Object identifier */
 	uint32_t	dptr;			/* Current read/write offset */
 	uint32_t	clust;			/* Current cluster */
 	uint32_t	sect;			/* Current sector (0:Read operation has terminated) */
-	BYTE*	dir;			/* Pointer to the directory item in the win[] */
-	BYTE	fn[12];			/* SFN (in/out) {body[8],ext[3],status[1]} */
-	const char* pat;		/* Pointer to the name matching pattern */
+	uint8_t*	dir;			/* Pointer to the directory item in the win[] */
+	uint8_t	    fn[12];			/* SFN (in/out) {body[8],ext[3],status[1]} */
+	const char* pat;		    /* Pointer to the name matching pattern */
 } DIR;
+
+/* Filesystem object structure (FATFS) */
+typedef struct {
+	uint8_t     fs_type;		/* Filesystem type (0:not mounted) */
+	uint8_t	    pdrv;			/* Associated physical drive */
+	uint8_t	    n_fats;			/* Number of FATs (1 or 2) */
+	uint8_t	    wflag;			/* win[] flag (b0:dirty) */
+	uint8_t	    fsi_flag;		/* FSINFO flags (b7:disabled, b0:dirty) */
+	uint16_t	id;				/* Volume mount ID */
+	uint16_t	n_rootdir;		/* Number of root directory entries (FAT12/16) */
+	uint16_t	csize;			/* Cluster size [sectors] */
+#if FF_MAX_SS != FF_MIN_SS
+	uint16_t	ssize;			/* Sector size (512, 1024, 2048 or 4096) */
+#endif
+#if FF_USE_LFN
+	uint16_t*	lfnbuf;			/* LFN working buffer */
+#endif
+#if FF_FS_EXFAT
+	uint8_t*	dirbuf;			/* Directory entry block scratchpad buffer for exFAT */
+#endif
+#if FF_FS_REENTRANT
+	FF_SYNC_t	sobj;		    /* Identifier of sync object */
+#endif
+#if !FF_FS_READONLY
+	uint32_t	last_clst;		/* Last allocated cluster */
+	uint32_t	free_clst;		/* Number of free clusters */
+#endif
+#if FF_FS_RPATH
+	uint32_t	cdir;			/* Current directory start cluster (0:root) */
+#if FF_FS_EXFAT
+	uint32_t	cdc_scl;		/* Containing directory start cluster (invalid when cdir is 0) */
+	uint32_t	cdc_size;		/* b31-b8:Size of containing directory, b7-b0: Chain status */
+	uint32_t	cdc_ofs;		/* Offset in the containing directory (invalid when cdir is 0) */
+#endif
+#endif
+	uint32_t	n_fatent;		/* Number of FAT entries (number of clusters + 2) */
+	uint32_t	fsize;			/* Size of an FAT [sectors] */
+	uint32_t	volbase;		/* Volume base sector */
+	uint32_t	fatbase;		/* FAT base sector */
+	uint32_t	dirbase;		/* Root directory base sector/cluster */
+	uint32_t	database;		/* Data base sector */
+#if FF_FS_EXFAT
+	uint32_t	bitbase;		/* Allocation bitmap base sector */
+#endif
+	uint32_t	winsect;		/* Current sector appearing in the win[] */
+	uint8_t	    win[FF_MAX_SS];	/* Disk access window for Directory, FAT (and file data at tiny cfg) */
+} FATFS;
 
 #ifdef __cplusplus
 extern "C" {
@@ -260,7 +348,7 @@ extern uint16_t getsysvar_keydelay();
 extern uint16_t getsysvar_keyrate();
 extern uint8_t  getsysvar_keyled();
 
-// MOS API calls
+// MOS API calls - https://agonconsole8.github.io/agon-docs/MOS-API/ for details
 extern uint8_t  mos_load(const char *filename, uint24_t address, uint24_t maxsize);
 extern uint8_t  mos_save(const char *filename, uint24_t address, uint24_t nbytes);
 extern uint8_t  mos_cd(const char *path);
@@ -295,11 +383,86 @@ extern void     mos_i2c_open(uint8_t frequency);
 extern void     mos_i2c_close(void);
 extern uint8_t  mos_i2c_write(uint8_t i2c_address, uint8_t size, unsigned char * buffer);
 extern uint8_t  mos_i2c_read(uint8_t i2c_address, uint8_t size, unsigned char * buffer);
-extern uint8_t  ffs_dopen(DIR *dir_handle, const char * dir_path);   // returns fresult
-extern uint8_t  ffs_dread(DIR *dir_handle, FILINFO *fil_handle);   // returns fresult
-extern uint8_t  ffs_dclose(DIR *dir_handle);   // returns fresult
 extern uint8_t  mos_port_read(uint8_t port); 	// read from the GPIO port specified
 extern uint8_t  mos_port_write(uint8_t port, uint8_t data); 	// write data to the GPIO port specified
+// extern void     mos_unpackrtc(RTC_DATA *buffer);
+// extern uint8_t  mos_flseek_p(uint8_t filehandle, uint32_t *offset);
+
+// String functions
+// extern uint8_t  mos_pmatch(const char *pattern, const char *string, uint8_t flags);
+// extern mos_getargument(); - requires structure
+// extern mos_extractstring(); - requires structure
+// extern mos_extractnumber(); - requires structure
+// extern mos_escapestring(); - requires structure
+
+// System variables and string translations
+// extern mos_setvarval();
+// extern mos_readvarval();
+// extern uint8_t  mos_gsinit(const char *source, char *destination, uint8_t flags);
+// extern mos_gsread();
+// extern mos_gstrans();
+// extern uint24_t mos_substituteargs(const char *template, const char *args, uint24_t length, char *destination, uint8_t flags);
+// extern mos_evaluateexpression();
+
+// File path functions
+// extern mos_resolvepath();
+// extern mos_getdirforpath();
+// extern char*    mos_getleafname(const char *pathname);
+// extern uint8_t  mos_isdirectory(const char *pathname);
+// extern uint8_t  mos_getabsolutepath(const char *pathname, char *buffer, uint24_t bufferlength);
+
+// VDP protocol, and miscellaneous functions
+// extern uint8_t  mos_clearvdpflags(uint8_t bitmask);
+// extern uint8_t  mos_waitforvdpflags(uint8_t bitmask);
+// extern mos_getfunction();
+
+// Low-level SD card access
+// extern uint24_t sd_getunlockcode(void);
+// extern uint8_t  sd_init(uint24_t unlockcode);
+// extern uint8_t  sd_readblocks();
+// extern uint8_t  sd_writeblocks();
+
+// MOS FatFS commands
+extern uint8_t  ffs_fopen(FIL *fh, const char *filename, uint8_t mode); // MOS 1.03+, returns fresult
+extern uint8_t  ffs_fclose(FIL *fh); // MOS 1.03+, returns fresult
+extern uint24_t ffs_fread(FIL *fh, char *buffer, uint24_t numbytes); // MOS 1.03+, returns number of bytes read
+extern uint24_t ffs_fwrite(FIL *fh, const char *buffer, uint24_t numbytes); // MOS 1.03+, returns number of bytes written
+extern uint8_t  ffs_flseek(FIL *fh, uint32_t offset); // MOS 1.03+, returns fresult
+extern uint8_t  ffs_ftruncate(FIL *fh); // MOS 2.3.0+, returns fresult
+extern uint8_t  ffs_fsync(FIL *fh); // MOS 3.0+, returns fresult
+extern uint8_t* ffs_fgets(FIL *fh, char *buffer, uint24_t buffersize); // MOS 3.0+, returns pointer to the target buffer, or NULL if an error occurred
+extern uint24_t ffs_fputc(FIL *fh, char c); // MOS 3.0+, returns number of bytes written
+extern uint24_t ffs_fputs(FIL *fh, const char *string); // MOS 3.0+, returns number of bytes written
+extern uint8_t  ffs_ftell(FIL *fh, uint32_t *result); // MOS 3.0+, returns fresult
+extern uint8_t  ffs_feof(FIL *fh); // MOS 3.0+, returns 1 if at the end of the file, otherwise 0
+extern uint8_t  ffs_fsize(FIL *fh, uint32_t *result); // MOS 3.0+, returns fresult
+extern uint8_t  ffs_ferror(FIL *fh); // MOS 3.0+, returns fresult
+extern uint8_t  ffs_dopen(DIR *dir_handle, const char * dir_path); // MOS 2.2.0+, returns fresult
+extern uint8_t  ffs_dclose(DIR *dir_handle); // MOS 2.2.0+, returns fresult
+extern uint8_t  ffs_dread(DIR *dir_handle, FILINFO *fil_handle); // MOS 2.2.0+, returns fresult
+extern uint8_t  ffs_dfindfirst(DIR *dir_handle, FILINFO *fil_handle, const char *dirpath, const char *pattern); // MOS 3.0+, returns fresult
+extern uint8_t  ffs_dfindnext(DIR *dir_handle, FILINFO *fil_handle); // MOS 3.0+, returns fresult
+extern uint8_t  ffs_stat(FILINFO *fil_handle, const char *filename); // MOS 1.03+, returns fresult
+extern uint8_t  ffs_unlink(const char *filepath); // MOS 3.0+, returns fresult
+extern uint8_t  ffs_rename(const char *sourcefilepath, const char *destfilepath); // MOS 3.0+, returns fresult
+extern uint8_t  ffs_mkdir(const char *dirname); // MOS 3.0+, returns fresult
+extern uint8_t  ffs_chdir(const char *dirname); // MOS 3.0+, returns fresult
+extern uint8_t  ffs_getcwd(char *dirpath, uint24_t bufferlength); // MOS 2.2.0+, returns fresult
+extern uint8_t  ffs_mount(FATFS *fs, const char *volpath, uint8_t options); // MOS 3.0+, returns fresult
+extern uint8_t  ffs_getfree(char *path, uint32_t *freeclusters, uint32_t *clustersize); // MOS 3.0+, returns fresult
+extern uint8_t  ffs_getlabel(char *path, char *label, uint32_t *volserial); // MOS 3.0+, returns fresult
+extern uint8_t  ffs_setlabel(const char *volumelabel); // MOS 3.0+, returns fresult
+extern uint8_t  ffs_flseek_p(FIL *fh, uint32_t *offset); // MOS 3.0+, returns status code
+
+//extern ffs_fprintf();
+//extern ffs_fforward(); - not implemented by MOS API
+//extern ffs_expand(); - not implemented by MOS API
+//extern ffs_chmod(); // not implemented by MOS API
+//extern ffs_utime(); // not implemented by MOS API
+//extern ffs_chdrive(); // not implemented by MOS API
+//extern ffs_mkfs(); // not implemented by MOS API
+//extern ffs_fdisk(); // not implemented by MOS API
+//extern ffs_setcp(); // not implemented by MOS API
 
 #ifdef __cplusplus
 }

@@ -1,0 +1,16 @@
+	.assume	adl=1
+	.include "mos_api.inc"
+	.section .text
+	.global	_ffs_chdir
+_ffs_chdir:
+    push    ix
+    ld      ix, 0
+    add     ix, sp
+    
+    ld      hl, (ix+6)          ; Pointer to a zero-terminated directory name string
+    ld      a,  ffs_chdir
+    rst.lil 08h                 ; returns FRESULT in A
+
+    ld      sp, ix
+    pop     ix
+    ret

@@ -1,0 +1,17 @@
+	.assume	adl=1
+	.include "mos_api.inc"
+	.section .text
+	.global	_ffs_fsize
+_ffs_fsize:
+    push    ix
+    ld      ix, 0
+    add     ix, sp
+    
+    ld      hl, (ix+6)          ; Pointer to a FIL structure
+    ld      de, (ix+9)          ; Pointer to a 4-byte buffer to store the returned 32-bit file size in
+    ld      a,  ffs_fsize
+    rst.lil 08h                 ; A: FRESULT (0 = Success, or 19 = Invalid parameter)
+
+    ld      sp, ix
+    pop     ix
+    ret

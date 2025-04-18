@@ -1,0 +1,18 @@
+	.assume	adl=1
+	.include "mos_api.inc"
+	.section .text
+	.global	_ffs_getfree
+_ffs_getfree:
+    push    ix
+    ld      ix, 0
+    add     ix, sp
+    
+    ld      hl, (ix+6)          ; Pointer to a path string (ideally caller should set this to zero)
+    ld      de, (ix+9)          ; Pointer to a block of memory to store number of free clusters, 32-bit value
+    ld      bc, (ix+12)         ; Pointer to a block of memory to store cluster size, 32-bit value
+    ld      a,  ffs_getfree
+    rst.lil 08h                 ; returns FRESULT in A
+
+    ld      sp, ix
+    pop     ix
+    ret

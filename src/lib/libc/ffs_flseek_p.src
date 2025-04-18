@@ -1,0 +1,17 @@
+	.assume	adl=1
+	.include "mos_api.inc"
+	.section .text
+	.global	_ffs_flseek_p
+_ffs_flseek_p:
+    push    ix
+    ld      ix, 0
+    add     ix, sp
+    
+    ld      hl, (ix+6)          ; Pointer to a FIL structure
+    ld      de, (ix+9)          ; Pointer to a 32-bit value for the desired new offset from the start of the file
+    ld      a,  ffs_flseek_p
+    rst.lil 08h                 ; returns FRESULT in A
+
+    ld      sp, ix
+    pop     ix
+    ret
