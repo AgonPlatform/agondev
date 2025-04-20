@@ -88,7 +88,7 @@ all: $(RELEASEBINDIR) libs
 	@echo [ Creating TAR binary for release ]
 	@rm -rf $(TARGETDIR)
 	@mkdir $(TARGETDIR)
-	cp -R $(RELEASEDIR)/ $(TARGETDIR)/
+	@cp -R $(RELEASEDIR)/ $(TARGETDIR)/
 	@tar -zcvf agondev-$(OS_NAME)_$(ARCH).tar.gz $(TARGETDIR) > /dev/null
 	@rm -rf $(TARGETDIR)
 	@echo [ Done ]
