@@ -1,5 +1,8 @@
-### Directories
+### Environment
+OS_NAME = $(shell uname -s | tr A-Z a-z)
+ARCH = $(shell uname -m | tr A-Z a-z)
 
+### Directories
 OBJTOPDIR=./obj
 RELEASEDIR=./release
 RELEASEBINDIR=$(RELEASEDIR)/bin
@@ -10,6 +13,7 @@ TOOLBINDIR=$(INSTALLDIR)/bin
 LLVMSRC=./llvm-project
 LLVMBUILDDIR=$(LLVMSRC)/build
 SCRIPTDIR=./scripts
+TARGETDIR=./agondev
 
 ### Tools
 CC=$(TOOLBINDIR)/clang
@@ -82,7 +86,11 @@ all: $(RELEASEBINDIR) libs
 	$(shell cd src/tools/agondev-config;make clean;make;cp bin/* ../../../release/bin;make clean)
 
 	@echo [ Creating TAR binary for release ]
-	@tar -zcvf release.gz $(RELEASEDIR) > /dev/null
+	@rm -rf $(TARGETDIR)
+	@mkdir $(TARGETDIR)
+	cp -R $(RELEASEDIR)/ $(TARGETDIR)/
+	@tar -zcvf agondev-$(OS_NAME)_$(ARCH).tar.gz $(TARGETDIR) > /dev/null
+	@rm -rf $(TARGETDIR)
 	@echo [ Done ]
 # Targets
 libc: $(OBJTOPDIR) $(LIBC_OBJDIR) $(LIBDIRECTORY) $(LIBC_OBJS) $(LIBC)
@@ -160,3 +168,4 @@ clean:
 	@$(RM) -r $(OBJTOPDIR)
 	@$(RM) -rf $(RELEASEBINDIR)
 	@$(RM) -rf $(LIBDIRECTORY)
+	@$(RM) -rf $(TARGETDIR)

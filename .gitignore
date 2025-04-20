@@ -5,5 +5,6 @@ obj/
 release/bin
 release/lib
 
-# Thumbnails
+# MacOS
 ._*
+.DS_Store
