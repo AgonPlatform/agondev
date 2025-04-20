@@ -441,6 +441,7 @@ extern uint8_t  ffs_fsync(FIL *fh); // MOS 3.0+, returns fresult
 extern uint8_t* ffs_fgets(FIL *fh, char *buffer, uint24_t buffersize); // MOS 3.0+, returns pointer to the target buffer, or NULL if an error occurred
 extern uint24_t ffs_fputc(FIL *fh, char c); // MOS 3.0+, returns number of bytes written
 extern uint24_t ffs_fputs(FIL *fh, const char *string); // MOS 3.0+, returns number of bytes written
+extern int      ffs_fprintf (FIL* fp, const char* str, ...);
 extern uint8_t  ffs_ftell(FIL *fh, uint32_t *result); // MOS 3.0+, returns fresult
 extern uint8_t  ffs_feof(FIL *fh); // MOS 3.0+, returns 1 if at the end of the file, otherwise 0
 extern uint8_t  ffs_fsize(FIL *fh, uint32_t *result); // MOS 3.0+, returns fresult
@@ -462,7 +463,6 @@ extern uint8_t  ffs_getlabel(char *path, char *label, uint32_t *volserial); // M
 extern uint8_t  ffs_setlabel(const char *volumelabel); // MOS 3.0+, returns fresult
 extern uint8_t  ffs_flseek_p(FIL *fh, uint32_t *offset); // MOS 3.0+, returns status code
 
-//extern ffs_fprintf();
 //extern ffs_fforward(); - not implemented by MOS API
 //extern ffs_expand(); - not implemented by MOS API
 //extern ffs_chmod(); // not implemented by MOS API
