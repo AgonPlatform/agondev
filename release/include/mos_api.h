@@ -399,20 +399,19 @@ extern void     mos_unpackrtc(vdp_time_t *buffer, uint8_t flags); // MOS 3.0+
 extern uint8_t  mos_flseek_p(uint8_t filehandle, uint32_t offset); // MOS 3.0+
 
 // String functions
-extern int8_t   mos_pmatch(const char *pattern, const char *string, uint8_t flags);
-extern void     mos_getargument(char **arg, char **argend, const char *source, uint24_t argnumber);
-extern uint8_t  mos_extractstring(char **result, char **next, const char *source, const char *dividers, uint8_t flags);
-extern uint8_t  mos_extractnumber(uint24_t *result, char **next, const char *source, const char *dividers, uint8_t flags);
-extern uint8_t  mos_escapestring(uint24_t *resultlength, const char *source, char *buffer, uint24_t bufferlength);
+extern int8_t   mos_pmatch(const char *pattern, const char *string, uint8_t flags); // MOS 3.0+
+extern void     mos_getargument(char **arg, char **argend, const char *source, uint24_t argnumber); // MOS 3.0+
+extern uint8_t  mos_extractstring(char **result, char **next, const char *source, const char *dividers, uint8_t flags); // MOS 3.0+
+extern uint8_t  mos_extractnumber(uint24_t *result, char **next, const char *source, const char *dividers, uint8_t flags); // MOS 3.0+
+extern uint8_t  mos_escapestring(uint24_t *resultlength, const char *source, char *buffer, uint24_t bufferlength); // MOS 3.0+
 
 // System variables and string translations
-// extern mos_setvarval();
-// extern mos_readvarval();
-// extern uint8_t  mos_gsinit(const char *source, char *destination, uint8_t flags);
-// extern mos_gsread();
-// extern mos_gstrans();
-// extern uint24_t mos_substituteargs(const char *template, const char *args, uint24_t length, char *destination, uint8_t flags);
-// extern mos_evaluateexpression();
+extern int      mos_setVarVal(char * name, void * value, char ** actualName, uint8_t * type); // MOS 3.0+
+extern int      readVarVal(char * namePattern, void * value, char ** actualName, int * length, uint8_t * typeFlag); // MOS 3.0+
+extern uint8_t  mos_gsinit(const char *source, char **transinfo_ptr, uint8_t flags); // MOS 3.0+
+extern uint8_t  mos_gsread(char *char_read, char **transinfo_ptr); // MOS 3.0+
+extern int      gsTrans(char * source, char * dest, int destLen, int * read, uint8_t flags); // MOS 3.0+
+extern int      substituteArgs(char * template, char * args, char * dest, int length, uint8_t flags); // MOS 3.0+
 
 // File path functions
 // extern mos_resolvepath();
@@ -424,7 +423,6 @@ extern uint8_t  mos_escapestring(uint24_t *resultlength, const char *source, cha
 // VDP protocol, and miscellaneous functions
 // extern uint8_t  mos_clearvdpflags(uint8_t bitmask);
 // extern uint8_t  mos_waitforvdpflags(uint8_t bitmask);
-// extern mos_getfunction();
 
 // Low-level SD card access
 // extern uint24_t sd_getunlockcode(void);

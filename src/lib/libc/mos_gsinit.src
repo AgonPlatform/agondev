@@ -1,0 +1,18 @@
+	.assume	adl=1
+	.include "mos_api.inc"
+	.section .text
+	.global	_mos_gsinit
+_mos_gsinit:
+    push    ix
+    ld      ix, 0
+    add     ix, sp
+    
+    ld      hl, (ix+6)          ; Pointer to source buffer to translate
+    ld      de, (ix+9)          ; Address of pointer used to store trans info
+    ld      c,  (ix+12)         ; Flags
+    ld      a,  mos_gsinit
+    rst.lil 08h                 ; returns status code in A
+
+    ld      sp, ix
+    pop     ix
+    ret
