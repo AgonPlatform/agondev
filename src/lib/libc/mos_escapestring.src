@@ -1,0 +1,24 @@
+	.assume	adl=1
+	.include "mos_api.inc"
+	.section .text
+	.global	_mos_escapestring
+_mos_escapestring:
+    push    ix
+    ld      ix, 0
+    add     ix, sp
+    
+    ld      hl, (ix+6)          ; Pointer to uint24_t resultlength of escaped string
+    push hl
+    ld      hl, (ix+9)          ; Pointer to source string
+    ld      de, (ix+12)         ; Pointer to destination buffer (optional)
+    ld      bc, (ix+15)         ; Length of destination buffer
+    ld      a,  mos_escapestring
+    rst.lil 08h
+
+    pop hl
+    ld      (hl), bc            ; Return length of the escaped string
+    
+    ld      sp, ix
+    pop     ix
+    ret                         ; Return status code in A
+    

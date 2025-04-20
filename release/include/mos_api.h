@@ -395,15 +395,15 @@ extern uint8_t  mos_i2c_write(uint8_t i2c_address, uint8_t size, unsigned char *
 extern uint8_t  mos_i2c_read(uint8_t i2c_address, uint8_t size, unsigned char * buffer);
 extern uint8_t  mos_port_read(uint8_t port); 	// read from the GPIO port specified
 extern uint8_t  mos_port_write(uint8_t port, uint8_t data); 	// write data to the GPIO port specified
-extern void     mos_unpackrtc(vdp_time_t *buffer, uint8_t flags);
-extern uint8_t  mos_flseek_p(uint8_t filehandle, uint32_t offset);
+extern void     mos_unpackrtc(vdp_time_t *buffer, uint8_t flags); // MOS 3.0+
+extern uint8_t  mos_flseek_p(uint8_t filehandle, uint32_t offset); // MOS 3.0+
 
 // String functions
-// extern uint8_t  mos_pmatch(const char *pattern, const char *string, uint8_t flags);
-// extern mos_getargument(); - requires structure
-// extern mos_extractstring(); - requires structure
-// extern mos_extractnumber(); - requires structure
-// extern mos_escapestring(); - requires structure
+extern int8_t   mos_pmatch(const char *pattern, const char *string, uint8_t flags);
+extern void     mos_getargument(char **arg, char **argend, const char *source, uint24_t argnumber);
+extern uint8_t  mos_extractstring(char **result, char **next, const char *source, const char *dividers, uint8_t flags);
+extern uint8_t  mos_extractnumber(uint24_t *result, char **next, const char *source, const char *dividers, uint8_t flags);
+extern uint8_t  mos_escapestring(uint24_t *resultlength, const char *source, char *buffer, uint24_t bufferlength);
 
 // System variables and string translations
 // extern mos_setvarval();

@@ -1,0 +1,26 @@
+	.assume	adl=1
+	.include "mos_api.inc"
+	.section .text
+	.global	_mos_getargument
+_mos_getargument:
+    push    ix
+    ld      ix, 0
+    add     ix, sp
+    
+    ld      hl, (ix+12)          ; Pointer to source string
+    ld      bc, (ix+15)          ; Argument number
+    ld      a,  mos_getargument
+    rst.lil 08h
+
+    push    iy
+    ld      iy, (ix+6)
+    ld      (iy+0), hl          ; Return address of the argument or zero if not found
+    ld      iy, (ix+9)
+    ld      (iy+0), de          ; Return address of the argument end (next character after the argument)
+    pop     iy
+
+
+    ld      sp, ix
+    pop     ix
+    ret                         ; Void
+    
