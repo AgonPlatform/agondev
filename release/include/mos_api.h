@@ -425,10 +425,10 @@ extern uint8_t  mos_clearvdpflags(uint8_t bitmask); // MOS 3.0+
 extern uint8_t  mos_waitforvdpflags(uint8_t bitmask); // MOS 3.0+
 
 // Low-level SD card access
-// extern uint24_t sd_getunlockcode(void); // MOS 3.0+
-// extern uint8_t  sd_init(uint24_t unlockcode); // MOS 3.0+
-// extern uint8_t  sd_readblocks(); // MOS 3.0+
-// extern uint8_t  sd_writeblocks(); // MOS 3.0+
+extern uint24_t sd_getunlockcode(void); // MOS 3.0+
+extern uint8_t  sd_init(uint24_t unlockcode); // MOS 3.0+
+extern uint8_t  sd_readblocks(uint32_t sector, uint8_t *buf, uint24_t count); // MOS 3.0+
+extern uint8_t  sd_writeblocks(uint32_t sector, uint8_t *buf, uint24_t count); // MOS 3.0+
 
 // MOS FatFS commands
 extern uint8_t  ffs_fopen(FIL *fh, const char *filename, uint8_t mode); // MOS 1.03+, returns fresult

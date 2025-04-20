@@ -1,0 +1,18 @@
+	.assume	adl=1
+	.include "mos_api.inc"
+	.section .text
+	.global	_sd_getunlockcode
+_sd_getunlockcode:
+    push    ix
+    ld      ix, 0
+    add     ix, sp
+    
+    ld      hl,  (ix+6)         ; Pointer to a 24-bit value to store the unlock code
+    ld      a,  sd_getunlockcode
+    rst.lil 08h
+
+    ld      hl, (hl)            ; Returns 24-bit unlock code in HLU
+
+    ld      sp, ix
+    pop     ix
+    ret
