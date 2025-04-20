@@ -416,20 +416,19 @@ extern int      mos_substituteargs(char * template, char * args, char * dest, in
 // File path functions
 extern int      mos_resolvepath(char * filepath, char * resolvedPath, int * length, uint8_t * index, DIR * dir, uint8_t flags); // MOS 3.0+
 extern int      mos_getdirforpath(char * srcPath, char * dir, int * length, uint8_t index); // MOS 3.0+
-extern char*    mos_getleafname(const char *pathname);
-extern uint8_t  mos_isdirectory(const char *pathname);
-extern int      mos_getabsolutepath(char * path, char * resolved, int * length);
-// extern uint8_t  mos_getabsolutepath(const char *pathname, char *buffer, uint24_t bufferlength);
+extern char*    mos_getleafname(const char *pathname); // MOS 3.0+
+extern uint8_t  mos_isdirectory(const char *pathname); // MOS 3.0+
+extern int      mos_getabsolutepath(char * path, char * resolved, int * length); // MOS 3.0+
 
 // VDP protocol, and miscellaneous functions
-// extern uint8_t  mos_clearvdpflags(uint8_t bitmask);
-// extern uint8_t  mos_waitforvdpflags(uint8_t bitmask);
+extern uint8_t  mos_clearvdpflags(uint8_t bitmask); // MOS 3.0+
+extern uint8_t  mos_waitforvdpflags(uint8_t bitmask); // MOS 3.0+
 
 // Low-level SD card access
-// extern uint24_t sd_getunlockcode(void);
-// extern uint8_t  sd_init(uint24_t unlockcode);
-// extern uint8_t  sd_readblocks();
-// extern uint8_t  sd_writeblocks();
+// extern uint24_t sd_getunlockcode(void); // MOS 3.0+
+// extern uint8_t  sd_init(uint24_t unlockcode); // MOS 3.0+
+// extern uint8_t  sd_readblocks(); // MOS 3.0+
+// extern uint8_t  sd_writeblocks(); // MOS 3.0+
 
 // MOS FatFS commands
 extern uint8_t  ffs_fopen(FIL *fh, const char *filename, uint8_t mode); // MOS 1.03+, returns fresult
