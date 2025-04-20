@@ -406,18 +406,19 @@ extern uint8_t  mos_extractnumber(uint24_t *result, char **next, const char *sou
 extern uint8_t  mos_escapestring(uint24_t *resultlength, const char *source, char *buffer, uint24_t bufferlength); // MOS 3.0+
 
 // System variables and string translations
-extern int      mos_setVarVal(char * name, void * value, char ** actualName, uint8_t * type); // MOS 3.0+
-extern int      readVarVal(char * namePattern, void * value, char ** actualName, int * length, uint8_t * typeFlag); // MOS 3.0+
+extern int      mos_setvarval(char * name, void * value, char ** actualName, uint8_t * type); // MOS 3.0+
+extern int      mos_readvarval(char * namePattern, void * value, char ** actualName, int * length, uint8_t * typeFlag); // MOS 3.0+
 extern uint8_t  mos_gsinit(const char *source, char **transinfo_ptr, uint8_t flags); // MOS 3.0+
 extern uint8_t  mos_gsread(char *char_read, char **transinfo_ptr); // MOS 3.0+
-extern int      gsTrans(char * source, char * dest, int destLen, int * read, uint8_t flags); // MOS 3.0+
-extern int      substituteArgs(char * template, char * args, char * dest, int length, uint8_t flags); // MOS 3.0+
+extern int      mos_gstrans(char * source, char * dest, int destLen, int * read, uint8_t flags); // MOS 3.0+
+extern int      mos_substituteargs(char * template, char * args, char * dest, int length, uint8_t flags); // MOS 3.0+
 
 // File path functions
-// extern mos_resolvepath();
-// extern mos_getdirforpath();
-// extern char*    mos_getleafname(const char *pathname);
-// extern uint8_t  mos_isdirectory(const char *pathname);
+extern int      mos_resolvepath(char * filepath, char * resolvedPath, int * length, uint8_t * index, DIR * dir, uint8_t flags); // MOS 3.0+
+extern int      mos_getdirforpath(char * srcPath, char * dir, int * length, uint8_t index); // MOS 3.0+
+extern char*    mos_getleafname(const char *pathname);
+extern uint8_t  mos_isdirectory(const char *pathname);
+extern int      mos_getabsolutepath(char * path, char * resolved, int * length);
 // extern uint8_t  mos_getabsolutepath(const char *pathname, char *buffer, uint24_t bufferlength);
 
 // VDP protocol, and miscellaneous functions

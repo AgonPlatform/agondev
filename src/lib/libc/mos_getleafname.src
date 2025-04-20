@@ -1,0 +1,16 @@
+	.assume	adl=1
+	.include "mos_api.inc"
+	.section .text
+	.global	_mos_getleafname
+_mos_getleafname:
+    push    ix
+    ld      ix, 0
+    add     ix, sp
+    
+    ld      hl, (ix+6)          ; Pointer to the path to get the leafname from
+    ld      a,  mos_getleafname
+    rst.lil 08h                 ; returns pointer to the leafname (HLU)
+
+    ld      sp, ix
+    pop     ix
+    ret
