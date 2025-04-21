@@ -11,6 +11,7 @@ TOOLBINDIR=$(AGONDEV_TOOLCHAIN)/bin
 INCLUDEDIR=$(AGONDEV_TOOLCHAIN)/include
 LINKERCONFIG=$(AGONDEV_TOOLCHAIN)/config/linker.conf
 LIBDIR=$(AGONDEV_TOOLCHAIN)/lib
+PROJECTLIBDIR=./lib
 
 # Architecture
 ARCH=ez80+full
@@ -37,8 +38,12 @@ else
 endif
 MEMCONFIG=-defsym=RAM_START=$(RAM_START) -defsym=RAM_SIZE=$(RAM_SIZE)
 LINKERFLAGS=$(MEMCONFIG) $(LINKER_ARG) $(LINKER_EXIT) -Map=$(BINDIR)/$(NAME).map -T $(LINKERCONFIG) --oformat binary -o 
-LINKERLIBFLAGS=-L$(LIBDIR) -\( -l c -l agon -l crt -l fp -\) 
+LINKERLIBFLAGS=-L$(PROJECTLIBDIR) $(LIBS) -L$(LIBDIR) -\( -l c -l agon -l crt -l fp -\) 
 SETPROGNAME=$(TOOLBINDIR)/agondev-setname
+
+## Archiver
+AR=$(TOOLBINDIR)/ez80-none-elf-ar
+ARFLAGS=rcs
 
 # project directories
 SRCDIR=src
@@ -46,6 +51,8 @@ OBJDIR=obj
 BINDIR=bin
 # Final binary
 BINARY=$(BINDIR)/$(NAME).bin
+# Final library
+LIBRARY=$(BINDIR)/lib$(NAME).a
 
 # Automatically get all object names from sourcefiles
 OBJS=$(patsubst $(SRCDIR)/%.asm, $(OBJDIR)/%.o, $(wildcard $(SRCDIR)/*.asm)) \
@@ -60,7 +67,15 @@ all: $(BINDIR) $(OBJDIR) $(BINARY)
 	@echo [Setting name \'$(NAME).bin\' in binary]
 	$(V)$(SETPROGNAME) $(BINARY) >/dev/null
 	@echo [Done]
-# Linking all compiled objects into final binary
+
+# Create a library of all project objects
+lib: $(BINDIR) $(OBJDIR) $(LIBRARY)
+	@echo [Done]
+
+$(LIBRARY):$(OBJS)
+	@echo [Creating library $(LIBRARY)]
+	$(V)$(AR) $(ARFLAGS) $(LIBRARY) $(OBJS)
+
 $(BINARY):$(OBJS)
 	@echo [Linking $(BINARY)]
 	$(V)$(LINKER) $(LINKERFLAGS)$@ $(OBJS) $(LINKERLIBFLAGS)

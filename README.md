@@ -22,6 +22,16 @@ export PATH=/<insert path to agondev>/bin:$PATH
 ```
 
 ## Project structure
+A minimum project consists of a Makefile and at least a single source file in the 'src' subdirectory:
+``` 
+project/
+│
+├── Makefile
+└── src/
+    └── main.c
+```
+---
+
 The toolchain expects the following project structure:
 
 ``` 
@@ -32,6 +42,11 @@ project/
 │   │   project source files, e.g.
 │   ├── main.c
 │   └── module.asm
+├── lib/
+│   │   Optional directory with static libraries the
+│   │   project requires, e.g.
+│   ├── libtest.a
+│   └── libsecret.a
 ├── obj/
 │   │   objects created by the compiler / assembler
 │   │   this directory will be created automatically
@@ -74,14 +89,28 @@ NAME=program
 include $(shell agondev-config --makefile)
 ``` 
 
-After successful compilation of your program, this example Makefile creates a 'program.bin' file in the <project_dir>/bin directory.
+After successful compilation of your program, this example Makefile creates a 'program.bin' file in the <b><project_dir>/bin</b> directory.
 
 ## Makefile options
 The following options can be set in the user's project Makefile:
+- NAME - sets the name of the project
 - RAM_START - sets the load/start address of the compiled program. This option will default to 0x040000
 - RAM_SIZE - sets the amount of memory available to the program. This option will default to 0x070000. The init routine will set the stackpointer to RAM_START + RAM_SIZE
 - LDHAS_ARG_PROCESSING - by default set to 0, this will make use of simple commandline processing of program arguments. If set to 1, this will make use of additional code to process redirection and quoting.
 - LDHAS_EXIT_HANDLER - by default set to 0. Set this to 1 to print out an error text based on the program's exit code, before returning to MOS. 
+- LIBS - sets flags to link with user-supplied static libraries in the <project_dir>/lib directory. For example: the link with the 'secret' library file 'libsecret.a', set LIBS=-lsecret. Multiple libraries can be listed for linking, for example LIBS=-lsecret -ltest
+
+## Creating static libraries
+Create a separate project for each library, with all the required source files that go into it, and set the NAME option in the Makefile to the required <b>library basename</b>
+
+Create a library with the following command:
+``` 
+make lib
+``` 
+
+If for example the library basename is 'example', the library will be compiled to <b><project_dir>/bin/libexample.a</b>
+
+The compiled library must be manually copied to another project's lib directory for inclusion there. Don't forget to set the LIBS Makefile option in the latter project, e.g. LIBS=-lexample
 
 ## Build toolchain from source
 1) clone this repo

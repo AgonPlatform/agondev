@@ -22,7 +22,7 @@ ASM=$(TOOLBINDIR)/ez80-none-elf-as
 AR=$(TOOLBINDIR)/ez80-none-elf-ar
 
 ### Arguments
-CFLAGS=-target ez80-none-elf -O1 -Wa,-march=ez80+full -I ./release/include
+CFLAGS=-target ez80-none-elf -Oz -Wa,-march=ez80+full -I ./release/include
 OUTFLAG=-o 
 LINKERFLAGS= -T linker.conf --oformat binary -o 
 ARFLAGS=rcs
@@ -80,6 +80,8 @@ all: $(RELEASEBINDIR) libs
 	$(shell strip ./release/bin/ez80-none-elf-as)
 	$(shell cp ./llvm-build/ez80-none-elf/bin/ez80-none-elf-ld ./release/bin/)
 	$(shell strip ./release/bin/ez80-none-elf-as)
+	$(shell cp ./llvm-build/ez80-none-elf/bin/ez80-none-elf-ar ./release/bin/)
+	$(shell strip ./release/bin/ez80-none-elf-ar)
 
 	@echo [ Making agondev tools ]
 	$(shell cd src/tools/agondev-setname;make clean;make;cp bin/* ../../../release/bin;make clean)
