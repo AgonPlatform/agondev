@@ -55,21 +55,21 @@ BINARY=$(BINDIR)/$(NAME).bin
 LIBRARY=$(BINDIR)/lib$(NAME).a
 
 # Automatically get all object names from sourcefiles
-OBJS=$(patsubst $(SRCDIR)/%.asm, $(OBJDIR)/%.o, $(wildcard $(SRCDIR)/*.asm)) \
-	 $(patsubst $(SRCDIR)/%.s,   $(OBJDIR)/%.o, $(wildcard $(SRCDIR)/*.s)) \
-	 $(patsubst $(SRCDIR)/%.src, $(OBJDIR)/%.o, $(wildcard $(SRCDIR)/*.src)) \
-	 $(patsubst $(SRCDIR)/%.c,   $(OBJDIR)/%.o, $(wildcard $(SRCDIR)/*.c)) \
-	 $(patsubst $(SRCDIR)/%.cpp, $(OBJDIR)/%.o, $(wildcard $(SRCDIR)/*.cpp))
+OBJS=$(patsubst $(SRCDIR)/%.asm, $(OBJDIR)/%.o, $(shell find $(SRCDIR) -name '*.asm')) \
+     $(patsubst $(SRCDIR)/%.s,   $(OBJDIR)/%.o, $(shell find $(SRCDIR) -name '*.s')) \
+     $(patsubst $(SRCDIR)/%.src, $(OBJDIR)/%.o, $(shell find $(SRCDIR) -name '*.src')) \
+     $(patsubst $(SRCDIR)/%.c,   $(OBJDIR)/%.o, $(shell find $(SRCDIR) -name '*.c')) \
+     $(patsubst $(SRCDIR)/%.cpp, $(OBJDIR)/%.o, $(shell find $(SRCDIR) -name '*.cpp'))
 
 # Default rule
-all: $(BINDIR) $(OBJDIR) $(BINARY)
+all: $(BINDIR) $(BINARY)
 	@echo [Start address $(RAM_START)]
 	@echo [Setting name \'$(NAME).bin\' in binary]
 	$(V)$(SETPROGNAME) $(BINARY) >/dev/null
 	@echo [Done]
 
 # Create a library of all project objects
-lib: $(BINDIR) $(OBJDIR) $(LIBRARY)
+lib: $(BINDIR) $(LIBRARY)
 	@echo [Done]
 
 $(LIBRARY):$(OBJS)
@@ -83,29 +83,32 @@ $(BINARY):$(OBJS)
 # Compile each .c file into .o file
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
 	@echo [compiling $<]
+	@mkdir -p $(dir $@)
 	$(V)$(CC) $(CFLAGS) $< -c -o $@
 # Compile each .cpp file into .o file
 $(OBJDIR)/%.o: $(SRCDIR)/%.cpp
 	@echo [compiling $<]
+	@mkdir -p $(dir $@)
 	$(V)$(CC) $(CFLAGS) $< -c -o $@
 # Assemble each .s file into .o file
 $(OBJDIR)/%.o: $(SRCDIR)/%.s
 	@echo [assembling $<]
+	@mkdir -p $(dir $@)
 	$(V)$(ASM) $(ASMFLAGS) $< -o $@
 # Assemble each .asm file into .o file
 $(OBJDIR)/%.o: $(SRCDIR)/%.asm
 	@echo [assembling $<]
+	@mkdir -p $(dir $@)
 	$(V)$(ASM) $(ASMFLAGS) $< -o $@
 # Assemble each .src file into .o file
 $(OBJDIR)/%.o: $(SRCDIR)/%.src
 	@echo [assembling $<]
+	@mkdir -p $(dir $@)
 	$(V)$(ASM) $(ASMFLAGS) $< -o $@
 
 # Directories to create
 $(BINDIR):
 	@mkdir $(BINDIR)
-$(OBJDIR):
-	@mkdir $(OBJDIR)
 
 clean:
 	@$(RM) -r $(BINDIR) $(OBJDIR) 
