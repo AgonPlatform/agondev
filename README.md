@@ -4,7 +4,7 @@ Early access Alpha: things will break.
 
 The toolchain is currently compiled for Linux (x86_64 / arm64) and MacOS (arm64) only.
 
-I'm not ready to accept issues or PRs at this time. Contact me at [Discord](https://discord.gg/A7rY9AcF) to discuss
+I'm not ready to accept issues or PRs at this time. Contact me at [Discord](https://discord.gg/nfGrhdTf6z) to discuss
 ## Purpose
 To assemble a C/C++ toolchain, based on modern, open-source software that can be ported to many platforms
 ## Installation
