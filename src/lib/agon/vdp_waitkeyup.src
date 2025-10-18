@@ -1,0 +1,22 @@
+	.global _vdp_waitKeyUp
+	.assume	adl=1
+	.section .text
+
+; ---------------------------------------------
+; wait for key up state before returning
+
+_vdp_waitKeyUp:	
+	push ix 			; push ix onto the stack and allocate local frame
+	ld ix, 0 			;	
+	add ix, sp 			; set ix to sp
+
+wait1:
+	ld a, $08
+	rst.lil $08			; get IX pointer to sysvars	
+
+	ld a, (ix + $18)	; get key state
+	cp 0				; are keys up, none currently pressed?
+	jr nz, wait1
+
+	pop ix 				; restore ix from stack
+	ret 				; return
