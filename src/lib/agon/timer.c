@@ -14,8 +14,7 @@
 
 #define __TMR0_COUNTER_1ms	(unsigned short)(((18432000 / 1000) * 1) / 16)
 
-void delay(unsigned int ms)
-{
+void delay(unsigned int ms) {
 	unsigned short rr;
 	uint16_t timer0;
 
@@ -23,14 +22,12 @@ void delay(unsigned int ms)
 
 	IO(TMR0_CTL) = 0x00;	// disable timer0
 
-	while(ms)
-	{
+	while(ms) {
 		IO(TMR0_RR_H) = (unsigned char)(rr >> 8);
 		IO(TMR0_RR_L) = (unsigned char)(rr);
 
 		IO(TMR0_CTL) = 0x87; // enable, single pass, stop at 0, start countdown immediately
-		do
-		{
+		do {
 			timer0 = IO(TMR0_DR_L);
 			timer0 |= (IO(TMR0_DR_H) << 8);
 		}
