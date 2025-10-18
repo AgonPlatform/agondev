@@ -2,21 +2,20 @@
 	.assume	adl=1
 	.section .text
 
+    .include "mos_api.inc"
 ; ---------------------------------------------
 ; wait for key down state before returning
 
 _vdp_waitKeyDown:	
-	push ix 			; push ix onto the stack and allocate local frame
-	ld ix, 0 			;	
-	add ix, sp 			; set ix to sp
+	push ix 			            ; push ix onto the stack
 
-wait2:
-	ld a, $08
-	rst.lil $08			; get IX pointer to sysvars	
+wait:
+	ld a, mos_sysvars
+	rst.lil $08			            ; get IX pointer to sysvars	
 
-	ld a, (ix + $18)		; get key state
-	cp 0				; are keys up, none currently pressed?
-	jr z, wait2
+	ld a, (ix + sysvar_vkeydown)	; get key state
+	cp 0				            ; are keys up, none currently pressed?
+	jr z, wait
 
 	pop ix 				; restore ix from stack
 	ret 				; return

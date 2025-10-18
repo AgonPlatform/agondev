@@ -2,6 +2,7 @@
 	.assume	adl=1
 	.section .text
 
+    .include "mos_api.inc"
 ; ---------------------------------------------
 ; pass in index offset to keyboard matrix and return its value
 
@@ -13,8 +14,8 @@ _vdp_getKeyMap:
 	ld de, 0
 	ld e, (ix+6) 		; get first variable and load into lower byte of register de
 
-	ld a, $1E
-	rst.lil $08			; MOSCALL $1E -  get IX pointer to keyvals
+	ld a, mos_getkbmap
+	rst.lil $08			; get IX pointer to keyvals
 
 	add ix, de    		; load from variable offset
 	ld a, (ix+0)  		; return as uint8_t

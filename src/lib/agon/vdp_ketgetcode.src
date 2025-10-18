@@ -2,25 +2,26 @@
 	.assume	adl=1
 	.section .text
 
+    .include "mos_api.inc"
 ; ---------------------------------------------
 ; return ascii code of single key being pressed, or 0 if none
 
 _vdp_getKeyCode:
-	push ix 			; push ix onto the stack and allocate local frame
+	push ix 							; push ix onto the stack and allocate local frame
 
-	ld a, $08
-	rst.lil $08			; get IX pointer to sysvars	
+	ld a, mos_sysvars
+	rst.lil $08							; get IX pointer to sysvars	
 
-	ld a, (ix + $18)		; get key state, 0 or 1
-	cp 0				; are keys up, none currently pressed?
-	jr z, nothingPressed 		; nothing is currently pressed
+	ld a, (ix + sysvar_vkeydown)		; get key state, 0 or 1
+	cp 0								; are keys up, none currently pressed?
+	jr z, nothingPressed				; nothing is currently pressed
 
-	ld a, (ix + $05)		; ix+5h is 'last key pressed'
+	ld a, (ix + sysvar_keyascii)		; ix+5h is 'last key pressed'
 	jr exitHere
 
 nothingPressed:
-	ld a,0				; clear HL to return 0
+	ld a,0					; return
 
 exitHere:
-	pop ix 				; restore ix from stack
-	ret 				; return
+	pop ix 					; restore ix from stack
+	ret 					; return
