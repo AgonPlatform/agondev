@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 INSTALLDIR=$(pwd)/llvm-build/ez80-none-elf
 LVMDIR=llvm-project
