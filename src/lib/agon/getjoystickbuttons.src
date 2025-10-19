@@ -1,0 +1,11 @@
+	.assume	adl=1
+	.include "ez80f92.inc"
+	.section .text
+	.global	_getJoystickButtons
+
+_getJoystickButtons:
+    in0     a, (PC_DR)           ; PortC data register - PC_DR
+    ld      l, a
+    in0     a, (PD_DR)           ; PortD data register - PD_DR
+    ld      h, a                 ; return value in HL
+    ret
