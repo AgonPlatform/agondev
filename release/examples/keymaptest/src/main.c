@@ -15,9 +15,10 @@ void print_bits(uint8_t input) {
 }
 
 int main(void) {
+  vdp_clear_screen();
+  printf("     7 6 5 4 3 2 1 0\n");
   while(1) {
-    vdp_clear_screen();
-    printf("     7 6 5 4 3 2 1 0\n");
+    vdp_cursor_tab(0,1);
     for(int i = 0; i < 16; i++) {
       uint8_t m = vdp_getKeyMap(i);
       printf("0x%02X ", i);

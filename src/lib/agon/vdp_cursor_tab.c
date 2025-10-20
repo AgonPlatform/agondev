@@ -7,9 +7,10 @@
 static VDU_A_c_r vdu_cursor_tab = { 31, 0, 0 };
 
 // rg: fixed this so it is X, Y
-void vdp_cursor_tab( int col, int row )
+// jv: fixed the naming of the input variables to reflect x,y
+void vdp_cursor_tab( int xpos, int ypos )
 {
-	vdu_cursor_tab.c = col;
-	vdu_cursor_tab.r = row;
+	vdu_cursor_tab.c = xpos;
+	vdu_cursor_tab.r = ypos;
 	VDP_PUTS( vdu_cursor_tab );
 }

@@ -21,7 +21,7 @@ int main(void) {
   while(!(joystick1_BUTTON1(getJoystickButtons()))); // wait for press
   delay(300); // a little debounce to wait for the button to settle back down
   while(!done) {
-    vdp_clear_screen();
+    vdp_cursor_tab(0,0);
     uint16_t joy = getJoystickButtons(); // get the state of all buttons
     printf("Press button1 on Joystick 1 to exit\n\n");
     printf("FIRE status       DIRECTION status\n");
