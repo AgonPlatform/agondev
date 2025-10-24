@@ -10,6 +10,34 @@ LVMDIR=llvm-project
 #Versions
 BINUTILS=binutils-2.45
 
+#Check tools
+if ! command -v make &> /dev/null
+then
+    echo "Error: make is not installed or not in PATH."
+    exit 1
+fi
+if ! command -v cmake &> /dev/null
+then
+    echo "Error: cmake is not installed or not in PATH."
+    exit 1
+fi
+if ! command -v ninja &> /dev/null
+then
+    echo "Error: ninja is not installed or not in PATH."
+    exit 1
+fi
+if ! command -v git &> /dev/null
+then
+    echo "Error: git is not installed or not in PATH."
+    exit 1
+fi
+if ! command -v curl &> /dev/null
+then
+    echo "Error: curl is not installed or not in PATH."
+    exit 1
+fi
+
+# Build LLVM
 if [ "${BUILD_LLVM}" == "yes" ]; then
   pushd . >/dev/null
   if [ ! -d "$LVMDIR" ]; then
@@ -34,6 +62,7 @@ else
   echo Configured to skip LLVM build
 fi
 
+# Build BINUTILS
 if [ "${BUILD_BINUTILS}" == "yes" ]; then
   pushd . >/dev/null
   rm -rf $BINUTILS
