@@ -262,7 +262,7 @@ void vdp_graphics_origin( int x, int y );
 // VDU 30: Home cursor
 void vdp_cursor_home( void );
 // VDU 31, x, y: Move text cursor to x, y text position
-void vdp_cursor_tab( int row, int col );
+void vdp_cursor_tab( int xpos, int ypos );
 
 // ========= System Commands ==========
 // VDU 23, 0, <command>, [<arguments>]: System commands

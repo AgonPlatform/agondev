@@ -7,26 +7,11 @@
  * Modinfo:
  */
  
+#include <stdint.h>
 #include <stdio.h>
-
-// Parameters:
-// - argc: Argument count
-// - argv: Pointer to the argument string - zero terminated, parameters separated by spaces
-//
-
-//int main(int argc, char * argv[])
+#include <mos_api.h>
 int main(void)
 {
-    
-	printf("Hello World!\n");
-    /*
-	printf("Arguments:\n\r");
-	printf("- argc: %d\n\r", argc);
-	
-	for(int i = 0; i < argc; i++)
-	{
-		printf("- argv[%d]: %s\n\r", i, argv[i]);
-	}
-    */
-	return 0;
+    printf("Hello world!\n");
+	return 0; 
 }

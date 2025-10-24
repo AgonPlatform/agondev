@@ -94,7 +94,6 @@
 #include <errno.h>
 #include <stdint.h>
 #include <stdbool.h>
-#include <debug.h>
 
 #if !STRTOX_SIGNED
 unsigned

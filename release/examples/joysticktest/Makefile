@@ -2,7 +2,7 @@
 # Makefile Options
 # ----------------------------
 
-NAME=hello
+NAME=joysticktest
 
 # Select option for Argument Processing at 'int main( int argc, char* argv[] )'
 # 0: Simple Command Line Processing

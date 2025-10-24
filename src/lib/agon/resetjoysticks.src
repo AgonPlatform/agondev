@@ -1,0 +1,12 @@
+	.assume	adl=1
+	.include "ez80f92.inc"
+	.section .text
+    .global _resetJoysticks
+
+_resetJoysticks:
+    ld      a, 0b11111111
+    out0    (PC_DDR), a          ; All pins of PortC as input pin
+    in0     a, (PD_DDR)          ; Read current pin directions of PortD
+    or      a, 0b11110000        ; Set pins PD7 - PD4 as input pin (1), leave PD3 - PD0 as is 
+    out0    (PD_DDR), a
+    ret
