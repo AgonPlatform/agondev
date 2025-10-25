@@ -1,0 +1,23 @@
+	.assume	adl=1
+	.section .text
+  .global _inputPinID
+
+_inputPinID:
+    push    ix
+    ld      ix, 0
+    add     ix, sp
+
+    ld      bc, (ix+6) ; PORTPIN upper 8bit == Px_DR, lower 8bit == pin 
+    ld      a, b
+    ld      (direct), a
+    .db     0xED
+    .db     0x38       ; IN0 A, (n)
+direct:
+    .db     0          ; will be overwritten by actual Px_DR
+
+    and     a, c       ; and with pin argument, and return in A
+    jr      z, end
+    ld      a, 1       ; C boolean 1 == true
+end:
+    pop     ix
+    ret

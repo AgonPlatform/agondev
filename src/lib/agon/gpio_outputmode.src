@@ -1,0 +1,44 @@
+	.assume	adl=1
+	.section .text
+  .global _outputMode
+  .extern bittable
+
+_outputMode:
+    push    ix
+    ld      ix, 0
+    add     ix, sp
+
+    ld      d, (ix+6)  ; PortID
+    ld      e, (ix+9)  ; Pinnumber
+
+    ld      a, e
+    cp      8          ; check invalid value
+    jr      nc, end2
+
+    inc     d          ; Px_DDR is one byte up from Px_DR
+    ld      a, d
+    ld      (direct1), a
+    ld      (direct2), a
+    .db     0xED
+    .db     0x10       ; IN0 D, (n)
+direct1:
+    .db     0          ; will be overwritten by actual Px_DR
+
+    ld      ix, bittable  ; convert pin number to binary mask
+    ld      bc, 0
+    ld      c, e       ; pin number to set high is in BC
+    add     ix, bc     ; index into table to get bitmask
+    ld      a, (ix+0)
+
+    cpl
+    and     a, d        ; merge with existing bit states from the port
+
+    .db     0xED
+    .db     0x39       ; OUT0 A, (n)
+direct2:
+    .db     0          ; will be overwritten by actual Px_DR
+
+end2:
+    pop     ix
+    ret
+

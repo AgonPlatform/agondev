@@ -1,0 +1,31 @@
+	.assume	adl=1
+	.section .text
+  .global _outputModePinID
+
+_outputModePinID:
+    push    ix
+    ld      ix, 0
+    add     ix, sp
+
+    ld      bc, (ix+6) ; PORTPIN upper 8bit == Px_DR, lower 8bit == pins
+    inc     b          ; from PxDR to PxDDR is one byte up in IO memory space
+    ld      a, b
+    ld      (direct1), a
+    ld      (direct2), a
+
+    .db     0xED
+    .db     0x00       ; IN0 B, (n)
+direct1:
+    .db     0          ; will be overwritten by actual Px_DDR
+
+    ld      a, c
+    cpl
+    and     a, b       ; port value to write
+
+    .db     0xED
+    .db     0x39       ; OUT0 A, (n)
+direct2:
+    .db     0          ; will be overwritten by actual Px_DDR
+
+    pop     ix
+    ret

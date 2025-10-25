@@ -1,0 +1,27 @@
+	.assume	adl=1
+	.section .text
+	.global	_outputHighPinID
+
+_outputHighPinID:
+    push    ix
+    ld      ix, 0
+    add     ix, sp
+
+    ld      bc, (ix+6) ; PORTPIN upper 8bit == Px_DR, lower 8bit == pins
+    ld      a, b
+    ld      (direct1), a
+    ld      (direct2), a
+    .db     0xED
+    .db     0x38       ; IN0 A, (n)
+direct1:
+    .db     0          ; will be overwritten by actual Px_DR
+
+    or      a, c       ; port value to write
+
+    .db     0xED
+    .db     0x39       ; OUT0 A, (n)
+direct2:
+    .db     0          ; will be overwritten by actual Px_DR
+
+    pop     ix
+    ret

@@ -1,0 +1,34 @@
+	.assume	adl=1
+	.section .text
+  .global _input
+
+_input:
+    push    ix
+    ld      ix, 0
+    add     ix, sp
+
+    ld      d, (ix+6) ; PortID
+    ld      e, (ix+9) ; Pinnumber
+
+    ld      a, d
+    ld      (direct), a
+    .db     0xED
+    .db     0x38       ; IN0 A, (n)
+direct:
+    .db     0          ; will be overwritten by actual Px_DR
+
+    push    af
+    ld      ix, bittable
+    ld      bc, 0
+    ld      c, e
+    add     ix, bc
+    ld      a, (ix+0)  ; pinnumber converted to binary mask
+    ld      c, a
+    pop     af
+
+    and     a, c       ; and with pin argument, and return in A
+    jr      z, end
+    ld      a, 1       ; C boolean 1 == true
+end:
+    pop     ix
+    ret
