@@ -66,11 +66,9 @@ int strcmp(const char *s1, const char *s2)
 int strncmp(const char *s1, const char *s2, size_t n)
             __attribute__((nonnull(1, 2)));
 
-/* Not part of standard library and don't have version for
-in CE toolkit used ROM
 int strcasecmp(const char *s1, const char *s2)
                __attribute__((nonnull(1, 2)));
-*/
+
 int strncasecmp(const char *s1, const char *s2, size_t n)
                 __attribute__((nonnull(1, 2)));
 

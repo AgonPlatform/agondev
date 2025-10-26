@@ -1,7 +1,10 @@
 	.assume	adl=1
-
 	.section	.text
 	.global	_strcasecmp
+	.global	_strncasecmp
+	.extern	_tolower.internal
+	.local	_strcasecmp.mismatch
+	.local	_strcasecmp.done
 
 _strcasecmp:
 	pop	iy
@@ -28,9 +31,6 @@ _strcasecmp:
 	cp	a, b
 	jr	c, .loop_nonnull
 
-	.section	.text
-	.local	_strcasecmp.mismatch
-	.local	_strcasecmp.done
 _strcasecmp.mismatch:
 	ld	l, (hl)
 	call	_tolower.internal
@@ -44,8 +44,6 @@ _strcasecmp.done:
 	ld	l, a
 	jp	(iy)
 
-	.section	.text
-	.global	_strncasecmp
 _strncasecmp:
 	pop	iy
 	pop	de
@@ -83,5 +81,3 @@ _strncasecmp:
 	jr	z, .checkcase
 	scf
 	ret
-
-	.extern	_tolower.internal
