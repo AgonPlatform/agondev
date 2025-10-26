@@ -20,6 +20,8 @@ tar xfvz agondev-<platform_architecture>.tar.gz
 export PATH=/<insert path to agondev>/bin:$PATH
 ```
 
+If you are on a Mac, you need to explicitly approve all binaries under the ./bin directory. I have supplied the 'macos_remove_quarantine.sh' script to handle this for you.
+
 ## Project structure
 A minimum project consists of a Makefile and at least a single source file in the 'src' subdirectory:
 ``` 
