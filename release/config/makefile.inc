@@ -20,7 +20,7 @@ TARGET=ez80-none-elf
 # Tools and flags
 ## Compiler
 CC=$(TOOLBINDIR)/ez80-none-elf-clang
-CFLAGS=-target $(TARGET) -Oz -Wa,-march=$(ARCH) -I $(INCLUDEDIR)
+CFLAGS=-target $(TARGET) -DAGONDEV -Oz -Wa,-march=$(ARCH) -I $(INCLUDEDIR)
 
 ## Assembler
 ASM=$(TOOLBINDIR)/ez80-none-elf-as
