@@ -74,14 +74,10 @@ FP=$(LIBDIRECTORY)/libfp.a
 libs: libc crt agon fp
 all: $(RELEASEBINDIR) libs
 	@echo [ Copying binaries to release/bin ]
+	$(shell cp ./llvm-build/ez80-none-elf/bin/ez80-none-elf-* ./release/bin/)
+	$(shell strip ./release/bin/*)
 	$(shell cp ./llvm-build/ez80-none-elf/bin/clang ./release/bin/ez80-none-elf-clang)
 	$(shell strip ./release/bin/ez80-none-elf-clang)
-	$(shell cp ./llvm-build/ez80-none-elf/bin/ez80-none-elf-as ./release/bin/)
-	$(shell strip ./release/bin/ez80-none-elf-as)
-	$(shell cp ./llvm-build/ez80-none-elf/bin/ez80-none-elf-ld ./release/bin/)
-	$(shell strip ./release/bin/ez80-none-elf-as)
-	$(shell cp ./llvm-build/ez80-none-elf/bin/ez80-none-elf-ar ./release/bin/)
-	$(shell strip ./release/bin/ez80-none-elf-ar)
 
 	@echo [ Making agondev tools ]
 	$(shell cd src/tools/agondev-setname;make clean;make;cp bin/* ../../../release/bin;make clean)
