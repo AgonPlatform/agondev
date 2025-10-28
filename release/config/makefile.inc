@@ -106,6 +106,14 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.src
 	@mkdir -p $(dir $@)
 	$(V)$(ASM) $(ASMFLAGS) $< -o $@
 
+#upload: $(BINDIR) $(BINARY)
+upload: all
+ifeq ($(SERIALPORT),)
+	@echo [No SERIALPORT in Makefile]
+endif
+	@echo [Starting hexload-send]
+	@hexload-send $(BINARY) $(SERIALPORT) $(SERIALSPEED)
+
 # Directories to create
 $(BINDIR):
 	@mkdir $(BINDIR)

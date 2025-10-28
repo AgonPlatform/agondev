@@ -78,6 +78,7 @@ all: $(RELEASEBINDIR) libs
 	$(shell strip ./release/bin/*)
 	$(shell cp ./llvm-build/ez80-none-elf/bin/clang ./release/bin/ez80-none-elf-clang)
 	$(shell strip ./release/bin/ez80-none-elf-clang)
+	$(shell cp ./dist/hexload-send ./release/bin/) 
 
 	@echo [ Making agondev tools ]
 	$(shell cd src/tools/agondev-setname;make clean;make;cp bin/* ../../../release/bin;make clean)
