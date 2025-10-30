@@ -3,8 +3,8 @@
 #include <stdbool.h>
 
 #include <agon/vdp_vdu.h>
-#include "agon/vdp_keyboard.h"
-#include "agon/timer.h"
+#include <agon/vdp_keyboard.h>
+#include <agon/timer.h>
 
 void print_bits(uint8_t input) {
     for (int i = 7; i >= 0; i--) {
