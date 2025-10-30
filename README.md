@@ -82,7 +82,7 @@ make clean; make
 
 Check out the provided example programs, which have a slightly different top-level Makefile with options that are similar to what AgDev provides.
 
-## Uploading programs
+## Uploading programs (version 0.18+)
 Requires the installation of the hexload client on the Agon - please see [https://github.com/AgonPlatform/agon-hexload][https://github.com/AgonPlatform/agon-hexload] for details.
 
 ```
