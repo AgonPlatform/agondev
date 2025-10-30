@@ -109,10 +109,11 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.src
 #upload: $(BINDIR) $(BINARY)
 upload: all
 ifeq ($(SERIALPORT),)
-	@echo [No SERIALPORT in Makefile]
+	@echo [No SERIALPORT in Makefile - autodetect]
+	@SERIALPORT=auto
 endif
 	@echo [Starting hexload-send]
-	@hexload-send $(BINARY) $(SERIALPORT) $(SERIALSPEED)
+	@hexload-send $(BINARY) $(SERIALPORT) $(BAUDRATE)
 
 # Directories to create
 $(BINDIR):

@@ -82,6 +82,15 @@ make clean; make
 
 Check out the provided example programs, which have a slightly different top-level Makefile with options that are similar to what AgDev provides.
 
+## Uploading programs
+Requires the installation of the hexload client on the Agon - please see [https://github.com/AgonPlatform/agon-hexload][https://github.com/AgonPlatform/agon-hexload] for details.
+
+```
+make upload
+```
+Uploads the compiled program to the Agon using the hexload protocol. There is no need to separately install a sending script; this is part of the AgonDev toolchain.
+Unless the SERIALPORT parameter is specified in the project Makefile, the USB/Serial port is autodetected from the sending system. An error is given if multiple serial ports are detected.
+
 ## Minimal project Makefile
 Open your favorite editor, enter the following text and save it as 'Makefile' in your project's root directory:
 
@@ -100,6 +109,8 @@ The following options can be set in the user's project Makefile:
 - LDHAS_ARG_PROCESSING - by default set to 0, this will make use of simple commandline processing of program arguments. If set to 1, this will make use of additional code to process redirection and quoting.
 - LDHAS_EXIT_HANDLER - by default set to 0. Set this to 1 to print out an error text based on the program's exit code, before returning to MOS. 
 - LIBS - sets flags to link with user-supplied static libraries in the <project_dir>/lib directory. For example: the link with the 'secret' library file 'libsecret.a', set LIBS=-lsecret. Multiple libraries can be listed for linking, for example LIBS=-lsecret -ltest
+- SERIALPORT - sets the USB/Serial port to use for uploading to the Agon using the hexload protocol. This can be set to 'auto', which is the default when this option isn't specified.
+- BAUDRATE - sets the USB/Serial port's baudrate to an other value than the default 115200.
 
 ## Creating static libraries
 Create a separate project for each library, with all the required source files that go into it, and set the NAME option in the Makefile to the required <b>library basename</b>
