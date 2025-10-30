@@ -131,7 +131,7 @@ The compiled library must be manually copied to another project's lib directory 
 
 ## Toolchain components
 - Clang 15.0 C/C++ compiler, emitting ez80 code, forked from (https://github.com/CE-Programming/llvm-project) and patched to output GNU-AS compatible assembly syntax
-- GNU AS assembler, compiled to accept ez80 syntax and output ez80-none-elf objects
+- GNU AS assembler, compiled to accept ez80 syntax and output ez80-none-elf objects. Please check the [official manual](https://sourceware.org/binutils/docs-2.25/as/index.html) for syntax and assembler directives
 - GNU LD linker, compiled to link ez80-none-elf objects
 - A significant portion of code from the [AgDev](https://github.com/pcawte/AgDev) toolchain, which is an extension of the [CEDev](https://ce-programming.github.io/toolchain/index.html) toolchain to target the Agon platform
 
