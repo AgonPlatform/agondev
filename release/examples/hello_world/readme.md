@@ -1,3 +1,3 @@
-### Hello World Demo
+### Hello World Example
 
-Displays the text `Hello, World!` on the calculator.
+Prints the text `Hello, World!` to the Agon's display.
