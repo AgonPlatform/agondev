@@ -411,7 +411,7 @@ extern int      mos_readvarval(char * namePattern, void * value, char ** actualN
 extern uint8_t  mos_gsinit(const char *source, char **transinfo_ptr, uint8_t flags); // MOS 3.0+
 extern uint8_t  mos_gsread(char *char_read, char **transinfo_ptr); // MOS 3.0+
 extern int      mos_gstrans(char * source, char * dest, int destLen, int * read, uint8_t flags); // MOS 3.0+
-extern int      mos_substituteargs(char * template, char * args, char * dest, int length, uint8_t flags); // MOS 3.0+
+extern int      mos_substituteargs(char * tpl, char * args, char * dest, int length, uint8_t flags); // MOS 3.0+
 
 // File path functions
 extern int      mos_resolvepath(char * filepath, char * resolvedPath, int * length, uint8_t * index, DIR * dir, uint8_t flags); // MOS 3.0+

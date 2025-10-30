@@ -4,7 +4,7 @@
 	.global	_mos_substituteargs
 _mos_substituteargs:
     ld      c,  0
-    ld      b,  0x0C            ; mos_substituteargs - int substituteArgs(char * template, char * args, char * dest, int length, BYTE flags);
+    ld      b,  0x0C            ; mos_substituteargs - int substituteArgs(char * tpl, char * args, char * dest, int length, BYTE flags);
     ld      a,  mos_getfunction
     rst.lil 08h
     or      a,  a
