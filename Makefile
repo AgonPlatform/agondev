@@ -40,6 +40,16 @@ LIBC_COBJS=$(patsubst $(LIBC_SRCDIR)/%.c, $(LIBC_OBJDIR)/%.o, $(LIBC_CSRCS))
 LIBC_OBJS=$(LIBC_ASMOBJS) $(LIBC_COBJS)
 LIBC=$(LIBDIRECTORY)/libc.a
 
+# LIBCXX LIBRARY
+LIBCXX_SRCDIR=./src/lib/libcxx
+LIBCXX_OBJDIR=$(OBJTOPDIR)/lib/libcxx
+LIBCXX_ASMSRCS=$(wildcard $(LIBCXX_SRCDIR)/*.src)
+LIBCXX_CSRCS=$(wildcard $(LIBCXX_SRCDIR)/*.c)
+LIBCXX_ASMOBJS=$(patsubst $(LIBCXX_SRCDIR)/%.src, $(LIBCXX_OBJDIR)/%.o, $(LIBCXX_ASMSRCS))
+LIBCXX_COBJS=$(patsubst $(LIBCXX_SRCDIR)/%.c, $(LIBCXX_OBJDIR)/%.o, $(LIBCXX_CSRCS))
+LIBCXX_OBJS=$(LIBCXX_ASMOBJS) $(LIBCXX_COBJS)
+LIBCXX=$(LIBDIRECTORY)/libcxx.a
+
 # CRT LIBRARY
 CRT_SRCDIR=./src/lib/crt
 CRT_OBJDIR=$(OBJTOPDIR)/lib/crt
@@ -71,7 +81,7 @@ FP_OBJS=$(FP_ASMOBJS) $(FP_COBJS)
 FP=$(LIBDIRECTORY)/libfp.a
 
 # Default rule
-libs: libc crt agon fp
+libs: libc libcxx crt agon fp
 all: $(RELEASEBINDIR) libs
 	@echo [ Copying binaries to release/bin ]
 	$(shell cp ./llvm-build/ez80-none-elf/bin/ez80-none-elf-* ./release/bin/)
@@ -93,6 +103,7 @@ all: $(RELEASEBINDIR) libs
 	@echo [ Done ]
 # Targets
 libc: $(OBJTOPDIR) $(LIBC_OBJDIR) $(LIBDIRECTORY) $(LIBC_OBJS) $(LIBC)
+libcxx: $(OBJTOPDIR) $(LIBCXX_OBJDIR) $(LIBDIRECTORY) $(LIBCXX_OBJS) $(LIBCXX)
 crt: $(OBJTOPDIR) $(CRT_OBJDIR) $(LIBDIRECTORY) $(CRT_OBJS) $(CRT)
 agon: $(OBJTOPDIR) $(RELEASEDIR) $(AGON_OBJDIR) $(LIBDIRECTORY) $(AGON_OBJS) $(AGON)
 fp: $(OBJTOPDIR) $(FP_OBJDIR) $(LIBDIRECTORY) $(FP_OBJS) $(FP)
@@ -106,6 +117,17 @@ $(LIBC_OBJDIR)/%.o: $(LIBC_SRCDIR)/%.src
 	$(ASM) $(ASMFLAGS) $< -o $@
 # Compile each .c file into .o file
 $(LIBC_OBJDIR)/%.o: $(LIBC_SRCDIR)/%.c
+	$(CC) $(CFLAGS) $< -c -o $@
+
+# Link and ranlib the libcxx library
+$(LIBCXX):$(LIBCXX_OBJS)
+	@echo [ Creating LIBCXX library ]
+	$(AR) $(ARFLAGS) $(LIBCXX) $(LIBCXX_OBJS)
+# Assemble each .src file into .o file
+$(LIBCXX_OBJDIR)/%.o: $(LIBCXX_SRCDIR)/%.src
+	$(ASM) $(ASMFLAGS) $< -o $@
+# Compile each .c file into .o file
+$(LIBCXX_OBJDIR)/%.o: $(LIBCXX_SRCDIR)/%.c
 	$(CC) $(CFLAGS) $< -c -o $@
 
 # Link and ranlib the crt library
@@ -145,6 +167,7 @@ $(OBJTOPDIR):
 	mkdir -p $(OBJTOPDIR)
 	mkdir -p $(OBJTOPDIR)/lib
 	mkdir -p $(OBJTOPDIR)/lib/libc
+	mkdir -p $(OBJTOPDIR)/lib/libcxx
 	mkdir -p $(OBJTOPDIR)/lib/crt
 	mkdir -p $(OBJTOPDIR)/lib/agon
 	mkdir -p $(OBJTOPDIR)/lib/fp
