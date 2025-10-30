@@ -2,6 +2,7 @@
 
 BUILD_LLVM=yes
 BUILD_BINUTILS=yes
+BUILD_HEXLOADSEND=yes
 
 #Directories
 INSTALLDIR=$(pwd)/llvm-build/ez80-none-elf
@@ -34,6 +35,11 @@ fi
 if ! command -v curl &> /dev/null
 then
     echo "Error: curl is not installed or not in PATH."
+    exit 1
+fi
+if ! command -v python3 &> /dev/null
+then
+    echo "Error: python3 is not installed or not in PATH."
     exit 1
 fi
 
@@ -93,4 +99,14 @@ if [ "${BUILD_BINUTILS}" == "yes" ]; then
   popd >/dev/null
 else
   echo Configured to skip BINUTILS build
+fi
+if [ "${BUILD_HEXLOADSEND}" == "yes" ]; then
+  echo Building hexload send binary
+  python3 -m venv venv
+  source venv/bin/activate
+  pip install pyserial crcmod intelhex
+  pip install pyinstaller
+  pyinstaller -F ./scripts/hexload-send.py
+  deactivate
+  echo Done building hexload send binary
 fi
