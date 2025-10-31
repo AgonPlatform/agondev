@@ -20,7 +20,8 @@ TARGET=ez80-none-elf
 # Tools and flags
 ## Compiler
 CC=$(TOOLBINDIR)/ez80-none-elf-clang
-CFLAGS=-target $(TARGET) -DAGONDEV -Oz -Wa,-march=$(ARCH) -I $(INCLUDEDIR)
+CFLAGS=-nostdinc -isystem $(INCLUDEDIR) -target $(TARGET) -DAGONDEV -Oz -Wa,-march=$(ARCH) -fno-threadsafe-statics
+CXXFLAGS=$(CFLAGS) -isystem $(INCLUDEDIR)/c++
 
 ## Assembler
 ASM=$(TOOLBINDIR)/ez80-none-elf-as
@@ -89,7 +90,7 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.c
 $(OBJDIR)/%.o: $(SRCDIR)/%.cpp
 	@echo [compiling $<]
 	@mkdir -p $(dir $@)
-	$(V)$(CC) $(CFLAGS) $< -c -o $@
+	$(V)$(CC) $(CXXFLAGS) $< -c -o $@
 # Assemble each .s file into .o file
 $(OBJDIR)/%.o: $(SRCDIR)/%.s
 	@echo [assembling $<]
