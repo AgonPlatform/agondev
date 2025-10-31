@@ -50,6 +50,8 @@ ARFLAGS=rcs
 SRCDIR=src
 OBJDIR=obj
 BINDIR=bin
+# Intermediate linker binary - no program name set yet
+LINKBINARY=$(BINDIR)/$(NAME).noname.bin
 # Final binary
 BINARY=$(BINDIR)/$(NAME).bin
 # Final library
@@ -64,10 +66,19 @@ OBJS=$(patsubst $(SRCDIR)/%.asm, $(OBJDIR)/%.o, $(shell find $(SRCDIR) -name '*.
 
 # Default rule
 all: $(BINDIR) $(BINARY)
+	@echo [Done]
+
+# Final binary
+$(BINARY): $(BINDIR) $(LINKBINARY)
 	@echo [Start address $(RAM_START)]
 	@echo [Setting name \'$(NAME).bin\' in binary]
+	@cp $(LINKBINARY) $(BINARY)
 	$(V)$(SETPROGNAME) $(BINARY) >/dev/null
-	@echo [Done]
+
+# Temporary 'program.bin' linked binary
+$(LINKBINARY): $(BINDIR) $(OBJS)
+	@echo [Linking $(LINKBINARY)]
+	$(V)$(LINKER) $(LINKERFLAGS)$@ $(OBJS) $(LINKERLIBFLAGS)
 
 # Create a library of all project objects
 lib: $(BINDIR) $(LIBRARY)
@@ -76,10 +87,6 @@ lib: $(BINDIR) $(LIBRARY)
 $(LIBRARY):$(OBJS)
 	@echo [Creating library $(LIBRARY)]
 	$(V)$(AR) $(ARFLAGS) $(LIBRARY) $(OBJS)
-
-$(BINARY):$(OBJS)
-	@echo [Linking $(BINARY)]
-	$(V)$(LINKER) $(LINKERFLAGS)$@ $(OBJS) $(LINKERLIBFLAGS)
 
 # Compile each .c file into .o file
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
@@ -107,8 +114,7 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.src
 	@mkdir -p $(dir $@)
 	$(V)$(ASM) $(ASMFLAGS) $< -o $@
 
-#upload: $(BINDIR) $(BINARY)
-upload: all
+upload: $(BINDIR) $(BINARY)
 ifeq ($(SERIALPORT),)
 	@echo [No SERIALPORT in Makefile - autodetect]
 	@SERIALPORT=auto
