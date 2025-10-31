@@ -9,6 +9,7 @@ V = @
 AGONDEV_TOOLCHAIN ?= $(shell agondev-config --prefix)
 TOOLBINDIR=$(AGONDEV_TOOLCHAIN)/bin
 INCLUDEDIR=$(AGONDEV_TOOLCHAIN)/include
+PROJECTINCLUDEDIR=./include
 LINKERCONFIG=$(AGONDEV_TOOLCHAIN)/config/linker.conf
 LIBDIR=$(AGONDEV_TOOLCHAIN)/lib
 PROJECTLIBDIR=./lib
@@ -20,7 +21,7 @@ TARGET=ez80-none-elf
 # Tools and flags
 ## Compiler
 CC=$(TOOLBINDIR)/ez80-none-elf-clang
-CFLAGS=-nostdinc -isystem $(INCLUDEDIR) -target $(TARGET) -DAGONDEV -Oz -Wa,-march=$(ARCH) -fno-threadsafe-statics
+CFLAGS=-nostdinc -I$(PROJECTINCLUDEDIR) -isystem $(INCLUDEDIR) -target $(TARGET) -DAGONDEV -Oz -Wa,-march=$(ARCH) -fno-threadsafe-statics
 CXXFLAGS=$(CFLAGS) -isystem $(INCLUDEDIR)/c++
 
 ## Assembler
