@@ -2,9 +2,12 @@
 .vscode/
 llvm-project/
 llvm-build/
+build/
+dist/
 obj/
 release/bin
 release/lib
+hexload-send.spec
 
 # MacOS
 ._*
