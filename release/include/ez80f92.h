@@ -1,6 +1,8 @@
 #ifndef EZ80F92_H
 #define EZ80F92_H
 
+#include <stdint.h>
+
 #define IO(addr) (*((volatile uint8_t __attribute__((address_space(3)))*)(addr)))
 
 #define TMR0_CTL        0x80
