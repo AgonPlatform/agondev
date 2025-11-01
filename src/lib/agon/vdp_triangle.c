@@ -1,14 +1,8 @@
 #include <agon/vdp_vdu.h>
-#include <stdio.h>
-#include <mos_api.h>
-#include <stdbool.h>
-#include <stdlib.h>
 
-static VDU_A_CMD_x_y vdu_triangle = { 25, 0x50, 0, 0 };
-
-void vdp_triangle( int x, int y )
-{
-	vdu_triangle.x = x;
-	vdu_triangle.y = y;
-	VDP_PUTS( vdu_triangle );
+void vdp_triangle( int x1, int y1, int x2, int y2, int x3, int y3 ) {
+    vdp_move_to(x1,y1);
+    vdp_line_to(x2,y2);
+    vdp_line_to(x3,y3);
+    vdp_line_to(x1,y1);
 }
