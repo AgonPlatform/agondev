@@ -7,7 +7,7 @@ void vdp_circle( int x, int y, int radius ) {
 	vdu_circle.x = x;
 	vdu_circle.y = y;
 	vdu_radius.x = radius;
-	vdu_radius.y = radius;
+	vdu_radius.y = 0;
 	VDP_PUTS( vdu_circle );
 	VDP_PUTS( vdu_radius );
 }
