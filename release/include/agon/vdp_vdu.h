@@ -311,6 +311,8 @@ void vdp_filled_parallelogram( int x1, int y1, int x2, int y2, int x3, int y3); 
 void vdp_copy_rectangle( int src_x1, int src_y1, int src_x2, int src_y2, int dest_x, int dest_y );
 void vdp_move_rectangle( int src_x1, int src_y1, int src_x2, int src_y2, int dest_x, int dest_y );
 
+void vdp_fill_path(const int* path, int pathsize); // Fill path using coordinates in the given array. Send the entire size of the array using sizeof(path)
+
 // VDU 26: Reset graphics and text viewports
 void vdp_reset_viewports( void );
 // VDU 27, char: Output character to screen
