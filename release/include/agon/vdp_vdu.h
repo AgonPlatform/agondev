@@ -259,6 +259,10 @@ void vdp_move_to( int x, int y );
 
 void vdp_line_to( int x, int y );
 void vdp_line(int x1, int y1, int x2, int y2); // Line between (x1,y1) and (x2,y2), no need to first do vdp_move_to
+void vdp_line_fill_leftright_to_nonbg( int x, int y ); // Line fill left and right to non-background (from (x,y))
+void vdp_line_fill_leftright_to_fg( int x, int y ); // Line fill left and right to foreground (from (x,y))
+void vdp_line_fill_right_to_bg( int x, int y ); // Line fill right to background (from (x,y))
+void vdp_line_fill_right_to_nonfg( int x, int y ); // Line fill right to non-foreground (from (x,y))
 
 void vdp_dotdash_line_to( int x, int y );
 void vdp_dotdash_line(int x1, int y1, int x2, int y2); // Dotdash line between (x1,y1) and (x2,y2), no need to first do vdp_move_to
