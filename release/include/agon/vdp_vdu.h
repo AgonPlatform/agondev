@@ -11,6 +11,26 @@ extern "C" {
 
 #define VDP_PUTS(S) mos_puts( (char *)&(S), sizeof(S), 0)
 
+// DEFAULT COLOR INDEXES
+enum {
+    BLACK = 0,
+    RED,
+    GREEN,
+    YELLOW,
+    BLUE,
+    MAGENTA,
+    CYAN,
+    WHITE,
+    BRIGHT_BLACK,
+    BRIGHT_RED,
+    BRIGHT_GREEN,
+    BRIGHT_YELLOW,
+    BRIGHT_BLUE,
+    BRIGHT_MAGENTA,
+    BRIGHT_CYAN,
+    BRIGHT_WHITE
+};
+
 // Different patterns for the VDU commands
 // - when defining VDU commands the values A, B and CMD should be set in the structure initialiser
 // - values N (8-bit), R (8-bit), C (8-bit), X (16-bit) and Y (16-bit) should be set in the code 
