@@ -1,4 +1,4 @@
-### Example of Graphic Primatives
+### Example of Graphic Primitives
 
 Displays:
 1) points
@@ -6,6 +6,6 @@ Displays:
 3) rectangles
 4) circles
 5) triangles
-6) parallograms
+6) parallellograms
 
 Press ESC to exit the program.
