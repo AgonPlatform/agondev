@@ -6,7 +6,7 @@
 
 static VDU_A_c_r vdu_set_graphics_colour = { 18, 0, 0 };
 
-void vdp_set_graphics_colour( int mode, int colour )
+void vdp_set_graphics_colour( uint8_t mode, uint8_t colour )
 {
 	vdu_set_graphics_colour.c = mode;
 	vdu_set_graphics_colour.r = colour;

@@ -11,6 +11,26 @@ extern "C" {
 
 #define VDP_PUTS(S) mos_puts( (char *)&(S), sizeof(S), 0)
 
+// DEFAULT COLOR INDEXES
+enum {
+    BLACK = 0,
+    RED,
+    GREEN,
+    YELLOW,
+    BLUE,
+    MAGENTA,
+    CYAN,
+    WHITE,
+    BRIGHT_BLACK,
+    BRIGHT_RED,
+    BRIGHT_GREEN,
+    BRIGHT_YELLOW,
+    BRIGHT_BLUE,
+    BRIGHT_MAGENTA,
+    BRIGHT_CYAN,
+    BRIGHT_WHITE
+};
+
 // Different patterns for the VDU commands
 // - when defining VDU commands the values A, B and CMD should be set in the structure initialiser
 // - values N (8-bit), R (8-bit), C (8-bit), X (16-bit) and Y (16-bit) should be set in the code 
@@ -209,8 +229,21 @@ void vdp_clear_graphics( void );
 #define vdp_clg() vdp_clear_graphics()
 // VDU 17, colour: Set text colour
 void vdp_set_text_colour( int colour );
+
 // VDU 18, mode, colour: Set graphics colour (GCOL mode, colour)
-void vdp_set_graphics_colour( int mode, int colour );
+// Used as GCOL 'mode' to the vdp_set_graphics_xxx calls
+#define GCOLMODE_COLOUR	        0 // Set on-screen pixel to target colour value
+#define GCOLMODE_OR				1 // OR value with the on-screen pixel
+#define GCOLMODE_AND			2 // AND value with the on-screen pixel
+#define GCOLMODE_EOR			3 // EOR value with the on-screen pixel
+#define GCOLMODE_INVERT			4 // Invert the on-screen pixel
+#define GCOLMODE_NOP			5 // No operation
+#define GCOLMODE_AND_INV_COLOUR	6 // AND the inverse of the specified colour with the on-screen pixel
+#define GCOLMODE_OR_INV_COLOUR	7 // OR the inverse of the specified colour with the on-screen pixel
+void vdp_set_graphics_colour( uint8_t mode, uint8_t colour ); // colour 0-127 fg, 128-255 bg
+void vdp_set_graphics_fg_colour( uint8_t mode, uint8_t colour );
+void vdp_set_graphics_bg_colour( uint8_t mode, uint8_t colour );
+
 #define vdp_gcol( M, C ) vdp_set_graphics_colour( M, C )
 // VDU 19, l, p, r, g, b: Define logical colour
 void vdp_define_colour(int logical, int physical, int red, int green, int blue );
@@ -227,8 +260,6 @@ void vdp_redefine_character( int char_num, uint8_t b0, uint8_t b1, uint8_t b2, u
 // -- see below --
 // VDU 23, 1, n: Cursor control
 void vdp_cursor_enable( bool flag );
-// VDU 23, 6, n1, n2, n3, n4, n5, n6, n7, n8: Set dotted line pattern
-void vdp_set_dotted_line_pattern( uint8_t b0, uint8_t b1, uint8_t b2, uint8_t b3, uint8_t b4, uint8_t b5, uint8_t b6, uint8_t b7 );
 // VDU 23, 7, extent, direction, movement: Scroll
 void vdp_scroll_screen(int direction, int speed);
 void vdp_scroll_screen_extent( int extent, int direction, int speed );
@@ -241,15 +272,44 @@ void vdp_set_line_thickness( int pixels );
 
 // VDU 24, left; bottom; right; top;: Set graphics viewport
 void vdp_set_graphics_viewport( int left, int bottom, int right, int top );
+
 //VDU 25, mode, x; y;: PLOT command
 void vdp_plot( int plot_mode, int x, int y );
 void vdp_move_to( int x, int y );
+
 void vdp_line_to( int x, int y );
+void vdp_line(int x1, int y1, int x2, int y2); // Line between (x1,y1) and (x2,y2), no need to first do vdp_move_to
+void vdp_line_fill_leftright_to_nonbg( int x, int y ); // Line fill left and right to non-background (from (x,y))
+void vdp_line_fill_leftright_to_fg( int x, int y ); // Line fill left and right to foreground (from (x,y))
+void vdp_line_fill_right_to_bg( int x, int y ); // Line fill right to background (from (x,y))
+void vdp_line_fill_right_to_nonfg( int x, int y ); // Line fill right to non-foreground (from (x,y))
+
+void vdp_dotdash_line_to( int x, int y );
+void vdp_dotdash_line(int x1, int y1, int x2, int y2); // Dotdash line between (x1,y1) and (x2,y2), no need to first do vdp_move_to
+void vdp_set_dotdash_line_pattern( uint8_t b0, uint8_t b1, uint8_t b2, uint8_t b3, uint8_t b4, uint8_t b5, uint8_t b6, uint8_t b7 ); // VDU 23, 6, n1, n2, n3, n4, n5, n6, n7, n8: Set dotted line pattern
+void vdp_set_dotdash_pattern_length( int n ); // VDU 23, 0, &F2, n: Set dot-dash pattern length
+
 void vdp_point( int x, int y );
-void vdp_triangle( int x, int y );
-void vdp_circle_radius( int x, int y );
-void vdp_circle( int x, int y );
-void vdp_filled_rect( int x, int y );
+
+void vdp_triangle( int x1, int y1, int x2, int y2, int x3, int y3 ); // Outline triangle between (x1,y1) - (x2,y2) - (x3,y3)
+void vdp_filled_triangle( int x1, int y1, int x2, int y2, int x3, int y3 ); // Filled triangle between (x1,y1) - (x2,y2) - (x3,y3)
+
+void vdp_circle( int x, int y, int radius ); // Outline circle centered at (x,y), with a given radius
+void vdp_filled_circle( int x, int y, int radius ); // Filled circle centered at (x,y), with a given radius
+
+void vdp_arc( int centre_x, int centre_y, int x1, int y1, int x2, int y2); // Draws an ARC using centre (centre_x, centre_y), and two points on the circumference of a circle
+void vdp_segment( int centre_x, int centre_y, int x1, int y1, int x2, int y2); // Draws a circle segment using centre (centre_x, centre_y), and two points on the circumference of a circle
+void vdp_sector( int centre_x, int centre_y, int x1, int y1, int x2, int y2); // Draws an circle sector using centre (centre_x, centre_y), and two points on the circumference of a circle
+
+void vdp_rectangle( int x1, int y1, int x2, int y2 ); // Outline rectangle between (x1,y1) and (x2,y2)
+void vdp_filled_rectangle( int x1, int y1, int x2, int y2 ); // Filled rectangle between (x1,y1) and (x2,y2)
+
+void vdp_parallelogram( int x1, int y1, int x2, int y2, int x3, int y3); // Outline parallelogram - use three SEQUENTIAL points (A-B-C, B-C-D, or C-D-A)
+void vdp_filled_parallelogram( int x1, int y1, int x2, int y2, int x3, int y3); // Filled parallelogram. Point 4 will be calculated by VDP
+
+// Move/copy rectangles to new (top-left) coordinate:
+void vdp_copy_rectangle( int src_x1, int src_y1, int src_x2, int src_y2, int dest_x, int dest_y );
+void vdp_move_rectangle( int src_x1, int src_y1, int src_x2, int src_y2, int dest_x, int dest_y );
 
 // VDU 26: Reset graphics and text viewports
 void vdp_reset_viewports( void );
@@ -349,6 +409,9 @@ void vdp_move_graphics_origin_and_viewport( void );
 // -- see below --
 // VDU 23, 0, &C0, n: Turn logical screen scaling on and off
 void vdp_logical_scr_dims( bool flag );
+void vdp_set_pixel_coordinates(void); // VDU 23, 0, &C0, 0
+void vdp_set_logical_coordinates(void); // VDU 23, 0 &C0, 1
+
 // VDU 23, 0, &C1, n: Switch legacy modes on or off
 void vdp_legacy_modes( bool on );
 void vdp_get_scr_dims( bool );
@@ -358,8 +421,6 @@ void vdp_swap( void );
 // -- see below --
 // VDU 23, 0, &CA: Flush current drawing commands
 void vdp_flush_drawing_commands( void );
-// VDU 23, 0, &F2, n: Set dot-dash pattern length
-void vdp_set_dash_pattern_length( int n );
 // VDU 23, 0, &FE, n: Console mode
 void vdp_console_mode( bool on );
 // VDU 23, 0, &FF: Switch to or resume "terminal mode"
