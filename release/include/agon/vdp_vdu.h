@@ -287,6 +287,10 @@ void vdp_filled_rectangle( int x1, int y1, int x2, int y2 ); // Filled rectangle
 void vdp_parallelogram( int x1, int y1, int x2, int y2, int x3, int y3); // Outline parallelogram - use three SEQUENTIAL points (A-B-C, B-C-D, or C-D-A)
 void vdp_filled_parallelogram( int x1, int y1, int x2, int y2, int x3, int y3); // Filled parallelogram. Point 4 will be calculated by VDP
 
+// Move/copy rectangles to new (top-left) coordinate:
+void vdp_copy_rectangle( int src_x1, int src_y1, int src_x2, int src_y2, int dest_x, int dest_y );
+void vdp_move_rectangle( int src_x1, int src_y1, int src_x2, int src_y2, int dest_x, int dest_y );
+
 // VDU 26: Reset graphics and text viewports
 void vdp_reset_viewports( void );
 // VDU 27, char: Output character to screen
