@@ -14,3 +14,4 @@ _mos_isdirectory:
     ld      sp, ix
     pop     ix
     ret
+    

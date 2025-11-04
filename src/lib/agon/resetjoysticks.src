@@ -10,3 +10,4 @@ _resetJoysticks:
     or      a, 0b11110000        ; Set pins PD7 - PD4 as input pin (1), leave PD3 - PD0 as is 
     out0    (PD_DDR), a
     ret
+    

@@ -22,3 +22,4 @@ _vdp_getKeyMap:
 
 	pop ix 				; restore ix from stack
 	ret 				; return
+	
