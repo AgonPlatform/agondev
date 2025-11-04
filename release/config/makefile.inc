@@ -40,7 +40,7 @@ else
 endif
 MEMCONFIG=-defsym=RAM_START=$(RAM_START) -defsym=RAM_SIZE=$(RAM_SIZE)
 LINKERFLAGS=$(MEMCONFIG) $(LINKER_ARG) $(LINKER_EXIT) -Map=$(BINDIR)/$(NAME).map -T $(LINKERCONFIG) --oformat binary -o 
-LINKERLIBFLAGS=-L$(PROJECTLIBDIR) $(LIBS) -L$(LIBDIR) -\( -l c -l cxx -l agon -l crt -l fp -\) 
+LINKERLIBFLAGS=-L$(PROJECTLIBDIR) $(LIBS) -L$(LIBDIR) -l agon 
 SETPROGNAME=$(TOOLBINDIR)/agondev-setname
 
 ## Archiver
