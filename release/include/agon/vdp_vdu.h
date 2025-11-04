@@ -591,6 +591,9 @@ void vdp_adv_create_sprite( int sprite, int bitmap_num, int frames );
 // Command 0: Play note 
 // 	VDU 23, 0, &85, channel, 0, volume, frequency; duration;
 void vdp_audio_play_note( int channel, int volume, int frequency, int duration);
+// 	VDU 23, 0, &85, channel, 0, volume, 0; 0;
+void vdp_audio_play_sample( int channel, int volume);
+
 // Command 1: Status 
 // 	VDU 23, 0, &85, channel, 1
 void vdp_audio_status( int channel );

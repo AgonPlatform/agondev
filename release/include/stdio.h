@@ -83,6 +83,9 @@ char *fgets(char *__restrict str, int num, FILE *__restrict stream);
 
 int remove(const char *fname);
 
+// Not part of stdio, but should have been
+unsigned int fgetsize(FILE *file); // Return the size of an opened file
+
 //void rewind(FILE *stream);
 
 /* standard impls */
