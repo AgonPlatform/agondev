@@ -3,12 +3,6 @@
 	.section	.text
 	.global	__lcmps
 
-.ifdef PREFER_OS_CRT
-
-__lcmps := 0001A8h
-
-.else
-
 __lcmps:
 	push	de
 	ld	d, a
@@ -22,5 +16,3 @@ __lcmps:
 	ld	a, d
 	pop	de
 	ret
-
-.endif

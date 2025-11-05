@@ -3,13 +3,6 @@
 	.section	.text
 	.global	__lmuls, __lmulu
 
-.ifdef PREFER_OS_CRT
-
-__lmuls := 0001C8h
-__lmulu := 0001CCh
-
-.else
-
 __lmuls:
 __lmulu:
 
@@ -92,5 +85,3 @@ Mul_EUHL_AUBC_EUHL:		;--------------+---------------+---------------+-----------
 
 ; (EUHL*AUBC)&0xFFFFFFFF=L*C+(H*C+L*B<<8)+(HLU*C+H*B+L*BCU<<16)+(E*C+HLU*B+H*BCU+L*A<<24)+(E*B+HLU*BCU+H*A<<32)+(E*BCU+HLU*A<<40)+(E*A<<48)&0xFFFFFFFF
 ;			=L*C+(H*C+L*B<<8)+(HLU*C+H*B+L*BCU<<16)+(E*C+HLU*B+H*BCU+L*A<<24)&0xFFFFFFFF
-
-.endif

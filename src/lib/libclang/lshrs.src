@@ -3,12 +3,6 @@
 	.section	.text
 	.global	__lshrs
 
-.ifdef PREFER_OS_CRT
-
-__lshrs := 0001E8h
-
-.else
-
 __lshrs:
 ; Suboptimal for large shift amounts
 ; CC: .if C!=0: C*(15*r(PC)+3*r(SPL)+3*w(SPL)+4)+13*r(PC)+9*r(SPL)+6*w(SPL)+1
@@ -37,5 +31,3 @@ __lshrs.hijack_lshru:
 	pop	bc
 	pop	hl
 	ret
-
-.endif

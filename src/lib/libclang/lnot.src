@@ -3,12 +3,6 @@
 	.section	.text
 	.global	__lnot
 
-.ifdef PREFER_OS_CRT
-
-__lnot := 0001D4h
-
-.else
-
 __lnot:
 	push	af
 	ld	a, e	; a=E
@@ -26,4 +20,3 @@ __lnot:
 	pop	de
 	ret
 
-.endif

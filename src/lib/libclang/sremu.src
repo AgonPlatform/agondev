@@ -3,12 +3,6 @@
 	.section	.text
 	.global	__sremu
 
-.ifdef PREFER_OS_CRT
-
-__sremu := 00023Ch
-
-.else
-
 __sremu:
 ; I: HL=dividend, BC=divisor
 ; O: uhl=HL%BC
@@ -21,5 +15,3 @@ __sremu:
 	ret
 
 	.extern	__sdvrmu
-
-.endif

@@ -3,14 +3,6 @@
 	.section	.text
 	.global	__snot
 
-.ifdef PREFER_OS_CRT
-
-__snot := 000230h
-
-.else
-
 __snot := __inot
 
 	.extern	__inot
-
-.endif

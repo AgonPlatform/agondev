@@ -3,12 +3,6 @@
 	.section	.text
 	.global	__lshl
 
-.ifdef PREFER_OS_CRT
-
-__lshl := 0001E4h
-
-.else
-
 __lshl:
 ; Suboptimal for large shift amounts
 ; CC: .if L!=0: L*(5*r(PC)+1)+9*r(PC)+(ADL?12*r(SPL)+9*w(SPL):8*r(SPS)+6*w(SPS))+1
@@ -27,4 +21,3 @@ __lshl:
 	pop	bc
 	ret
 
-.endif

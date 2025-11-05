@@ -3,12 +3,6 @@
 	.section	.text
 	.global	__ladd
 
-.ifdef PREFER_OS_CRT
-
-__ladd := 00019Ch
-
-.else
-
 __ladd:
 	push	af
 	add	hl, bc
@@ -16,5 +10,3 @@ __ladd:
 	ld	e, a
 	pop	af
 	ret
-
-.endif

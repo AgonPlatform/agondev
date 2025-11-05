@@ -3,12 +3,6 @@
 	.section	.text
 	.global	__idivu
 
-.ifdef PREFER_OS_CRT
-
-__idivu := 000140h
-
-.else
-
 __idivu:
 ; I: UHL=dividend, UBC=divisor
 ; O: uhl=UHL/UBC
@@ -23,5 +17,3 @@ __idivu:
 
 
 	.extern	__idvrmu
-
-.endif

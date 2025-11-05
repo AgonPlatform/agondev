@@ -3,12 +3,6 @@
 	.section	.text
 	.global	__ladd_b
 
-.ifdef PREFER_OS_CRT
-
-__ladd_b := 0001A0h
-
-.else
-
 __ladd_b:
 	push	bc
 	inc.s	bc
@@ -19,5 +13,3 @@ __ladd_b:
 	ret	nc
 	inc	e
 	ret
-
-.endif

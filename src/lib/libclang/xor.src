@@ -3,12 +3,6 @@
 	.section	.text
 	.global	__lxor
 
-.ifdef PREFER_OS_CRT
-
-__lxor := 0001FCh
-
-.else
-
 __lxor:
 ; CC: 28*r(PC)+11*r(SPL)+10*w(SPL)+1
 	push	af
@@ -24,16 +18,8 @@ __lxor:
     db 0x3E ; Only the first byte for opcode <LD A, *>
 	.extern	__ixor
 
-.endif
-
 	.section	.text
 	.global	__ixor
-
-.ifdef PREFER_OS_CRT
-
-__ixor := 000198h
-
-.else
 
 __ixor:
 ; CC: 24*r(PC)+11*r(SPL)+10*w(SPL)+1
@@ -61,5 +47,3 @@ __ixor:
 	ld	l, a
 	pop	af
 	ret
-
-.endif

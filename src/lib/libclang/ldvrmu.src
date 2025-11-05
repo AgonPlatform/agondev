@@ -8,12 +8,6 @@
 ;;; u32div_t _ldvrmu(uint32_t dividend, uint32_t divisor) {
 	.global	__ldvrmu
 
-.ifdef PREFER_OS_CRT
-
-__ldvrmu := 0001BCh
-
-.else
-
 __ldvrmu:
 .if 1
 ; I: EUHL=dividend, AUBC=divisor
@@ -124,4 +118,3 @@ __ldvrmu:
 
 .endif
 
-.endif

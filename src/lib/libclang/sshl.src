@@ -3,14 +3,6 @@
 	.section	.text
 	.global	__sshl
 
-.ifdef PREFER_OS_CRT
-
-__sshl := 000240h
-
-.else
-
 __sshl := __ishl
 
 	.extern	__ishl
-
-.endif

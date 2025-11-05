@@ -3,12 +3,6 @@
 	.section	.text
 	.global	__lcmpu
 
-.ifdef PREFER_OS_CRT
-
-__lcmpu := 0001ACh
-
-.else
-
 __lcmpu:
 	cp	a, e
 	ccf
@@ -17,5 +11,3 @@ __lcmpu:
 	sbc	hl, bc
 	add	hl, bc
 	ret
-
-.endif

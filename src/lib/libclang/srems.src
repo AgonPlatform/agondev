@@ -3,12 +3,6 @@
 	.section	.text
 	.global	__srems
 
-.ifdef PREFER_OS_CRT
-
-__srems := 000238h
-
-.else
-
 __srems:
 ; I: HL=dividend, BC=divisor
 ; O: uhl=HL%BC
@@ -24,5 +18,3 @@ __srems:
 
 	.extern	__ineg
 	.extern	__sdvrms_abs
-
-.endif

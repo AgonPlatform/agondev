@@ -3,12 +3,6 @@
 	.section	.text
 	.global	__lor
 
-.ifdef PREFER_OS_CRT
-
-__lor := 0001D8h
-
-.else
-
 __lor:
 ; CC: 28*r(PC)+11*r(SPL)+10*w(SPL)+1
 	push	af
@@ -24,16 +18,8 @@ __lor:
     db 0x3E ; Only the first opcode for <LD A, *>
 	.extern	__ior
 
-.endif
-
 	.section	.text
 	.global	__ior
-
-.ifdef PREFER_OS_CRT
-
-__ior := 000168h
-
-.else
 
 __ior:
 ; CC: 24*r(PC)+11*r(SPL)+10*w(SPL)+1
@@ -61,5 +47,3 @@ __ior:
 	ld	l, a
 	pop	af
 	ret
-
-.endif

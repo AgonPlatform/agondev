@@ -4,13 +4,6 @@
 	.global	__ishrs
 	.global	__ishru
 
-.ifdef PREFER_OS_CRT
-
-__ishrs := 00017Ch
-__ishru := 000184h
-
-.else
-
 __ishru:
 	push	af
 	xor	a, a
@@ -74,5 +67,3 @@ __ishrs:
 	ld	l, a
 	pop	af
 	ret
-
-.endif

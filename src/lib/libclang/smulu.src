@@ -4,13 +4,6 @@
 	.global	__smuls
 	.global	__smulu
 
-.ifdef PREFER_OS_CRT
-
-__smuls := 000224h
-__smulu := 000228h
-
-.else
-
 __smuls:
 __smulu:
 
@@ -39,5 +32,3 @@ Mul_HL_BC_HL:			;--------------+---------------+----------------
 
 ; HL*BC&0xFFFF=L*C+(H*C+L*B<<8)+(H*B<<16)&0xFFFF
 ;	      =L*C+(H*C+L*B<<8)&0xFFFF
-
-.endif

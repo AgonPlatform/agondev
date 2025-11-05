@@ -3,12 +3,6 @@
 	.section	.text
 	.global	__sxor
 
-.ifdef PREFER_OS_CRT
-
-__sxor := 000268h
-
-.else
-
 __sxor:
 	push	af
 	ld	a, h
@@ -19,5 +13,3 @@ __sxor:
 	ld	l, a
 	pop	af
 	ret
-
-.endif

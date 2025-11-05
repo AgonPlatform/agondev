@@ -3,12 +3,6 @@
 	.section	.text
 	.global	__ldivs
 
-.ifdef PREFER_OS_CRT
-
-__ldivs := 0001B4h
-
-.else
-
 __ldivs:
 ; I: EUHL=dividend, AUBC=divisor
 ; O: euhl=EUHL/AUBC
@@ -37,4 +31,3 @@ __ldivs:
 	.extern	__ldivu
 	.extern	__lneg
 
-.endif

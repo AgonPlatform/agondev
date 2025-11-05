@@ -3,11 +3,6 @@
 	.section	.text
 	.global	__ishl
     .global __sshl
-.ifdef PREFER_OS_CRT
-
-__ishl := 000174h
-
-.else
 
 __ishl:
 __sshl:
@@ -47,5 +42,3 @@ __ishl_8:
 	add	hl, hl
 	add	hl, hl
 	ret
-
-.endif

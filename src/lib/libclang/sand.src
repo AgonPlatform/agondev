@@ -3,12 +3,6 @@
 	.section	.text
 	.global	__sand
 
-.ifdef PREFER_OS_CRT
-
-__sand := 000200h
-
-.else
-
 __sand:
 	push	af
 	ld	a, h
@@ -19,5 +13,3 @@ __sand:
 	ld	l, a
 	pop	af
 	ret
-
-.endif

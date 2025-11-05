@@ -3,12 +3,6 @@
 	.section	.text
 	.global	__land
 
-.ifdef PREFER_OS_CRT
-
-__land := 0001A4h
-
-.else
-
 __land:
 ; CC: 28*r(PC)+11*r(SPL)+10*w(SPL)+1
 	push	af
@@ -22,16 +16,8 @@ __land:
 ;	db	.ld_a	; push af -> ld a,*
 ;	.extern	__iand
 
-.endif
-
 	.section .text
 	.global	__iand
-
-.ifdef PREFER_OS_CRT
-
-__iand := 000134h
-
-.else
 
 __iand:
 ; CC: 24*r(PC)+11*r(SPL)+10*w(SPL)+1
@@ -59,5 +45,3 @@ __iand.hijack_land:
 	ld	l, a
 	pop	af
 	ret
-
-.endif

@@ -3,11 +3,6 @@
 	.section	.text
 	.global	__ineg
     .global __sneg
-.ifdef PREFER_OS_CRT
-
-__ineg := 000160h
-
-.else
 
 __ineg:
 __sneg:
@@ -29,5 +24,3 @@ __sneg:
 	ex	de, hl	; ude=UDE, uhl=-UHL
 .endif
 	ret
-
-.endif

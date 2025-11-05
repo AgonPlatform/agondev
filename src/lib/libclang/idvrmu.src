@@ -3,12 +3,6 @@
 	.section	.text
 	.global	__idvrmu
 
-.ifdef PREFER_OS_CRT
-
-__idvrmu := 000144h
-
-.else
-
 __idvrmu:
 ; I: UHL=dividend, UBC=divisor
 ; O: ude=UHL/UBC, uhl=UHL%UBC
@@ -42,5 +36,3 @@ __idvrmu.hijack_a_iters_ude_dividend:
 
 	pop	af
 	ret
-
-.endif

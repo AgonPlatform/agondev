@@ -3,12 +3,6 @@
 	.section	.text
 	.global	__sdivu
 
-.ifdef PREFER_OS_CRT
-
-__sdivu := 00020Ch
-
-.else
-
 __sdivu:
 ; I: HL=dividend, BC=divisor
 ; O: uhl=HL/BC
@@ -22,5 +16,3 @@ __sdivu:
 	ret
 
 	.extern	__sdvrmu
-
-.endif

@@ -3,12 +3,6 @@
 	.section	.text
 	.global	__sor
 
-.ifdef PREFER_OS_CRT
-
-__sor := 000234h
-
-.else
-
 __sor:
 	push	af
 	ld	a, h
@@ -19,5 +13,3 @@ __sor:
 	ld	l, a
 	pop	af
 	ret
-
-.endif

@@ -3,12 +3,6 @@
 	.section	.text
 	.global	__sdivs
 
-.ifdef PREFER_OS_CRT
-
-__sdivs := 000208h
-
-.else
-
 __sdivs:
 ; I: HL=dividend, BC=divisor
 ; O: uhl=HL/BC
@@ -25,5 +19,3 @@ __sdivs:
 
 	.extern	__ineg
 	.extern	__sdvrms_abs
-
-.endif
