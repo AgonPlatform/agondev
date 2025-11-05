@@ -1,0 +1,21 @@
+	.assume	adl=1
+	.include "agon/mos.inc"
+	.section .text
+	.global	_ffs_fwrite
+_ffs_fwrite:
+    push    ix
+    ld      ix, 0
+    add     ix, sp
+    
+    ld      hl, (ix+6)          ; Pointer to a FIL structure
+    ld      de, (ix+9)          ; Pointer to a buffer to read the data from
+    ld      bc, (ix+12)         ; Number of bytes to write (typically the size of the buffer)
+    ld      a,  ffs_fwrite
+    rst.lil 08h
+
+    push    bc
+    pop     hl                  ; Returns number of bytes written
+    ld      sp, ix
+    pop     ix
+    ret
+    

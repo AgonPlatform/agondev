@@ -1,0 +1,12 @@
+	.assume	adl=1
+	.include "agon/mos.inc"
+	.section .text
+	.global	_mos_setvarval
+_mos_setvarval:
+    ld      c,  0
+    ld      b,  0x09            ; mos_setvarval - int setVarVal(char * name, void * value, char ** actualName, BYTE * type);
+    ld      a,  mos_getfunction
+    rst.lil 08h
+    or      a,  a
+    ret     nz                  ; on error
+    jp      (hl)

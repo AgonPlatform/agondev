@@ -1,0 +1,13 @@
+	.assume	adl =1
+	.include "agon/mos.inc"
+	.section .text
+	.global  _getsysvar_scrheight
+_getsysvar_scrheight:
+	push 	ix
+	ld	a, mos_sysvars			; MOS Call for mos_sysvars
+	rst.lil	08h				; returns pointer to sysvars in ixu
+	ld	hl,0
+	ld	l, (ix+sysvar_scrHeight)	; get current screenHeight
+	ld	h, (ix+sysvar_scrHeight+1)
+	pop	ix
+	ret

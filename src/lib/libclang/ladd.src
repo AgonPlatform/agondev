@@ -1,0 +1,12 @@
+	.assume	adl=1
+
+	.section	.text
+	.global	__ladd
+
+__ladd:
+	push	af
+	add	hl, bc
+	adc	a, e
+	ld	e, a
+	pop	af
+	ret

@@ -9,7 +9,7 @@ Example of using:
 #include <stdint.h>
 #include <stdio.h>
 #include <stdbool.h>
-#include <agon/vdp_vdu.h>
+#include <agon/vdp.h>
 #include <agon/vdp_keyboard.h>
 
 int main(void) {

@@ -1,0 +1,19 @@
+	.assume	adl=1
+	.include "agon/mos.inc"
+	.section .text
+	.global	_ffs_mount
+_ffs_mount:
+    push    ix
+    ld      ix, 0
+    add     ix, sp
+    
+    ld      hl, (ix+6)          ; Pointer to a blank FATFS structure (set to zero)
+    ld      de, (ix+9)          ; Pointer to a zero-terminated volume path string (set to zero)
+    ld      c,  (ix+12)         ; Options byte (set to zero)
+    ld      a,  ffs_mount
+    rst.lil 08h                 ; returns FRESULT in A
+
+    ld      sp, ix
+    pop     ix
+    ret
+    

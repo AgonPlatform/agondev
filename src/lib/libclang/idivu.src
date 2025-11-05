@@ -1,0 +1,19 @@
+	.assume	adl=1
+
+	.section	.text
+	.global	__idivu
+
+__idivu:
+; I: UHL=dividend, UBC=divisor
+; O: uhl=UHL/UBC
+
+	push	de
+
+	call	__idvrmu
+	ex	de, hl
+
+	pop	de
+	ret
+
+
+	.extern	__idvrmu

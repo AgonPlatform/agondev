@@ -1,8 +1,8 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <stdbool.h>
-#include <mos_api.h>
-#include <agon/vdp_vdu.h>
+#include <agon/mos.h>
+#include <agon/vdp.h>
 #include "agon/timer.h"
 #include "agon/joystick.h"
 

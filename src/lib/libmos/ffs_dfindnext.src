@@ -1,0 +1,18 @@
+	.assume	adl=1
+	.include "agon/mos.inc"
+	.section .text
+	.global	_ffs_dfindnext
+_ffs_dfindnext:
+    push    ix
+    ld      ix, 0
+    add     ix, sp
+    
+    ld      hl, (ix+6)          ; Pointer to a DIR structure, as set up by ffs_dfindfirst
+    ld      de, (ix+9)          ; Pointer to a FILINFO structure
+    ld      a,  ffs_dfindnext
+    rst.lil 08h                 ; returns FRESULT in A
+
+    ld      sp, ix
+    pop     ix
+    ret
+    

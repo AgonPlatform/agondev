@@ -1,0 +1,19 @@
+	.assume	adl=1
+	.include "agon/mos.inc"
+	.section .text
+	.global	_mos_pmatch
+_mos_pmatch:
+    push    ix
+    ld      ix, 0
+    add     ix, sp
+    
+    ld      hl, (ix+6)          ; Address of pattern (zero terminated)
+    ld      de, (ix+9)          ; Address at string to compare against pattern (zero terminated)
+    ld      c,  (ix+12)         ; Flags
+    ld      a,  mos_pmatch
+    rst.lil 08h                 ; Returns status code in A
+
+    ld      sp, ix
+    pop     ix
+    ret
+    

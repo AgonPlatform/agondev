@@ -1,0 +1,16 @@
+	.assume	adl =1
+	.include "agon/mos.inc"
+	.section .text
+	.global  _mos_getError
+_mos_getError:
+	push	ix
+	ld	ix, 0
+	add	ix, sp
+	ld	e, (ix+6)			; The error code
+	ld	hl,(ix+7)			; Address of buffer to copy message into
+	ld	bc,(ix+10)  			; Size of buffer
+	ld	a, mos_getError
+	rst.lil	08h				; Copy an error string to a buffer
+	ld	sp, ix
+	pop	ix
+	ret	

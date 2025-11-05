@@ -1,0 +1,15 @@
+	.assume	adl =1
+	.include "agon/mos.inc"
+	.section .text
+	.global  _mos_uputc
+_mos_uputc:
+	push	ix
+	ld	c, a
+	ld	a, mos_uputc
+	rst.lil	08h
+	ld	a, 1h
+	jr	nc, _mos_uputc_exit
+	xor	a, a				; error condition, return 0
+_mos_uputc_exit:
+	pop	ix
+	ret

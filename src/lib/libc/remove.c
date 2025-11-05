@@ -16,7 +16,7 @@ Return Value
 */
 
 #include <stdio.h>
-#include <mos_api.h>
+#include <agon/mos.h>
 #include <errno.h>
 
 int remove(const char *fname)

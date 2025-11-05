@@ -1,0 +1,19 @@
+	.assume	adl=1
+	.include "agon/mos.inc"
+	.section .text
+	.global	_ffs_flseek
+_ffs_flseek:
+    push    ix
+    ld      ix, 0
+    add     ix, sp
+    
+    ld      hl, (ix+6)          ; Pointer to a FIL structure
+    ld      de, (ix+9)          ; Least significant 3 bytes of the offset from the start of the file
+    ld      c,  (ix+12)         ; Most significant byte of the offset (set to 0 for files < 16MB)
+    ld      a,  ffs_flseek
+    rst.lil 08h                 ; returns FRESULT in A
+
+    ld      sp, ix
+    pop     ix
+    ret
+    

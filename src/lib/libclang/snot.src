@@ -1,0 +1,8 @@
+	.assume	adl=1
+
+	.section	.text
+	.global	__snot
+
+__snot := __inot
+
+	.extern	__inot

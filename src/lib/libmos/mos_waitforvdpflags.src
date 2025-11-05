@@ -1,0 +1,17 @@
+	.assume	adl=1
+	.include "agon/mos.inc"
+	.section .text
+	.global	_mos_waitforvdpflags
+_mos_waitforvdpflags:
+    push    ix
+    ld      ix, 0
+    add     ix, sp
+    
+    ld      c,  (ix+6)          ; Bitmask of flags to wait for
+    ld      a,  mos_waitforvdpflags
+    rst.lil 08h                 ; returns A: Status code (0 = Success, 15 = Timeout)
+
+    ld      sp, ix
+    pop     ix
+    ret
+    

@@ -1,0 +1,17 @@
+	.assume	adl =1
+	.include "agon/mos.inc"
+	.section .text
+	.global  _ffs_dread
+_ffs_dread:
+    push    ix
+    ld      ix, 0
+    add     ix, sp
+
+    ld      hl, (ix+6)          ; pointer to DIR handle
+    ld      de, (ix+9)          ; pointer to FILINFO handle
+    ld      a,  ffs_dread
+    rst.lil 08h                 ; returns FRESULT in A
+
+    ld      sp, ix
+    pop     ix
+    ret

@@ -1,0 +1,15 @@
+	.assume	adl =1
+	.include "agon/mos.inc"
+	.section .text
+	.global	_mos_ren
+_mos_ren:
+	push	ix
+	ld 	ix, 0
+	add 	ix, sp
+	ld 	hl, (ix+6)			; Address of filename1 (zero terminated)
+	ld	de, (ix+9)			; Address of filename2 (zero terminated)
+	ld a,	mos_ren
+	rst.lil	08h				; Rename a file on the SD card
+	ld	sp, ix
+	pop	ix
+	ret

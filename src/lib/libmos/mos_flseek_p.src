@@ -1,0 +1,21 @@
+	.assume	adl=1
+	.include "agon/mos.inc"
+	.section .text
+	.global	_mos_flseek_p
+_mos_flseek_p:
+    push    ix
+    ld      ix, 0
+    add     ix, sp
+    
+    ld      c,  (ix+6)          ; File handle
+    ld      hl, 9
+    add     hl, sp              ; Pointer to a 32-bit value for the desired new offset from the 
+                                ; start of the file. As C pushes 32bit long as 6bytes to the stack,
+                                ; we can point HL to the address of the stack-frame entry
+    ld      a,  mos_flseek_p
+    rst.lil 08h                 ; Returns status code in A
+
+    ld      sp, ix
+    pop     ix
+    ret
+    

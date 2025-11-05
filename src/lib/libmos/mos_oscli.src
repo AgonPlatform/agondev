@@ -1,0 +1,16 @@
+	.assume	adl =1
+	.include "agon/mos.inc"
+	.section .text
+	.global  _mos_oscli
+_mos_oscli:
+	push	ix
+	ld 	ix, 0
+	add 	ix, sp
+	ld 	hl, (ix+6)			; Pointer the the MOS command string
+	ld	bc, (ix+9)			; Pointer to additional command structure
+	ld      de, (ix+12) 			; Number of additional commands
+	ld a,	mos_oscli
+	rst.lil	08h				; Execute a MOS command
+	ld	sp, ix
+	pop	ix
+	ret

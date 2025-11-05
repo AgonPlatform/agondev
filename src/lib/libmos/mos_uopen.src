@@ -1,0 +1,17 @@
+	.assume	adl =1
+	.include "agon/mos.inc"
+	.section .text
+	.global  _mos_uopen
+_mos_uopen:
+	push	ix 				; Save ix - will use as stack frame pointer
+	ld 	ix, 0
+	add 	ix, sp
+	push	ix
+	ld 	ix, (ix+9)			; 1st calling param - Address of uart1 settings structure
+	ld	a, mos_uopen
+	rst.lil 08h
+	pop	ix
+	ld	sp, ix
+	pop	ix
+	ret
+

@@ -20,7 +20,7 @@ Return Value
 */
 
 #include <stdio.h>
-#include <mos_api.h>
+#include <agon/mos.h>
 
 size_t fread(void *ptr, size_t size, size_t count, FILE *__restrict stream)
 {

@@ -1,0 +1,11 @@
+	.assume	adl =1
+	.include "agon/mos.inc"
+	.section .text
+	.global  _getsysvar_scrColours
+_getsysvar_scrColours:
+	push	ix
+	ld	a, mos_sysvars
+	rst.lil	08h
+	ld	a, (ix+sysvar_scrColours)
+	pop	ix
+	ret

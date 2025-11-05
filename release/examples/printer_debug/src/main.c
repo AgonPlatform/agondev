@@ -10,7 +10,7 @@ Uses:
 
 #include <stdint.h>
 #include <stdio.h>
-#include <agon/vdp_vdu.h>
+#include <agon/vdp.h>
 #include <agon/vdp_keyboard.h>
 
 char debug = 'C';

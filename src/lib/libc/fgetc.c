@@ -17,7 +17,7 @@ Return Value
 */
 
 #include <stdio.h>
-#include <mos_api.h>
+#include <agon/mos.h>
 
 int fgetc(FILE *stream)
 {

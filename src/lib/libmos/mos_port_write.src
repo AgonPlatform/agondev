@@ -1,0 +1,16 @@
+	.assume	adl =1
+	.include "agon/mos.inc"
+	.section .text
+	.global  _mos_port_write
+_mos_port_write:
+	push	ix
+	ld	ix, 0
+	add	ix, sp
+	push	bc
+	ld	bc, 0
+	ld	c, (ix+6)
+	ld	a, (ix+9)
+	out	(bc),a
+	pop	bc
+	pop	ix
+	ret

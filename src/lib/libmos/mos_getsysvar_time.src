@@ -1,0 +1,13 @@
+	.assume	adl =1
+	.include "agon/mos.inc"
+	.section .text
+	.global	_getsysvar_time
+;unit32_t getsysvar_time()
+_getsysvar_time:
+	push	ix
+	ld	a, mos_sysvars
+	rst.lil	08h 				; returns pointer to sysvars in IX
+	ld	hl, (ix+sysvar_time)		; get the 3 least significant bytes
+	ld 	e, (ix+sysvar_time+3) 		; get the most signiciant byte
+	pop	ix
+	ret

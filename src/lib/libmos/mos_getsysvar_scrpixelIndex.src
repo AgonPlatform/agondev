@@ -1,0 +1,11 @@
+	.assume	adl =1
+	.include "agon/mos.inc"
+	.section .text
+	.global  _getsysvar_scrpixelIndex
+_getsysvar_scrpixelIndex:
+	push	ix
+	ld	a, mos_sysvars
+	rst.lil	08h
+	ld	a, (ix+sysvar_scrpixelIndex)
+	pop	ix
+	ret

@@ -20,7 +20,7 @@ Return Value
 
 
 #include <stdio.h>
-#include <mos_api.h>
+#include <agon/mos.h>
 
 void fput_char( int c, FILE *stream );
 

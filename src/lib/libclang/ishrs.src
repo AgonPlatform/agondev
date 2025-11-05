@@ -1,0 +1,69 @@
+	.assume	adl=1
+
+	.section	.text
+	.global	__ishrs
+	.global	__ishru
+
+__ishru:
+	push	af
+	xor	a, a
+	add	hl, hl
+	rla
+	db	$DA	; push af \ add hl,hl \ sbc a,a -> jp c,*
+__ishrs:
+; CC: .if 0<=C<8:   35*r(PC)+9*r(SPL)+9*w(SPL)+4+(C&1==0)*(1*r(PC)-1)+(C&2==0)*(3*r(PC)-1)+(C&4==0)*(7*r(PC)-1)
+;     .if 8<=C<16:  34*r(PC)+9*r(SPL)+6*w(SPL)+5+(C&1==0)*(1*r(PC)-1)+(C&2==0)*(3*r(PC)-1)+(C&4==0)*(7*r(PC)-1)
+;     .if 16<=C<24: 33*r(PC)+6*r(SPL)+3*w(SPL)+5+(C&1==0)*(1*r(PC)-1)+(C&2==0)*(3*r(PC)-1)+(C&4==0)*(7*r(PC)-1)
+	push	af
+	add	hl, hl
+	sbc	a, a
+	bit	0, c
+	jr	nz, .bit0
+	add	hl, hl
+	rla
+.bit0:
+	bit	1, c
+	jr	nz, .bit1
+	add	hl, hl
+	rla
+	add	hl, hl
+	rla
+.bit1:
+	bit	2, c
+	jr	nz, .bit2
+	add	hl, hl
+	rla
+	add	hl, hl
+	rla
+	add	hl, hl
+	rla
+	add	hl, hl
+	rla
+.bit2:
+	bit	3, c
+	jr	nz, .bit3
+	bit	4, c
+	jr	nz, .bit4
+	push	af
+	inc	sp
+	push	hl
+	inc	sp
+	pop	hl
+	inc	sp
+	pop	af
+	ret
+.bit3:
+	dec	sp
+	push	hl
+	sbc	hl, hl
+	ld	h, a
+	inc	sp
+	pop	af
+	ld	l, a
+	pop	af
+	ret
+.bit4:
+	sbc	hl, hl
+	ld	l, a
+	pop	af
+	ret

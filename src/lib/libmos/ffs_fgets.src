@@ -1,0 +1,20 @@
+	.assume	adl=1
+	.include "agon/mos.inc"
+	.section .text
+	.global	_ffs_fgets
+_ffs_fgets:
+    push    ix
+    ld      ix, 0
+    add     ix, sp
+    
+    ld      hl, (ix+6)          ; Pointer to a FIL structure
+    ld      de, (ix+9)          ; Pointer to a buffer to store the string in
+    ld      bc, (ix+12)         ; Buffer size
+    ld      a,  ffs_fgets
+    rst.lil 08h
+
+    ex      de, hl              ; Returns pointer to the target buffer, or NULL if an error occurred 
+    ld      sp, ix
+    pop     ix
+    ret
+    

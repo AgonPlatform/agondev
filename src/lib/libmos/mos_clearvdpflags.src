@@ -1,0 +1,17 @@
+	.assume	adl=1
+	.include "agon/mos.inc"
+	.section .text
+	.global	_mos_clearvdpflags
+_mos_clearvdpflags:
+    push    ix
+    ld      ix, 0
+    add     ix, sp
+    
+    ld      c,  (ix+6)          ; Bitmask of flags to clear
+    ld      a,  mos_clearvdpflags
+    rst.lil 08h                 ; returns New VDP flags in A
+
+    ld      sp, ix
+    pop     ix
+    ret
+    

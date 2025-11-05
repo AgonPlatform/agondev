@@ -90,7 +90,7 @@ Mods / updates:
 #include <stdio.h>
 #include <string.h>
 #include <errno.h>
-#include <mos_api.h>
+#include <agon/mos.h>
 #include <stdbool.h>
 
 extern FILE _file_streams[FOPEN_MAX];
