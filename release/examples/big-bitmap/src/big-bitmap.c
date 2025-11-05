@@ -1,10 +1,10 @@
 // VDU commands
 
 #include <stdio.h>
-#include <mos_api.h>
+#include <agon/mos.h>
 #include <stdbool.h>
 #include <stdlib.h>
-#include <agon/vdp_vdu.h>
+#include <agon/vdp.h>
 
 int main( void )
 {

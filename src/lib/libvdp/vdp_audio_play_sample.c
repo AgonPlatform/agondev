@@ -1,4 +1,4 @@
-#include <agon/vdp_vdu.h>
+#include <agon/vdp.h>
 
 extern VDU_AUDIO_CMD_B_W_W vdu_audio_b_w_w;
 

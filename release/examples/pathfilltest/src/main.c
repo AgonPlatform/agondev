@@ -1,4 +1,4 @@
-#include <agon/vdp_vdu.h>
+#include <agon/vdp.h>
 
 int main(void) {
   vdp_clear_screen();

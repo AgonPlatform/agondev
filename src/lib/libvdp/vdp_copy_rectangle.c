@@ -1,4 +1,4 @@
-#include <agon/vdp_vdu.h>
+#include <agon/vdp.h>
 
 static VDU_A_CMD_x_y vdu_copy_rectangle = { 25, 0xBF, 0, 0 };
 

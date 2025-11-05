@@ -26,7 +26,7 @@ CXXFLAGS=$(CFLAGS) -isystem $(INCLUDEDIR)/c++
 
 ## Assembler
 ASM=$(TOOLBINDIR)/ez80-none-elf-as
-ASMFLAGS=-march=$(ARCH)
+ASMFLAGS=-march=$(ARCH) -I $(INCLUDEDIR)
 
 ## Linker
 LINKER=$(TOOLBINDIR)/ez80-none-elf-ld

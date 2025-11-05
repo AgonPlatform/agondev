@@ -1,5 +1,5 @@
 	.assume	adl =1
-	.include "mos_api.inc"
+	.include "agon/mos.inc"
 	.section .text
 	.global  _mos_i2c_open
 _mos_i2c_open:

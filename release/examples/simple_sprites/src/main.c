@@ -24,7 +24,7 @@ void vdp_create_sprite( int sprite, int bitmap_num, int frames );
 #include <stdint.h>
 #include <stdio.h>
 #include <stdbool.h>
-#include <agon/vdp_vdu.h>
+#include <agon/vdp.h>
 #include <agon/vdp_keyboard.h>
 #include <agon/timer.h>
 

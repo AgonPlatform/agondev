@@ -1,4 +1,4 @@
-#include <agon/vdp_vdu.h>
+#include <agon/vdp.h>
 
 static VDU_A_CMD_x_y vdu_filled_triangle = { 25, 0x55, 0, 0 };
 

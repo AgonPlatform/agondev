@@ -14,7 +14,7 @@ Parameters
 
 #include <stdio.h>
 #include <errno.h>
-#include <mos_api.h>
+#include <agon/mos.h>
 
 extern FILE _file_streams[FOPEN_MAX];
 

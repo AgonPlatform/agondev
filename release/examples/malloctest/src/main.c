@@ -1,4 +1,4 @@
-#include <agon/vdp_vdu.h>
+#include <agon/vdp.h>
 #include <stdio.h>
 #include <stdint.h>
 #include <stdlib.h>

@@ -1,4 +1,4 @@
-#include <agon/vdp_vdu.h>
+#include <agon/vdp.h>
 
 static VDU_A_B_CMD_n vdu_set_logical_coordinates = { 23, 0, 0xC0, 1 }; 
 

@@ -1,4 +1,4 @@
-#include <agon/vdp_vdu.h>
+#include <agon/vdp.h>
 
 static VDU_A_B_ui8x8 vdu_set_dotdash_line_pattern = { 23, 6, 0, 0, 0, 0, 0, 0, 0, 0 };
 

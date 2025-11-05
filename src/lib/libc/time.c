@@ -12,7 +12,7 @@ returned, and errno is set appropriately.
 
 #include <time.h>
 #include <stdint.h>
-#include <mos_api.h>
+#include <agon/mos.h>
 
 time_t time(time_t *timer)
 {

@@ -8,7 +8,7 @@
  
 #include <stdio.h>
 #include <stdint.h>
-#include <mos_api.h>
+#include <agon/mos.h>
 
 static char rtc_buffer[33];
 

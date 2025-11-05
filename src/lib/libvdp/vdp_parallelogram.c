@@ -1,4 +1,4 @@
-#include <agon/vdp_vdu.h>
+#include <agon/vdp.h>
 
 void vdp_parallelogram( int x1, int y1, int x2, int y2, int x3, int y3) {
     vdp_move_to(x1, y1);

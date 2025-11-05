@@ -1,4 +1,4 @@
-#include <agon/vdp_vdu.h>
+#include <agon/vdp.h>
 
 static VDU_A_B_CMD_B vdu_set_dotdash_pattern_length = { 23, 0, 0xF2, 0 };
 

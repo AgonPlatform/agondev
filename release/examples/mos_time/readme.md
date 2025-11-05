@@ -13,7 +13,7 @@
 
 `Sysvar_rtc `returns a pointer to the rtc data which is updated dynamically by MOS, and consequently needs to be declared as dynamic to avoid optimisations.
 
-The format is of the data is contained in the mos_api.h
+The format is of the data is contained in the mos.h
 
 ```
 typedef union {

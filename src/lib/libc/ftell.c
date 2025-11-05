@@ -24,7 +24,7 @@ Return Value
 
 #include <stdio.h>
 #include <errno.h>
-#include <mos_api.h>
+#include <agon/mos.h>
 
 long int ftell(FILE *stream)
 {

@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <time.h>
 #include <math.h>
-#include <mos_api.h>
+#include <agon/mos.h>
 
 void print_MOS_time( void );
 

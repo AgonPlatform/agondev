@@ -2,7 +2,6 @@
 .section .text
 .global _getfilesize
 
-
 ; Gets filesize from an open file
 ; requires MOS mos_getfil call
 ; Input: MOS filehandle

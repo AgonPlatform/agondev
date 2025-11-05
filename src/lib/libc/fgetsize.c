@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <mos_api.h>
+#include <agon/mos.h>
 #include <stdint.h>
 
 unsigned int fgetsize(FILE *file) {

@@ -1,4 +1,4 @@
-#include <agon/vdp_vdu.h>
+#include <agon/vdp.h>
 
 static VDU_A_CMD_x_y vdu_circle = { 25, 0x94, 0, 0 }; // Move to absolute coordinate, use a circle center, outline circle
 static VDU_A_CMD_x_y vdu_radius = { 25, 0x91, 0, 0 }; // Use relative coordinate on circumference, draw foreground color on outline circle

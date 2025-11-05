@@ -2,7 +2,7 @@
 	.assume	adl=1
 	.section .text
 
-    .include "mos_api.inc"
+    .include "agon/mos.inc"
 ; ---------------------------------------------
 ; wait for key down state before returning
 

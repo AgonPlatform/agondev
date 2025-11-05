@@ -1,4 +1,4 @@
-#include <agon/vdp_vdu.h>
+#include <agon/vdp.h>
 
 static VDU_A_CMD_x_y vdu_line_fill_right_to_nonfg = { 25, 0x7D, 0, 0 };
 

@@ -23,7 +23,7 @@ Return Value
 */
 
 #include <stdio.h>
-#include <mos_api.h>
+#include <agon/mos.h>
 
 FILE *freopen( const char *__restrict filename, const char *__restrict mode, FILE *stream )
 {

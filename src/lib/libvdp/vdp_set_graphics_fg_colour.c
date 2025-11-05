@@ -1,4 +1,4 @@
-#include <agon/vdp_vdu.h>
+#include <agon/vdp.h>
 #include <stdint.h>
 
 static VDU_A_c_r vdu_set_graphics_fg_colour = { 18, 0, 0 };
