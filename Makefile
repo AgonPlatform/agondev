@@ -1,3 +1,5 @@
+.DEFAULT_GOAL := all
+
 ### Environment
 OS_NAME = $(shell uname -s | tr A-Z a-z)
 ARCH = $(shell uname -m | tr A-Z a-z)
@@ -28,90 +30,78 @@ LINKERFLAGS= -T linker.conf --oformat binary -o
 ARFLAGS=rcs
 ASMFLAGS= -march=ez80+full -I./release/include/
 
-.DEFAULT_GOAL := all
-
 # AGON LIBRARY
-AGON=$(LIBDIRECTORY)/libagon.a
+LIBAGON=$(LIBDIRECTORY)/libagon.a
 
 # CLANG LIBRARY
-CLANG_SRCDIR=./src/lib/libclang
-CLANG_OBJDIR=$(OBJTOPDIR)/lib/libclang
-CLANG_ASMSRCS=$(wildcard $(CLANG_SRCDIR)/*.src)
-CLANG_CSRCS=$(wildcard $(CLANG_SRCDIR)/*.c)
-CLANG_ASMOBJS=$(patsubst $(CLANG_SRCDIR)/%.src, $(CLANG_OBJDIR)/%.o, $(CLANG_ASMSRCS))
-CLANG_COBJS=$(patsubst $(CLANG_SRCDIR)/%.c, $(CLANG_OBJDIR)/%.o, $(CLANG_CSRCS))
-CLANG_OBJS=$(CLANG_ASMOBJS) $(CLANG_COBJS)
-CLANG=$(LIBDIRECTORY)/libclang.a
+LIBCLANG_SRCDIR=./src/lib/libclang
+LIBCLANG_OBJDIR=$(OBJTOPDIR)/lib/libclang
+LIBCLANG_ASMSRCS=$(wildcard $(LIBCLANG_SRCDIR)/*.src)
+LIBCLANG_CSRCS=$(wildcard $(LIBCLANG_SRCDIR)/*.c)
+LIBCLANG_ASMOBJS=$(patsubst $(LIBCLANG_SRCDIR)/%.src, $(LIBCLANG_OBJDIR)/%.o, $(LIBCLANG_ASMSRCS))
+LIBCLANG_COBJS=$(patsubst $(LIBCLANG_SRCDIR)/%.c, $(LIBCLANG_OBJDIR)/%.o, $(LIBCLANG_CSRCS))
+LIBCLANG_OBJS=$(LIBCLANG_ASMOBJS) $(LIBCLANG_COBJS)
+LIBCLANG=$(LIBDIRECTORY)/libclang.a
 
 # CRT0 LIBRARY
-CRT0_SRCDIR=./src/lib/libcrt0
-CRT0_OBJDIR=$(OBJTOPDIR)/lib/libcrt0
-CRT0_ASMSRCS=$(wildcard $(CRT0_SRCDIR)/*.src)
-CRT0_CSRCS=$(wildcard $(CRT0_SRCDIR)/*.c)
-CRT0_ASMOBJS=$(patsubst $(CRT0_SRCDIR)/%.src, $(CRT0_OBJDIR)/%.o, $(CRT0_ASMSRCS))
-CRT0_COBJS=$(patsubst $(CRT0_SRCDIR)/%.c, $(CRT0_OBJDIR)/%.o, $(CRT0_CSRCS))
-CRT0_OBJS=$(CRT0_ASMOBJS) $(CRT0_COBJS)
-CRT0=$(LIBDIRECTORY)/libcrt0.a
-
-# FFS LIBRARY
-FFS_SRCDIR=./src/lib/libffs
-FFS_OBJDIR=$(OBJTOPDIR)/lib/libffs
-FFS_ASMSRCS=$(wildcard $(FFS_SRCDIR)/*.src)
-FFS_CSRCS=$(wildcard $(FFS_SRCDIR)/*.c)
-FFS_ASMOBJS=$(patsubst $(FFS_SRCDIR)/%.src, $(FFS_OBJDIR)/%.o, $(FFS_ASMSRCS))
-FFS_COBJS=$(patsubst $(FFS_SRCDIR)/%.c, $(FFS_OBJDIR)/%.o, $(FFS_CSRCS))
-FFS_OBJS=$(FFS_ASMOBJS) $(FFS_COBJS)
-FFS=$(LIBDIRECTORY)/libffs.a
+LIBCRT0_SRCDIR=./src/lib/libcrt0
+LIBCRT0_OBJDIR=$(OBJTOPDIR)/lib/libcrt0
+LIBCRT0_ASMSRCS=$(wildcard $(LIBCRT0_SRCDIR)/*.src)
+LIBCRT0_CSRCS=$(wildcard $(LIBCRT0_SRCDIR)/*.c)
+LIBCRT0_ASMOBJS=$(patsubst $(LIBCRT0_SRCDIR)/%.src, $(LIBCRT0_OBJDIR)/%.o, $(LIBCRT0_ASMSRCS))
+LIBCRT0_COBJS=$(patsubst $(LIBCRT0_SRCDIR)/%.c, $(LIBCRT0_OBJDIR)/%.o, $(LIBCRT0_CSRCS))
+LIBCRT0_OBJS=$(LIBCRT0_ASMOBJS) $(LIBCRT0_COBJS)
+LIBCRT0=$(LIBDIRECTORY)/libcrt0.a
 
 # GPIO LIBRARY
-GPIO_SRCDIR=./src/lib/libgpio
-GPIO_OBJDIR=$(OBJTOPDIR)/lib/libgpio
-GPIO_ASMSRCS=$(wildcard $(GPIO_SRCDIR)/*.src)
-GPIO_CSRCS=$(wildcard $(GPIO_SRCDIR)/*.c)
-GPIO_ASMOBJS=$(patsubst $(GPIO_SRCDIR)/%.src, $(GPIO_OBJDIR)/%.o, $(GPIO_ASMSRCS))
-GPIO_COBJS=$(patsubst $(GPIO_SRCDIR)/%.c, $(GPIO_OBJDIR)/%.o, $(GPIO_CSRCS))
-GPIO_OBJS=$(GPIO_ASMOBJS) $(GPIO_COBJS)
-GPIO=$(LIBDIRECTORY)/libgpio.a
+LIBGPIO_SRCDIR=./src/lib/libgpio
+LIBGPIO_OBJDIR=$(OBJTOPDIR)/lib/libgpio
+LIBGPIO_ASMSRCS=$(wildcard $(LIBGPIO_SRCDIR)/*.src)
+LIBGPIO_CSRCS=$(wildcard $(LIBGPIO_SRCDIR)/*.c)
+LIBGPIO_ASMOBJS=$(patsubst $(LIBGPIO_SRCDIR)/%.src, $(LIBGPIO_OBJDIR)/%.o, $(LIBGPIO_ASMSRCS))
+LIBGPIO_COBJS=$(patsubst $(LIBGPIO_SRCDIR)/%.c, $(LIBGPIO_OBJDIR)/%.o, $(LIBGPIO_CSRCS))
+LIBGPIO_OBJS=$(LIBGPIO_ASMOBJS) $(LIBGPIO_COBJS)
+LIBGPIO=$(LIBDIRECTORY)/libgpio.a
 
 # MATH LIBRARY
-MATH_SRCDIR=./src/lib/libm
-MATH_OBJDIR=$(OBJTOPDIR)/lib/libm
-MATH_ASMSRCS=$(wildcard $(MATH_SRCDIR)/*.src)
-MATH_CSRCS=$(wildcard $(MATH_SRCDIR)/*.c)
-MATH_ASMOBJS=$(patsubst $(MATH_SRCDIR)/%.src, $(MATH_OBJDIR)/%.o, $(MATH_ASMSRCS))
-MATH_COBJS=$(patsubst $(MATH_SRCDIR)/%.c, $(MATH_OBJDIR)/%.o, $(MATH_CSRCS))
-MATH_OBJS=$(MATH_ASMOBJS) $(MATH_COBJS)
-MATH=$(LIBDIRECTORY)/libm.a
+LIBM_SRCDIR=./src/lib/libm
+LIBM_OBJDIR=$(OBJTOPDIR)/lib/libm
+LIBM_ASMSRCS=$(wildcard $(LIBM_SRCDIR)/*.src)
+LIBM_CSRCS=$(wildcard $(LIBM_SRCDIR)/*.c)
+LIBM_ASMOBJS=$(patsubst $(LIBM_SRCDIR)/%.src, $(LIBM_OBJDIR)/%.o, $(LIBM_ASMSRCS))
+LIBM_COBJS=$(patsubst $(LIBM_SRCDIR)/%.c, $(LIBM_OBJDIR)/%.o, $(LIBM_CSRCS))
+LIBM_OBJS=$(LIBM_ASMOBJS) $(LIBM_COBJS)
+LIBM=$(LIBDIRECTORY)/libm.a
 
 # MOS LIBRARY
-MOS_SRCDIR=./src/lib/libmos
-MOS_OBJDIR=$(OBJTOPDIR)/lib/libmos
-MOS_ASMSRCS=$(wildcard $(MOS_SRCDIR)/*.src)
-MOS_CSRCS=$(wildcard $(MOS_SRCDIR)/*.c)
-MOS_ASMOBJS=$(patsubst $(MOS_SRCDIR)/%.src, $(MOS_OBJDIR)/%.o, $(MOS_ASMSRCS))
-MOS_COBJS=$(patsubst $(MOS_SRCDIR)/%.c, $(MOS_OBJDIR)/%.o, $(MOS_CSRCS))
-MOS_OBJS=$(MOS_ASMOBJS) $(MOS_COBJS)
-MOS=$(LIBDIRECTORY)/libmos.a
+LIBMOS_SRCDIR=./src/lib/libmos
+LIBMOS_OBJDIR=$(OBJTOPDIR)/lib/libmos
+LIBMOS_ASMSRCS=$(wildcard $(LIBMOS_SRCDIR)/*.src)
+LIBMOS_CSRCS=$(wildcard $(LIBMOS_SRCDIR)/*.c)
+LIBMOS_ASMOBJS=$(patsubst $(LIBMOS_SRCDIR)/%.src, $(LIBMOS_OBJDIR)/%.o, $(LIBMOS_ASMSRCS))
+LIBMOS_COBJS=$(patsubst $(LIBMOS_SRCDIR)/%.c, $(LIBMOS_OBJDIR)/%.o, $(LIBMOS_CSRCS))
+LIBMOS_OBJS=$(LIBMOS_ASMOBJS) $(LIBMOS_COBJS)
+LIBMOS=$(LIBDIRECTORY)/libmos.a
 
 # TIMER LIBRARY
-TIMER_SRCDIR=./src/lib/libtimer
-TIMER_OBJDIR=$(OBJTOPDIR)/lib/libtimer
-TIMER_ASMSRCS=$(wildcard $(TIMER_SRCDIR)/*.src)
-TIMER_CSRCS=$(wildcard $(TIMER_SRCDIR)/*.c)
-TIMER_ASMOBJS=$(patsubst $(TIMER_SRCDIR)/%.src, $(TIMER_OBJDIR)/%.o, $(TIMER_ASMSRCS))
-TIMER_COBJS=$(patsubst $(TIMER_SRCDIR)/%.c, $(TIMER_OBJDIR)/%.o, $(TIMER_CSRCS))
-TIMER_OBJS=$(TIMER_ASMOBJS) $(TIMER_COBJS)
-TIMER=$(LIBDIRECTORY)/libtimer.a
+LIBTIMER_SRCDIR=./src/lib/libtimer
+LIBTIMER_OBJDIR=$(OBJTOPDIR)/lib/libtimer
+LIBTIMER_ASMSRCS=$(wildcard $(LIBTIMER_SRCDIR)/*.src)
+LIBTIMER_CSRCS=$(wildcard $(LIBTIMER_SRCDIR)/*.c)
+LIBTIMER_ASMOBJS=$(patsubst $(LIBTIMER_SRCDIR)/%.src, $(LIBTIMER_OBJDIR)/%.o, $(LIBTIMER_ASMSRCS))
+LIBTIMER_COBJS=$(patsubst $(LIBTIMER_SRCDIR)/%.c, $(LIBTIMER_OBJDIR)/%.o, $(LIBTIMER_CSRCS))
+LIBTIMER_OBJS=$(LIBTIMER_ASMOBJS) $(LIBTIMER_COBJS)
+LIBTIMER=$(LIBDIRECTORY)/libtimer.a
 
 # VDP LIBRARY
-VDP_SRCDIR=./src/lib/libvdp
-VDP_OBJDIR=$(OBJTOPDIR)/lib/libvdp
-VDP_ASMSRCS=$(wildcard $(VDP_SRCDIR)/*.src)
-VDP_CSRCS=$(wildcard $(VDP_SRCDIR)/*.c)
-VDP_ASMOBJS=$(patsubst $(VDP_SRCDIR)/%.src, $(VDP_OBJDIR)/%.o, $(VDP_ASMSRCS))
-VDP_COBJS=$(patsubst $(VDP_SRCDIR)/%.c, $(VDP_OBJDIR)/%.o, $(VDP_CSRCS))
-VDP_OBJS=$(VDP_ASMOBJS) $(VDP_COBJS)
-VDP=$(LIBDIRECTORY)/libvdp.a
+LIBVDP_SRCDIR=./src/lib/libvdp
+LIBVDP_OBJDIR=$(OBJTOPDIR)/lib/libvdp
+LIBVDP_ASMSRCS=$(wildcard $(LIBVDP_SRCDIR)/*.src)
+LIBVDP_CSRCS=$(wildcard $(LIBVDP_SRCDIR)/*.c)
+LIBVDP_ASMOBJS=$(patsubst $(LIBVDP_SRCDIR)/%.src, $(LIBVDP_OBJDIR)/%.o, $(LIBVDP_ASMSRCS))
+LIBVDP_COBJS=$(patsubst $(LIBVDP_SRCDIR)/%.c, $(LIBVDP_OBJDIR)/%.o, $(LIBVDP_CSRCS))
+LIBVDP_OBJS=$(LIBVDP_ASMOBJS) $(LIBVDP_COBJS)
+LIBVDP=$(LIBDIRECTORY)/libvdp.a
 
 # LIBC LIBRARY
 LIBC_SRCDIR=./src/lib/libc
@@ -133,13 +123,11 @@ LIBCXX_COBJS=$(patsubst $(LIBCXX_SRCDIR)/%.c, $(LIBCXX_OBJDIR)/%.o, $(LIBCXX_CSR
 LIBCXX_OBJS=$(LIBCXX_ASMOBJS) $(LIBCXX_COBJS)
 LIBCXX=$(LIBDIRECTORY)/libcxx.a
 
-
 # Default rule
-libs: libagon libclang libcrt0 libffs libgpio libc libcxx libmath libmos libtimer libvdp
-all: $(RELEASEBINDIR) libs
+all: $(RELEASEBINDIR) $(LIBAGON)
 	@echo [ Copying binaries to release/bin ]
 	$(shell cp ./llvm-build/ez80-none-elf/bin/ez80-none-elf-* ./release/bin/)
-	$(shell strip ./release/bin/*)
+	$(shell strip ./release/bin/ez80-none-elf-*)
 	$(shell cp ./llvm-build/ez80-none-elf/bin/clang ./release/bin/ez80-none-elf-clang)
 	$(shell strip ./release/bin/ez80-none-elf-clang)
 	$(shell cp ./dist/hexload-send ./release/bin/) 
@@ -155,24 +143,15 @@ all: $(RELEASEBINDIR) libs
 	@tar -zcvf agondev-$(OS_NAME)_$(ARCH).tar.gz $(TARGETDIR) > /dev/null 2>&1
 	@rm -rf $(TARGETDIR)
 	@echo [ Done ]
-# Targets
-libagon: libclang libcrt0 libffs libgpio libc libcxx libmath libmos libtimer libvdp
+
+# Ranlib all library objects into single AGON library
+$(LIBAGON): $(LIBCLANG) $(LIBCRT0) $(LIBGPIO) $(LIBC) $(LIBCXX) $(LIBM) $(LIBMOS) $(LIBTIMER) $(LIBVDP)
 	@echo [ Creating AGON library ]
-	@$(RM) -f $(AGON)
-	$(AR) $(ARFLAGS) $(AGON) $(CLANG_OBJS) $(CRT0_OBJS) $(FFS_OBJS) $(GPIO_OBJS) $(LIBC_OBJS) $(LIBCXX_OBJS) $(MATH_OBJS) $(MOS_OBJS) $(TIMER_OBJS) $(VDP_OBJS)
-libclang: $(CLANG_OBJDIR) $(LIBDIRECTORY) $(CLANG_OBJS) $(CLANG)
-libcrt0: $(CRT0_OBJDIR) $(LIBDIRECTORY) $(CRT0_OBJS) $(CRT0)
-libffs: $(FFS_OBJDIR) $(LIBDIRECTORY) $(FFS_OBJS) $(FFS)
-libgpio: $(GPIO_OBJDIR) $(LIBDIRECTORY) $(GPIO_OBJS) $(GPIO)
-libc: $(LIBC_OBJDIR) $(LIBDIRECTORY) $(LIBC_OBJS) $(LIBC)
-libcxx: $(LIBCXX_OBJDIR) $(LIBDIRECTORY) $(LIBCXX_OBJS) $(LIBCXX)
-libmath: $(MATH_OBJDIR) $(LIBDIRECTORY) $(MATH_OBJS) $(MATH)
-libmos: $(MOS_OBJDIR) $(LIBDIRECTORY) $(MOS_OBJS) $(MOS)
-libtimer: $(TIMER_OBJDIR) $(LIBDIRECTORY) $(TIMER_OBJS) $(TIMER)
-libvdp: $(VDP_OBJDIR) $(LIBDIRECTORY) $(VDP_OBJS) $(VDP)
+	@$(RM) -f $(LIBAGON)
+	$(AR) $(ARFLAGS) $(LIBAGON) $(LIBCLANG_OBJS) $(LIBCRT0_OBJS) $(LIBGPIO_OBJS) $(LIBC_OBJS) $(LIBCXX_OBJS) $(LIBM_OBJS) $(LIBMOS_OBJS) $(LIBTIMER_OBJS) $(LIBVDP_OBJS)
 
 # Link and ranlib the libc library
-$(LIBC): $(LIBC_OBJS)
+$(LIBC): $(LIBC_OBJDIR) $(LIBDIRECTORY) $(LIBC_OBJS)
 	@echo [ Creating LIBC library ]
 	@$(RM) -f $(LIBC)
 	$(AR) $(ARFLAGS) $(LIBC) $(LIBC_OBJS)
@@ -184,55 +163,43 @@ $(LIBC_OBJDIR)/%.o: $(LIBC_SRCDIR)/%.c
 	$(CC) $(CFLAGS) $< -c -o $@
 
 # Link and ranlib the clang library
-$(CLANG): $(CLANG_OBJS)
+$(LIBCLANG): $(LIBCLANG_OBJDIR) $(LIBDIRECTORY) $(LIBCLANG_OBJS)
 	@echo [ Creating CLANG library ]
-	@$(RM) -f $(CLANG)
-	$(AR) $(ARFLAGS) $(CLANG) $(CLANG_OBJS)
+	@$(RM) -f $(LIBCLANG)
+	$(AR) $(ARFLAGS) $(LIBCLANG) $(LIBCLANG_OBJS)
 # Assemble each .src file into .o file
-$(CLANG_OBJDIR)/%.o: $(CLANG_SRCDIR)/%.src
+$(LIBCLANG_OBJDIR)/%.o: $(LIBCLANG_SRCDIR)/%.src
 	$(ASM) $(ASMFLAGS) $< -o $@
 # Compile each .c file into .o file
-$(CLANG_OBJDIR)/%.o: $(CLANG_SRCDIR)/%.c
+$(LIBCLANG_OBJDIR)/%.o: $(LIBCLANG_SRCDIR)/%.c
 	$(CC) $(CFLAGS) $< -c -o $@
 
 # Link and ranlib the crt0 library
-$(CRT0): $(CRT0_OBJS)
+$(LIBCRT0): $(LIBCRT0_OBJDIR) $(LIBDIRECTORY) $(LIBCRT0_OBJS)
 	@echo [ Creating CRT0 library ]
-	@$(RM) -f $(CRT0)
-	$(AR) $(ARFLAGS) $(CRT0) $(CRT0_OBJS)
+	@$(RM) -f $(LIBCRT0)
+	$(AR) $(ARFLAGS) $(LIBCRT0) $(LIBCRT0_OBJS)
 # Assemble each .src file into .o file
-$(CRT0_OBJDIR)/%.o: $(CRT0_SRCDIR)/%.src
+$(LIBCRT0_OBJDIR)/%.o: $(LIBCRT0_SRCDIR)/%.src
 	$(ASM) $(ASMFLAGS) $< -o $@
 # Compile each .c file into .o file
-$(CRT0_OBJDIR)/%.o: $(CRT0_SRCDIR)/%.c
-	$(CC) $(CFLAGS) $< -c -o $@
-
-# Link and ranlib the ffs library
-$(FFS): $(FFS_OBJS)
-	@echo [ Creating FFS library ]
-	@$(RM) -f $(FFS)
-	$(AR) $(ARFLAGS) $(FFS) $(FFS_OBJS)
-# Assemble each .src file into .o file
-$(FFS_OBJDIR)/%.o: $(FFS_SRCDIR)/%.src
-	$(ASM) $(ASMFLAGS) $< -o $@
-# Compile each .c file into .o file
-$(FFS_OBJDIR)/%.o: $(FFS_SRCDIR)/%.c
+$(LIBCRT0_OBJDIR)/%.o: $(LIBCRT0_SRCDIR)/%.c
 	$(CC) $(CFLAGS) $< -c -o $@
 
 # Link and ranlib the gpio library
-$(GPIO): $(GPIO_OBJS)
+$(LIBGPIO): $(LIBGPIO_OBJDIR) $(LIBDIRECTORY) $(LIBGPIO_OBJS)
 	@echo [ Creating GPIO library ]
-	@$(RM) -f $(GPIO)
-	$(AR) $(ARFLAGS) $(GPIO) $(GPIO_OBJS)
+	@$(RM) -f $(LIBGPIO)
+	$(AR) $(ARFLAGS) $(LIBGPIO) $(LIBGPIO_OBJS)
 # Assemble each .src file into .o file
-$(GPIO_OBJDIR)/%.o: $(GPIO_SRCDIR)/%.src
+$(LIBGPIO_OBJDIR)/%.o: $(LIBGPIO_SRCDIR)/%.src
 	$(ASM) $(ASMFLAGS) $< -o $@
 # Compile each .c file into .o file
-$(GPIO_OBJDIR)/%.o: $(GPIO_SRCDIR)/%.c
+$(LIBGPIO_OBJDIR)/%.o: $(LIBGPIO_SRCDIR)/%.c
 	$(CC) $(CFLAGS) $< -c -o $@
 
 # Link and ranlib the libcxx library
-$(LIBCXX): $(LIBCXX_OBJS)
+$(LIBCXX): $(LIBCXX_OBJDIR) $(LIBDIRECTORY) $(LIBCXX_OBJS)
 	@echo [ Creating LIBCXX library ]
 	@$(RM) -f $(LIBCXX)
 	$(AR) $(ARFLAGS) $(LIBCXX) $(LIBCXX_OBJS)
@@ -243,52 +210,52 @@ $(LIBCXX_OBJDIR)/%.o: $(LIBCXX_SRCDIR)/%.src
 $(LIBCXX_OBJDIR)/%.o: $(LIBCXX_SRCDIR)/%.c
 	$(CC) $(CFLAGS) $< -c -o $@
 
-# Link and ranlib the math library
-$(MATH): $(MATH_OBJS)
+# Link and ranlib the LIBM library
+$(LIBM): $(LIBM_OBJDIR) $(LIBDIRECTORY) $(LIBM_OBJS)
 	@echo [ Creating MATH library ]
-	@$(RM) -f $(MATH)
-	$(AR) $(ARFLAGS) $(MATH) $(MATH_OBJS)
+	@$(RM) -f $(LIBM)
+	$(AR) $(ARFLAGS) $(LIBM) $(LIBM_OBJS)
 # Assemble each .src file into .o file
-$(MATH_OBJDIR)/%.o: $(MATH_SRCDIR)/%.src
+$(LIBM_OBJDIR)/%.o: $(LIBM_SRCDIR)/%.src
 	$(ASM) $(ASMFLAGS) $< -o $@
 # Compile each .c file into .o file
-$(MATH_OBJDIR)/%.o: $(MATH_SRCDIR)/%.c
+$(LIBM_OBJDIR)/%.o: $(LIBM_SRCDIR)/%.c
 	$(CC) $(CFLAGS) $< -c -o $@
 
 # Link and ranlib the mos library
-$(MOS): $(MOS_OBJS)
+$(LIBMOS): $(LIBMOS_OBJDIR) $(LIBDIRECTORY) $(LIBMOS_OBJS)
 	@echo [ Creating MOS library ]
-	@$(RM) -f $(MOS)
-	$(AR) $(ARFLAGS) $(MOS) $(MOS_OBJS)
+	@$(RM) -f $(LIBMOS)
+	$(AR) $(ARFLAGS) $(LIBMOS) $(LIBMOS_OBJS)
 # Assemble each .src file into .o file
-$(MOS_OBJDIR)/%.o: $(MOS_SRCDIR)/%.src
+$(LIBMOS_OBJDIR)/%.o: $(LIBMOS_SRCDIR)/%.src
 	$(ASM) $(ASMFLAGS) $< -o $@
 # Compile each .c file into .o file
-$(MOS_OBJDIR)/%.o: $(MOS_SRCDIR)/%.c
+$(LIBMOS_OBJDIR)/%.o: $(LIBMOS_SRCDIR)/%.c
 	$(CC) $(CFLAGS) $< -c -o $@
 
 # Link and ranlib the timer library
-$(TIMER): $(TIMER_OBJS)
+$(LIBTIMER): $(LIBTIMER_OBJDIR) $(LIBDIRECTORY) $(LIBTIMER_OBJS)
 	@echo [ Creating TIMER library ]
-	@$(RM) -f $(TIMER)
-	$(AR) $(ARFLAGS) $(TIMER) $(TIMER_OBJS)
+	@$(RM) -f $(LIBTIMER)
+	$(AR) $(ARFLAGS) $(LIBTIMER) $(LIBTIMER_OBJS)
 # Assemble each .src file into .o file
-$(TIMER_OBJDIR)/%.o: $(TIMER_SRCDIR)/%.src
+$(LIBTIMER_OBJDIR)/%.o: $(LIBTIMER_SRCDIR)/%.src
 	$(ASM) $(ASMFLAGS) $< -o $@
 # Compile each .c file into .o file
-$(TIMER_OBJDIR)/%.o: $(TIMER_SRCDIR)/%.c
+$(LIBTIMER_OBJDIR)/%.o: $(LIBTIMER_SRCDIR)/%.c
 	$(CC) $(CFLAGS) $< -c -o $@
 
 # Link and ranlib the vdp library
-$(VDP): $(VDP_OBJS)
+$(LIBVDP): $(LIBVDP_OBJDIR) $(LIBDIRECTORY) $(LIBVDP_OBJS)
 	@echo [ Creating VDP library ]
-	@$(RM) -f $(VDP)
-	$(AR) $(ARFLAGS) $(VDP) $(VDP_OBJS)
+	@$(RM) -f $(LIBVDP)
+	$(AR) $(ARFLAGS) $(LIBVDP) $(LIBVDP_OBJS)
 # Assemble each .src file into .o file
-$(VDP_OBJDIR)/%.o: $(VDP_SRCDIR)/%.src
+$(LIBVDP_OBJDIR)/%.o: $(LIBVDP_SRCDIR)/%.src
 	$(ASM) $(ASMFLAGS) $< -o $@
 # Compile each .c file into .o file
-$(VDP_OBJDIR)/%.o: $(VDP_SRCDIR)/%.c
+$(LIBVDP_OBJDIR)/%.o: $(LIBVDP_SRCDIR)/%.c
 	$(CC) $(CFLAGS) $< -c -o $@
 
 $(OBJTOPDIR):
@@ -300,26 +267,24 @@ $(RELEASEBINDIR):
 $(LIBDIRECTORY): $(RELEASEDIR)
 	mkdir -p $(RELEASEDIR)/lib
 
-$(CLANG_OBJDIR): $(OBJ_TOPDIR)
-	mkdir -p $(CLANG_OBJDIR)
-$(CRT0_OBJDIR): $(OBJ_TOPDIR)
-	mkdir -p $(CRT0_OBJDIR)
-$(FFS_OBJDIR): $(OBJ_TOPDIR)
-	mkdir -p $(FFS_OBJDIR)
-$(GPIO_OBJDIR): $(OBJ_TOPDIR)
-	mkdir -p $(GPIO_OBJDIR)
+$(LIBCLANG_OBJDIR): $(OBJ_TOPDIR)
+	mkdir -p $(LIBCLANG_OBJDIR)
+$(LIBCRT0_OBJDIR): $(OBJ_TOPDIR)
+	mkdir -p $(LIBCRT0_OBJDIR)
+$(LIBGPIO_OBJDIR): $(OBJ_TOPDIR)
+	mkdir -p $(LIBGPIO_OBJDIR)
 $(LIBC_OBJDIR): $(OBJ_TOPDIR)
 	mkdir -p $(LIBC_OBJDIR)
 $(LIBCXX_OBJDIR): $(OBJ_TOPDIR)
 	mkdir -p $(LIBCXX_OBJDIR)
-$(MATH_OBJDIR): $(OBJ_TOPDIR)
-	mkdir -p $(MATH_OBJDIR)
-$(MOS_OBJDIR): $(OBJ_TOPDIR)
-	mkdir -p $(MOS_OBJDIR)
-$(TIMER_OBJDIR): $(OBJ_TOPDIR)
-	mkdir -p $(TIMER_OBJDIR)
-$(VDP_OBJDIR): $(OBJ_TOPDIR)
-	mkdir -p $(VDP_OBJDIR)
+$(LIBM_OBJDIR): $(OBJ_TOPDIR)
+	mkdir -p $(LIBM_OBJDIR)
+$(LIBMOS_OBJDIR): $(OBJ_TOPDIR)
+	mkdir -p $(LIBMOS_OBJDIR)
+$(LIBTIMER_OBJDIR): $(OBJ_TOPDIR)
+	mkdir -p $(LIBTIMER_OBJDIR)
+$(LIBVDP_OBJDIR): $(OBJ_TOPDIR)
+	mkdir -p $(LIBVDP_OBJDIR)
 clean:
 	@$(RM) -r $(OBJTOPDIR)
 	@$(RM) -rf $(RELEASEBINDIR)
