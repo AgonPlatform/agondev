@@ -24,7 +24,6 @@ uint24_t getfilesize(FILE *fh); is a call in an external library to get the size
 #include <stdio.h>
 #include <stdbool.h>
 #include <agon/vdp.h>
-#include <agon/vdp_keyboard.h>
 #include <stdlib.h>
 #include <agon/mos.h>
 #include "boing.h"

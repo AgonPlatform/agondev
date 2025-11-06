@@ -8,7 +8,6 @@ Example of:
 #include <stdio.h>
 #include <stdbool.h>
 #include <agon/vdp.h>
-#include <agon/vdp_keyboard.h>
 #include "mode.h"
 
 
