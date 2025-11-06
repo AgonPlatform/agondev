@@ -6,8 +6,8 @@
 
 static VDU_FONT vdu_font_select = { 23, 0, 0x95, 0, 0 };
 
-void vdp_font_select( int buffer_id )
-{
+void vdp_font_select( int buffer_id , int flags) {
 	vdu_font_select.buffer_id = buffer_id;
 	VDP_PUTS( vdu_font_select );
+	putch(flags);
 }

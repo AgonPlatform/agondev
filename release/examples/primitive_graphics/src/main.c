@@ -7,7 +7,6 @@ Example of:
 #include <stdio.h>
 #include <stdbool.h>
 #include <agon/vdp.h>
-#include <agon/vdp_keyboard.h>
 
 const uint8_t screen_mode = 8;
 

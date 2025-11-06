@@ -10,7 +10,6 @@ Example of using:
 #include <stdio.h>
 #include <stdbool.h>
 #include <agon/vdp.h>
-#include <agon/vdp_keyboard.h>
 
 int main(void) {
   vdp_cursor_enable(false);
