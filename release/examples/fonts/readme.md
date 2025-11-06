@@ -1,5 +1,5 @@
 ### Example of Agon Fonts
 
-Defines and displays a different font
+Defines and displays different fonts
 
 Press ESC to exit the program.
