@@ -712,8 +712,8 @@ void vdp_context_clear_stack( void );
 
 // ========= Font Management =========
 // VDU 23, 0, &95: Font management
-// VDU 23, 0, &95, 0, bufferId; flags: Select font
-void vdp_font_select( int buffer_id );
+// VDU 23, 0, &95, 0, bufferId; flags: Select font using flags
+void vdp_font_select( int buffer_id , int flags);
 // VDU 23, 0, &95, 1, bufferId; width, height, ascent, flags: Create font from buffer
 void vdp_font_create( int buffer_id, int width, int height, int ascent, int flags );
 // VDU 23, 0, &95, 2, bufferId; field, value;: Set or adjust font property
