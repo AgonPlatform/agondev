@@ -1,8 +1,11 @@
 #!/bin/bash
 
 BUILD_LLVM=yes
-BUILD_BINUTILS=yes
+BUILD_BINUTILS=no
 BUILD_HEXLOADSEND=yes
+
+# Immediately stop on any error
+set -e
 
 #Directories
 INSTALLDIR=$(pwd)/llvm-build/ez80-none-elf
