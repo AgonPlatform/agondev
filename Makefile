@@ -1,8 +1,9 @@
 .DEFAULT_GOAL := all
+MAKEFLAGS += --no-print-directory
 
 ### Environment
-OS_NAME != uname -s | tr 'A-Z' 'a-z'
-ARCH    != uname -m | tr 'A-Z' 'a-z'
+OS_NAME := $(shell uname -s | tr 'A-Z' 'a-z')
+ARCH    := $(shell uname -m | tr 'A-Z' 'a-z')
 EZ80ARCH := ez80-none-elf
 
 ### Directories

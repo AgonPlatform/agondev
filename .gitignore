@@ -3,11 +3,14 @@
 llvm-project/
 llvm-build/
 build/
+build_lib/
 dist/
 obj/
 release/bin
 release/lib
 hexload-send.spec
+src/tools/agondev-setname/bin/
+src/tools/agondev-config/bin/
 
 # MacOS
 ._*
