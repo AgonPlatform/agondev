@@ -1,0 +1,460 @@
+Archive member included to satisfy reference by file (symbol)
+
+/Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(crt0.o)
+                              (__start)
+/Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(files.o)
+                              /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(crt0.o) (__stdio_init)
+/Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(free.c.o)
+                              /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(crt0.o) (_free)
+/Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(malloc.c.o)
+                              /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(crt0.o) (_malloc)
+/Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(puts.o)
+                              obj/main.o (_puts)
+/Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(sbrk.o)
+                              /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(malloc.c.o) (_sbrk)
+/Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(nanoprintf.o)
+                              obj/main.o (_printf)
+/Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(vdp_getkeycode.o)
+                              obj/main.o (_vdp_getKeyCode)
+/Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(vdp_adv_clear_buffer.o)
+                              obj/main.o (_vdp_adv_clear_buffer)
+/Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(vdp_adv_create.o)
+                              obj/main.o (_vdp_adv_create)
+/Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(vdp_adv_write_block_data.o)
+                              obj/main.o (_vdp_adv_write_block_data)
+/Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(vdp_clear_screen.o)
+                              obj/main.o (_vdp_clear_screen)
+/Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(vdp_cursor_enable.o)
+                              obj/main.o (_vdp_cursor_enable)
+/Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(vdp_cursor_tab.o)
+                              obj/main.o (_vdp_cursor_tab)
+/Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(vdp_font_create.o)
+                              obj/main.o (_vdp_font_create)
+/Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(vdp_font_select.o)
+                              obj/main.o (_vdp_font_select)
+/Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(vdp_vdu.o)
+                              /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(vdp_adv_write_block_data.o) (_vdu_adv_write_block)
+/Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(and.o)
+                              /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(nanoprintf.o) (__land)
+/Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(bshru.o)
+                              /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(nanoprintf.o) (__bshru)
+/Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(fpcmp.o)
+                              /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(nanoprintf.o) (__fcmp)
+/Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(frameset.o)
+                              /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(free.c.o) (__frameset)
+/Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(frameset0.o)
+                              /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(nanoprintf.o) (__frameset0)
+/Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(idivu.o)
+                              /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(nanoprintf.o) (__idivu)
+/Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(idvrmu.o)
+                              /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(idivu.o) (__idvrmu)
+/Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(imulu.o)
+                              /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(nanoprintf.o) (__imulu)
+/Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(indcallhl.o)
+                              /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(crt0.o) (__indcallhl)
+/Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(ishl.o)
+                              /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(nanoprintf.o) (__ishl)
+/Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(ishrs.o)
+                              /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(nanoprintf.o) (__ishru)
+/Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(ladd.o)
+                              /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(nanoprintf.o) (__ladd)
+/Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(lcmps.o)
+                              /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(fpcmp.o) (__lcmps)
+/Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(lcmpu.o)
+                              /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(nanoprintf.o) (__lcmpu)
+/Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(lcmpzero.o)
+                              /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(nanoprintf.o) (__lcmpzero)
+/Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(ldivu.o)
+                              /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(nanoprintf.o) (__ldivu)
+/Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(ldvrmu.o)
+                              /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(ldivu.o) (__ldvrmu)
+/Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(lmulu.o)
+                              /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(nanoprintf.o) (__lmulu)
+/Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(lneg.o)
+                              /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(nanoprintf.o) (__lneg)
+/Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(lshl.o)
+                              /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(nanoprintf.o) (__lshl)
+/Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(lshru.o)
+                              /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(nanoprintf.o) (__lshru)
+/Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(sand.o)
+                              /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(nanoprintf.o) (__sand)
+/Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(setflag.o)
+                              /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(nanoprintf.o) (__setflag)
+/Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(sshru.o)
+                              /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(nanoprintf.o) (__sshru)
+/Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(xor.o)
+                              /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(nanoprintf.o) (__ixor)
+/Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(putchar.o)
+                              /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(puts.o) (_putchar)
+/Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(fputc.o)
+                              /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(nanoprintf.o) (_fputc)
+/Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(mos_fputc.o)
+                              /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(fputc.o) (_mos_fputc)
+/Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(mos_puts.o)
+                              /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(vdp_adv_clear_buffer.o) (_mos_puts)
+/Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(lshrs.o)
+                              /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(lshru.o) (__lshrs.hijack_lshru)
+/Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(outchar.o)
+                              /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(putchar.o) (_outchar)
+
+There are no discarded input sections
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+USERRAM          0x00040000         0x00070000         rw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+                0x00040000                        RAM_START = 0x40000
+                0x00070000                        RAM_SIZE = 0x70000
+                0x00000000                        _has_exit_handler = 0x0
+                0x00040000                        . = RAM_START
+
+.init           0x00040000      0x1d4
+ *(.init .init.args .init.bss .fini)
+ .init          0x00040000       0xbb /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(crt0.o)
+                0x00040040                __mos_header
+                0x00040045                __start
+                0x000400b8                __start._main
+ .fini          0x000400bb       0xbe /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(crt0.o)
+                0x000400bb                ___exithl
+                0x000400bd                _exit
+                0x0004011c                __Exit
+                0x00040120                _abort
+ .init.bss      0x00040179       0x11 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(crt0.o)
+ .init.args     0x0004018a       0x4a /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(crt0.o)
+                0x0004018a                _parse_option
+                0x0004018a                _parse_params
+
+.text           0x000401d4     0x1cd0
+ *(.text)
+ .text          0x000401d4      0x1e9 obj/main.o
+                0x000401d4                _main
+ .text          0x000403bd       0x2c /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(crt0.o)
+                0x000403bd                _atexit
+                0x000403bd                _on_exit
+ .text          0x000403e9       0x52 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(files.o)
+                0x000403e9                __stdio_init
+ .text          0x0004043b       0xbd /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(free.c.o)
+                0x0004043b                _free
+ .text          0x000404f8       0x9f /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(malloc.c.o)
+                0x000404f8                _malloc
+ .text          0x00040597       0x2c /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(puts.o)
+                0x00040597                _puts
+ .text          0x000405c3       0x22 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(sbrk.o)
+                0x000405c3                _sbrk
+ .text          0x000405e5     0x13b8 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(nanoprintf.o)
+                0x000405e5                _npf_vpprintf
+                0x00041726                _npf_pprintf
+                0x0004174e                _npf_snprintf
+                0x00041776                _npf_vsnprintf
+                0x00041823                _vprintf
+                0x00041853                _printf
+                0x00041872                _fprintf
+                0x00041895                _vfprintf
+                0x000418ca                _vsnprintf
+                0x0004192d                _snprintf
+                0x00041955                _vsprintf
+                0x00041974                _sprintf
+ .text          0x0004199d       0x17 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(vdp_getkeycode.o)
+                0x0004199d                _vdp_getKeyCode
+ .text          0x000419b4       0x27 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(vdp_adv_clear_buffer.o)
+                0x000419b4                _vdp_adv_clear_buffer
+ .text          0x000419db       0x33 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(vdp_adv_create.o)
+                0x000419db                _vdp_adv_create
+ .text          0x00041a0e       0x56 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(vdp_adv_write_block_data.o)
+                0x00041a0e                _vdp_adv_write_block_data
+ .text          0x00041a64       0x17 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(vdp_clear_screen.o)
+                0x00041a64                _vdp_clear_screen
+ .text          0x00041a7b       0x25 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(vdp_cursor_enable.o)
+                0x00041a7b                _vdp_cursor_enable
+ .text          0x00041aa0       0x2a /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(vdp_cursor_tab.o)
+                0x00041aa0                _vdp_cursor_tab
+ .text          0x00041aca       0x48 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(vdp_font_create.o)
+                0x00041aca                _vdp_font_create
+ .text          0x00041b12       0x27 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(vdp_font_select.o)
+                0x00041b12                _vdp_font_select
+ .text          0x00041b39        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(vdp_vdu.o)
+ .text          0x00041b39       0x1c /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(and.o)
+                0x00041b39                __land
+                0x00041b3e                __iand
+                0x00041b3f                __iand.hijack_land
+ .text          0x00041b55        0xa /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(bshru.o)
+                0x00041b55                __bshru
+ .text          0x00041b5f       0x1d /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(fpcmp.o)
+                0x00041b5f                __fcmp
+ .text          0x00041b7c        0xe /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(frameset.o)
+                0x00041b7c                __frameset
+ .text          0x00041b8a        0xb /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(frameset0.o)
+                0x00041b8a                __frameset0
+ .text          0x00041b95        0x8 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(idivu.o)
+                0x00041b95                __idivu
+ .text          0x00041b9d       0x18 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(idvrmu.o)
+                0x00041b9d                __idvrmu
+                0x00041ba1                __idvrmu.hijack_a_iters_ude_dividend
+ .text          0x00041bb5       0x30 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(imulu.o)
+                0x00041bb5                __imuls
+                0x00041bb5                __imulu
+ .text          0x00041be5        0x1 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(indcallhl.o)
+                0x00041be5                __indcallhl
+ .text          0x00041be6       0x26 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(ishl.o)
+                0x00041be6                __sshl
+                0x00041be6                __ishl
+ .text          0x00041c0c       0x41 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(ishrs.o)
+                0x00041c0c                __ishru
+                0x00041c11                __ishrs
+ .text          0x00041c4d        0x6 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(ladd.o)
+                0x00041c4d                __ladd
+ .text          0x00041c53        0xd /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(lcmps.o)
+                0x00041c53                __lcmps
+ .text          0x00041c60        0x8 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(lcmpu.o)
+                0x00041c60                __lcmpu
+ .text          0x00041c68        0xb /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(lcmpzero.o)
+                0x00041c68                __lcmpzero
+ .text          0x00041c73        0xa /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(ldivu.o)
+                0x00041c73                __ldivu
+ .text          0x00041c7d       0x28 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(ldvrmu.o)
+                0x00041c7d                __ldvrmu
+ .text          0x00041ca5       0x5c /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(lmulu.o)
+                0x00041ca5                __lmuls
+                0x00041ca5                __lmulu
+ .text          0x00041d01        0xd /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(lneg.o)
+                0x00041d01                __lneg
+ .text          0x00041d0e        0xd /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(lshl.o)
+                0x00041d0e                __lshl
+ .text          0x00041d1b       0x10 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(lshru.o)
+                0x00041d1b                __lshru
+ .text          0x00041d2b        0x9 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(sand.o)
+                0x00041d2b                __sand
+ .text          0x00041d34        0xf /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(setflag.o)
+                0x00041d34                __setflag
+ .text          0x00041d43        0xd /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(sshru.o)
+                0x00041d43                __sshru
+ .text          0x00041d50       0x1b /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(xor.o)
+                0x00041d50                __lxor
+                0x00041d54                __ixor
+ .text          0x00041d6b       0x2f /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(putchar.o)
+                0x00041d6b                _putchar
+ .text          0x00041d9a       0xb7 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(fputc.o)
+                0x00041d9a                _fputc
+                0x00041e2a                _fput_char
+ .text          0x00041e51       0x18 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(mos_fputc.o)
+                0x00041e51                _mos_fputc
+ .text          0x00041e69       0x19 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(mos_puts.o)
+                0x00041e69                _mos_puts
+ .text          0x00041e82       0x1b /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(lshrs.o)
+                0x00041e82                __lshrs
+                0x00041e8e                __lshrs.hijack_lshru
+ .text          0x00041e9d        0x7 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(outchar.o)
+                0x00041e9d                _outchar
+
+.init_array     0x00041ea4        0x0
+ *(.init_array)
+ .init_array    0x00041ea4        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(crt0.o)
+
+.ctors          0x00041ea4        0x0
+ *(.ctors)
+ .ctors         0x00041ea4        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(crt0.o)
+
+.dtors          0x00041ea4        0x0
+ *(.dtors)
+ .dtors         0x00041ea4        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(crt0.o)
+
+.comment        0x00000000      0x691
+ .comment       0x00000000       0x71 obj/main.o
+ .comment       0x00000071       0x71 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(files.o)
+ .comment       0x000000e2       0x6a /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(free.c.o)
+ .comment       0x0000014c       0x6a /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(malloc.c.o)
+ .comment       0x000001b6       0x71 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(nanoprintf.o)
+ .comment       0x00000227       0x71 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(vdp_adv_clear_buffer.o)
+ .comment       0x00000298       0x71 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(vdp_adv_create.o)
+ .comment       0x00000309       0x71 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(vdp_adv_write_block_data.o)
+ .comment       0x0000037a       0x71 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(vdp_clear_screen.o)
+ .comment       0x000003eb       0x71 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(vdp_cursor_enable.o)
+ .comment       0x0000045c       0x71 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(vdp_cursor_tab.o)
+ .comment       0x000004cd       0x71 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(vdp_font_create.o)
+ .comment       0x0000053e       0x71 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(vdp_font_select.o)
+ .comment       0x000005af       0x71 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(vdp_vdu.o)
+ .comment       0x00000620       0x71 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(fputc.o)
+
+.fini_array     0x00041ea4        0x0
+ *(.fini_array)
+ .fini_array    0x00041ea4        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(crt0.o)
+
+.rodata         0x00041ea4      0x18c
+ *(.rodata)
+ .rodata        0x00041ea4       0xcc obj/main.o
+                0x00041ea4                _smallFontBufferID
+                0x00041ea7                _tallFontBufferID
+                0x00041eaa                _megaFontBufferID
+                0x00041ead                _fontDataSize
+                0x00041eb0                _tallFontDataSize
+                0x00041eb3                _megaFontDataSize
+ .rodata        0x00041f70        0xc /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(crt0.o)
+ .rodata        0x00041f7c        0x9 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(puts.o)
+                0x00041f7c                ___null_literal_str
+                0x00041f83                ___end_of_line_str
+ .rodata        0x00041f85       0xab /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(nanoprintf.o)
+
+.data           0x00042030     0x38f0
+ *(.data)
+ .data          0x00042030     0x3800 obj/main.o
+                0x00042030                _digital_8x8
+                0x00042830                _tremolo_8x16
+                0x00043830                _arial_bold
+ .data          0x00045830       0x36 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(crt0.o)
+                0x00045863                _exit.sp
+ .data          0x00045866        0xf /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(files.o)
+                0x00045866                _stdin
+                0x0004586b                _stdout
+                0x00045870                _stderr
+ .data          0x00045875        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(free.c.o)
+ .data          0x00045875        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(malloc.c.o)
+ .data          0x00045875        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(puts.o)
+ .data          0x00045875        0x3 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(sbrk.o)
+                0x00045875                __sbrkbase
+ .data          0x00045878        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(nanoprintf.o)
+ .data          0x00045878        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(vdp_getkeycode.o)
+ .data          0x00045878        0x6 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(vdp_adv_clear_buffer.o)
+ .data          0x0004587e        0x8 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(vdp_adv_create.o)
+ .data          0x00045886        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(vdp_adv_write_block_data.o)
+ .data          0x00045886        0x1 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(vdp_clear_screen.o)
+ .data          0x00045887        0x3 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(vdp_cursor_enable.o)
+ .data          0x0004588a        0x3 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(vdp_cursor_tab.o)
+ .data          0x0004588d        0xa /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(vdp_font_create.o)
+ .data          0x00045897        0x6 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(vdp_font_select.o)
+ .data          0x0004589d       0x83 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(vdp_vdu.o)
+                0x0004589d                _vdu_sprite_select
+                0x000458a1                _vdu_sprite_clear
+                0x000458a4                _vdu_sprite_add_bitmap
+                0x000458a8                _vdu_sprite_activate
+                0x000458ac                _vdu_adv_write_block
+                0x000458b4                _vdu_adv_call_buffer
+                0x000458ba                _vdu_adv_call_conditional
+                0x000458c5                _vdu_adv_jump_offset
+                0x000458ce                _vdu_adv_jump_offset_block
+                0x000458d9                _vdu_audio_b_w
+                0x000458e1                _vdu_audio_b_w_w
+                0x000458eb                _vdu_audio
+                0x000458f0                _vdu_audio_w
+                0x000458f7                _vdu_audio_b_ww
+                0x00045900                _vdu_audio_b_w_ww
+                0x0004590b                _vdu_audio_ww
+                0x00045913                _vdu_audio_b_b
+                0x0004591a                _vdu_audio_b
+ .data          0x00045920        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(and.o)
+ .data          0x00045920        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(bshru.o)
+ .data          0x00045920        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(fpcmp.o)
+ .data          0x00045920        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(frameset.o)
+ .data          0x00045920        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(frameset0.o)
+ .data          0x00045920        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(idivu.o)
+ .data          0x00045920        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(idvrmu.o)
+ .data          0x00045920        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(imulu.o)
+ .data          0x00045920        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(indcallhl.o)
+ .data          0x00045920        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(ishl.o)
+ .data          0x00045920        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(ishrs.o)
+ .data          0x00045920        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(ladd.o)
+ .data          0x00045920        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(lcmps.o)
+ .data          0x00045920        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(lcmpu.o)
+ .data          0x00045920        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(lcmpzero.o)
+ .data          0x00045920        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(ldivu.o)
+ .data          0x00045920        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(ldvrmu.o)
+ .data          0x00045920        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(lmulu.o)
+ .data          0x00045920        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(lneg.o)
+ .data          0x00045920        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(lshl.o)
+ .data          0x00045920        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(lshru.o)
+ .data          0x00045920        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(sand.o)
+ .data          0x00045920        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(setflag.o)
+ .data          0x00045920        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(sshru.o)
+ .data          0x00045920        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(xor.o)
+ .data          0x00045920        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(putchar.o)
+ .data          0x00045920        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(fputc.o)
+ .data          0x00045920        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(mos_fputc.o)
+ .data          0x00045920        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(mos_puts.o)
+ .data          0x00045920        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(lshrs.o)
+ .data          0x00045920        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(outchar.o)
+
+.bss            0x00045920       0x2e
+                0x00045920                        bss_start = .
+ *(.bss .bss*)
+ .bss           0x00045920        0x0 obj/main.o
+ .bss           0x00045920        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(crt0.o)
+ .bss           0x00045920       0x28 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(files.o)
+                0x00045920                __file_streams
+ .bss           0x00045948        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(free.c.o)
+ .bss           0x00045948        0x6 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(malloc.c.o)
+                0x00045948                __alloc_base
+ .bss           0x0004594e        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(puts.o)
+ .bss           0x0004594e        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(sbrk.o)
+ .bss           0x0004594e        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(nanoprintf.o)
+ .bss           0x0004594e        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(vdp_getkeycode.o)
+ .bss           0x0004594e        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(vdp_adv_clear_buffer.o)
+ .bss           0x0004594e        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(vdp_adv_create.o)
+ .bss           0x0004594e        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(vdp_adv_write_block_data.o)
+ .bss           0x0004594e        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(vdp_clear_screen.o)
+ .bss           0x0004594e        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(vdp_cursor_enable.o)
+ .bss           0x0004594e        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(vdp_cursor_tab.o)
+ .bss           0x0004594e        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(vdp_font_create.o)
+ .bss           0x0004594e        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(vdp_font_select.o)
+ .bss           0x0004594e        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(vdp_vdu.o)
+ .bss           0x0004594e        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(and.o)
+ .bss           0x0004594e        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(bshru.o)
+ .bss           0x0004594e        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(fpcmp.o)
+ .bss           0x0004594e        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(frameset.o)
+ .bss           0x0004594e        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(frameset0.o)
+ .bss           0x0004594e        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(idivu.o)
+ .bss           0x0004594e        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(idvrmu.o)
+ .bss           0x0004594e        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(imulu.o)
+ .bss           0x0004594e        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(indcallhl.o)
+ .bss           0x0004594e        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(ishl.o)
+ .bss           0x0004594e        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(ishrs.o)
+ .bss           0x0004594e        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(ladd.o)
+ .bss           0x0004594e        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(lcmps.o)
+ .bss           0x0004594e        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(lcmpu.o)
+ .bss           0x0004594e        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(lcmpzero.o)
+ .bss           0x0004594e        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(ldivu.o)
+ .bss           0x0004594e        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(ldvrmu.o)
+ .bss           0x0004594e        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(lmulu.o)
+ .bss           0x0004594e        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(lneg.o)
+ .bss           0x0004594e        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(lshl.o)
+ .bss           0x0004594e        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(lshru.o)
+ .bss           0x0004594e        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(sand.o)
+ .bss           0x0004594e        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(setflag.o)
+ .bss           0x0004594e        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(sshru.o)
+ .bss           0x0004594e        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(xor.o)
+ .bss           0x0004594e        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(putchar.o)
+ .bss           0x0004594e        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(fputc.o)
+ .bss           0x0004594e        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(mos_fputc.o)
+ .bss           0x0004594e        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(mos_puts.o)
+ .bss           0x0004594e        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(lshrs.o)
+ .bss           0x0004594e        0x0 /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a(outchar.o)
+                0x0004594e                        bss_end = .
+                0x000b0000                        __stack = (RAM_START + RAM_SIZE)
+                0x00045920                        ___low_bss = bss_start
+                0x0000002e                        ___len_bss = SIZEOF (.bss)
+                0x0004594e                        ___heapbot = bss_end
+                0x000b0000                        ___heaptop = (RAM_START + RAM_SIZE)
+                0x00000001                        ___run_clearbss = (___len_bss > 0x0)
+                0x00000000                        ___init_array_count = (SIZEOF (.init_array) / 0x3)
+                0x00000000                        ___ctors_count = (SIZEOF (.ctors) / 0x3)
+                0x00000000                        ___dtors_count = (SIZEOF (.dtors) / 0x3)
+                0x00000000                        ___fini_array_count = (SIZEOF (.fini_array) / 0x3)
+                0x00000000                        ___init_count = (___init_array_count + ___ctors_count)
+                0x00000000                        ___fini_count = (___dtors_count + ___fini_array_count)
+                0x00000000                        ___run_init = (___init_count > 0x0)
+                0x00000000                        ___run_fini = (___fini_count > 0x0)
+                0x00000100                        ___init_count_a = ((((___init_count - 0x1) >> 0x10) & 0xff) + 0x1)
+                0x00000100                        ___init_count_b = (((___init_count - 0x1) & 0xff) + 0x1)
+                0x00000100                        ___init_count_c = ((((___init_count - 0x1) >> 0x8) & 0xff) + 0x1)
+                0x00000100                        ___fini_count_a = ((((___fini_count - 0x1) >> 0x10) & 0xff) + 0x1)
+                0x00000100                        ___fini_count_b = (((___fini_count - 0x1) & 0xff) + 0x1)
+                0x00000100                        ___fini_count_c = ((((___fini_count - 0x1) >> 0x8) & 0xff) + 0x1)
+                0x00041ea4                        ___init_array_functions = (SIZEOF (.init_array) + ADDR (.init_array))
+                0x00041ea4                        ___init_ctors_functions = (SIZEOF (.ctors) + ADDR (.ctors))
+                0x00041ea4                        ___fini_dtors_functions = (SIZEOF (.dtors) + ADDR (.dtors))
+                0x00041ea4                        ___fini_array_functions = (SIZEOF (.fini_array) + ADDR (.fini_array))
+LOAD obj/main.o
+LOAD /Users/richardturnnidge/Programming/agon/agondev/lib/libagon.a
+OUTPUT(bin/fonts.noname.bin binary)
