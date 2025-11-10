@@ -70,6 +70,7 @@ default is 0
 #include <stdio.h>
 #include <stdbool.h>
 #include <agon/vdp.h>
+#include <agon/timer.h>
 #include "mouse.h"
 #include "mouseIcons.h"
 
@@ -100,7 +101,6 @@ int main(void) {
   putch(8);
   //
 
-  vdp_mouse_set_cursor( 64000 + cursorBitmapID); 
 
   printf("AgonDev Mouse Example\n\n");
   printf("Press ESC to exit\n\n");
@@ -125,6 +125,7 @@ int main(void) {
     printf("mouseYDelta = %d     \n", mouseYDelta );
     printf("standard mouse icon = %d     \n", curIcon );
 
+    delay(50);
     // swap to custom mouseicon
     if(vdp_getKeyCode() == 99) {
       vdp_mouse_set_cursor( 64000 + cursorBitmapID);     
