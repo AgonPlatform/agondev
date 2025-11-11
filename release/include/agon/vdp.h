@@ -431,8 +431,8 @@ void vdp_terminal_mode( void );
 // ========= Bitmaps and Sprites ==========
 // VDU 23, 27, 0, n: Select bitmap n
 void vdp_select_bitmap( int n );
-// VDU 23, 27, 1, w; h; b1, b2 ... bn: Load colour bitmap data into current bitmap
-void vdp_load_bitmap( int width, int height, uint32_t *data );
+// VDU 23, 27, 1, w; h; b1, b2 ... bn: Load colour RGBA8888 bitmap data into current bitmap
+void vdp_load_bitmap( int width, int height, uint8_t *data );
 // helper function to load bitmap from file
 int vdp_load_bitmap_file( const char *fname, int width, int height );
 // VDU 23, 27, 1, n, 0, 0;: Capture screen data into bitmap n
@@ -487,7 +487,6 @@ int vdp_load_sprite_bitmaps( const char *fname_prefix, const char *fname_format,
 // see below for 16-bit bufferID version vdp_adv_create_sprite
 void vdp_create_sprite( int sprite, int bitmap_num, int frames );
 
-// VDU 23, 27, &40, hotX, hotY: Setup a mouse cursor
 
 // ========= Advanced Buffer Commands =========
 // Command 0: Write block to a buffer
@@ -747,6 +746,9 @@ void vdp_mouse_scaling( int scaling );
 void vdp_mouse_acceleration( int acceleration );
 // 	VDU 23, 0, &89, 10, wheelAcceleration; wheelAccHighByte: Set mouse wheel acceleration (accepts a 24-bit value)
 void vdp_mouse_wheel_accel( int wheelAccel );
+// VDU 23, 27, &40, hotX, hotY: Setup a mouse cursor
+// Sets up a new mouse cursor using the currently selected bitmap, with a hotspot at hotX, hotY.
+void vdp_mouse_set_bitmap(int hotx, int hoty);
 
 /* Index rows for use with vdp_getKeyMap(uint8_t index)
 +--------+--------+--------+-----------+-----------+----------+----------+-----------+-----------+

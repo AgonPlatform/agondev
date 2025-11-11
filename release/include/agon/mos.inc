@@ -2,7 +2,7 @@
 ; Title:	AGON MOS - API for user projects
 ; Author:	Dean Belfield
 ; Created:	03/08/2022
-; Last Updated:	18/04/2025
+; Last Updated:	11/11/2025
 ; Adjusted for fasmg assembler (Paul Cawte, 16/06/2023)
 ; Adjusted for MOS 3.0 API (Jeroen Venema, 18/04/2025)
 ;
@@ -24,6 +24,7 @@
 ; 15/04/2023:	Added mos_getfil, mos_fread, mos_fwrite and mos_flseek
 ; 18/11/2023:	Added _mos_setkbvector, _mos_getkbmap, _mos_i2c_open, _mos_i2c_close, _mos_i2c_write, _mos_i2c_read
 ; 18/04/2025:   Added remaining ffs_* API values in MOS 2.20 / 3.0
+; 11/11/2025:   Added 0x27+ sysvar offsets
 
 ; VDP control (VDU 23, 0, n)
 ;
@@ -190,6 +191,14 @@ sysvar_rtc              := 01Ah	; 8: Real time clock data
 sysvar_keydelay         := 022h	; 2: Keyboard repeat delay
 sysvar_keyrate          := 024h	; 2: Keyboard repeat reat
 sysvar_keyled           := 026h	; 1: Keyboard LED status
+sysvar_scrMode			:= 027h	; 1: Screen mode
+sysvar_rtcEnable		:= 028h	; 1: RTC enable flag (0: disabled, 1: use ESP32 RTC)
+sysvar_mouseX           := 029h ; 2: Mouse X position
+sysvar_mouseY           := 02Bh ; 2: Mouse Y position
+sysvar_mouseButtons     := 02Dh ; 1: Mouse left+right+middle buttons (bits 0-2, 0=up, 1=down)
+sysvar_mouseWheel       := 02Eh ; 1: Mouse wheel delta
+sysvar_mouseXDelta      := 02Fh ; 2: Mouse X delta
+sysvar_mouseYDelta      := 031h ; 2: Mouse Y delta
 	
 ; Flags for the VDP protocol
 ;

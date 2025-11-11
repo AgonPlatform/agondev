@@ -1,0 +1,17 @@
+	.assume	adl=1
+	.include "agon/mos.inc"
+
+	.global  _getsysvar_mouseYDelta
+	.section .text
+
+_getsysvar_mouseYDelta:
+	push	ix
+	ld	a, mos_sysvars
+	rst.lil	08h
+	ld hl,0
+	ld	a, (ix+sysvar_mouseYDelta)
+	ld l, a
+	ld	a, (ix+sysvar_mouseYDelta+1)
+	ld h, a
+	pop	ix
+	ret

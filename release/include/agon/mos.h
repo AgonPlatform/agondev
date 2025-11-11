@@ -2,7 +2,7 @@
  * Title:			AGON MOS - MOS C header interface
  * Author:			Jeroen Venema
  * Created:			15/10/2022
- * Last Updated:	05/11/2025
+ * Last Updated:	11/11/2025
  * 
  * Modinfo:
  * 15/10/2022:		Added putch, getch
@@ -18,6 +18,7 @@
  * 18/04/2025:      Added the remaining ffs_* functions as defined in MOS up to version 3.0
  *                  Changed RTC_DATA to SYSVAR_RTCDATA, added vdp_time_t struct
  * 05/11/2025:      Changed location/name to <agon/mos.h>
+ * 11/11/2025:      Added mouse getsysvar getters
  */
 
 #ifndef _MOS_H
@@ -358,6 +359,12 @@ extern volatile SYSVAR_RTCDATA* getsysvar_rtc();  // mos_getrtc() needs to be ca
 extern uint16_t getsysvar_keydelay();
 extern uint16_t getsysvar_keyrate();
 extern uint8_t  getsysvar_keyled();
+extern uint16_t getsysvar_mouseX(void);
+extern uint16_t getsysvar_mouseY(void);
+extern uint8_t  getsysvar_mouseButtons(void);
+extern int8_t   getsysvar_mouseWheel(void);
+extern int16_t  getsysvar_mouseXDelta(void);
+extern int16_t  getsysvar_mouseYDelta(void);
 
 // MOS API calls - https://agonconsole8.github.io/agon-docs/MOS-API/ for details
 extern uint8_t  mos_load(const char *filename, uint24_t address, uint24_t maxsize);

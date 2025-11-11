@@ -69,9 +69,9 @@ default is 0
 #include <stdint.h>
 #include <stdio.h>
 #include <stdbool.h>
+#include <agon/mos.h>
 #include <agon/vdp.h>
 #include <agon/timer.h>
-#include "mouse.h"
 #include "mouseIcons.h"
 
 const uint8_t cursorBitmapID = 0;
@@ -88,19 +88,10 @@ int main(void) {
   vdp_clear_screen();
   vdp_mouse_enable();
 
+  // define bitmap as a custom cursor
   vdp_select_bitmap(cursorBitmapID);
   vdp_load_bitmap( 16, 16, mouse_bod );
-
-  // define bitmap as a cursor
-  // VDU 23, 27, &40, hotX, hotY: Setup a mouse cursor
-  // *** needs to be added to vdp.h and function made
-  putch(23);
-  putch(27);
-  putch(0x40);
-  putch(8);
-  putch(8);
-  //
-
+  vdp_mouse_set_bitmap( 8, 8);
 
   printf("AgonDev Mouse Example\n\n");
   printf("Press ESC to exit\n\n");

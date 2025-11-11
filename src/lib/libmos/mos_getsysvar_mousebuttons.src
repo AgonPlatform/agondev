@@ -1,0 +1,15 @@
+	.assume	adl=1
+	.include "agon/mos.inc"
+
+	.global  _getsysvar_mouseButtons
+	.section .text
+
+_getsysvar_mouseButtons:
+	push	ix
+	ld	a, mos_sysvars
+	rst.lil	08h
+	ld	a, (ix+sysvar_mouseButtons)
+	ld hl,0
+	ld l, a
+	pop	ix
+	ret

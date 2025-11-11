@@ -26,7 +26,7 @@ int vdp_adv_load_sprite_bitmaps( const char *fname_prefix, const char *fname_for
 		if ( pixel_cnt != (size_t)(width*height) ) return cnt;
 		
 		vdp_adv_select_bitmap( bitmap_num++ );
-		vdp_load_bitmap( width, height, img_buf );
+		vdp_load_bitmap( width, height, (uint8_t *)img_buf );
 		cnt++;
 	}
 	free( img_buf);
