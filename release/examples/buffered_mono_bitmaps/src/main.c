@@ -69,16 +69,8 @@ void makeBitmap(uint8_t newColour){
   make sure bitmap is selected first, done above, then:
   vdp plot bitmap
   VDU 25, 237, x; y;
-
-  needs function:
-    void vdu_plot_bitmap(uint8_t mode, uint16_t x, uint16_t y);
   */
-  putch(25);      //plot
-  putch(237);     // mode - 232 + mode (eg, 237 absolute position, foreground colour)
-  putch(0);       // x in 16 bit
-  putch(0);
-  putch(0);       // y in 16 bit
-  putch(0);
+  vdp_plot_bitmap(0,0);
 
   vdp_cursor_tab(0, 0);
   printf("AgonDev Monochrome Bitmap Example");

@@ -313,6 +313,9 @@ void vdp_move_rectangle( int src_x1, int src_y1, int src_x2, int src_y2, int des
 
 void vdp_fill_path(const int* path, int pathsize); // Fill path using coordinates in the given array. Send the entire size of the array using sizeof(path)
 
+// Plot currently selected bitmap in foreground color - VDU 25, 0xED, X, Y 
+void vdp_plot_bitmap(int x, int y);
+
 // VDU 26: Reset graphics and text viewports
 void vdp_reset_viewports( void );
 // VDU 27, char: Output character to screen
