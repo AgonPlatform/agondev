@@ -1,6 +1,6 @@
 ### Example of i2c on Agon - ADC1115
 
-Diplays analog values from i2c ADC1115 interface module.
+Displays analog values from i2c ADC1115 interface module.
 
 Illustrates example of a small external ASM library to:
 1. Open i2c bus (standrd MOS call).
