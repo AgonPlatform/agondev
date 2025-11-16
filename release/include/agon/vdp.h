@@ -11,6 +11,7 @@ extern "C" {
 
 #define VDP_PUTS(S) mos_puts( (char *)&(S), sizeof(S), 0)
 
+#define BACKGROUND_COL_OFFSET   128
 // DEFAULT COLOR INDEXES
 enum {
     BLACK = 0,
@@ -229,6 +230,7 @@ void vdp_clear_graphics( void );
 #define vdp_clg() vdp_clear_graphics()
 // VDU 17, colour: Set text colour
 void vdp_set_text_colour( int colour );
+void vdp_set_text_bg_colour( int colour ); // Automatically adds the BACKGROUND_COL_OFFSET offset to any given color
 
 // VDU 18, mode, colour: Set graphics colour (GCOL mode, colour)
 // Used as GCOL 'mode' to the vdp_set_graphics_xxx calls

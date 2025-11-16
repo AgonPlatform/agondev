@@ -13,11 +13,11 @@ int main(void)
     printf("Hello, ");                    // print some text
 
     vdp_set_text_colour( BRIGHT_YELLOW ); // make all text bright yellow
-    vdp_set_text_colour( 128 + BLUE );    // make text background (add 128) blue
+    vdp_set_text_bg_colour( BLUE );       // make text background (add 128) blue
     printf("Agon!\n");                    // print some text, followed by return character
 
     vdp_set_text_colour( BRIGHT_WHITE );  // make text white and...
-    vdp_set_text_colour( 128 );           // text background black before returning to MOS
+    vdp_set_text_bg_colour( BLACK );      // text background black before returning to MOS
 
 	return 0; 
 }
