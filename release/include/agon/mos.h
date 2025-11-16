@@ -367,8 +367,8 @@ extern int16_t  getsysvar_mouseXDelta(void);
 extern int16_t  getsysvar_mouseYDelta(void);
 
 // MOS API calls - https://agonconsole8.github.io/agon-docs/MOS-API/ for details
-extern uint8_t  mos_load(const char *filename, uint24_t address, uint24_t maxsize);
-extern uint8_t  mos_save(const char *filename, uint24_t address, uint24_t nbytes);
+extern uint8_t  mos_load(const char *filename, char * address, uint24_t maxsize);
+extern uint8_t  mos_save(const char *filename, char * address, uint24_t nbytes);
 extern uint8_t  mos_cd(const char *path);
 extern uint8_t  mos_dir(const char *path);
 extern uint8_t  mos_del(const char *filename);
