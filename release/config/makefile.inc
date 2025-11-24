@@ -21,7 +21,7 @@ TARGET=ez80-none-elf
 # Tools and flags
 ## Compiler
 CC=$(TOOLBINDIR)/ez80-none-elf-clang
-CFLAGS=-nostdinc -I$(PROJECTINCLUDEDIR) -isystem $(INCLUDEDIR) -target $(TARGET) -DAGONDEV -Oz -Wa,-march=$(ARCH) -fno-threadsafe-statics
+CFLAGS=-nostdinc -I$(PROJECTINCLUDEDIR) -isystem $(INCLUDEDIR) -target $(TARGET) -DAGONDEV -Oz -Wa,-march=$(ARCH) -fno-threadsafe-statics -fcolor-diagnostics
 CXXFLAGS=$(CFLAGS) -isystem $(INCLUDEDIR)/c++
 
 ## Assembler
