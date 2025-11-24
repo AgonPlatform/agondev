@@ -1,0 +1,43 @@
+name: Build AgonDev (macOS ARM64)
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build-macos-arm64:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v6
+
+      - name: Install dependencies (Homebrew)
+        run: |
+          brew update
+          brew install \
+            cmake \
+            ninja \
+            texinfo \
+            zlib
+
+      - name: Install Python packages
+        run: |
+          python3 --version
+          pip3 install --break-system-packages ply
+
+      - name: Run make_llvmtools.sh
+        run: |
+          ./make_llvmtools.sh
+
+      - name: Build final AgonDev package
+        run: |
+          make clean || true
+          make -j$(sysctl -n hw.logicalcpu)
+
+      - name: Upload final artifact
+        uses: actions/upload-artifact@v5
+        with:
+          name: agondev-macos-arm64
+          path: agondev-*.tar.gz

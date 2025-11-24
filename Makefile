@@ -46,14 +46,25 @@ LIBAGON := $(BUILD_DIR)/libagon.a
 AGONDEV_SETNAME := $(SRC_DIR)/tools/agondev-setname
 AGONDEV_CONFIG  := $(SRC_DIR)/tools/agondev-config
 
+# Determine clang source and destination
+ifeq ($(wildcard $(TOOL_DIR)/clang.exe),)
+  CLANG_SRC := $(TOOL_DIR)/clang
+  CLANG_DEST := $(RELEASE_BIN_DIR)/$(EZ80ARCH)-clang
+else
+  CLANG_SRC := $(TOOL_DIR)/clang.exe
+  CLANG_DEST := $(RELEASE_BIN_DIR)/$(EZ80ARCH)-clang.exe
+endif
+
 # Default rule
 all: $(RELEASE_BIN_DIR) $(LIBAGON) agondev-setname agondev-config
 	@echo [ Copying binaries to $(RELEASE_BIN_DIR) ]
 	@cp $(TOOL_DIR)/$(EZ80ARCH)-* $(RELEASE_BIN_DIR)
+	@cp $(TOOL_DIR)/lib*.dll $(RELEASE_BIN_DIR) || true
+	@rm -f $(RELEASE_BIN_DIR)/libclang.dll
 	@strip $(RELEASE_BIN_DIR)/$(EZ80ARCH)-*
-	@cp $(TOOL_DIR)/clang $(RELEASE_BIN_DIR)/$(EZ80ARCH)-clang
-	@strip $(RELEASE_BIN_DIR)/$(EZ80ARCH)-clang
-	@cp ./dist/hexload-send $(RELEASE_BIN_DIR) 
+	@cp $(CLANG_SRC) $(CLANG_DEST)
+	@strip $(RELEASE_BIN_DIR)/$(EZ80ARCH)-clang*
+	@cp ./dist/hexload-send* $(RELEASE_BIN_DIR) 
 	@cp $(AGONDEV_SETNAME)/bin/* $(RELEASE_BIN_DIR)/
 	@cp $(AGONDEV_CONFIG)/bin/* $(RELEASE_BIN_DIR)/
  
