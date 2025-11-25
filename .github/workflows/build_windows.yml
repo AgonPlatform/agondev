@@ -1,8 +1,9 @@
 name: Build AgonDev (Windows x64)
 
 on:
-  push:
-  pull_request:
+  # only do this when manually requested (e.g., via Web UI), not on every commit.
+  #push:
+  #pull_request:
   workflow_dispatch:
 
 jobs:
