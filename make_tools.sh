@@ -53,11 +53,12 @@ fi
 
 # Build LLVM
 if [ "${BUILD_LLVM}" == "yes" ]; then
+  echo "[ Building LLVM ]"
   pushd . >/dev/null
   if [ ! -d "$LVMDIR" ]; then
     git clone --branch z80-as --depth 1 https://github.com/envenomator/llvm-project.git
   else
-    echo "Skip cloning $LVMDIR"
+    echo "[ Skip cloning $LVMDIR ]"
   fi
   cd $LVMDIR
   mkdir -p build
@@ -74,16 +75,18 @@ if [ "${BUILD_LLVM}" == "yes" ]; then
   popd >/dev/null
   # Copy to release directory
   cp llvm-build/ez80-none-elf/bin/clang $RELEASE_BIN_DIR/ez80-none-elf-clang
+  echo "[ Done building LLVM ]"
 else
-  echo "Configured to skip LLVM build"
+  echo "[ Configured to skip LLVM build ]"
 fi
 
 # Build BINUTILS
 if [ "${BUILD_BINUTILS}" == "yes" ]; then
+  echo "[ Building $BINUTILS ]"
   pushd . >/dev/null
   rm -rf $BINUTILS
   if [ ! -f "$BINUTILS.tar.gz" ]; then #skip downloading if already in place
-    echo "Downloading $BINUTILS"
+    echo "[ Downloading $BINUTILS ]"
     curl -LO https://ftp.gnu.org/gnu/binutils/$BINUTILS.tar.gz
   fi
   echo Unpacking $BINUTILS
@@ -102,49 +105,50 @@ if [ "${BUILD_BINUTILS}" == "yes" ]; then
     && make -j4 \
     && make install
   if [ ! -f "$INSTALLDIR/bin/ez80-none-elf-ld" ]; then
-    echo "Error compiling $BINUTILS"
+    echo "[ Error building $BINUTILS ]"
   else
-    echo "Done compiling $BINUTILS"
+    echo "[ Done building $BINUTILS ]"
   fi
   popd >/dev/null
   # Copy to release directory
   cp llvm-build/ez80-none-elf/bin/ez80-none-elf-* $RELEASE_BIN_DIR
 else
-  echo "Configured to skip BINUTILS build"
+  echo "[ Configured to skip BINUTILS build ]"
 fi
 
 # Build Agon tools
 if [ "${BUILD_AGONTOOLS}" == "yes" ]; then
-  echo "Building agondev-setname"
+  echo "[ Building agondev-setname ]"
   pushd . >/dev/null
   cd src/tools/agondev-setname
   make clean;make
   popd >/dev/null
-  echo "Done building agondev-setname"
-  echo "Building agondev-config"
+  echo "[ Done building agondev-setname ]"
+  echo "[ Building agondev-config ]"
   pushd . >/dev/null
   cd src/tools/agondev-config
   make clean;make
   popd >/dev/null
-  echo "Done building agondev-config"
+  echo "[ Done building agondev-config ]"
   # Copy to release directory
   cp src/tools/agondev-setname/bin/* $RELEASE_BIN_DIR
   cp src/tools/agondev-config/bin/* $RELEASE_BIN_DIR
 else
-  echo "Configured to skip building Agon tools"
+  echo "[ Configured to skip building Agon tools ]"
 fi
 
 if [ "${BUILD_HEXLOADSEND}" == "yes" ]; then
-  echo "Building hexload send binary"
+  echo "[ Building hexload send binary ]"
   python3 -m venv venv
   source venv/bin/activate
   pip install pyserial crcmod intelhex
   pip install pyinstaller
   pyinstaller -F ./scripts/hexload-send.py
   deactivate
-  echo "Done building hexload send binary"
+  echo "[ Done building hexload send binary ]"
   # Copy to release directory
   cp ./dist/hexload-send* $RELEASE_BIN_DIR
 else
-  echo "Configured to skip building Hexload send"
+  echo "[ Configured to skip building Hexload send ]"
 fi
+echo "[ Make tools done ]"

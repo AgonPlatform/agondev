@@ -6,6 +6,7 @@ build/
 build_lib/
 dist/
 obj/
+download/
 release/bin
 release/lib
 hexload-send.spec
