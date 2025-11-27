@@ -74,7 +74,7 @@ if [ "${BUILD_LLVM}" == "yes" ]; then
   ninja install
   popd >/dev/null
   # Copy to release directory
-  cp llvm-build/ez80-none-elf/bin/clang $RELEASE_BIN_DIR/ez80-none-elf-clang
+  cp $INSTALLDIR/bin/clang $RELEASE_BIN_DIR/ez80-none-elf-clang
   echo "[ Done building LLVM ]"
 else
   echo "[ Configured to skip LLVM build ]"
@@ -111,7 +111,7 @@ if [ "${BUILD_BINUTILS}" == "yes" ]; then
   fi
   popd >/dev/null
   # Copy to release directory
-  cp llvm-build/ez80-none-elf/bin/ez80-none-elf-* $RELEASE_BIN_DIR
+  cp $INSTALLDIR/bin/ez80-none-elf-* $RELEASE_BIN_DIR
 else
   echo "[ Configured to skip BINUTILS build ]"
 fi
@@ -135,6 +135,11 @@ if [ "${BUILD_AGONTOOLS}" == "yes" ]; then
   cp src/tools/agondev-config/bin/* $RELEASE_BIN_DIR
 else
   echo "[ Configured to skip building Agon tools ]"
+fi
+
+if [ "$BUILD_LLVM" = "yes" ] || [ "$BUILD_BINUTILS" = "yes" ] || [ "$BUILD_AGONTOOLS" = "yes" ]; then
+    echo "[ Stripping debug symbols from release binaries ]"
+    strip $RELEASE_BIN_DIR/*
 fi
 
 if [ "${BUILD_HEXLOADSEND}" == "yes" ]; then
