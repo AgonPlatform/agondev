@@ -2,6 +2,7 @@
 
 BUILD_LLVM=yes
 BUILD_BINUTILS=yes
+BUILD_AGONTOOLS=yes
 BUILD_HEXLOADSEND=yes
 
 # Immediately stop on any error
@@ -10,9 +11,13 @@ set -e
 #Directories
 INSTALLDIR=$(pwd)/llvm-build/ez80-none-elf
 LVMDIR=llvm-project
+RELEASE_BIN_DIR=./release/bin
 
 #Versions
 BINUTILS=binutils-2.45
+
+# Prepare release directory
+mkdir -p $RELEASE_BIN_DIR
 
 #Check tools
 if ! command -v make &> /dev/null
@@ -67,8 +72,10 @@ if [ "${BUILD_LLVM}" == "yes" ]; then
   # Build and install Clang 15 with ez80 support
   ninja install
   popd >/dev/null
+  # Copy to release directory
+  cp llvm-build/ez80-none-elf/bin/clang $RELEASE_BIN_DIR/ez80-none-elf-clang
 else
-  echo Configured to skip LLVM build
+  echo "Configured to skip LLVM build"
 fi
 
 # Build BINUTILS
@@ -100,16 +107,44 @@ if [ "${BUILD_BINUTILS}" == "yes" ]; then
     echo "Done compiling $BINUTILS"
   fi
   popd >/dev/null
+  # Copy to release directory
+  cp llvm-build/ez80-none-elf/bin/ez80-none-elf-* $RELEASE_BIN_DIR
 else
-  echo Configured to skip BINUTILS build
+  echo "Configured to skip BINUTILS build"
 fi
+
+# Build Agon tools
+if [ "${BUILD_AGONTOOLS}" == "yes" ]; then
+  echo "Building agondev-setname"
+  pushd . >/dev/null
+  cd src/tools/agondev-setname
+  make clean;make
+  popd >/dev/null
+  echo "Done building agondev-setname"
+  echo "Building agondev-config"
+  pushd . >/dev/null
+  cd src/tools/agondev-config
+  make clean;make
+  popd >/dev/null
+  echo "Done building agondev-config"
+  # Copy to release directory
+  cp src/tools/agondev-setname/bin/* $RELEASE_BIN_DIR
+  cp src/tools/agondev-config/bin/* $RELEASE_BIN_DIR
+else
+  echo "Configured to skip building Agon tools"
+fi
+
 if [ "${BUILD_HEXLOADSEND}" == "yes" ]; then
-  echo Building hexload send binary
+  echo "Building hexload send binary"
   python3 -m venv venv
   source venv/bin/activate
   pip install pyserial crcmod intelhex
   pip install pyinstaller
   pyinstaller -F ./scripts/hexload-send.py
   deactivate
-  echo Done building hexload send binary
+  echo "Done building hexload send binary"
+  # Copy to release directory
+  cp ./dist/hexload-send* $RELEASE_BIN_DIR
+else
+  echo "Configured to skip building Hexload send"
 fi

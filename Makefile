@@ -7,19 +7,15 @@ ARCH    := $(shell uname -m | tr 'A-Z' 'a-z')
 EZ80ARCH := ez80-none-elf
 
 ### Directories
-SRC_DIR         := ./src
-SRC_LIB_DIR     := $(SRC_DIR)/lib
-BUILD_DIR       := ./build_lib
+SRC_DIR         := ./src/lib
+BUILD_DIR       := ./build/lib
 RELEASE_DIR     := ./release
-RELEASE_BIN_DIR := $(RELEASE_DIR)/bin
 RELEASE_LIB_DIR := $(RELEASE_DIR)/lib
 RELEASE_INC_DIR := $(RELEASE_DIR)/include
-TOOL_DIR        := ./llvm-build/$(EZ80ARCH)/bin
-SCRIPT_DIR      := ./scripts
-TARGET_DIR      := ./agondev
+TOOL_DIR        := $(RELEASE_DIR)/bin
 
 ### Tools
-CC :=$(TOOL_DIR)/clang
+CC :=$(TOOL_DIR)/$(EZ80ARCH)-clang
 AS :=$(TOOL_DIR)/$(EZ80ARCH)-as
 AR :=$(TOOL_DIR)/$(EZ80ARCH)-ar
 
@@ -29,9 +25,9 @@ ARFLAGS := rcs
 ASFLAGS := -march=ez80+full -I $(RELEASE_INC_DIR)
 
 ### Sources
-C_SRCS   := $(shell find $(SRC_LIB_DIR) -type f -name '*.c'   | sed 's|^$(SRC_LIB_DIR)/||')
-ASM_SRCS := $(shell find $(SRC_LIB_DIR) -type f -name '*.asm' | sed 's|^$(SRC_LIB_DIR)/||')
-SRC_SRCS := $(shell find $(SRC_LIB_DIR) -type f -name '*.src' | sed 's|^$(SRC_LIB_DIR)/||')
+C_SRCS   := $(shell find $(SRC_DIR) -type f -name '*.c'   | sed 's|^$(SRC_DIR)/||')
+ASM_SRCS := $(shell find $(SRC_DIR) -type f -name '*.asm' | sed 's|^$(SRC_DIR)/||')
+SRC_SRCS := $(shell find $(SRC_DIR) -type f -name '*.src' | sed 's|^$(SRC_DIR)/||')
 
 ### Objects to build - convert source paths → object file paths
 OBJS := \
@@ -40,44 +36,18 @@ OBJS := \
     $(addprefix $(BUILD_DIR)/,$(SRC_SRCS:.src=.o))
 
 # AGON LIBRARY to build
-LIBAGON := $(BUILD_DIR)/libagon.a
+LIBAGON := $(RELEASE_LIB_DIR)/libagon.a
 
-# Agon tools to build, using subproject makefile
-AGONDEV_SETNAME := $(SRC_DIR)/tools/agondev-setname
-AGONDEV_CONFIG  := $(SRC_DIR)/tools/agondev-config
-
-# Determine clang source and destination
-ifeq ($(wildcard $(TOOL_DIR)/clang.exe),)
-  CLANG_SRC := $(TOOL_DIR)/clang
-  CLANG_DEST := $(RELEASE_BIN_DIR)/$(EZ80ARCH)-clang
-else
-  CLANG_SRC := $(TOOL_DIR)/clang.exe
-  CLANG_DEST := $(RELEASE_BIN_DIR)/$(EZ80ARCH)-clang.exe
-endif
+# Release tarball to build
+RELEASE := agondev-$(OS_NAME)_$(ARCH).tar.gz
 
 # Default rule
-all: $(RELEASE_BIN_DIR) $(LIBAGON) agondev-setname agondev-config
-	@echo [ Copying binaries to $(RELEASE_BIN_DIR) ]
-	@cp $(TOOL_DIR)/$(EZ80ARCH)-* $(RELEASE_BIN_DIR)
-	@cp $(TOOL_DIR)/lib*.dll $(RELEASE_BIN_DIR) || true
-	@rm -f $(RELEASE_BIN_DIR)/libclang.dll
-	@strip $(RELEASE_BIN_DIR)/$(EZ80ARCH)-*
-	@cp $(CLANG_SRC) $(CLANG_DEST)
-	@strip $(RELEASE_BIN_DIR)/$(EZ80ARCH)-clang*
-	@cp ./dist/hexload-send* $(RELEASE_BIN_DIR) 
-	@cp $(AGONDEV_SETNAME)/bin/* $(RELEASE_BIN_DIR)/
-	@cp $(AGONDEV_CONFIG)/bin/* $(RELEASE_BIN_DIR)/
- 
-	@echo [ Copying Agon library to $(RELEASE_LIB_DIR) ]
-	@cp $(LIBAGON) $(RELEASE_LIB_DIR)
-
-	@echo [ Creating TAR binary for release ]
-	@$(RM) -rf $(TARGET_DIR)
-	@mkdir $(TARGET_DIR)
-	@cp -R $(RELEASE_DIR)/* $(TARGET_DIR)/
-	@tar -zcvf agondev-$(OS_NAME)_$(ARCH).tar.gz $(TARGET_DIR) > /dev/null 2>&1
-	@$(RM) -rf $(TARGET_DIR)
+all: $(RELEASE)
 	@echo [ Done ]
+
+$(RELEASE): $(RELEASE_DIR) $(LIBAGON)
+	@echo [ Creating TAR binary for release ]
+	@tar -zcvf $(RELEASE) $(RELEASE_DIR) > /dev/null 2>&1
 
 # Ranlib all library objects into single AGON library
 $(LIBAGON): $(OBJS) $(RELEASE_LIB_DIR)
@@ -85,36 +55,22 @@ $(LIBAGON): $(OBJS) $(RELEASE_LIB_DIR)
 	@$(RM) -f $(LIBAGON)
 	$(AR) $(ARFLAGS) $(LIBAGON) $(OBJS)
 
-agondev-setname:
-	@echo "[Building $@ ]"
-	@$(MAKE) -C $(AGONDEV_SETNAME)
-agondev-config:
-	@echo "[Building $@ ]"
-	@$(MAKE) -C $(AGONDEV_CONFIG)
-
 # Rule for compiling all C files
-$(BUILD_DIR)/%.o: $(SRC_LIB_DIR)/%.c
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(@D)
 	$(CC) $(CCFLAGS) -c $< -o $@
 # Rule for assembling all .src files
-$(BUILD_DIR)/%.o: $(SRC_LIB_DIR)/%.src
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.src
 	@mkdir -p $(@D)
 	$(AS) $(ASFLAGS) $< -o $@
 # Rule for assembling all .asm files
-$(BUILD_DIR)/%.o: $(SRC_LIB_DIR)/%.asm
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.asm
 	@mkdir -p $(@D)
 	$(AS) $(ASFLAGS) $< -o $@
-
-$(RELEASE_BIN_DIR):
-	@mkdir -p $(RELEASE_BIN_DIR)
 
 $(RELEASE_LIB_DIR): $(RELEASE_DIR)
 	@mkdir -p $(RELEASE_DIR)/lib
 
 clean:
 	@$(RM) -r $(BUILD_DIR)
-	@$(RM) -rf $(RELEASE_BIN_DIR)
 	@$(RM) -rf $(RELEASE_LIB_DIR)
-	@$(RM) -rf $(TARGET_DIR)
-	@$(MAKE) -C $(AGONDEV_SETNAME) clean
-	@$(MAKE) -C $(AGONDEV_CONFIG) clean
