@@ -1,0 +1,73 @@
+name: Release libraries - Linux / MacOS
+
+on:
+  workflow_dispatch:
+    inputs:
+      draft:
+        description: "Create as draft release?"
+        required: true
+        default: "true"
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    name: Publish for ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-latest
+            artifact_name: agondev-linux_x86_64.tar.gz
+            asset_name: agondev-linux_x86_64.tar.gz
+          #- os: windows-latest
+            #artifact_name: mything.exe
+            #asset_name: mything-windows-amd64
+          - os: macos-latest
+            artifact_name: agondev-darwin_arm64.tar.gz
+            asset_name: agondev-darwin_arm64.tar.gz
+
+    steps:
+    - uses: actions/checkout@v6
+
+    # Linux
+    - name: Install Linux dependencies
+      if: matrix.os == 'ubuntu-latest'
+      run: sudo apt-get install -y build-essential git make zip cmake texinfo ninja-build libgmp-dev libmpfr-dev bison flex python3-pip python3-ply zlib1g-dev binutils
+
+    # MacOS
+    - name: Install macOS dependencies
+      if: matrix.os == 'macos-latest'
+      run: |
+          brew update
+          brew install \
+            cmake \
+            ninja \
+            texinfo \
+            zlib
+
+    - name: Install Python packages
+      if: matrix.os == 'macos-latest'
+      run: |
+        python3 --version
+        pip3 install --break-system-packages ply
+
+      #- name: Make tools
+        #run: ./make_tools.sh
+
+    - name: Get tools
+      run: ./get_tools.sh
+
+    - name: Make Agon library and release
+      run: make
+
+    - name: Upload binaries to release
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.WORKFLOWS }}
+        file: ${{ matrix.artifact_name }}
+        asset_name: ${{ matrix.asset_name }}
+        overwrite: true
+        draft: ${{ github.event.inputs.draft }}
+        tag: ${{ github.ref }}
