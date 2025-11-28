@@ -797,6 +797,10 @@ extern uint8_t vdp_getKeyCode(void); // return ascii code of single key being pr
 void vdp_set_variable(uint16_t variableId, uint16_t value); // VDU 23, 0, &F8, variableId; value;: Set a VDP Variable
 void vdp_clear_variable(uint16_t variableId); // VDU 23, 0, &F9, variableId;: Clear a VDP Variable
 
+// Misc
+//VDU 27, char: Output character to screen
+void vdp_outchar(uint8_t c);
+
 #ifdef __cplusplus
 }
 #endif
