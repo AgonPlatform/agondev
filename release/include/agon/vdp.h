@@ -54,6 +54,8 @@ typedef struct { uint8_t A; uint8_t B; uint8_t CMD; uint16_t x; uint16_t y; } VD
 
 typedef struct { uint8_t A; uint8_t B; uint8_t CMD; uint8_t b0; } VDU_A_B_CMD_B;
 typedef struct { uint8_t A; uint8_t B; uint8_t CMD; uint16_t w0; } VDU_A_B_CMD_W;
+typedef struct { uint8_t A; uint8_t B; uint8_t CMD; uint16_t w0; uint8_t b0; } VDU_A_B_CMD_W_B;
+typedef struct { uint8_t A; uint8_t B; uint8_t CMD; uint16_t w0; uint16_t w1; } VDU_A_B_CMD_W_W;
 typedef struct { uint8_t A; uint8_t B; uint8_t CMD; uint8_t b0; uint16_t w1; } VDU_A_B_CMD_B_W;
 typedef struct { uint8_t A; uint8_t B; uint8_t CMD; uint16_t w0; uint16_t w1; uint8_t b2; } VDU_A_B_CMD_W_W_B;
 typedef struct { uint8_t A; uint8_t B; uint8_t CMD; uint8_t b0; uint8_t b1; uint8_t b2; uint8_t b3; } VDU_A_B_CMD_B_B_B_B;
@@ -782,6 +784,10 @@ extern uint8_t vdp_getKeyMap(uint8_t index); // pass in index offset to keyboard
 extern void    vdp_waitKeyUp(void); // wait for key up state before returning (blocking)
 extern void    vdp_waitKeyDown(void); // wait for key down state before returning (blocking)
 extern uint8_t vdp_getKeyCode(void); // return ascii code of single key being pressed, or 0 if none (non-blocking)
+
+// VDP variables
+void vdp_set_variable(uint16_t variableId, uint16_t value); // VDU 23, 0, &F8, variableId; value;: Set a VDP Variable
+void vdp_clear_variable(uint16_t variableId); // VDU 23, 0, &F9, variableId;: Clear a VDP Variable
 
 #ifdef __cplusplus
 }
