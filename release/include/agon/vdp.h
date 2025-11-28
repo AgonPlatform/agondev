@@ -58,6 +58,7 @@ typedef struct { uint8_t A; uint8_t B; uint8_t CMD; uint16_t w0; uint8_t b0; } V
 typedef struct { uint8_t A; uint8_t B; uint8_t CMD; uint16_t w0; uint16_t w1; } VDU_A_B_CMD_W_W;
 typedef struct { uint8_t A; uint8_t B; uint8_t CMD; uint8_t b0; uint16_t w1; } VDU_A_B_CMD_B_W;
 typedef struct { uint8_t A; uint8_t B; uint8_t CMD; uint16_t w0; uint16_t w1; uint8_t b2; } VDU_A_B_CMD_W_W_B;
+typedef struct { uint8_t A; uint8_t B; uint8_t CMD; uint8_t b0; uint8_t b1; uint8_t b2; } VDU_A_B_CMD_B_B_B;
 typedef struct { uint8_t A; uint8_t B; uint8_t CMD; uint8_t b0; uint8_t b1; uint8_t b2; uint8_t b3; } VDU_A_B_CMD_B_B_B_B;
 
 typedef struct { uint8_t A; uint8_t B; uint8_t b0; uint8_t b1; uint8_t b2; uint8_t b3; uint8_t b4; uint8_t b5; uint8_t b6; uint8_t b7; } VDU_A_B_ui8x8;
@@ -443,6 +444,7 @@ void vdp_load_bitmap( int width, int height, uint8_t *data );
 // helper function to load bitmap from file
 int vdp_load_bitmap_file( const char *fname, int width, int height );
 // VDU 23, 27, 1, n, 0, 0;: Capture screen data into bitmap n
+void vdp_capture_bitmap(uint16_t top, uint16_t left, uint16_t bottom, uint16_t right, uint8_t bitmapID);
 // -- not implemented --
 // VDU 23, 27, 2, w; h; col1; col2;: Create a solid colour rectangular bitmap
 void vdp_solid_bitmap( int width, int height, int r, int g, int b, int a );
