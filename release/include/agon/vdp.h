@@ -494,6 +494,10 @@ int vdp_load_sprite_bitmaps( const char *fname_prefix, const char *fname_format,
 // see below for 16-bit bufferID version vdp_adv_create_sprite
 void vdp_create_sprite( int sprite, int bitmap_num, int frames );
 
+//VDU 23, 27, 19: Set sprite to be a hardware sprite
+void vdp_set_hardware_sprite(void);
+// VDU 23, 27, 20: Set sprite to be a software sprite
+void vdp_set_software_sprite(void);
 
 // ========= Advanced Buffer Commands =========
 // Command 0: Write block to a buffer
