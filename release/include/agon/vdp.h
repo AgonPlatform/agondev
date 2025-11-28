@@ -483,6 +483,8 @@ void vdp_refresh_sprites( void );
 void vdp_reset_sprites( void );
 // VDU 23, 27, 17: Reset sprites (only) and clear all data
 void vdp_reset_sprites_only( void );
+//VDU 23, 27, 21, n; Replace currently selected frame of current sprite with bitmap n
+void vdp_replace_sprite_frame(uint8_t bitmapID);
 // VDU 23, 27, 18, n: Set the current sprite GCOL paint mode to n **
 void vdp_set_sprite_paint_mode( int n );
 // VDU 23, 27, &26, n;: Add bitmap n as a frame to current sprite using a 16-bit buffer ID
