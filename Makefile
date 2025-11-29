@@ -49,7 +49,7 @@ all: $(RELEASE)
 $(RELEASE): $(RELEASE_DIR) $(LIBAGON)
 	@$(RM) -r $(TAR_DIR)
 	@mkdir -p $(TAR_DIR)
-	@cp -R $(RELEASE_DIR)/ $(TAR_DIR)
+	@cp -R $(RELEASE_DIR)/* $(TAR_DIR)/
 	@echo [ Creating TAR binary for release ]
 	@tar -zcvf $(RELEASE) $(TAR_DIR) > /dev/null 2>&1
 	@$(RM) -r $(TAR_DIR)
