@@ -10,7 +10,6 @@ jobs:
   build:
     name: Build on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
-    needs: create_tag
 
     env:
       LLVM_PROJECT_DIR: ${{ github.workspace }}/llvm-project
