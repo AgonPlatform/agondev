@@ -19,6 +19,8 @@ jobs:
             artifact_name: agondev-linux_x86_64.tar.gz
           - os: macos-latest
             artifact_name: agondev-darwin_arm64.tar.gz
+          - os: self-hosted
+            artifact_name: agondev-linux_aarch64.tar.gz
 
     steps:
       - uses: actions/checkout@v6
