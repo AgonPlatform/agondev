@@ -126,7 +126,7 @@ The compiled library must be manually copied to another project's lib directory 
 
 ## Build toolchain from source
 1) clone this repo
-2) Run the make_llvmtools.sh shell script. This isn't robust, but should do the trick. You need the essentials for compiling and making stuff, e.g. using apt-get install build-essential, but also ninja. This is a hefty build that takes a long time and a lot of memory. About 30min on my AMD 4650, taking up 14-15GB of memory. When it finishes, all binary tools are in the ./release/bin folder
+2) Run the make_tools.sh shell script. You need the essentials for compiling and making stuff, e.g. using apt-get install build-essential, but also ninja. This is a hefty build that takes a long time and a lot of memory. About 30min on my AMD 4650, taking up 14-15GB of memory. When it finishes, all binary tools are in the ./release/bin folder
 3) Perform a 'make clean;make all' to build the Agon libraries
 
 ## Toolchain components
