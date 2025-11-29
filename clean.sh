@@ -14,4 +14,5 @@ rm -rf llvm-project
 rm -rf venv
 rm -rf release/bin
 rm -rf release/lib
+rm -rf agondev
 echo "[ Done ]"

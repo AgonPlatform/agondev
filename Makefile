@@ -13,6 +13,7 @@ RELEASE_DIR     := ./release
 RELEASE_LIB_DIR := $(RELEASE_DIR)/lib
 RELEASE_INC_DIR := $(RELEASE_DIR)/include
 TOOL_DIR        := $(RELEASE_DIR)/bin
+TAR_DIR         := ./agondev
 
 ### Tools
 CC :=$(TOOL_DIR)/$(EZ80ARCH)-clang
@@ -46,9 +47,13 @@ all: $(RELEASE)
 	@echo [ Done ]
 
 $(RELEASE): $(RELEASE_DIR) $(LIBAGON)
+	@$(RM) -r $(TAR_DIR)
+	@mkdir -p $(TAR_DIR)
+	@cp -R $(RELEASE_DIR)/ $(TAR_DIR)
 	@echo [ Creating TAR binary for release ]
-	@tar -zcvf $(RELEASE) $(RELEASE_DIR) > /dev/null 2>&1
-
+	@tar -zcvf $(RELEASE) $(TAR_DIR) > /dev/null 2>&1
+	@$(RM) -r $(TAR_DIR)
+ 
 # Ranlib all library objects into single AGON library
 $(LIBAGON): $(OBJS) $(RELEASE_LIB_DIR)
 	@echo [ Creating AGON library ]
