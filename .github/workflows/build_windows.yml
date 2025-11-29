@@ -1,98 +1,116 @@
-name: Build AgonDev (Windows x64)
+name: Build windows
 
 on:
-  # only do this when manually requested (e.g., via Web UI), not on every commit.
-  #push:
-  #pull_request:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
-  build-win64:
-    runs-on: windows-2022
+  build:
+    name: Build on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    needs: create_tag
 
     env:
       LLVM_PROJECT_DIR: ${{ github.workspace }}/llvm-project
       BUILD_DIR: ${{ github.workspace }}/build
       INSTALL_DIR: ${{ github.workspace }}/llvm-build/ez80-none-elf
+      RELEASE_DIR: ${{ github.workspace }}/release/bin
+
+    strategy:
+      matrix:
+        include:
+          - os: windows-2022
+            artifact_name: agondev-mingw64_nt-10.0-20348_x86_64.tar.gz
 
     steps:
-    - name: Checkout workflow repo
-      uses: actions/checkout@v6
+      - uses: actions/checkout@v6
 
-    - name: Clone EZ80 LLVM fork
-      run: |
-        git clone --branch z80-as --depth 1 https://github.com/envenomator/llvm-project.git $env:LLVM_PROJECT_DIR
+      # Windows dependencies
+      - name: Install Windows dependencies (Windows)
+        if: matrix.os == 'windows-2022'
+        uses: msys2/setup-msys2@v2
+        with:
+          msystem: MINGW64
+          update: false
+          install: |
+            mingw-w64-x86_64-python
+            mingw-w64-x86_64-python-pip
+            git
+            zip
+            make
+            cmake
+            texinfo
+            ninja
+            gmp-devel
+            mpfr-devel
+            bison
+            flex
+            mingw-w64-x86_64-python-ply
+            zlib-devel
+            diffutils
+            mingw-w64-x86_64-gcc
+            binutils
 
-    - name: Configure LLVM (Visual Studio + MSVC)
-      shell: pwsh
-      run: |
-        New-Item -ItemType Directory -Force -Path $env:BUILD_DIR | Out-Null
-        New-Item -ItemType Directory -Force -Path $env:INSTALL_DIR | Out-Null
+      - name: Clone LLVM (Windows)
+        if: matrix.os == 'windows-2022'
+        run: |
+          git clone --branch z80-as --depth 1 https://github.com/envenomator/llvm-project.git $env:LLVM_PROJECT_DIR
 
-        cd $env:BUILD_DIR
+      - name: Configure LLVM (Windows)
+        if: matrix.os == 'windows-2022'
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force -Path $env:BUILD_DIR | Out-Null
+          New-Item -ItemType Directory -Force -Path $env:INSTALL_DIR | Out-Null
+          New-Item -ItemType Directory -Force -Path $env:RELEASE_DIR | Out-Null
 
-        cmake -G "Visual Studio 17 2022" `
-            -A x64 `
-            -Thost=x64 `
-            -DLLVM_ENABLE_PROJECTS=clang `
-            -DLLVM_EXPERIMENTAL_TARGETS_TO_BUILD=Z80 `
-            -DLLVM_TARGETS_TO_BUILD= `
-            -DLLVM_DEFAULT_TARGET_TRIPLE=ez80-none-elf `
-            -DCMAKE_BUILD_TYPE=Release `
-            -DCMAKE_INSTALL_PREFIX="$env:INSTALL_DIR" `
-            ../llvm-project/llvm
+          cd $env:BUILD_DIR
 
-    - name: Build LLVM
-      shell: pwsh
-      run: |
-        cd $env:BUILD_DIR
-        cmake --build . --config Release --target INSTALL -- /maxcpucount
+          cmake -G "Visual Studio 17 2022" `
+              -A x64 `
+              -Thost=x64 `
+              -DLLVM_ENABLE_PROJECTS=clang `
+              -DLLVM_EXPERIMENTAL_TARGETS_TO_BUILD=Z80 `
+              -DLLVM_TARGETS_TO_BUILD= `
+              -DLLVM_DEFAULT_TARGET_TRIPLE=ez80-none-elf `
+              -DCMAKE_BUILD_TYPE=Release `
+              -DCMAKE_INSTALL_PREFIX="$env:INSTALL_DIR" `
+              ../llvm-project/llvm
 
-    # ---- AgonDev build (MSYS2 MINGW64) ----
-    - name: Setup MSYS2 (MINGW64)
-      uses: msys2/setup-msys2@v2
-      with:
-        msystem: MINGW64
-        update: false
-        install: |
-          mingw-w64-x86_64-python
-          mingw-w64-x86_64-python-pip
-          git
-          zip
-          make
-          cmake
-          texinfo
-          ninja
-          gmp-devel
-          mpfr-devel
-          bison
-          flex
-          mingw-w64-x86_64-python-ply
-          zlib-devel
-          diffutils
-          mingw-w64-x86_64-gcc
-          binutils
+      - name: Build LLVM (Windows)
+        if: matrix.os == 'windows-2022'
+        shell: pwsh
+        run: |
+          cd $env:BUILD_DIR
+          cmake --build . --config Release --target INSTALL -- /maxcpucount
+          # Copy clang.exe
+          cp $env:INSTALL_DIR/bin/clang.exe $env:RELEASE_DIR/ez80-none-elf-clang.exe
 
-    - name: Run make_llvmtools.sh
-      shell: msys2 {0}
-      run: |
-        # Disable LLVM build, already done in MSVC above
-        sed -i 's/^BUILD_LLVM=yes$/BUILD_LLVM=no/' make_llvmtools.sh
-        ./make_llvmtools.sh
-        # dependencies of MinGW64 built binaries (see ldd ez80-none-elf-objdump.exe for example)
-        cp /mingw64/bin/libintl-8.dll llvm-build/ez80-none-elf/bin/
-        cp /mingw64/bin/libwinpthread-1.dll llvm-build/ez80-none-elf/bin/
-        cp /mingw64/bin/libzstd.dll llvm-build/ez80-none-elf/bin/
-        cp /mingw64/bin/libiconv-2.dll llvm-build/ez80-none-elf/bin/
+      - name: Run make_tools.sh (Windows)
+        if: matrix.os == 'windows-2022'
+        shell: msys2 {0}
+        run: |
+          # Disable LLVM build, already done in MSVC above
+          sed -i 's/^BUILD_LLVM=yes$/BUILD_LLVM=no/' make_tools.sh
+          ./make_tools.sh
+          # dependencies of MinGW64 built binaries (see ldd ez80-none-elf-objdump.exe for example)
+          cp /mingw64/bin/libintl-8.dll release/bin/
+          cp /mingw64/bin/libwinpthread-1.dll release/bin/
+          cp /mingw64/bin/libzstd.dll release/bin/
+          cp /mingw64/bin/libiconv-2.dll release/bin/
 
-    - name: Build final AgonDev package
-      shell: msys2 {0}
-      run: |
-        make clean || true
-        make -j$(nproc)
+      - name: Build Agon Library and release (Windows)
+        if: matrix.os == 'windows-2022'
+        shell: msys2 {0}
+        run: |
+          make clean || true
+          make -j$(nproc)
 
-    - name: Upload final artifact
-      uses: actions/upload-artifact@v5
-      with:
-        name: agondev-windows-x64
-        path: agondev-*.tar.gz
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.artifact_name }}
+          path: ${{ matrix.artifact_name }}
+
