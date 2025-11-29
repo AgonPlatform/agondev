@@ -1,4 +1,4 @@
-name: Full build release - Linux / MacOS
+name: Full build release
 
 on:
   workflow_dispatch:

@@ -1,4 +1,4 @@
-name: Release libraries on tag creation - Linux / MacOS
+name: Release libraries on tag creation
 
 on:
   push:
