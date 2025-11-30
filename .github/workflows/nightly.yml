@@ -9,9 +9,60 @@ permissions:
   contents: write
 
 jobs:
+  check_changes:
+    name: Check for commits since last nightly
+    runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.check.outputs.changed }}
+    steps:
+      - name: Check if there were commits since last nightly
+        id: check
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+
+            let nightlySha = null;
+
+            // Try to get the SHA of the nightly tag
+            try {
+              const ref = await github.rest.git.getRef({
+                owner,
+                repo,
+                ref: "tags/nightly"
+              });
+              nightlySha = ref.data.object.sha;
+            } catch (e) {
+              console.log("No nightly tag found → treat as changed");
+              return { changed: "true" };
+            }
+
+            // Get latest commit SHA on master
+            const masterRef = await github.rest.git.getRef({
+              owner,
+              repo,
+              ref: "heads/master"
+            });
+            const latestSha = masterRef.data.object.sha;
+
+            console.log("Nightly tag SHA:", nightlySha);
+            console.log("Latest master SHA:", latestSha);
+
+            if (nightlySha === latestSha) {
+              console.log("No changes since last nightly.");
+              return { changed: "false" };
+            } else {
+              console.log("New commits found.");
+              return { changed: "true" };
+            }
+
   build:
     name: Build on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
+    needs: check_changes
+    if: needs.check_changes.outputs.changed == 'true'
+
     strategy:
       matrix:
         include:
@@ -49,7 +100,6 @@ jobs:
       - name: Make Agon library and release
         run: make
 
-      # Upload built artifacts
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
@@ -59,6 +109,8 @@ jobs:
   remove_nightly:
     runs-on: ubuntu-latest
     needs: build
+    if: needs.check_changes.outputs.changed == 'true'
+
     steps:
       - name: Delete old nightly release
         uses: actions/github-script@v7
@@ -67,7 +119,6 @@ jobs:
             const owner = context.repo.owner;
             const repo  = context.repo.repo;
 
-            // Try to find the release tagged "nightly"
             let release;
             try {
               release = await github.rest.repos.getReleaseByTag({
@@ -79,7 +130,6 @@ jobs:
               console.log("No nightly release found. Continuing.");
             }
 
-            // If it existed, delete the release and tag
             if (release?.data?.id) {
               console.log("Deleting old nightly release...");
               await github.rest.repos.deleteRelease({
@@ -88,7 +138,6 @@ jobs:
                 release_id: release.data.id,
               });
 
-              // Delete the tag
               try {
                 await github.rest.git.deleteRef({
                   owner,
@@ -104,6 +153,7 @@ jobs:
     name: Create GitHub Release and upload assets
     runs-on: ubuntu-latest
     needs: remove_nightly
+    if: needs.check_changes.outputs.changed == 'true'
 
     steps:
       - uses: actions/checkout@v6
@@ -125,3 +175,11 @@ jobs:
           prerelease: true
           release_name: "AGON dev C/C++ toolchain (Nightly build)"
           body: "This release is automatically built from the [master](https://github.com/AgonPlatform/agondev/tree/master) branch. Use only if you want a bleeding-edge toolchain."
+
+  skip_message:
+    runs-on: ubuntu-latest
+    needs: check_changes
+    if: needs.check_changes.outputs.changed == 'false'
+    steps:
+      - run: echo "No changes since last nightly → skipping build & release."
+
