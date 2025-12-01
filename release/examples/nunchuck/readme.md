@@ -40,6 +40,7 @@ Provides the following global variables:
 `nunchuck_velocityZ`  0 - 255. 128 is centre. NOTE above may not get full range of 0 - 255
 
 
-Calling nunchuck_update(); will refresh the nunchuck data in the global variables.
+Calling `nunchuck_update();` will refresh the nunchuck data in the global variables.
+
 
 Press ESC to exit the program.
