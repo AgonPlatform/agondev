@@ -20,12 +20,13 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
+            const core = require("@actions/core");
             const owner = context.repo.owner;
-            const repo = context.repo.repo;
+            const repo  = context.repo.repo;
 
             let nightlySha = null;
 
-            // Try to get the SHA of the nightly tag
+            // --- get nightly tag SHA ---
             try {
               const ref = await github.rest.git.getRef({
                 owner,
@@ -35,10 +36,11 @@ jobs:
               nightlySha = ref.data.object.sha;
             } catch (e) {
               console.log("No nightly tag found → treat as changed");
-              return { changed: "true" };
+              core.setOutput("changed", "true");
+              return;
             }
 
-            // Get latest commit SHA on master
+            // --- get latest master SHA ---
             const masterRef = await github.rest.git.getRef({
               owner,
               repo,
@@ -46,15 +48,15 @@ jobs:
             });
             const latestSha = masterRef.data.object.sha;
 
-            console.log("Nightly tag SHA:", nightlySha);
-            console.log("Latest master SHA:", latestSha);
+            console.log("Nightly SHA:", nightlySha);
+            console.log("Latest  SHA:", latestSha);
 
             if (nightlySha === latestSha) {
               console.log("No changes since last nightly.");
-              return { changed: "false" };
+              core.setOutput("changed", "false");
             } else {
               console.log("New commits found.");
-              return { changed: "true" };
+              core.setOutput("changed", "true");
             }
 
   build:
