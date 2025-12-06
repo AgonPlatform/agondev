@@ -9,7 +9,7 @@
 	.global	__ldvrmu
 
 __ldvrmu:
-.if 1
+.if 0
 ; I: EUHL=dividend, AUBC=divisor
 ; O: a[uhl']=EUHL%AUBC, bcu=0, b=A, c=?, euhl=EUHL/AUBC, eubc'=AUBC, zf=!IEF2
 
@@ -84,6 +84,8 @@ __ldvrmu:
 .else
 ; I: EUHL=dividend, AUBC=divisor
 ; O: auhl=EUHL%AUBC, euix=EUHL/AUBC, iyh=A, iyl=0
+	push	ix
+	push	iy
 
 	push	hl
 	pop	ix			; euix = dividend
@@ -114,6 +116,10 @@ __ldvrmu:
 	dec	iyl
 	jr	nz, .loop
 
+	lea	hl,ix+0
+
+	pop	iy
+	pop	ix
 	ret
 
 .endif
