@@ -2,25 +2,14 @@
 ## Status
 Early access Alpha: things will break.
 
-The toolchain is currently compiled for Linux (x86_64 / arm64) and MacOS (arm64) only.
+The toolchain is currently compiled for Linux (x86_64 / arm64) and MacOS (arm64) only. Windows is supported using WSL.
 
 ## Purpose
-To assemble a C/C++ toolchain, based on modern, open-source software that can be ported to many platforms
-## Installation
-- Download the agondev-<platform_architecture>.tar.gz file from the releases tab, to a path <b>without any space</b>, e.g. /home/user/steve
-- Extract the file with
-
-``` 
-tar xfvz agondev-<platform_architecture>.tar.gz
-```
-
-- Extend the PATH environment variable to point to agondev/bin. Example:
-
-``` 
-export PATH=/<insert path to agondev>/bin:$PATH
-```
-
-If you are on a Mac, you need to explicitly approve all binaries under the ./bin directory. I have supplied the 'macos_remove_quarantine.sh' script to handle this for you.
+To assemble a C/C++ toolchain, based on modern open-source software that can be ported to many platforms
+## Installation guides
+- [Ubuntu Linux installation guide](docs/install-linux.md)
+- [MacOS installation guide](docs/install-mac.md)
+- [Windows (WSL) installation guide](docs/install-windows-wsl.md)
 
 ## Project structure
 A minimum project consists of a Makefile and at least a single source file in the 'src' subdirectory:
@@ -39,6 +28,9 @@ The toolchain expects the following project structure:
 project/
 │
 ├── Makefile
+├── include/
+│   │   Optional directory with project include files, e.g.
+│   └── module.h
 ├── src/
 │   │   project source files, e.g.
 │   ├── main.c
@@ -83,12 +75,22 @@ make clean; make
 Check out the provided example programs, which have a slightly different top-level Makefile with options that are similar to what AgDev provides.
 
 ## Uploading programs (version 0.18+)
+
 Requires the installation of the hexload client on the Agon - please see [agon-hexload](https://github.com/AgonPlatform/agon-hexload) for details.
 
+With a physical Agon system connected to your Linux PC over USB/Serial, start the hexload receiver on the Agon first (AGON COMMAND)
+```
+hexload vdp
+```
+This will load the binary to memory. If you would like to also write the binary to the SD card, you can use (AGON COMMAND)
+```
+hexload vdp program.bin
+```
+And upload your program from the build folder using
 ```
 make upload
 ```
-Uploads the compiled program to the Agon using the hexload protocol. There is no need to separately install a sending script; this is part of the AgonDev toolchain.
+There is no need to separately install a sending script; this is part of the AgonDev toolchain.
 Unless the SERIALPORT parameter is specified in the project Makefile, the USB/Serial port is autodetected from the sending system. An error is given if multiple serial ports are detected.
 
 ## Minimal project Makefile
