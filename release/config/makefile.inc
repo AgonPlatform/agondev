@@ -2,6 +2,9 @@
 RAM_START ?= 0x40000
 RAM_SIZE  ?= 0x70000
 
+# Emulator SDcard destination defaults to root if not set by the user
+FAE_DEST ?= /
+
 # verbosity - comment next line to show all output
 V = @
 
@@ -122,6 +125,19 @@ ifeq ($(SERIALPORT),)
 endif
 	@echo [Starting hexload-send]
 	@hexload-send $(BINARY) $(SERIALPORT) $(BAUDRATE)
+
+.PHONY: emulator emu em
+emu: emulator
+em: emulator
+emulator: $(BINARY)
+	@if [ -z "$(FAE_HOME)" ]; then \
+		echo "ERROR: FAE_HOME is not set!"; \
+		exit 1; \
+	fi
+	@echo [Copying $(BINARY) to emulator sdcard:$(FAE_DEST)]
+	@cp $(BINARY) $(FAE_HOME)/sdcard$(FAE_DEST)
+	@echo [Starting emulator]
+	@cd $(FAE_HOME) && ./fab-agon-emulator $(FAE_ARGS)
 
 # Directories to create
 $(BINDIR):

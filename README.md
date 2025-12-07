@@ -93,6 +93,21 @@ make upload
 There is no need to separately install a sending script; this is part of the AgonDev toolchain.
 Unless the SERIALPORT parameter is specified in the project Makefile, the USB/Serial port is autodetected from the sending system. An error is given if multiple serial ports are detected.
 
+## Starting the Fab Agon Emulator (version 0.20+)
+
+Requires the installation of the [Fab Agon Emulator](https://github.com/tomm/fab-agon-emulator).
+Set either globally set the environment variable FAE_HOME for all projects, or set the project-specific makefile option FAE_HOME to the Fab Emulator's installation root directory.
+
+Likewise, the option FAE_DEST is used to copy the built program binary to the Emulator's SDcard space. 
+By default, the program binary is copied to the root folder of the virtual SDcard. If for example the program needs to run from the /bin directory on the Agon, set FAE_DEST to /bin
+
+To build a project, automatically copy the resulting program binary to the given emulator's virtual SD card and start the emulator, use one of these make targets:
+```
+make em
+make emu
+make emulator
+```
+
 ## Minimal project Makefile
 Open your favorite editor, enter the following text and save it as 'Makefile' in your project's root directory:
 
@@ -105,14 +120,20 @@ After successful compilation of your program, this example Makefile creates a 'p
 
 ## Makefile options
 The following options can be set in the user's project Makefile:
-- NAME - sets the name of the project
-- RAM_START - sets the load/start address of the compiled program. This option will default to 0x040000
-- RAM_SIZE - sets the amount of memory available to the program. This option will default to 0x070000. The init routine will set the stackpointer to RAM_START + RAM_SIZE
-- LDHAS_ARG_PROCESSING - by default set to 0, this will make use of simple commandline processing of program arguments. If set to 1, this will make use of additional code to process redirection and quoting.
-- LDHAS_EXIT_HANDLER - by default set to 0. Set this to 1 to print out an error text based on the program's exit code, before returning to MOS. 
-- LIBS - sets flags to link with user-supplied static libraries in the <project_dir>/lib directory. For example: the link with the 'secret' library file 'libsecret.a', set LIBS=-lsecret. Multiple libraries can be listed for linking, for example LIBS=-lsecret -ltest
-- SERIALPORT - sets the USB/Serial port to use for uploading to the Agon using the hexload protocol. This can be set to 'auto', which is the default when this option isn't specified.
-- BAUDRATE - sets the USB/Serial port's baudrate to an other value than the default 115200.
+
+| Option                | Description                                                                                                                                                                                                 |
+|-----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **NAME**              | Sets the name of the project.                                                                                                                                                                               |
+| **RAM_START**         | Sets the load/start address of the compiled program. Defaults to `0x040000`.                                                                                                                               |
+| **RAM_SIZE**          | Sets the amount of memory available to the program. Defaults to `0x070000`. The init routine sets the stack pointer to `RAM_START + RAM_SIZE`.                                                             |
+| **LDHAS_ARG_PROCESSING** | Enables command-line argument processing. Default is `0`. Set to `1` to enable additional code for processing redirection and quoting.                                                                    |
+| **LDHAS_EXIT_HANDLER**   | Default is `0`. Set to `1` to print an error message based on the program’s exit code before returning to MOS.                                                                                            |
+| **LIBS**              | Sets flags to link with user-supplied static libraries in the `<project_dir>/lib` directory. Example: `LIBS=-lsecret`. Multiple libraries allowed, e.g., `LIBS="-lsecret -ltest"`.                           |
+| **SERIALPORT**        | Sets the USB/Serial port for uploading to the Agon via the hexload protocol. Can be set to `auto` (default if not specified).                                                                                |
+| **BAUDRATE**          | Sets the baud rate of the USB/Serial port. Default is `115200`.                                                                                                                                             |
+| **FAE_HOME**          | To make use of the 'make emu / make emulator' target, set this to the install directory of the Fab Agon Emulator |
+| **FAE_DEST**          | Sets the target destination inside the FAE SDcard space, defaults to the root directory                          |
+| **FAE_ARGS**          | Optional arguments to the Fab Agon Emulator, such as '-d'.                                                       |
 
 ## Creating static libraries
 Create a separate project for each library, with all the required source files that go into it, and set the NAME option in the Makefile to the required <b>library basename</b>
