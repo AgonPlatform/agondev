@@ -56,7 +56,7 @@ if [ "${BUILD_LLVM}" == "yes" ]; then
   echo "[ Building LLVM ]"
   pushd . >/dev/null
   if [ ! -d "$LVMDIR" ]; then
-    git clone --branch z80-as --depth 1 https://github.com/envenomator/llvm-project.git
+    git clone --branch z80-as-15.0.7 --depth 1 https://github.com/AgonPlatform/agon-llvm-project.git $LVMDIR
   else
     echo "[ Skip cloning $LVMDIR ]"
   fi

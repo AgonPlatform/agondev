@@ -21,7 +21,7 @@ AS :=$(TOOL_DIR)/$(EZ80ARCH)-as
 AR :=$(TOOL_DIR)/$(EZ80ARCH)-ar
 
 ### Arguments
-CCFLAGS := -target $(EZ80ARCH) -Oz -Wa,-march=ez80+full -I $(RELEASE_INC_DIR)
+CCFLAGS := -mllvm -z80-gas-style -mllvm -z80-print-zero-offset -target $(EZ80ARCH) -Oz -Wa,-march=ez80+full -I $(RELEASE_INC_DIR)
 ARFLAGS := rcs
 ASFLAGS := -march=ez80+full -I $(RELEASE_INC_DIR)
 
