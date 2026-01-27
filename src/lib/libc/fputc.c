@@ -46,6 +46,6 @@ void fput_char( int c, FILE *stream )
 {
     uint8_t mos_fh = stream->fhandle;
 
-    if ( mos_fh == FH_STDOUT || mos_fh == FH_STDERR ) outchar(c);
+    if ( mos_fh == FH_STDOUT || mos_fh == FH_STDERR ) putch(c);
     else mos_fputc(stream->fhandle, (char)c );         // The mos routine does not return anything
 }

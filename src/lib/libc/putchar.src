@@ -33,13 +33,13 @@ _putchar:
 	push	hl			; put the character on the stack as an integer parameter
 	ld 	a, l
 	cp 	a, 10 			; check .if LF
-	jr	nz, call_outchar
+	jr	nz, call_putch
 	ld 	hl, 13			; print CR
-	call 	_outchar
+	call 	_putch
 	pop	hl
 	push	hl
-call_outchar:
-	call	_outchar		; output to console
+call_putch:
+	call	_putch		; output to console
 	pop	hl			; clear up the stack
 	ret
 call_fputc:
@@ -50,7 +50,7 @@ call_fputc:
 	pop	de
 	ret 				; return with the value in HL returned from _fputc
 
-	.extern	_outchar
+	.extern	_putch
 	.extern	_stdout
 	.extern  _fputc
 	

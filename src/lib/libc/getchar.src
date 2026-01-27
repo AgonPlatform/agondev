@@ -47,7 +47,7 @@ _call_inchar:
 
 _echo_char:
 	push	hl
-	call	_outchar		; echo the character to stdout
+	call	_putch		; echo the character to stdout
 	pop	hl
 
 _check_cr:
@@ -56,7 +56,7 @@ _check_cr:
 	ret 	nz
 	ld 	l, 10 			; translate to LF
 	push	hl
-	call 	_outchar		; also need to echo LF, otherwise remains on same line 
+	call 	_putch		; also need to echo LF, otherwise remains on same line 
 	pop 	hl
 	ret
 
@@ -67,6 +67,6 @@ _call_fgetc:
 	ret 				; in this case we do not echo the character
 
 	.extern	_inchar
-	.extern	_outchar
+	.extern	_putch
 	.extern 	_stdin
 	.extern	_fgetc

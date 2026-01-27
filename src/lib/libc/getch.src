@@ -3,8 +3,6 @@
 	.section .text
 	.global	_getch
 _getch:
-	push	ix
-	ld	a, mos_getkey			; Read a keypress from the VDP
+	ld	    a, mos_getkey			; Read a keypress from the VDP
 	rst.lil	08h
-	pop	ix
 	ret
