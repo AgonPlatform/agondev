@@ -27,7 +27,7 @@ int fgetc(FILE *stream)
     if (stream == NULL || stream == stdout || stream == stderr) c = EOF;
     else if ( (c = stream->unget_char) ) stream->unget_char = 0;
     else if (mos_fh == FH_STDIN) {
-        c = inchar();
+        c = getch();
         putchar(c);
         if ( c == '\r' ) { c = '\n'; putchar(c); }
     }

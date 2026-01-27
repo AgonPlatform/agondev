@@ -34,13 +34,13 @@ _getchar:
 	ld 	a, (iy+FILE_UNGET_CHAR) ; get the unget character .if any
 	ld 	(iy+FILE_UNGET_CHAR), 0 ; clear any unget character
 	or 	a, a
-	jr	z, _call_inchar
+	jr	z, _call_getch
 	sbc	hl, hl
 	ld 	l , a
 	ret 				; return with unget char (don't translate or echo it)
 
-_call_inchar:
-	call	_inchar			; get character from OS - in A .if no unget character
+_call_getch:
+	call	_getch			; get character from OS - in A .if no unget character
 	or 	a, a			; clear carry flag
 	sbc	hl, hl 			; HL = 0 
 	ld	l, a 			; typecast unsigned char (A) to int (HL)
@@ -66,7 +66,7 @@ _call_fgetc:
 	pop	de 			; clear up the stack
 	ret 				; in this case we do not echo the character
 
-	.extern	_inchar
+	.extern	_getch
 	.extern	_putch
 	.extern 	_stdin
 	.extern	_fgetc
