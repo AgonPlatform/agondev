@@ -4,12 +4,14 @@
 	.global  _mos_uputc
 _mos_uputc:
 	push	ix
-	ld	c, a
-	ld	a, mos_uputc
+  ld    ix, 0
+	add 	ix, sp
+	ld 	  c, (ix+6)
+	ld	  a, mos_uputc
 	rst.lil	08h
-	ld	a, 1h
-	jr	nc, _mos_uputc_exit
-	xor	a, a				; error condition, return 0
+	ld	  a, 1h
+	jr	  nc, _mos_uputc_exit
+	xor	  a, a				; error condition, return 0
 _mos_uputc_exit:
-	pop	ix
+	pop	  ix
 	ret
