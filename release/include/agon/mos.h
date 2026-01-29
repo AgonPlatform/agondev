@@ -390,6 +390,7 @@ extern void*    mos_setintvector(uint8_t vector, void(*handler)(void));
 extern uint8_t  mos_uopen(UART *settings);
 extern void     mos_uclose(void);
 extern int      mos_ugetc(void);                              // 0-255 valid character - >255 error
+extern int      mos_ugetc_nb(void);                           // same as ugetc, but non-blocking. This function isn't available in MOS rom, but part of the agon library
 extern uint8_t  mos_uputc(int a);                           // returns 0 if error
 extern uint24_t mos_fread(uint8_t fh, char *buffer, uint24_t numbytes);
 extern uint24_t mos_fwrite(uint8_t fh, char *buffer, uint24_t numbytes);

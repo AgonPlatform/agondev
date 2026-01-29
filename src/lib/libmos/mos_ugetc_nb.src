@@ -1,0 +1,17 @@
+	.assume	adl =1
+	.include "agon/mos.inc"
+	.section .text
+	.global  _mos_ugetc_nb
+_mos_ugetc_nb:
+  in0   a, (REG_LSR)  ; Get the line status register
+  and   UART_LSR_RDY  ; Check for characters in buffer
+  jr    z, nodata     ; Nothing received
+  in0   a, (REG_RBR)  ; Read the character from the UART receive buffer
+  ld    hl, 0
+  ld    l, a          ; return the character as 24bit integer
+  ret
+
+nodata:
+  ld    hl, -1        ; return EOF / no character read
+  ret
+
