@@ -34,7 +34,8 @@ ASMFLAGS=-march=$(ARCH) -I $(INCLUDEDIR)
 ## Linker
 LINKER=$(TOOLBINDIR)/ez80-none-elf-ld
 ifeq ($(LDHAS_ARG_PROCESSING),1)
-	LINKER_ARG=-defsym=_parse_option=___arg_processing
+  # Link with alternative symbols that handle arg_processing code:
+	LINKER_ARG=-defsym=_parse_option=___arg_processing -defsym=_putchar=_putchar_arg_processing -defsym=_getchar=_getchar_arg_processing
 endif
 ifeq ($(LDHAS_EXIT_HANDLER), 1)
     LINKER_EXIT=-defsym=_has_exit_handler=1

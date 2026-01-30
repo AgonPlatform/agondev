@@ -1,35 +1,14 @@
-; comments added
-; Paul Cawte 03/06/2023
-
-; int putchar(int char)
-;
-; The putchar(int char) method in C is used to write a character, of unsigned char type, to stdout.
-; This character is passed as the parameter to this method.
-;
-; Parameters:
-; This method accepts a mandatory parameter char which is the character to be written to stdout.
-; Return Value:
-; This function returns the character written on the stdout as an unsigned char.
-; It also returns EOF when some error occurs.
-;
-; Modinfo
-; 17/07/2023: changed to translate LF to CR/LF pair
-; 27/01/2026: Replaced outchar/putch with rst.lil 10h for performance
-
 	.assume	adl=1
 
 	include	"stdio.inc"
 
 	.section	.text
 	.global	_putchar
+  .weak _putchar
 _putchar:
 	pop	de
 	ex	(sp), hl		; get character passed as int in HL
 	push	de
-	ld 	iy, _stdout		; FILE* pointer for stdout	
-	ld	a, (iy+FILE_FH)		; check .if stdout still refers
-	cp	a, FH_STDOUT		; to the default (console)
-	jr	nz, call_fputc
 
 	ld 	a, l
 	cp 	a, 10 			; check .if LF
@@ -42,14 +21,5 @@ _putchar:
   rst.lil 10h     ; output to console
 	ret
 
-call_fputc:
-	push	iy			; push the FILE* pointer parameter
-	push	hl			; push the character paramater
-	call 	_fputc 			; int _fputc(int char, FILE *stream)
-	pop	de 			; clear up the stack
-	pop	de
-	ret 				; return with the value in HL returned from _fputc
-
 	.extern	_stdout
-	.extern  _fputc
 	
