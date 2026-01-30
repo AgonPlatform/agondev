@@ -5,6 +5,11 @@
 #include <stdbool.h>
 #include <ez80f92.h>
 
+// Generic I/O
+static inline uint8_t io_in(int addr) { return IO(addr);}
+static inline void io_out(int addr, uint8_t value) { IO(addr) = value;}
+
+// PIN I/O
 void outputMode(uint8_t portID, uint8_t pinnumber); // Set one numbered pin (0-7) of a specified port as output pin
 void outputModePinID(uint16_t pinID); // FAST - Set one, or multiple (or-ed) pinIDs from the same port (B / C or D) as output pin
 
