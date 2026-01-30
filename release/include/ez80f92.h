@@ -201,4 +201,24 @@
 #define PORTPIN_PATTERN_55 0x55
 #define PORTPIN_ALL   0xFF
 
+//UART0 LSR bit positions
+#define UART0_LSR_ERR  0x80
+#define UART0_LSR_TEMT 0x40
+#define UART0_LSR_THRE 0x20
+#define UART0_LSR_BI   0x10
+#define UART0_LSR_FE   0x08
+#define UART0_LSR_PE   0x04
+#define UART0_LSR_OE   0x02
+#define UART0_LSR_DR   0x01
+
+//UART1 LSR bit positions
+#define UART1_LSR_ERR  0x80
+#define UART1_LSR_TEMT 0x40
+#define UART1_LSR_THRE 0x20
+#define UART1_LSR_BI   0x10
+#define UART1_LSR_FE   0x08
+#define UART1_LSR_PE   0x04
+#define UART1_LSR_OE   0x02
+#define UART1_LSR_DR   0x01
+
 #endif  /* EZ80F92_H */

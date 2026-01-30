@@ -97,6 +97,16 @@
 .set UART0_MSR    , 0xC6
 .set UART0_SPR    , 0xC7
 
+; UART0 LSR bit positions
+.set UART0_LSR_ERR,  0x80
+.set UART0_LSR_TEMT, 0x40
+.set UART0_LSR_THRE, 0x20
+.set UART0_LSR_BI,   0x10
+.set UART0_LSR_FE,   0x08
+.set UART0_LSR_PE,   0x04
+.set UART0_LSR_OE,   0x02
+.set UART0_LSR_DR,   0x01
+
 ; Inter-Integrated Circuit Bus Control (I2C) 
 .set I2C_SAR      , 0xC8
 .set I2C_XSAR     , 0xC9
@@ -119,6 +129,16 @@
 .set UART1_LSR    , 0xD5
 .set UART1_MSR    , 0xD6
 .set UART1_SPR    , 0xD7
+
+; UART1 LSR bit positions
+.set UART1_LSR_ERR,  0x80
+.set UART1_LSR_TEMT, 0x40
+.set UART1_LSR_THRE, 0x20
+.set UART1_LSR_BI,   0x10
+.set UART1_LSR_FE,   0x08
+.set UART1_LSR_PE,   0x04
+.set UART1_LSR_OE,   0x02
+.set UART1_LSR_DR,   0x01
 
 ; Low-Power Control 
 .set CLK_PPD1     , 0xDB
