@@ -10,6 +10,5 @@ _mos_setintvector:
 	ld	hl, (ix+9)			; Address of new interrupt vector
 	ld a,	mos_setintvector
 	rst.lil	08h				; Set an interrupt vector (Requires MOS 1.03 or above)
-	ld	sp, ix
 	pop	ix
 	ret

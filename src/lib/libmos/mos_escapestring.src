@@ -18,7 +18,6 @@ _mos_escapestring:
     pop hl
     ld      (hl), bc            ; Return length of the escaped string
     
-    ld      sp, ix
     pop     ix
     ret                         ; Return status code in A
     

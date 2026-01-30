@@ -12,6 +12,5 @@ _mos_flseek:
 	ld	e, (ix+12)			; 8 most most significant bits
 	ld a,	mos_flseek
 	rst.lil	08h
-	ld	sp, ix
 	pop	ix
 	ret

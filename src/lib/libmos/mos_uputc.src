@@ -3,15 +3,14 @@
 	.section .text
 	.global  _mos_uputc
 _mos_uputc:
-	push	ix
-  ld    ix, 0
-	add 	ix, sp
-	ld 	  c, (ix+6)
+  pop   de
+  ex    (sp), hl
+  push  de
+  ld    c, l
 	ld	  a, mos_uputc
 	rst.lil	08h
 	ld	  a, 1h
 	jr	  nc, _mos_uputc_exit
 	xor	  a, a				; error condition, return 0
 _mos_uputc_exit:
-	pop	  ix
 	ret

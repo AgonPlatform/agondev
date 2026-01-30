@@ -13,7 +13,6 @@ _ffs_getfree:
     ld      a,  ffs_getfree
     rst.lil 08h                 ; returns FRESULT in A
 
-    ld      sp, ix
     pop     ix
     ret
     

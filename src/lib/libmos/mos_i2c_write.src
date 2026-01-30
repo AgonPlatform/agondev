@@ -11,6 +11,5 @@ _mos_i2c_write:
 	ld		hl, (ix+12)
 	ld a,	mos_i2c_write
 	rst.lil	08h
-	ld		sp,ix
 	pop		ix
 	ret

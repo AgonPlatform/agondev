@@ -12,7 +12,6 @@ _ffs_getcwd:
     ld      a,  ffs_getcwd
     rst.lil 08h                 ; returns FRESULT in A
 
-    ld      sp, ix
     pop     ix
     ret
     

@@ -13,6 +13,5 @@ _ffs_fopen:
     ld      a,  ffs_fopen
     rst.lil 08h                 ; returns FRESULT in A
 
-    ld      sp, ix
     pop     ix
     ret

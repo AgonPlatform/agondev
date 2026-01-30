@@ -14,7 +14,6 @@ _ffs_fgets:
     rst.lil 08h
 
     ex      de, hl              ; Returns pointer to the target buffer, or NULL if an error occurred 
-    ld      sp, ix
     pop     ix
     ret
     

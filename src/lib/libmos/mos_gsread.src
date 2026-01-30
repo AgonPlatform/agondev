@@ -14,7 +14,6 @@ _mos_gsread:
     ld      hl, (ix+6)          ; Pointer to character read. This will be 0 if the end of the string has been reached.
     ld      (hl), c             ; Store character read at pointer
 
-    ld      sp, ix
     pop     ix
     ret
     

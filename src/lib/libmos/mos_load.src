@@ -11,6 +11,5 @@ _mos_load:
 	ld	bc, (ix+12)			; maximum allowed size
 	ld a,	mos_load
 	rst.lil	08h				; Load a file from SD card
-	ld	sp, ix
 	pop	ix
 	ret

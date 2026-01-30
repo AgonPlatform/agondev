@@ -11,6 +11,5 @@ _mos_oscli:
 	ld      de, (ix+12) 			; Number of additional commands
 	ld a,	mos_oscli
 	rst.lil	08h				; Execute a MOS command
-	ld	sp, ix
 	pop	ix
 	ret

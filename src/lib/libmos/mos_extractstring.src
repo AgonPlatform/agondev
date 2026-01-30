@@ -20,7 +20,6 @@ _mos_extractstring:
     ld      (iy+0), de          ; Return next character after end of result string
     pop     iy
 
-    ld      sp, ix
     pop     ix
     ret                         ; Return status code in A
     

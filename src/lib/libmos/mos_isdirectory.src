@@ -3,15 +3,11 @@
 	.section .text
 	.global	_mos_isdirectory
 _mos_isdirectory:
-    push    ix
-    ld      ix, 0
-    add     ix, sp
-    
-    ld      hl, (ix+6)          ; Pointer to the path to check
+    pop     de
+    ex      (sp), hl            ; Pointer to the path to check
+    push    de
     ld      a,  mos_isdirectory
     rst.lil 08h                 ; Returns A: Status code (0 = Success, 5 = No path)
 
-    ld      sp, ix
-    pop     ix
     ret
     

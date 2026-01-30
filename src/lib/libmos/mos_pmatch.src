@@ -13,7 +13,6 @@ _mos_pmatch:
     ld      a,  mos_pmatch
     rst.lil 08h                 ; Returns status code in A
 
-    ld      sp, ix
     pop     ix
     ret
     

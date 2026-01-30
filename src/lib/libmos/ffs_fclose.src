@@ -3,15 +3,12 @@
 	.section .text
 	.global	_ffs_fclose
 _ffs_fclose:
-    push    ix
-    ld      ix, 0
-    add     ix, sp
-    
-    ld      hl, (ix+6)          ; Pointer to a FIL structure
+    pop     de
+    ex      (sp), hl            ; Pointer to a FIL structure
+    push    de
+
     ld      a,  ffs_fclose
     rst.lil 08h                 ; returns FRESULT in A
 
-    ld      sp, ix
-    pop     ix
     ret
     

@@ -8,11 +8,10 @@
 		.xref _mos_setkbvector
 
 _kbuf_init:
-		push ix
-		ld ix,0
-		add ix,sp
-
-		ld a,(ix+6)
+    pop de
+    ex (sp), hl
+    push de
+    ld a, l
 		; alloc 1 more buffer item than requested, since a sentinel index is used
 		inc a
 		ld (kbbuf_len),a
@@ -34,7 +33,6 @@ _kbuf_init:
 		pop hl
 		pop hl
 
-		pop ix
 		ret
 
 _kbuf_deinit:
@@ -53,12 +51,11 @@ _kbuf_deinit:
 		ret
 
 _kbuf_poll_event:
-		push ix
-		ld ix,0
-		add ix,sp
-		ld de,(ix+6)
+    pop de
+    ex (sp), hl
+    push de
+    ex de, hl
 		call kbuf_remove	
-		pop ix
 		ld a,0
 		jr nz,.success
 		ret

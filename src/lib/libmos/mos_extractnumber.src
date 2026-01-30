@@ -20,7 +20,6 @@ _mos_extractnumber:
     ld      (iy+0), de          ; Return address of next character after end of number
     pop     iy
 
-    ld      sp, ix
     pop     ix
     ret                         ; Return status code in A
     

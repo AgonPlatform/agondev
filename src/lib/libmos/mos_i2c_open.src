@@ -3,12 +3,10 @@
 	.section .text
 	.global  _mos_i2c_open
 _mos_i2c_open:
-	push	ix
-	ld 		ix,0
-	add 	ix, sp
-	ld	c, (ix+6)
-	ld a,	mos_i2c_open
+  pop   de
+  ex    (sp), hl
+  push  de
+  ld    c, l
+	ld    a,	mos_i2c_open
 	rst.lil	08h
-	ld		sp,ix
-	pop		ix
 	ret

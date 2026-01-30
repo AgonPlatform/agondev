@@ -10,6 +10,5 @@ _mos_ren:
 	ld	de, (ix+9)			; Address of filename2 (zero terminated)
 	ld a,	mos_ren
 	rst.lil	08h				; Rename a file on the SD card
-	ld	sp, ix
 	pop	ix
 	ret

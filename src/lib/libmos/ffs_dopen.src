@@ -12,6 +12,5 @@ _ffs_dopen:
     ld      a,  ffs_dopen
     rst.lil 08h                   ; returns FRESULT in A
 
-    ld      sp, ix
     pop     ix
     ret

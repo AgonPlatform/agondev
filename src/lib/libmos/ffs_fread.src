@@ -15,7 +15,6 @@ _ffs_fread:
 
     push    bc
     pop     hl                  ; Number of bytes read
-    ld      sp, ix
     pop     ix
     ret
     

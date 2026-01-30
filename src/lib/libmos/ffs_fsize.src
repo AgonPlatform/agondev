@@ -12,7 +12,6 @@ _ffs_fsize:
     ld      a,  ffs_fsize
     rst.lil 08h                 ; A: FRESULT (0 = Success, or 19 = Invalid parameter)
 
-    ld      sp, ix
     pop     ix
     ret
     

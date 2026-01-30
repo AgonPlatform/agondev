@@ -12,7 +12,6 @@ _ffs_dfindnext:
     ld      a,  ffs_dfindnext
     rst.lil 08h                 ; returns FRESULT in A
 
-    ld      sp, ix
     pop     ix
     ret
     

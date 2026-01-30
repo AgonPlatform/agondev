@@ -20,7 +20,6 @@ _mos_getargument:
     pop     iy
 
 
-    ld      sp, ix
     pop     ix
     ret                         ; Void
     

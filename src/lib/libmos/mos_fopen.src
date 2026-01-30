@@ -10,6 +10,5 @@ _mos_fopen:
 	ld	c,  (ix+9)			; mode : fa_read / fa_write etc
 	ld	a, mos_fopen
 	rst.lil	08h				; returns filehandle in A
-	ld	sp, ix
 	pop	ix
 	ret	

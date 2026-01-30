@@ -3,11 +3,10 @@
 	.section .text
 	.global	_mos_flseek_p
 _mos_flseek_p:
-    push    ix
-    ld      ix, 0
-    add     ix, sp
-    
-    ld      c,  (ix+6)          ; File handle
+    pop     de
+    ex      (sp), hl
+    push    de
+    ld      c, l                ; File handle
     ld      hl, 9
     add     hl, sp              ; Pointer to a 32-bit value for the desired new offset from the 
                                 ; start of the file. As C pushes 32bit long as 6bytes to the stack,
@@ -15,7 +14,5 @@ _mos_flseek_p:
     ld      a,  mos_flseek_p
     rst.lil 08h                 ; Returns status code in A
 
-    ld      sp, ix
-    pop     ix
     ret
     

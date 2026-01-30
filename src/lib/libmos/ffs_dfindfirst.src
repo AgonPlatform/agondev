@@ -16,7 +16,6 @@ _ffs_dfindfirst:
     rst.lil 08h                 ; returns FRESULT in A
 
     pop     ix
-    ld      sp, ix
     pop     ix
     ret
     

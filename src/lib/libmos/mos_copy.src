@@ -10,6 +10,5 @@ _mos_copy:
 	ld	de, (ix+9)			; Address of filename2 (zero terminated)
 	ld a,	mos_copy
 	rst.lil	08h				; Copy a file on the SD card
-	ld	sp, ix
 	pop	ix
 	ret

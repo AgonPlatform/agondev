@@ -10,6 +10,5 @@ _mos_setkbvector:
 	ld	c,	(ix+9)
 	ld a,	mos_setkbvector
 	rst.lil	08h
-	ld		sp,ix
 	pop		ix
 	ret

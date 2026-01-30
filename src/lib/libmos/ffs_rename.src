@@ -12,7 +12,6 @@ _ffs_rename:
     ld      a,  ffs_rename
     rst.lil 08h                 ; returns FRESULT in A
 
-    ld      sp, ix
     pop     ix
     ret
     

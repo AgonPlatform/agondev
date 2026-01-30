@@ -3,12 +3,9 @@
 	.section .text
 	.global	_mos_del
 _mos_del:
-	push	ix
-	ld 	ix, 0
-	add 	ix, sp
-	ld 	hl, (ix+6)			; Address of path (zero terminated)
+  pop de
+  ex (sp), hl       ; Address of path (zero terminated)
+  push de
 	ld a,	mos_del
 	rst.lil	08h				; Delete a file or folder from the SD card
-	ld	sp, ix
-	pop	ix
 	ret

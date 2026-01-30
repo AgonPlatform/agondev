@@ -3,12 +3,9 @@
 	.section .text
 	.global	_mos_mkdir
 _mos_mkdir:
-	push	ix
-	ld 	ix, 0
-	add 	ix, sp
-	ld 	hl, (ix+6)			; Address of path (zero terminated)
-	ld a,	mos_mkdir
+  pop   de
+  ex    (sp), hl    ; Address of path (zero terminated)
+  push  de
+	ld    a,	mos_mkdir
 	rst.lil	08h				; Make a folder on the SD card
-	ld	sp, ix
-	pop	ix
 	ret

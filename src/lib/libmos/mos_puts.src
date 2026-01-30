@@ -10,6 +10,5 @@ _mos_puts:
 	ld	bc, (ix+9)			; Size to write from buffer - or 0 .if using delimiter
 	ld	a, (ix+12) 			; delimiter - only .if size is 0
 	rst.lil	18h				; Write a block of bytes out to the ESP32
-	ld	sp,ix
 	pop	ix
 	ret

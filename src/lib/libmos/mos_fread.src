@@ -12,6 +12,5 @@ _mos_fread:
 	ld a,	mos_fread
 	rst.lil	08h
 	ex	de, hl				; number of bytes read
-	ld	sp, ix
 	pop	ix
 	ret

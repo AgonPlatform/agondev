@@ -15,7 +15,6 @@ _ffs_fwrite:
 
     push    bc
     pop     hl                  ; Returns number of bytes written
-    ld      sp, ix
     pop     ix
     ret
     

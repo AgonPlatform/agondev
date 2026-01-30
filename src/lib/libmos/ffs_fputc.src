@@ -14,7 +14,6 @@ _ffs_fputc:
 
     push    bc
     pop     hl                  ; Returns number of bytes written
-    ld      sp, ix
     pop     ix
     ret
     

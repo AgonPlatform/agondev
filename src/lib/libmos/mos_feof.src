@@ -3,12 +3,10 @@
 	.section .text
 	.global  _mos_feof
 _mos_feof:
-	push	ix
-	ld	ix, 0
-	add	ix, sp
-	ld	c, (ix+6)			; filehandle
+  pop de
+  ex (sp), hl
+  push de
+  ld c, l           ; filehandle
 	ld	a, mos_feof
 	rst.lil	08h				; returns A: 1 at End-of-File, 0 otherwise
-	ld	sp, ix
-	pop	ix
 	ret	

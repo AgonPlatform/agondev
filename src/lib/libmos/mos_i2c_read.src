@@ -11,6 +11,5 @@ _mos_i2c_read:
 	ld		hl, (ix+12)
 	ld a,	mos_i2c_read
 	rst.lil	08h
-	ld		sp,ix
 	pop		ix
 	ret

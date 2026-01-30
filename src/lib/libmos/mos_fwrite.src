@@ -12,6 +12,5 @@ _mos_fwrite:
 	ld a,	mos_fwrite
 	rst.lil	08h
 	ex	de, hl				; number of bytes written
-	ld	sp, ix
 	pop	ix
 	ret

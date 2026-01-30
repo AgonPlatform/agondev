@@ -12,6 +12,5 @@ _ffs_dread:
     ld      a,  ffs_dread
     rst.lil 08h                 ; returns FRESULT in A
 
-    ld      sp, ix
     pop     ix
     ret

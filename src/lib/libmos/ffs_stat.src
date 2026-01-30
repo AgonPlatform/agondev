@@ -12,7 +12,6 @@ _ffs_stat:
     ld      a,  ffs_stat
     rst.lil 08h                 ; returns FRESULT in A
 
-    ld      sp, ix
     pop     ix
     ret
     

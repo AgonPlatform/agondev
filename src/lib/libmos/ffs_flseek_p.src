@@ -12,7 +12,6 @@ _ffs_flseek_p:
     ld      a,  ffs_flseek_p
     rst.lil 08h                 ; returns FRESULT in A
 
-    ld      sp, ix
     pop     ix
     ret
     

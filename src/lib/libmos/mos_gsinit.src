@@ -13,7 +13,6 @@ _mos_gsinit:
     ld      a,  mos_gsinit
     rst.lil 08h                 ; returns status code in A
 
-    ld      sp, ix
     pop     ix
     ret
     

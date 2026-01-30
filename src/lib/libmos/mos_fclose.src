@@ -3,12 +3,10 @@
 	.section .text
 	.global  _mos_fclose
 _mos_fclose:
-	push	ix
-	ld	ix, 0
-	add	ix, sp
-	ld	c, (ix+6)			; filehandle, or 0 to close all files
+  pop de
+  ex (sp), hl
+  push de
+  ld c, l           ; filehandle in c, or 0 to close all files
 	ld	a, mos_fclose
 	rst.lil	08h				; returns number of files still open in A
-	ld	sp, ix
-	pop	ix
 	ret	

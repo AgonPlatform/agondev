@@ -3,13 +3,10 @@
 	.section .text
 	.global	_mos_dir
 _mos_dir:
-	push	ix
-	ld 	ix, 0
-	add 	ix, sp
-	ld 	hl, (ix+6)			; address of pathname (zero terminated)
+  pop de
+  ex (sp), hl       ; address of pathname (zero terminated)
+  push de
 	ld a,	mos_dir
 	rst.lil	08h				; List SD card folder contents
-	ld	sp, ix
-	pop	ix
 	ret
 

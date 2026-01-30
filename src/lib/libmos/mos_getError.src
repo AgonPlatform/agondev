@@ -11,6 +11,5 @@ _mos_getError:
 	ld	bc,(ix+10)  			; Size of buffer
 	ld	a, mos_getError
 	rst.lil	08h				; Copy an error string to a buffer
-	ld	sp, ix
 	pop	ix
 	ret	
