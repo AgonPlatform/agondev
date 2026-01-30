@@ -4,13 +4,10 @@
 	.global	_putch, __putch
 _putch:
 __putch:
-	push 	ix
-	ld 	ix, 0
-	add 	ix, sp
-	ld 	a, (ix+6)
-	rst.lil	10h
-	ld	hl, 0
-	ld	l, a
-	ld	sp, ix
-	pop	ix
-	ret
+  pop     de
+  ex      (sp),hl
+  push    de
+  ld      a,l      ;get character in A
+  rst.lil 010h     ;send to MOS / VDP
+  ret
+

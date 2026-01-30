@@ -45,11 +45,6 @@ extern FILE stderr[1];
 
 __BEGIN_DECLS
 
-/* weak user-defined functions */
-char inchar(void);
-
-void outchar(char character);
-
 FILE *fopen(const char *__restrict filename, const char *__restrict mode);
 
 int fclose(FILE *stream);
