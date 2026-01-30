@@ -493,6 +493,7 @@ int main(int argc, char ** argv) {
     mos_uopen(&uartsettings);
     mos_uclose();
     mos_ugetc();                              // 0-255 valid character - >255 error
+    mos_ugetc_nb();
     mos_uputc(c);                           // returns 0 if error
     mos_fread(u8, b, 1);
     mos_fwrite(u8, b, 1);
