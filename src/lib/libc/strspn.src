@@ -1,44 +1,40 @@
-; (c) Copyright 2007-2008 Zilog, Inc.
-;   size_t strspn(char *s1,char *s2)
-
-	.assume	ADL=1
-
+	.assume	adl=1
 	.section	.text
 	.global	_strspn
+	.type	_strspn, @function
+
 _strspn:
-	ld	iy, 0
-	add iy, sp
-	ld  bc, (iy+6)
-	push bc
-	call _strlen
-	ex	(sp), hl		; (iy-3) = strlen(s2)
+	xor	a, a
+	sbc	hl, hl
+	add	hl, sp
+	ld	bc, 3
+	add	hl, bc
+	ld	de, (hl)	; DE = str
+	add	hl, bc		; Always resets carry
+	ld	iy, (hl)	; IY = accept
 
-	ld	de, (iy+3)		; de = s1
-
-;   	  while (*p) {
-_wloop:
-	ld	a, (de)
-	or	a, a
-	jr	z, _done
-	ld	hl, (iy+6)
-	ld	bc, (iy-3)
-;   	    .if (!strchr(s2,*p))
-;   	      return(p - s1);
+	; Calculate strlen(accept)
+	ld	c, a
+	lea	hl, iy + 0
 	cpir
-;   	    ++p;
-	inc de
-	jr	z, _wloop
+	sbc	hl, hl
 	scf
+	sbc	hl, bc		; Always sets carry
+	ret	z		; Return 0 if accept is empty
 
-_done:
-;   	  return(p - s1);
-	ld	hl, (iy+3)
-	ex  de, hl
-	sbc	hl, de
-
-	ld	sp, iy
-	ret	
-
-	.extern	_strchr
-	.extern	_strlen
+	push	hl
+	ex	(sp), ix	; IX = strlen(accept)
+	push	de
+.L.loop:
+	ld	a, (de)		; A = *str++
+	inc	de
+	lea	hl, iy + 0	; HL = accept
+	lea	bc, ix + 0	; BC = strlen(accept)
+	cpir			; Find A in accept
+	jr	z, .L.loop	; Loop if match
+	ex	de, hl		; Calculate number of matching characters
+	pop	de
+	sbc	hl, de		; Input carry is set
+	pop	ix
+	ret
 
