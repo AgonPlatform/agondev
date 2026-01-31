@@ -1,47 +1,37 @@
-; (c) Copyright 2007-2008 Zilog, Inc.
-;   char *strcat(char *s1,char *s2)
+	.assume	adl=1
+	.section	.text
+	.global	_strcat
+	.type	_strcat, @function
 
-	.assume	ADL=1
-
-	.section .text
-	.global _strcat
 _strcat:
-	ld	hl, 3
-	add	hl, sp
-	ld	bc, (hl)
-	push	bc				;store s1
-	inc	hl
-	inc	hl
-	inc	hl
-	ld	de, (hl)
-	ld	a, (de)
-	or	a, a
-	jr	z, _done			;.if !*s2 then done
+	pop	iy
+	pop	de
+	ex	(sp), hl	; src
+	push	de		; dst
 
-	push	bc
-	pop	hl
-	xor	a,a
-_loop1:
-	cpi
-	jr	nz, _loop1
-	dec	hl				;hl = s1+strlen(s1)
-
-	ex	de, hl				;de = s1+strlen(s1) | hl = s2
-
+	; move to the end of src
 	xor	a, a
-_loop2:
-	cp	a, (hl)
-	jr	z, _fillzero
-	ldi
-	jr	_loop2
+	ld	bc, 0
+	push	hl		; src
+	cpir
+	sbc	hl, hl
+	sbc	hl, bc		; carry is set
+	ex	(sp), hl
+	ex	de, hl
+	; move to the end of dst
 
-_fillzero:
-	ld	(de), a
-_done:
-	pop	hl				;restore s1
-	ret
+	; not needed unless the strlen(dst) + strlen(src) > 16777215 bytes,
+	; which would imply that the resulting string would not fit into memory
+	; ld bc, 0
+	cpir
+	dec	hl
 
-	
-	.extern	_strlen
-
+	pop	bc
+	ex	de, hl
+	; DE = dst + strlen(dst)
+	; HL = src
+	; BC = strlen(src) + 1
+	ldir
+	ex	(sp), hl	; return value
+	jp	(iy)
 
