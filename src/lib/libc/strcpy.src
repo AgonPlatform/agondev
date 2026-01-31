@@ -1,28 +1,27 @@
-; (c) Copyright 2007-2008 Zilog, Inc.
-;   char * strcpy(void * d, void * s)
-
-	.assume 	ADL=1
-
-	.section	.text
+	.assume	adl=1
 	.global	_strcpy
-_strcpy:
-	ld	hl, 6
-	add	hl, sp
-	ld	bc, (hl)
-	dec	hl
-	dec	hl
-	dec	hl
-	ld	de, (hl)		;assumed de has not been changed in _strlen
-	push	de
-	push	bc
-	call	_strlen
-	push	hl
-	pop	bc
-	inc	bc
-	pop	hl
-	ldir
-	pop	hl
-	ret
+	.type	_strcpy, @function
 
-	.extern	_strlen
+_strcpy:
+	pop	iy
+	pop	de
+	ex	(sp), hl	; src
+	push	de		; dst
+
+	xor	a, a
+	ld	bc, 0
+	; move to the end of src
+	push	hl
+	cpir
+	sbc	hl, hl
+	sbc	hl, bc
+	ex	(sp), hl
+	pop	bc
+
+	; DE = dst
+	; HL = src
+	; BC = strlen(src) + 1
+	ldir
+	ex	(sp), hl	; return dst
+	jp	(iy)
 
