@@ -33,6 +33,7 @@ int isascii(int c);
 
 int isxdigit(int c);
 
+int isblank(int c);
 __END_DECLS
 
 #endif /* _CTYPE_H */

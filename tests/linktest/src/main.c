@@ -70,7 +70,9 @@ int main(int argc, char ** argv) {
     c = toupper(c);
     c = isascii(c);
     c = isxdigit(c);
+    c = isblank(c);
 
+    if(isblank(c)) { printf("Blank");}
     /* --- errno.h --- */
     //errno = 0;
 
@@ -505,8 +507,6 @@ int main(int argc, char ** argv) {
     mos_i2c_close();
     mos_i2c_write(0,0, (unsigned char*)b);
     mos_i2c_read(0,0, (unsigned char*)b); 
-    mos_port_read(0);    // read from the GPIO port specified
-    mos_port_write(0,0);     // write data to the GPIO port specified
     vdp_time_t vtb;
     mos_unpackrtc(&vtb, 0); // MOS 3.0+
     mos_flseek_p(0,0); // MOS 3.0+
