@@ -13,9 +13,6 @@ void vdp_return_text_cursor_position( uint8_t *return_x, uint8_t *return_y )
 	VDP_PUTS( vdu_return_text_cursor_position );
 	while ( !(sys_vars->vdp_pflags & vdp_pflag_cursor) );
 
-	if ( return_x) *return_x = getsysvar_cursorX();
-	if ( return_y) *return_y = getsysvar_cursorY();
-
 	if ( return_x) *return_x = sys_vars->cursorX;
 	if ( return_y) *return_y = sys_vars->cursorY;
 }
