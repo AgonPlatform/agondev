@@ -1,35 +1,51 @@
-; Copyright (C) 1999-2008 Zilog, Inc, All Rights Reserved
-;-------------------------------------------------------------------------
-; <string.h>
-; void *memmove( void *dest, const void *src, size_t count );
-;-------------------------------------------------------------------------
-	.assume	ADL=1
-
-	.section .text
+	.assume	adl=1
+	.section	.text
 	.global	_memmove
+	.type	_memmove, @function
+
 _memmove:
-	ld	iy,0
-	add	iy,sp
-	ld	bc,(iy+9)	;count
-	sbc	hl,hl
-	sbc	hl,bc		;count==0?
-	jr	z,_L1
-	ld	hl,(iy+6)	;src
-	ld	de,(iy+3)	;dest
-	or	a,a
-	sbc	hl,de
-	ld	hl,(iy+6)	;src
-	jr	c,_L0		;src < dest?
-	ldir
-	jr	_L1
-_L0:
-	add	hl,bc
-	dec	hl
-	ex	de,hl
-	add	hl,bc
-	dec	hl
-	ex	de,hl
+	; src > dst | LDIR | 31F + 15R + 2
+	; src < dst | LDDR | 33F + 12R + 1
+	; src = dst | LDIR | 31F + 15R + 2
+	; zero size |      | 26F + 10R + 2
+	; size >= 65536    +  7F +  1R + 2 (only when the low 16 bits are zero)
+
+	ld	iy, 0
+	add	iy, sp
+	ld	bc, (iy + 9)
+	ld	a, c
+	or	a, b
+	ld	de, (iy + 3)
+	jr	z, .L.maybe_zero
+.L.not_zero:
+	ld	hl, (iy + 6)
+	sbc	hl, de
+	; src >= dst
+	jr	nc, .L.copy_forwards
+	; src < dst
+.L.copy_backwards:
+	; move HL and DE to the end
+	dec	de		; DE = dst - 1
+	ex	de, hl
+	add	hl, bc		; HL = dst + size - 1, DE = src - dst
+	ex	de, hl
+	add	hl, de		; HL = src + size - 1, DE = dst + size - 1
 	lddr
-_L1:
-	ld	hl,(iy+3)	;dest
+	ex	de, hl
+	inc	hl
 	ret
+
+.L.copy_forwards:
+	add	hl, de
+	ldir
+	ld	hl, (iy + 3)
+	ret
+
+.L.maybe_zero:
+	; low 16 bits are zero
+	or	a, (iy + 11)	; test upper 8 bits
+	jr	nz, .L.not_zero	; size >= 65536
+	; size == 0
+	ex	de, hl
+	ret
+
