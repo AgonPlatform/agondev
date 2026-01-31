@@ -1,34 +1,33 @@
-; (c) Copyright 2007-2008 Zilog, Inc.
-;   char *strchr(char *s,int c)
-
-	.assume	ADL=1
-
+	.assume	adl=1
 	.section	.text
 	.global	_strchr
+	.type	_strchr, @function
+
 _strchr:
-	ld	hl, 3
-	add	hl, sp
-	ld	bc, (hl)
-	inc	hl
-	inc	hl
-	inc	hl
-	ld	e, (hl)			;assumed e register has not been changed by _strlen
-	push	bc
-	call	_strlen
-	push	hl
 	pop	bc
-	inc	bc			;NULL terminating char also included in the search
 	pop	hl
+	pop	de
+	push	de
+	push	hl
+	push	bc
+	xor	a, a
+	ld	bc, 0
+	cpir
 	ld	a, e
+	ex	de, hl
+	; calculate strlen(str) + 1
+	sbc	hl, hl
+	sbc	hl, bc
+	ex	de, hl
+	; rewind HL to the beginning of str
+	add	hl, bc
+	push	de
+	pop	bc
 	cpir
 	dec	hl
-	ret	z			;.if found return HL
-
-_notfound:
+	ret	z	; found match
+	; return NULL
 	or	a, a
 	sbc	hl, hl
 	ret
-
-
-	.extern _strlen
 
