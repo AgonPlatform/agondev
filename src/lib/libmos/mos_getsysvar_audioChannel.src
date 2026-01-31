@@ -3,10 +3,7 @@
 	.section .text
 	.global  _getsysvar_audioChannel
 _getsysvar_audioChannel:
-	push	ix
-	ld	a, mos_sysvars
-	rst.lil	08h
-	ld	a, (ix+sysvar_audioChannel)
-	pop	ix
+  ld  iy, (_sys_vars)     ; pointer to the system variables
+	ld	a, (iy+sysvar_audioChannel)
 	ret
 	

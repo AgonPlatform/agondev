@@ -5,11 +5,8 @@
 	.section .text
 
 _getsysvar_mouseButtons:
-	push	ix
-	ld	a, mos_sysvars
-	rst.lil	08h
-	ld	a, (ix+sysvar_mouseButtons)
-	ld hl,0
-	ld l, a
-	pop	ix
+  ld  iy, (_sys_vars)     ; pointer to the system variables
+	ld	a, (iy+sysvar_mouseButtons)
+	ld  hl,0
+	ld  l, a
 	ret

@@ -3,11 +3,8 @@
 	.section .text
 	.global  _getsysvar_scrwidth
 _getsysvar_scrwidth:
-	push	ix
-	ld	a, mos_sysvars			; MOS Call for mos_sysvars
-	rst.lil	08h				; returns pointer to sysvars in ixu
+  ld  iy, (_sys_vars)     ; pointer to the system variables
 	ld	hl,0
-	ld	l, (ix+sysvar_scrWidth)	; get current screenwidth
-	ld	h, (ix+sysvar_scrWidth+1)
-	pop	ix
+	ld	l, (iy+sysvar_scrWidth)	; get current screenwidth
+	ld	h, (iy+sysvar_scrWidth+1)
 	ret

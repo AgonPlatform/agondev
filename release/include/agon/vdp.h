@@ -196,6 +196,7 @@ typedef struct { uint8_t A; uint8_t B; uint8_t CMD; uint8_t SUBCMD; uint24_t ww0
 #define LOAD_BMAP_BLOCK 65535
 
 // ========= VDU Commands ==========
+__attribute__((deprecated("No longer required; use global variable SYSVAR *sys_vars to access MOS sysvars instead")))
 volatile SYSVAR *vdp_vdu_init( void );
 // VDU 1: Send next character to "printer" (if "printer" is enabled)
 void vdp_send_to_printer( char ch );

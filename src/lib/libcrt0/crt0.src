@@ -198,6 +198,13 @@ _parse_option := _parse_params ; default behavior is calling the local parser. T
 
 .init_end:
 
+; Get MOS sysvars variable
+  push    ix
+  ld      a, 0x08   ; mos_sysvars
+  rst.lil 08h
+  ld      (_sys_vars), ix
+  pop     ix
+
 ; Call main function
 ; ------------------
 ; Start of the C program called either as int main(void) or int main(int argc, char *argv[])
@@ -686,5 +693,9 @@ fini_array:
     .section .data
     .global _exit.sp
 _exit.sp:
+    d24 0
 
+    .section .data
+    .global _sys_vars
+_sys_vars:
     d24 0

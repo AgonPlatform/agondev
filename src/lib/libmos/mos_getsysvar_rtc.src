@@ -3,9 +3,6 @@
 	.section .text
 	.global  _getsysvar_rtc
 _getsysvar_rtc:					; Returns pointer rather than value
-	push	ix
-	ld	a, mos_sysvars
-	rst.lil	08h
-	lea 	hl, ix+sysvar_rtc+0
-	pop	ix
+  ld  iy, (_sys_vars)     ; pointer to the system variables
+	lea 	hl, iy+sysvar_rtc+0
 	ret

@@ -4,10 +4,6 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
-volatile SYSVAR *sys_vars = NULL;
-
-volatile SYSVAR *vdp_vdu_init( void )
-{
-	sys_vars = (SYSVAR *)mos_sysvars();
-	return (SYSVAR *)sys_vars;
+volatile SYSVAR *vdp_vdu_init( void ) {
+	return sys_vars;
 }

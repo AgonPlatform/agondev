@@ -4,8 +4,6 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
-extern volatile SYSVAR *sys_vars;
-
 // Shared command variables
 VDU_A_B_CMD_n vdu_sprite_select = { 23, 27, 4, 0 };
 VDU_A_B_CMD vdu_sprite_clear = { 23, 27, 5 };

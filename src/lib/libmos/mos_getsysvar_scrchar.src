@@ -3,9 +3,6 @@
 	.section .text
 	.global  _getsysvar_scrchar
 _getsysvar_scrchar:
-	push	ix
-	ld	a, mos_sysvars
-	rst.lil	08h
-	ld	a, (ix+sysvar_scrchar)
-	pop	ix
+  ld  iy, (_sys_vars)     ; pointer to the system variables
+	ld	a, (iy+sysvar_scrchar)
 	ret

@@ -5,13 +5,10 @@
 	.section .text
 
 _getsysvar_mouseYDelta:
-	push	ix
-	ld	a, mos_sysvars
-	rst.lil	08h
+  ld  iy, (_sys_vars)     ; pointer to the system variables
 	ld hl,0
-	ld	a, (ix+sysvar_mouseYDelta)
+	ld	a, (iy+sysvar_mouseYDelta)
 	ld l, a
-	ld	a, (ix+sysvar_mouseYDelta+1)
+	ld	a, (iy+sysvar_mouseYDelta+1)
 	ld h, a
-	pop	ix
 	ret

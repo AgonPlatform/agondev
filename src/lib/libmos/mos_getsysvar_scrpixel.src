@@ -3,9 +3,6 @@
 	.section .text
 	.global  _getsysvar_scrpixel
 _getsysvar_scrpixel:
-	push	ix
-	ld	a, mos_sysvars
-	rst.lil	08h
-	ld	hl, (ix+sysvar_scrpixel)
-	pop	ix
+  ld  iy, (_sys_vars)     ; pointer to the system variables
+	ld	hl, (iy+sysvar_scrpixel)
 	ret

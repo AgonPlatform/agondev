@@ -4,10 +4,7 @@
 	.global	_getsysvar_time
 ;unit32_t getsysvar_time()
 _getsysvar_time:
-	push	ix
-	ld	a, mos_sysvars
-	rst.lil	08h 				; returns pointer to sysvars in IX
-	ld	hl, (ix+sysvar_time)		; get the 3 least significant bytes
-	ld 	e, (ix+sysvar_time+3) 		; get the most signiciant byte
-	pop	ix
+  ld  iy, (_sys_vars)     ; pointer to the system variables
+	ld	hl, (iy+sysvar_time)		; get the 3 least significant bytes
+	ld 	e,  (iy+sysvar_time+3) 	; get the most signiciant byte
 	ret

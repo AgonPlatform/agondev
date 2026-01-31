@@ -224,6 +224,7 @@ typedef struct {
 	uint16_t mouseYDelta;
 } SYSVAR;
 
+extern volatile SYSVAR *sys_vars;  // set at startup by crt0.s
 
 // UART settings for open_UART1
 typedef struct {

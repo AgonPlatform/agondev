@@ -3,11 +3,8 @@
 	.section .text
 	.global  _getsysvar_scrheight
 _getsysvar_scrheight:
-	push 	ix
-	ld	a, mos_sysvars			; MOS Call for mos_sysvars
-	rst.lil	08h				; returns pointer to sysvars in ixu
+  ld  iy, (_sys_vars)     ; pointer to the system variables
 	ld	hl,0
-	ld	l, (ix+sysvar_scrHeight)	; get current screenHeight
-	ld	h, (ix+sysvar_scrHeight+1)
-	pop	ix
+	ld	l, (iy+sysvar_scrHeight)	; get current screenHeight
+	ld	h, (iy+sysvar_scrHeight+1)
 	ret

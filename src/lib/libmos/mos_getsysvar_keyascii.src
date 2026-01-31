@@ -3,10 +3,7 @@
 	.section .text
 	.global  _getsysvar_keyascii
 _getsysvar_keyascii:
-	push	ix
-	ld	a, mos_sysvars
-	rst.lil	08h
-	ld	a, (ix+sysvar_keyascii)
-	pop	ix
+  ld  iy, (_sys_vars)     ; pointer to the system variables
+	ld	a, (iy+sysvar_keyascii)
 	ret
     
