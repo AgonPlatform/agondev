@@ -24,6 +24,12 @@ char *strcpy(char *__restrict dest, const char *__restrict src)
 char *strncpy(char *__restrict dest, const char *__restrict src, size_t n)
               __attribute__((nonnull(1, 2)));
 
+char *stpcpy(char *__restrict dest, const char *__restrict src)
+    __NOEXCEPT __attribute__((nonnull(1, 2)));
+
+char *stpncpy(char *__restrict dest, const char *__restrict src, size_t n)
+    __NOEXCEPT __attribute__((nonnull(1, 2)));
+
 char *strcat(char *__restrict dest, const char *__restrict src)
              __attribute__((nonnull(1, 2)));
 
