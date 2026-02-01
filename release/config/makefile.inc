@@ -2,8 +2,8 @@
 RAM_START ?= 0x40000
 RAM_SIZE  ?= 0x70000
 
-# Emulator SDcard destination defaults to root if not set by the user
-FAE_DEST ?= /
+# Emulator SDcard destination defaults to /bin if not set by the user
+FAE_DEST ?= /bin
 
 # verbosity - comment next line to show all output
 V = @
@@ -130,15 +130,21 @@ endif
 .PHONY: emulator emu em
 emu: emulator
 em: emulator
-emulator: $(BINARY)
+emulator: copy
+	@echo [Starting emulator]
+	@cd $(FAE_HOME) && ./fab-agon-emulator $(FAE_ARGS)
+
+.PHONY: copy cp cp2em
+cp: copy
+cp2em: copy
+copy: all
 	@if [ -z "$(FAE_HOME)" ]; then \
 		echo "ERROR: FAE_HOME is not set!"; \
 		exit 1; \
 	fi
 	@echo [Copying $(BINARY) to emulator sdcard:$(FAE_DEST)]
-	@cp $(BINARY) $(FAE_HOME)/sdcard$(FAE_DEST)
-	@echo [Starting emulator]
-	@cd $(FAE_HOME) && ./fab-agon-emulator $(FAE_ARGS)
+	@cp -f $(BINARY) $(FAE_HOME)/sdcard$(FAE_DEST)
+	@echo [Done]
 
 # Directories to create
 $(BINDIR):
