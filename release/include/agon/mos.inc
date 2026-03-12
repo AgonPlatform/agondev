@@ -2,7 +2,7 @@
 ; Title:	AGON MOS - API for user projects
 ; Author:	Dean Belfield
 ; Created:	03/08/2022
-; Last Updated:	11/11/2025
+; Last Updated:	12/03/2026
 ; Adjusted for fasmg assembler (Paul Cawte, 16/06/2023)
 ; Adjusted for MOS 3.0 API (Jeroen Venema, 18/04/2025)
 ;
@@ -23,8 +23,9 @@
 ; 13/04/2023:	Added FatFS file structures (FFOBJID, FIL, DIR, FILINFO)
 ; 15/04/2023:	Added mos_getfil, mos_fread, mos_fwrite and mos_flseek
 ; 18/11/2023:	Added _mos_setkbvector, _mos_getkbmap, _mos_i2c_open, _mos_i2c_close, _mos_i2c_write, _mos_i2c_read
-; 18/04/2025:   Added remaining ffs_* API values in MOS 2.20 / 3.0
-; 11/11/2025:   Added 0x27+ sysvar offsets
+; 18/04/2025: Added remaining ffs_* API values in MOS 2.20 / 3.0
+; 11/11/2025: Added 0x27+ sysvar offsets
+; 12/03/2026: Added FILINFO.attrib attribute bits
 
 ; VDP control (VDU 23, 0, n)
 ;
@@ -164,7 +165,15 @@ fa_create_new           := 004h
 fa_create_always        := 008h
 fa_open_always          := 010h
 fa_open_append          := 030h
-	
+
+; File attribute bits for directory entry (FILINFO.fattrib) 
+;
+am_rdo := 01h	; Read only 
+am_hid := 02h	; Hidden 
+am_sys := 04h	; System 
+am_dir := 10h	; Directory 
+am_arc := 20h	; Archive 
+
 ; System variable indexes for api_sysvars
 ; Index into _sysvars in globals.asm
 ;

@@ -99,7 +99,7 @@ Requires the installation of the [Fab Agon Emulator](https://github.com/tomm/fab
 Set either globally set the environment variable FAE_HOME for all projects, or set the project-specific makefile option FAE_HOME to the Fab Emulator's installation root directory.
 
 Likewise, the option FAE_DEST is used to copy the built program binary to the Emulator's SDcard space. 
-By default, the program binary is copied to the root folder of the virtual SDcard. If for example the program needs to run from the /bin directory on the Agon, set FAE_DEST to /bin
+By default, the program binary is copied to the bin folder of the virtual SDcard. If for example the program needs to run from the /mos directory on the Agon, set FAE_DEST to /mos
 
 To build a project, automatically copy the resulting program binary to the given emulator's virtual SD card and start the emulator, use one of these make targets:
 ```
@@ -132,7 +132,7 @@ The following options can be set in the user's project Makefile:
 | **SERIALPORT**        | Sets the USB/Serial port for uploading to the Agon via the hexload protocol. Can be set to `auto` (default if not specified).                                                                                |
 | **BAUDRATE**          | Sets the baud rate of the USB/Serial port. Default is `115200`.                                                                                                                                             |
 | **FAE_HOME**          | To make use of the 'make emu / make emulator' target, set this to the install directory of the Fab Agon Emulator |
-| **FAE_DEST**          | Sets the target destination inside the FAE SDcard space, defaults to the root directory                          |
+| **FAE_DEST**          | Sets the target destination inside the FAE SDcard space, defaults to the bin directory                          |
 | **FAE_ARGS**          | Optional arguments to the Fab Agon Emulator, such as '-d'.                                                       |
 
 ## Creating static libraries

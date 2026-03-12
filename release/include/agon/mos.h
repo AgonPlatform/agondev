@@ -2,7 +2,7 @@
  * Title:			AGON MOS - MOS C header interface
  * Author:			Jeroen Venema
  * Created:			15/10/2022
- * Last Updated:	11/11/2025
+ * Last Updated:	12/03/2026
  * 
  * Modinfo:
  * 15/10/2022:		Added putch, getch
@@ -19,6 +19,7 @@
  *                  Changed RTC_DATA to SYSVAR_RTCDATA, added vdp_time_t struct
  * 05/11/2025:      Changed location/name to <agon/mos.h>
  * 11/11/2025:      Added mouse getsysvar getters
+ * 12/03/2026:      Added FILINFO.attrib attribute bits
  */
 
 #ifndef _MOS_H
@@ -76,6 +77,13 @@
 #define FA_CREATE_ALWAYS	    0x08
 #define FA_OPEN_ALWAYS		    0x10
 #define FA_OPEN_APPEND		    0x30
+
+/* File attribute bits for directory entry (FILINFO.fattrib) */
+#define	AM_RDO	0x01	/* Read only */
+#define	AM_HID	0x02	/* Hidden */
+#define	AM_SYS	0x04	/* System */
+#define AM_DIR	0x10	/* Directory */
+#define AM_ARC	0x20	/* Archive */
 
 // I2C frequency
 #define I2C_SPEED_57600			0x01
