@@ -1,0 +1,14 @@
+	.assume	adl =1
+	.include "agon/mos.inc"
+	.section .text
+	.global	_mos_putstring
+_mos_putstring:
+	push	ix
+	ld 	ix,0
+	add ix, sp
+	ld 	hl, (ix+6)  ; Address of string
+  ld  bc, 0       ; 0 size when using delimiter
+  ld  a, 0        ; Classic C-style string delimiter
+	rst.lil	18h     ; Write a block of bytes out to the VDP
+	pop	ix
+	ret

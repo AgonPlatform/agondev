@@ -342,7 +342,8 @@ extern "C" {
 extern int   putch(int a);
 extern char  getch(void);
 extern void  waitvblank(void);
-extern void  mos_puts(char * buffer, uint24_t size, char delimiter);
+extern void  mos_puts(const char *buffer, uint24_t size, char delimiter); // MOS RST18h with selectable delimiter character
+extern void  mos_putstring(const char *string); // Uses optimal MOS RST18h as backend, but defaults to 0-delimited C-style string
 
 // Get system variables
 extern uint32_t getsysvar_time();
