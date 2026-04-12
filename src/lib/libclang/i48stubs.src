@@ -258,11 +258,13 @@ __i48dvrmu:
 	.section	.text
 	.global	__i48ctlz
 __i48ctlz:
+  push bc
 	xor	a, a
 	ld	b, a
 	ld	c, a
 	call	__llctlz
 	sub	a, 16
+  pop bc
 	ret
 
 	.section	.text
