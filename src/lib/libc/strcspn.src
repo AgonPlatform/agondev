@@ -1,46 +1,49 @@
-; (c) Copyright 2007-2008 Zilog, Inc.
-;   size_t strcspn(char *s1, char *s2)
-
-	.assume 	ADL=1
+	.assume	adl=1
 
 	.section	.text
 	.global	_strcspn
 _strcspn:
-	ld		hl,	6
-	add		hl,	sp
-	ld		de,	(hl)		;de = s2
-	dec		hl
-	dec		hl
-	dec		hl
-	ld		hl,	(hl)		;hl = s1
-
-_loop1:
-	push	hl				;store s1
-_loop2:
-	ld		a,	(de)
-	or		a,	a
-	jr		z,	_done		;.if *s2==0 then done
-	cpi
-	jr		z,	_done		;.if the match found then done
-	xor		a,	a
-	cp		a,	(hl)
-	jr		nz,	_loop2		;.if *s1!=0 then continue
-	inc		de				;.else ++s2
-	ld		a,	(de)
-	or		a,	a
-	jr		z,	_inchl		;.if *s2==0 then done
-	pop		hl
-	jr		_loop1
-
-_inchl:
-	inc		hl
-_done:
-	pop		de				;restore s1
-	scf
-	sbc		hl,	de			;return index
+	call	__strcspn_strpbrk_common
+	sbc	hl, de		; Calculate number of mismatching characters
 	ret
 
+	.section	.text
+	.global	_strpbrk
+_strpbrk:
+	call	__strcspn_strpbrk_common
+	ret	nz		; Return pointer if not end of string
+	sbc	hl, hl		; Return NULL
+	ret
 
-	.extern 	_strlen
+	.section	.text
+__strcspn_strpbrk_common:
+	ld	hl, 6
+	add	hl, sp
+	ld	de, (hl)	; DE = str
+	ld	bc, 3
+	add	hl, bc		; Always resets carry
+	ld	hl, (hl)	; HL = reject
 
-
+	; Calculate strlen(reject)
+	push	hl
+	xor	a, a
+	ld	c, a
+	cpir
+	sbc	hl, hl
+	sbc	hl, bc
+	ex	(sp), hl
+	pop	iy		; IY = strlen(reject) + 1
+	dec	hl		; HL = reject - 1
+	push	de
+.loop:
+	ld	a, (de)		; A = *str++
+	inc	de
+	lea	bc, iy + 0		; BC = strlen(reject) + 1
+	add	hl, bc		; HL = reject + strlen(reject)
+	cpdr			; Find A in reject, including null terminator
+	jr	nz, .loop	; Loop if no match
+	ex	de, hl
+	dec	hl		; HL = pointer to matching character
+	pop	de		; DE = str
+	or	a, a		; Check if A is null terminator and reset carry
+	ret
