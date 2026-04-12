@@ -683,7 +683,7 @@ void vdp_audio_frequency_envelope_disable( int channel );
 #define VDP_AUDIO_FREQ_ENVELOPE_CONTROL_REPEATS 1
 #define VDP_AUDIO_FREQ_ENVELOPE_CONTROL_CUMULATIVE 2
 #define VDP_AUDIO_FREQ_ENVELOPE_CONTROL_RESTRICT 4
-void vdp_audio_frequency_envelope_stepped( int channel, int phaseCount, int controlByte, int stepLength );
+void vdp_audio_frequency_envelope_stepped( int channel, int phaseCount, int controlByte, int stepLength, const int16_t* envelopeData );
 // Command 8: Enable Channel
 // 	VDU 23, 0, &85, channel, 8
 void vdp_audio_enable_channel( int channel );
