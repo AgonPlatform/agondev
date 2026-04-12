@@ -1,6 +1,8 @@
 #ifndef _MATH_H
 #define _MATH_H
 
+#include <stdbool.h>
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -37,10 +39,10 @@ extern "C" {
 #define islessgreater(x, y)  __builtin_islessgreater(x, y)
 #define isunordered(x, y)    __builtin_isunordered(x, y)
 
-int _isinff(float n);
-int _isnanf(float n);
-int _isnormalf(float n);
-int _isfinitef(float n);
+bool _isinff(float n);
+bool _isnanf(float n);
+bool _isnormalf(float n);
+bool _isfinitef(float n);
 
 #define isinf(x) ( \
 	sizeof((x)) == sizeof(float) ? _isinff((x)) : \
