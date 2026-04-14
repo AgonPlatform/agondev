@@ -671,8 +671,9 @@ void vdp_audio_volume_envelope_disable( int channel );
 void vdp_audio_volume_envelope_ADSR( int channel, int attack, int decay, int sustain, int release );
 // Command 6: Volume envelope. Type 2: Multi-phase ADSR
 // 	VDU 23, 0, &85, channel, 6, 2, attackCount, [level, duration;]*, sustainCount, [level, duration;]*, releaseCount, [level, duration;]*
-// 	variable length parameters - leave to user to send separately
-void vdp_audio_volume_envelope_multiphase_ADSR( int channel ); // variable length parameters to be send separately
+// define number of Attack, Sustain, and Releases
+// provide array of data in the form [level,duration] as 16bit, for each of numAttack, numSustain, and numRelease
+void vdp_audio_volume_envelope_multiphase_ADSR( uint8_t channel,uint8_t numAttack,uint8_t numSustain ,uint8_t numRelease, int16_t* envelopeData ); 
 // Command 7: Frequency envelope
 //	VDU 23, 0, &85, channel, 7, type, [parameters]
 // 	Type 0: None
