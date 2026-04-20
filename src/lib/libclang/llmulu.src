@@ -1,11 +1,15 @@
 	.assume	adl=1
 
 	.section	.text
-	.global	__llmuls, __llmulu
+	.global	__llmulu
+	.global	__llmuls
+
+.if 0
+
 __llmuls:
 __llmulu:
 ; Really slow
-
+; clobbers SP.S
 	push	ix
 	push	iy
 	push	af
@@ -22,22 +26,22 @@ __llmulu:
 
 	lea	hl, iy + 18
 	ld	b, 8
-.push_loop:
+.L.push_loop:
 	push	af
 	ld	a, (hl)
 	inc	hl
 	or	a, a		; cf=0
-	djnz	.push_loop
+	djnz	.L.push_loop
 
 	sbc	hl, hl
 	ld	e, l
 	ld	d, h
 
-.byte_loop:
+.L.byte_loop:
 	scf
 	adc	a, a
 
-.bit_loop:
+.L.bit_loop:
 	push	af
 	add	ix, ix
 	adc	hl, hl
@@ -46,7 +50,7 @@ __llmulu:
 	ex	de, hl
 	pop	af
 
-	jr	nc, .add_end
+	jr	nc, .L.add_end
 	ld	bc, (iy)
 	add	ix, bc
 	ld	bc, (iy + 3)
@@ -54,18 +58,18 @@ __llmulu:
 	ex	de, hl
 	adc.s	hl, sp
 	ex	de, hl
-.add_end:
+.L.add_end:
 
 	add	a, a
-	jr	nz, .bit_loop
+	jr	nz, .L.bit_loop
 
 	pop	af
-	jr 	nc, .byte_loop
+	jr	nc, .L.byte_loop
 
 	ld	b, d
 	ld	c, e
 	ex	de, hl
-	lea	hl, ix+0
+	lea	hl, ix + 0
 
 	pop	af
 	pop	af
@@ -73,3 +77,79 @@ __llmulu:
 	pop	iy
 	pop	ix
 	ret
+
+.else
+
+__llmuls:
+__llmulu:
+; Really slow
+; fallback routine that does not clobber SP.S
+	push	ix
+	push	iy
+	push	af
+
+	ld	ix, 0
+	lea	iy, ix - 6
+	add	iy, sp		; cf=1
+
+	push	de
+	push	hl
+	push	bc
+
+	lea	hl, iy + 18
+	ld	b, 8
+.L.push_loop:
+	push	af
+	ld	a, (hl)
+	inc	hl
+	or	a, a		; cf=0
+	djnz	.L.push_loop
+
+	sbc	hl, hl
+	ld	e, l
+	ld	d, h
+
+.L.byte_loop:
+	scf
+	adc	a, a
+
+.L.bit_loop:
+	push	af
+	add	ix, ix
+	adc	hl, hl
+	ex	de, hl
+	adc	hl, hl
+	ex	de, hl
+	pop	af
+
+	jr	nc, .L.add_end
+	ld	bc, (iy)
+	add	ix, bc
+	ld	bc, (iy + 3)
+	adc	hl, bc
+	ex	de, hl
+	ld	bc, (iy - 3)
+	adc	hl, bc
+	ex	de, hl
+.L.add_end:
+
+	add	a, a
+	jr	nz, .L.bit_loop
+
+	pop	af
+	jr	nc, .L.byte_loop
+
+	ld	b, d
+	ld	c, e
+	ex	de, hl
+	lea	hl, ix + 0
+
+	pop	af
+	pop	af
+	pop	af
+	pop	af
+	pop	iy
+	pop	ix
+	ret
+
+.endif
