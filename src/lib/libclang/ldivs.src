@@ -20,9 +20,9 @@ __ldivs:
 
 	rlca
 	rrca
-	jr	nz, .pos_dividend_skip
+	jr	nz, .L.pos_dividend_skip
 	ccf
-.pos_dividend_skip:
+.L.pos_dividend_skip:
 
 	ret	c
 	jp	__lneg
@@ -30,4 +30,3 @@ __ldivs:
 	.extern	__ldivs_lrems_common
 	.extern	__ldivu
 	.extern	__lneg
-
