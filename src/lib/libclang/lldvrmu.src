@@ -2,12 +2,16 @@
 
 	.section	.text
 	.global	__lldvrmu
+	.global	__lldvrmu.hijack
+
+.if 0
+
 __lldvrmu:
 ; Atrociously slow.
 
 	ld	iy, 5
 	add	iy, sp
-	.global	__lldvrmu.hijack
+
 __lldvrmu.hijack:
 
 	ld	a, i
@@ -43,13 +47,13 @@ __lldvrmu.hijack:
 
 	ld	c, 8
 
-.byte_loop:
+.L.byte_loop:
 	dec	iy
 	ld	a, (iy - 9)
 
 	ld	b, 8
 
-.bit_loop:
+.L.bit_loop:
 	adc	a, a
 	exx
 	adc	hl, hl
@@ -67,7 +71,7 @@ __lldvrmu.hijack:
 	exx
 	sbc	hl, de
 
-	jr	nc, .add_back_skip
+	jr	nc, .L.add_back_skip
 	exx
 	add	hl, sp
 	ex	de, hl
@@ -75,16 +79,16 @@ __lldvrmu.hijack:
 	ex	de, hl
 	exx
 	adc	hl, de
-.add_back_skip:
+.L.add_back_skip:
 
-	djnz	.bit_loop
+	djnz	.L.bit_loop
 
 	adc	a, a
 	cpl
 	ld	(iy + 15), a
 
 	dec	c
-	jr	nz, .byte_loop
+	jr	nz, .L.byte_loop
 
 	ld	sp, iy
 ; Stack frame:
@@ -105,3 +109,179 @@ __lldvrmu.hijack:
 	ret	po
 	ei
 	ret
+
+.else
+
+__lldvrmu:
+__lldvrmu.hijack:
+; Fallback routine that does not disable interrupts or use shadow registers.
+; Uses a special fast path for 8-bit denominators (0 - 255).
+; Atrociously slow.
+
+	push	hl
+	ex	(sp), ix
+	ld	iy, 0
+	add	iy, sp
+
+	; test if the denominator is less than 256 (fast path)
+	push	bc
+	; test bits [8, 55]
+	ld	hl, (iy + 16)
+	ld	bc, (iy + 19)
+	adc	hl, bc
+	jr	nz, .L.not_8_bit
+	; note that bits [8, 55] are non-zero if carry is set
+	ld	a, l		; ld a, 0
+	; test if bits [56, 63] are non-zero or if carry was set from before
+	sbc	a, (iy + 22)
+	jr	nc, .L.denominator_is_8_bit
+.L.not_8_bit:
+	; denominator >= 256
+
+	push	de
+	or	a, a
+	sbc	hl, hl
+	ex	de, hl
+	sbc	hl, hl
+	ld	c, l
+	ld	b, l
+	ld	a, 64 + 1
+	; jr	.L.start
+
+	; (iy + 21) = denominator [48:63]
+	; (iy + 18) = denominator [24:47]
+	; (iy + 15) = denominator [ 0:23]
+	; (iy + 12) = caller return address
+	; (iy +  9) = preserved IY
+	; (iy +  6) = preserved AF
+	; (iy +  3) = return address
+	; (iy +  0) = preserved IX
+	; IX        = numerator [ 0:23]
+	; (iy -  3) = numerator [48:63]
+	; (iy -  6) = numerator [24:47]
+	; SP        = iy - 6
+
+.L.loop:
+	; worst-case CC per iter: 85F + 38R + 20W + 2
+	dec	a
+	jr	z, .L.finish
+.L.start:
+	; [0:63] <<= 1
+	add	ix, ix
+	ex	(sp), hl
+	adc	hl, hl
+	ex	(sp), hl
+	rl	(iy - 3)
+	rl	(iy - 2)
+
+	; [64:127] <<= 1
+	adc	hl, hl
+	ex	de, hl
+	adc	hl, hl
+	ex	de, hl
+	rl	c
+	rl	b
+
+	; test if R >= D
+
+	; inlined __llcmpu
+	or	a, a
+	push	hl
+	ld	hl, (iy + 21)
+	sbc.s	hl, bc
+	jr	nz, .L.cmpu_ne
+	ld	hl, (iy + 18)
+	sbc	hl, de
+	jr	nz, .L.cmpu_ne
+	pop	hl
+	push	bc
+	ld	bc, (iy + 15)
+	sbc	hl, bc
+	add	hl, bc
+	pop	bc
+	jr	.L.finish_cmpu
+
+.L.cmpu_ne:
+	ccf
+	pop	hl
+.L.finish_cmpu:
+	jr	c, .L.loop	; R < D
+	; R >= D
+
+	inc	ix		; increment quotient
+	; inlined __llsub
+	push	bc
+	ld	bc, (iy + 15)
+	sbc	hl, bc
+	ex	de, hl
+	ld	bc, (iy + 18)
+	sbc	hl, bc
+	ex	de, hl
+	ex	(sp), hl
+	ld	bc, (iy + 21)
+	sbc	hl, bc
+	ld	c, l
+	ld	b, h
+	pop	hl
+	jr	.L.loop
+
+.L.finish:
+	; BC:UDE:UHL = remainder
+	; [iy - 6, iy - 2]:IX = quotient
+	ld	(iy + 15), ix
+	pop	ix		; ld ix, (iy - 6)
+	ld	(iy + 18), ix
+.if 0
+	; pop	ix		; ld ix, (iy - 3)
+	; overwrites iy + 23 which is used by __lldivs/__llrems for the quotient sign
+	; ld	(iy + 21), ix
+.else
+	ex	(sp), hl	; ld hl, (iy - 3)
+	ld	(iy + 21), l
+	ld	(iy + 22), h
+	pop	hl
+.endif
+	pop	ix
+	ret
+
+.L.denominator_is_8_bit:
+	; A is zero and carry is cleared
+	ex	de, hl
+	pop	de
+	ld	c, (iy + 15)	; denominator
+	ld	b, 64
+.L.loop_8_bit:
+	; worst-case CC per iter: 20F + 1
+	add	ix, ix		; UHL
+	adc	hl, hl		; UDE
+	rl	e		; C
+	rl	d		; B
+	rla			; remainder
+	jr	c, .L.bit_1
+	cp	a, c
+	jr	c, .L.bit_0
+.L.bit_1:
+	sub	a, c
+	inc	ixl
+.L.bit_0:
+	djnz	.L.loop_8_bit
+	; B is zero here
+
+	; store the 64-bit quotient
+	ld	(iy + 15), ix
+	ld	(iy + 18), hl
+	ld	(iy + 21), e
+	ld	(iy + 22), d
+
+	; store the 8-bit remainder
+	ex.s	de, hl		; zero UHL and UDE
+	ld	c, b
+	ld	e, b
+	ld	d, b
+	ld	h, b
+	ld	l, a		; remainder
+
+	pop	ix
+	ret
+
+.endif
