@@ -2,8 +2,11 @@
 
 	.section	.text
 	.global	_ldiv
-_ldiv:
 
+; REMEMBER to keep ldivu.src, lremu.src, and ldiv.src in sync with this choice
+.if 0
+
+_ldiv:
 	pop	hl
 	pop	iy
 	pop	de
@@ -24,7 +27,7 @@ _ldiv:
 	bit	7, e
 	call	__ldivs_lrems_common
 
-	call	__ldvrmu
+	call	__ldivu_lremu_common
 
 	exx
 	ld	e, a
@@ -45,12 +48,74 @@ _ldiv:
 	push	de
 	push	de
 	bit	2, c
-	jr	z, .ei_skip
+	jr	z, .L.ei_skip
 	ei
-.ei_skip:
+.L.ei_skip:
 	jp	(hl)
 
+	.extern	__ldivu_lremu_common
+
+.else
+
+_ldiv:
+	pop	hl		; return address
+	pop	iy		; ldiv_t pointer
+	pop	de		; [ 0:23] numerator
+	pop	bc		; [24:31] numerator
+	ld	a, c
+	pop	bc		; [ 0:23] denominator
+	ex	(sp), hl	; [24:31] denominator
+	ex	de, hl
+
+	push	ix		; preserve IX since __ldvrmu destroys it
+	ld	d, a
+	xor	a, e
+	push	af		; quotient sign
+
+	ld	a, e
+	ld	e, d
+	push	de		; remainder sign
+
+	bit	7, e
+	call	__ldivs_lrems_common
+
+	push	iy		; preserve IY since __ldvrmu destroys it
+	; E:UHL = numerator
+	; A:UBC = denominator
+	call	__ldvrmu
+	; E:UIX = quotient
+	; A:UHL = remainder
+	pop	iy		; restore IY = ldiv_t pointer
+
+	ld	d, e		; preserve E
+	ld	e, a
+	pop	af		; remainder sign
+
+	; E:UHL = remainder
+	call	m, __lneg
+	ld	(iy + 4), hl
+	ld	(iy + 7), e
+
+	pop	af		; quotient sign
+
+	lea	hl, ix + 0
+	pop	ix		; restore IX
+	ld	e, d		; restore E
+	; E:UHL = quotient
+	call	m, __lneg
+	ld	(iy), hl
+	ld	(iy + 3), e
+
+	ex	(sp), hl	; HL = return address
+	push	de
+	push	de
+	push	de
+	push	de
+	jp	(hl)
+
+	.extern	__ldvrmu
+
+.endif
 
 	.extern	__ldivs_lrems_common
-	.extern	__ldvrmu
 	.extern	__lneg
