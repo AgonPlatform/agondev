@@ -1,10 +1,8 @@
-; (c) Copyright 2007-2008 Zilog, Inc.
-;   int strcmp(register char *s1, register char *s2)
-
 	.assume 	ADL=1
 
 	.section	.text
 	.global	_strcmp
+
 _strcmp:
 	ld	hl, 3
 	add	hl, sp
@@ -13,23 +11,16 @@ _strcmp:
 	inc	hl
 	inc	hl
 	ld	hl, (hl)
-
-_loop:
+_strcmp.loop:
 	ld	a, (de)
-	or	a, a
-	jr	z, _done
-	cpi
+	cp	a, (hl)
+	jr	nz, _strcmp.finish
+	inc	hl
 	inc	de
-	jr	z, _loop
-
-	dec	hl
-_done:
-	sub	a, (hl)
-
-	ld	b, a
-	rla
+	or	a, a
+	jr	nz, _strcmp.loop
+_strcmp.finish:
 	sbc	hl, hl
-	ld	l, b
+	ld	l, a
 	ret
-
 
