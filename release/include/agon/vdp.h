@@ -799,6 +799,26 @@ extern uint8_t vdp_getKeyCode(void); // return ascii code of single key being pr
 void vdp_set_variable(uint16_t variableId, uint16_t value); // VDU 23, 0, &F8, variableId; value;: Set a VDP Variable
 void vdp_clear_variable(uint16_t variableId); // VDU 23, 0, &F9, variableId;: Clear a VDP Variable
 
+// ========= Copper Effects =========
+// Flag to enable copper effects
+// VDU 23, 0, &F8, &310; 0;
+void vdp_copper_enable(void);
+// Create a palette
+// VDU 23, 0, &C4, 0, <paletteID>;
+void vdp_copper_create_palette(uint16_t paletteID);
+// Delete a palette
+// VDU 23, 0, &C4, 1, <paletteID>;
+void vdp_copper_delete_palette(uint16_t paletteID);
+// set a palette entry
+// VDU 23, 0, &C4, 2, <paletteID>; <index>, <red>, <green>, <blue>
+void vdp_copper_set_palette_entry(uint16_t paletteID, uint8_t indx, uint8_t red, uint8_t green, uint8_t blue );
+// Set a signal list to use
+// VDU 23, 0, &C4, 3, <bufferId>;
+void vdp_copper_set_signal_list(uint16_t bufferID );
+// Set to default signal list
+// VDU 23, 0, &C4, 4
+void vdp_copper_reset_signal_list(void );
+
 // Misc
 //VDU 27, char: Output character to screen
 void vdp_outchar(uint8_t c);
