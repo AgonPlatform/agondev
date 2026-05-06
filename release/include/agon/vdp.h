@@ -818,6 +818,9 @@ void vdp_copper_set_signal_list(uint16_t bufferID );
 // Set to default signal list
 // VDU 23, 0, &C4, 4
 void vdp_copper_reset_signal_list(void );
+// disable copper effects
+// VDU 23, 0, &F8, &310; 0;
+void vdp_copper_disable(void);
 
 // Misc
 //VDU 27, char: Output character to screen
