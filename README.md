@@ -1,6 +1,6 @@
 # AGON dev C/C++ toolchain
 ## Status
-Early access Alpha: things will break.
+Beta
 
 The toolchain is currently compiled for Linux (x86_64 / arm64) and MacOS (arm64) only. Windows is supported using WSL.
 
