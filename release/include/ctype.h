@@ -1,3 +1,7 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef _CTYPE_H
 #define _CTYPE_H
 
@@ -37,3 +41,7 @@ int isblank(int c);
 __END_DECLS
 
 #endif /* _CTYPE_H */
+
+#ifdef __cplusplus
+}
+#endif

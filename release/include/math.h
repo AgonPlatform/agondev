@@ -1,3 +1,7 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef _MATH_H
 #define _MATH_H
 
@@ -293,4 +297,8 @@ long double truncl(long double);
 }
 #endif
 
+#endif
+
+#ifdef __cplusplus
+}
 #endif

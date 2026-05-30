@@ -1,3 +1,7 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef _ERRNO_H
 #define _ERRNO_H
 
@@ -494,3 +498,6 @@ Macro: int EHWPOISON
 “Memory page has hardware error.”
 
 */
+#ifdef __cplusplus
+}
+#endif

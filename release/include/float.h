@@ -1,3 +1,7 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef _FLOAT_H
 #define _FLOAT_H
 
@@ -64,4 +68,8 @@
 
 #define  FLT_ROUNDS      ((__fe_cur_env ^ 1) & 3)
 
+#endif
+
+#ifdef __cplusplus
+}
 #endif

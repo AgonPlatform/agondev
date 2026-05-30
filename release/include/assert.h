@@ -1,3 +1,7 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef _ASSERT_H
 #define _ASSERT_H
 
@@ -42,3 +46,7 @@ __END_DECLS
 #endif
 
 #endif /* _ASSERT_H */
+
+#ifdef __cplusplus
+}
+#endif

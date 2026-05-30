@@ -1,3 +1,7 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef _GPIO_H
 #define _GPIO_H
 
@@ -58,4 +62,8 @@ uint8_t inputPort(uint8_t port); // Read the entire port from B (PB_DR), C (PB_D
 #define PD6 ((PD_DR << 8) | 0x40)
 #define PD7 ((PD_DR << 8) | 0x80)
 
+#endif
+
+#ifdef __cplusplus
+}
 #endif

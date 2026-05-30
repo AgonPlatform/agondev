@@ -1,3 +1,7 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /*
  * Copyright (C) 2015-2024 CE Programming
  * 
@@ -212,5 +216,9 @@ STRTOX_TYPE STRTOX_NAME(const char *nptr, char **endptr, int base)
     }
 
     return acc;
+}
+#endif
+
+#ifdef __cplusplus
 }
 #endif

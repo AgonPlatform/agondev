@@ -1,3 +1,7 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef _CDEFS_H
 #define _CDEFS_H
 
@@ -35,3 +39,7 @@ typedef __SIZE_TYPE__ size_t;
 #endif /* SIZE_T_DEFINED */
 
 #endif /* _CDEFS_H */
+
+#ifdef __cplusplus
+}
+#endif

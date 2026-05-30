@@ -1,3 +1,7 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef _TIME_H
 #define _TIME_H
 
@@ -81,3 +85,7 @@ char *ctime(const time_t *timer);
 __END_DECLS
 
 #endif /* _TIME_H */
+
+#ifdef __cplusplus
+}
+#endif

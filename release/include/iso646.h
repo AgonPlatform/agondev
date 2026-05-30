@@ -1,3 +1,7 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef _ISO646_H
 #define _ISO646_H
 
@@ -16,3 +20,7 @@
 #endif
 
 #endif /* _ISO646_H */
+
+#ifdef __cplusplus
+}
+#endif

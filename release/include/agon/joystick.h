@@ -1,3 +1,7 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef _JOYSTICK_H
 #define _JOYSTICK_H
 
@@ -39,4 +43,8 @@ uint16_t getJoystickButtons(void); // Get state for all joy1/joy2 buttons
 
 void resetJoysticks(void); // Resets all joystick pins as input pin, leave other portD pins as-is
 
+#endif
+
+#ifdef __cplusplus
+}
 #endif

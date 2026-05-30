@@ -1,3 +1,7 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef _STDBOOL_H
 #define _STDBOOL_H
 
@@ -16,3 +20,7 @@
 #define __bool_true_false_are_defined 1
 
 #endif /* _STDBOOL_H */
+
+#ifdef __cplusplus
+}
+#endif

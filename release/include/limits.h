@@ -1,3 +1,7 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef _LIMITS_H
 #define _LIMITS_H
 
@@ -49,3 +53,7 @@
 #define  ULLONG_WIDTH     __LLONG_WIDTH__
 
 #endif /* _LIMITS_H */
+
+#ifdef __cplusplus
+}
+#endif

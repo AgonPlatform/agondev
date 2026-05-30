@@ -1,3 +1,7 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef _WCHAR_H
 #define _WCHAR_H
 
@@ -18,3 +22,7 @@ typedef __WCHAR_TYPE__ wchar_t;
 #define WEOF -1
 
 #endif /* _WCHAR_H */
+
+#ifdef __cplusplus
+}
+#endif

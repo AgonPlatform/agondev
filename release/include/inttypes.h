@@ -1,3 +1,7 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef _INTTYPES_H
 #define _INTTYPES_H
 
@@ -185,3 +189,7 @@ extern imaxdiv_t imaxdiv(intmax_t __numer, intmax_t __denom)
 __END_DECLS
 
 #endif /* _INTTYPES_H */
+
+#ifdef __cplusplus
+}
+#endif

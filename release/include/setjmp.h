@@ -1,3 +1,7 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef _SETJMP_H
 #define _SETJMP_H
 
@@ -12,4 +16,8 @@ void longjmp(jmp_buf env, int val) __attribute__((noreturn));
 
 __END_DECLS
 
+#endif
+
+#ifdef __cplusplus
+}
 #endif

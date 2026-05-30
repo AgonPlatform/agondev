@@ -1,3 +1,7 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /*
  * Title:			AGON MOS - MOS C header interface
  * Author:			Jeroen Venema
@@ -494,3 +498,7 @@ extern uint8_t  ffs_flseek_p(FIL *fh, uint32_t *offset); // MOS 3.0+, returns st
 #endif
 
 #endif // _MOS_H
+
+#ifdef __cplusplus
+}
+#endif

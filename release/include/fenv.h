@@ -1,3 +1,7 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef _FENV_P
 #define _FENV_P
 typedef unsigned char __fenv_t;
@@ -85,4 +89,8 @@ int feupdateenv(const fenv_t *);
 
 #endif
 
+#endif
+
+#ifdef __cplusplus
+}
 #endif

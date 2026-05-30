@@ -1,3 +1,7 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef EZ80F92_H
 #define EZ80F92_H
 
@@ -222,3 +226,7 @@
 #define UART1_LSR_DR   0x01
 
 #endif  /* EZ80F92_H */
+
+#ifdef __cplusplus
+}
+#endif

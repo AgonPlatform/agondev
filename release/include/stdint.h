@@ -1,3 +1,7 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef _STDINT_H
 #define _STDINT_H
 
@@ -178,3 +182,7 @@ typedef       __UINTPTR_TYPE__                     uintptr_t;
 #endif
 
 #endif/*_STDINT_H*/
+
+#ifdef __cplusplus
+}
+#endif

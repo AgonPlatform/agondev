@@ -1,3 +1,7 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef _BYTESWAP_H
 #define _BYTESWAP_H
 
@@ -8,3 +12,7 @@ static inline uint32_t bswap_32(uint32_t x) { return __builtin_bswap32(x); }
 static inline uint64_t bswap_64(uint64_t x) { return __builtin_bswap64(x); }
 
 #endif /* _BYTESWAP_H */
+
+#ifdef __cplusplus
+}
+#endif

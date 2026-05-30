@@ -1,3 +1,7 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef _STDIO_H
 #define _STDIO_H
 
@@ -132,3 +136,7 @@ int ungetc(int c, FILE *stream);
 __END_DECLS
 
 #endif /* _STDIO_H */
+
+#ifdef __cplusplus
+}
+#endif

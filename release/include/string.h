@@ -1,3 +1,7 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef _STRING_H
 #define _STRING_H
 
@@ -85,3 +89,7 @@ int strncasecmp(const char *s1, const char *s2, size_t n)
 __END_DECLS
 
 #endif /* _STRING_H */
+
+#ifdef __cplusplus
+}
+#endif

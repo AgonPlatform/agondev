@@ -1,3 +1,7 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef _STDALIGN_H
 #define _STDALIGN_H
 
@@ -12,3 +16,7 @@
 #endif /* __cplusplus */
 
 #endif /* _STDALIGN_H */
+
+#ifdef __cplusplus
+}
+#endif

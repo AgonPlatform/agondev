@@ -1,3 +1,7 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef _ALLOCA_H
 #define _ALLOCA_H
 
@@ -11,3 +15,7 @@ void *alloca(size_t __size) __NOEXCEPT;
 __END_DECLS
 
 #endif /* _ALLOCA_H */
+
+#ifdef __cplusplus
+}
+#endif

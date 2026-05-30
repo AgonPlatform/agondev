@@ -1,3 +1,7 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef _STDLIB_H
 #define _STDLIB_H
 
@@ -117,3 +121,7 @@ lldiv_t lldiv(long long numer, long long denom);
 __END_DECLS
 
 #endif /* _STDLIB_H */
+
+#ifdef __cplusplus
+}
+#endif

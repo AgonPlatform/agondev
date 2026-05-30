@@ -1,3 +1,7 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef KEYBOARD_BUFFER_H
 #define KEYBOARD_BUFFER_H
 
@@ -17,3 +21,7 @@ extern void kbuf_clear(void);
 extern void kbuf_deinit();
 
 #endif /* KEYBOARD_BUFFER_H */
+
+#ifdef __cplusplus
+}
+#endif

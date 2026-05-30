@@ -1,3 +1,7 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef _STDARG_H
 #define _STDARG_H
 
@@ -20,3 +24,7 @@ typedef __builtin_va_list va_list;
 #endif /* __STDC_VERSION__ >= 199901L || __cplusplus >= 201103L */
 
 #endif /* _STDARG_H */
+
+#ifdef __cplusplus
+}
+#endif

@@ -1,3 +1,7 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef _VDP_H
 #define _VDP_H
 
@@ -830,4 +834,8 @@ void vdp_outchar(uint8_t c);
 }
 #endif
 
+#endif
+
+#ifdef __cplusplus
+}
 #endif
