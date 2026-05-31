@@ -595,6 +595,48 @@ void vdp_adv_copy_multiple_by_reference( int bufferId, int num_buffers, ... );
 // Command 26: Copy blocks from multiple buffers and consolidate
 // 	VDU 23, 0, &A0, targetBufferId; 26, sourceBufferId1; sourceBufferId2; ...; 65535;
 void vdp_adv_copy_multiple_consolidate( int bufferId, int num_buffers, ... );
+
+
+// ========= buffer transformation functions =========
+
+// Command 32: create a transform matrix (rotation) - buffer; angle;
+// VDU 23, 0, &A0, bufferId; 32, operation, [<format>, <arguments...>]
+void vdp_adv_create_rotated_buffer( uint16_t transformID, uint16_t angle );
+
+// Command 32: create a transform matrix (scaled) - buffer; xScale; yScale;
+// VDU 23, 0, &A0, bufferId; 32, operation, [<format>, <arguments...>]
+void vdp_adv_create_scaled_buffer( uint16_t transformID, float scaleX, float scaleY);
+
+// Command 32: create a transform matrix (translated) - buffer; x; y;
+// VDU 23, 0, &A0, bufferId; 32, operation, [<format>, <arguments...>]
+void vdp_adv_create_translated_buffer( uint16_t transformID, int16_t x, int16_t y );
+
+// Command 32: create a transform matrix (skewed) - buffer; xScale; yScale;
+// VDU 23, 0, &A0, bufferId; 32, operation, [<format>, <arguments...>]
+void vdp_adv_create_skewed_buffer( uint16_t transformID, float scaleX, float scaleY);
+
+// VDU 23, 0, &96, <flags>, <bufferId>;: Set an affine transform matrix §§§§§§
+void vdp_adv_use_affine_matrix(uint8_t flags, uint16_t affineID);
+
+
+// Command 33: create a 3d transform matrix 
+// TO DO
+
+// Command 40: Create a transformed bitmap
+// VDU 23, 0, &A0, bufferId; 40, options, transformBufferId; sourceBitmapId; [width; height;]
+// TO DO
+
+// Command 41: Apply a transform matrix to data in a buffer
+// VDU 23, 0, &A0, bufferId; 41, options (offset & stride), format, transformBufferId; sourceBufferId; offset; stride;
+void vdp_adv_apply_transformation_with_stride(uint16_t sourceID, uint16_t destID, uint16_t transformID, uint16_t offset, uint16_t stride);
+
+
+// Command 48: Read a VDP variable into a buffer
+// VDU 23, 0, &A0, bufferId; 48, options, offset; variableId; [default[;]]
+// TO DO
+
+
+
 // Command 64: Compress a buffer
 // 	VDU 23, 0, &A0, targetBufferId; 64, sourceBufferId;
 void vdp_adv_compress_buffer( int targetBufferID, int sourceBufferId );
