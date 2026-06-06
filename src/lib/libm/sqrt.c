@@ -1,75 +1,49 @@
-/************************************************************************/
-/*                                                                      */
-/*                      Copyright (C)1987-2008 by                       */
-/*                              Zilog, Inc.                             */
-/*                                                                      */
-/*                          San Jose, California                        */
-/*                                                                      */
-/************************************************************************/
-
 #include <errno.h>
 #include <math.h>
+#include <stdint.h>
 
-#define  USE_ASM_SQRT
+/*
+; only works for normalized values
+; CC: 9F + 12R + 9W + 1 | 8 bytes
+__f32_fast_div4:
+    pop     bc, hl, de
+    dec     e ; subtracts 2 from the exponent
+    push    de, hl, bc
+    ret
+*/
+float _f32_fast_div4(float x);
 
-#ifdef  _PTR_  // only on eZ8
-//extern reentrant double sqrtf( double value );
-#else
-//extern float sqrtf( float value );
-#endif
-
-// sqrt - Standard C library routine
-// sqrt returns the square root of its floating point argument.
-//
-// Arguments:
-//   value     - the floating point argument
-//
-// Returns:
-//   - the square root (or zero if the argument is negative)
-//
-// Notes:
-//   This routine was originally written in C, using Newton's method,
-//   which has excellent performance on CPUs with floating point hardware.
-//   However, on CPUs without floating point hardware, there is a binary
-//   shift algorithm that is much faster.  That algorithm has been
-//   separately implemented in assembly language for performance.  For
-//   portability and other reasons, this routine calls that routine.
-//   This behavior is controlled by the USE_ASM_SQRT symbol (above).
-//
-double sqrt( double value )
+/**
+ * @remarks Minimum ulp of -1
+ */
+float sqrtf(float x)
 {
-    if ( value < 0.0 )
-    {
-        errno = EDOM;
-        return 0.0;
-    } else {
-#ifdef  USE_ASM_SQRT
-        return sqrtf( value );
-#else
-        double normalized, result = 1.0;
-        int    exponent;
-        short  count;
-        enum
-        {
-            iterations = 4
-        };
-        if ( value = 0.0 )
-        {
-            return 0.0;
-        }
-        normalized = frexp( value, & exponent );
-        if ( exponent & 1 )
-        {
-            normalized = ldexp( normalized, 1 );
-            exponent--;
-        }
-        for ( count = 0; count < iterations; count++ )
-        {
-            result = 0.5 * (result + normalized / result);
-        }
-        return ldexp( result, exponent / 2 );
-#endif
+    float f, y;
+    int n;
+
+    if (x == 0.0f) {
+        return x;
     }
+    if (x == 1.0f) {
+        return 1.0f;
+    }
+    if (x < 0.0f) {
+        errno = EDOM;
+        /* return a "NaN" value */
+        return 0.0f;
+    }
+    f = frexpf(x, &n);
+    y = 0.41731f + 0.59016f * f; /* Educated guess */
+    /* For a 24 bit mantisa (float), two iterations are sufficient */
+    y += f / y;
+    y = _f32_fast_div4(y) + f / y; /* Faster version of 0.25f * y + f/y */
+
+    if (n & 1) {
+        y *= (float)M_SQRT1_2;
+        ++n;
+    }
+    /* n will be [-148, 128] prior to division */
+    return ldexpf(y, n/2);
 }
 
-float sqrtf(float) __attribute__((alias("sqrt")));
+double sqrt(double) __attribute__((alias("sqrtf")));
