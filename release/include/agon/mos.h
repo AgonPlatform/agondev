@@ -373,6 +373,7 @@ extern volatile SYSVAR_RTCDATA* getsysvar_rtc();  // mos_getrtc() needs to be ca
 extern uint16_t getsysvar_keydelay();
 extern uint16_t getsysvar_keyrate();
 extern uint8_t  getsysvar_keyled();
+extern uint8_t  getsysvar_scrMode();
 extern uint16_t getsysvar_mouseX(void);
 extern uint16_t getsysvar_mouseY(void);
 extern uint8_t  getsysvar_mouseButtons(void);
