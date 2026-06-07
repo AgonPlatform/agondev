@@ -1,0 +1,9 @@
+	.assume	adl =1
+	.include "agon/mos.inc"
+	.section .text
+	.global  _getsysvar_scrMode
+
+_getsysvar_scrMode:
+	ld  iy, (_sys_vars)     ; pointer to the system variables
+	ld	a, (iy + sysvar_scrMode)
+	ret
