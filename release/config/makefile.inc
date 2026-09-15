@@ -1,6 +1,7 @@
 # Memory layout defaults if not set by the user
-RAM_START ?= 0x40000
-RAM_SIZE  ?= 0x70000
+RAM_START ?= 0x040000
+RAM_SIZE  ?= 0x070000
+STACKTOP ?= $(shell printf '0x%06X' $$(( $(RAM_START) + $(RAM_SIZE) )))
 
 # Emulator SDcard destination defaults to /bin if not set by the user
 FAE_DEST ?= /bin
@@ -42,7 +43,7 @@ ifeq ($(LDHAS_EXIT_HANDLER), 1)
 else
     LINKER_EXIT=-defsym=_has_exit_handler=0
 endif
-MEMCONFIG=-defsym=RAM_START=$(RAM_START) -defsym=RAM_SIZE=$(RAM_SIZE)
+MEMCONFIG=-defsym=RAM_START=$(RAM_START) -defsym=RAM_SIZE=$(RAM_SIZE) -defsym=STACKTOP=$(STACKTOP)
 LINKERFLAGS=$(MEMCONFIG) $(LINKER_ARG) $(LINKER_EXIT) -Map=$(BINDIR)/$(NAME).map -T $(LINKERCONFIG) --oformat binary -o 
 LINKERLIBFLAGS=-L$(PROJECTLIBDIR) $(LIBS) -L$(LIBDIR) -l agon 
 SETPROGNAME=$(TOOLBINDIR)/agondev-setname
@@ -75,7 +76,8 @@ all: $(BINDIR) $(BINARY)
 
 # Final binary
 $(BINARY): $(BINDIR) $(LINKBINARY)
-	@echo [Start address $(RAM_START)]
+	@echo '[Start address $(RAM_START)]'
+	@echo '[Stack top     $(STACKTOP)]'
 	@echo [Setting name \'$(NAME).bin\' in binary]
 	@cp $(LINKBINARY) $(BINARY)
 	$(V)$(SETPROGNAME) $(BINARY) >/dev/null
