@@ -67,7 +67,7 @@ static int get(void)
         return ( prev_ch = fgetc( fp_fscanf ) );
     prev_ch = getchar();
     if ( prev_ch == '\x03' ) exit( EXIT_FAILURE );      // Exit if control C is pressed
-    else if ( prev_ch == '\b') {                        // Change cursor left to BS
+    else if ( stdin->fhandle != FH_STDIN && prev_ch == '\b') {                        // Change cursor left to BS
         prev_ch = BS_KEY;
         putchar( ' ' );                                 // Erase the character printed on the screen
         putchar( BS_KEY );
@@ -267,10 +267,10 @@ static unsigned char fpoint(void)
     if ((ch = get()) == EOF)
       return false;
   }
-  if (bp == buffer)
-    return(fields);
   if (i < fmt_str.field_width)
     unget();
+  if (bp == buffer)
+    return(fields);
   *bp = '\0';
   dval = strtod(buffer,(void _PTR_)NULL);
 
@@ -330,10 +330,10 @@ static unsigned char scalar(int radix)
     }
     if ( ch == EOF ) return false;
 
-  if (bp == buffer)
-    return(fields);
   if (i < fmt_str.field_width)
     unget();
+  if (bp == buffer)
+    return(fields);
   *bp = '\0';
   if ((fmt_str.type == 'u') || (radix == 8) || (radix == 16))
     val = strtoul(buffer,(void _PTR_)NULL,radix);
@@ -520,6 +520,10 @@ int _u_scan(FILE _PTR_ fp, const char _PTR_ src, const char _PTR_ fmt,va_list ap
       }
     }
   }
+  /* Return lookahead to the actual stream, including NUL and newline. */
+  if (isunget && !bptr && prev_ch != EOF)
+    ungetc(prev_ch, fp_fscanf ? fp_fscanf : stdin);
+
   // ISO Spec:  Return EOF if an input error occurs before any conversion.
   // Otherwise return the number of input items assigned.
   // A sucessfull passthrough counts as a conversion, so we look at len,

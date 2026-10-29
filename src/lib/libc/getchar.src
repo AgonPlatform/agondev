@@ -1,40 +1,12 @@
-	.assume	adl=1
-
-	include	"stdio.inc"
-
-	.section	.text
-	.global	_getchar
-  .weak _getchar
+	.assume adl=1
+	.section .text
+	.global _getchar
+	.weak _getchar
 _getchar:
-	ld 	a, (iy+FILE_UNGET_CHAR) ; get the unget character .if any
-	ld 	(iy+FILE_UNGET_CHAR), 0 ; clear any unget character
-	or 	a, a
-	jr	z, call_getch
-	sbc	hl, hl
-	ld 	l , a
-	ret 				; return with unget char (don't translate or echo it)
-
-call_getch:
-	call	_getch			; get character from OS - in A .if no unget character
-	or 	a, a			; clear carry flag
-	sbc	hl, hl 			; HL = 0 
-	ld	l, a 			; typecast unsigned char (A) to int (HL)
-
-echo_char:
-	push	hl
-	call	_putch		; echo the character to stdout
-	pop	hl
-
-check_cr:
-	ld 	a, l
-	cp	a, 13			; check .if CR
-	ret 	nz
-	ld 	l, 10 			; translate to LF
-	push	hl
-	call 	_putch		; also need to echo LF, otherwise remains on same line 
-	pop 	hl
+	ld hl, _stdin
+	push hl
+	call _fgetc
+	pop de
 	ret
-
-	.extern	_getch
-	.extern	_putch
-	.extern 	_stdin
+	.extern _stdin
+	.extern _fgetc

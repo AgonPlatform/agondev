@@ -7,6 +7,7 @@ the specified stream and advances the position indicator for the stream.
 
 #include <stdio.h>
 #include <agon/mos.h>
+#include "console_input.h"
 
 /*
  * Read one physical byte without losing the distinction between a valid
@@ -42,18 +43,7 @@ int fgetc(FILE *stream)
     }
 
     if (stream->fhandle == FH_STDIN)
-    {
-        int c = getch();
-        putchar(c);
-
-        if (c == '\r')
-        {
-            c = '\n';
-            putchar(c);
-        }
-
-        return c;
-    }
+        return __console_getc(stream);
 
     status = read_physical_byte(stream, &value);
     if (status <= 0)

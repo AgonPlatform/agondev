@@ -1,0 +1,669 @@
+Archive member included to satisfy reference by file (symbol)
+
+/Users/jeroen/source/agondev/release/lib/libagon.a(scanf.o)
+                              obj/main.o (_scanf)
+/Users/jeroen/source/agondev/release/lib/libagon.a(clearerr.o)
+                              obj/main.o (_clearerr)
+/Users/jeroen/source/agondev/release/lib/libagon.a(fflush.o)
+                              obj/main.o (_fflush)
+/Users/jeroen/source/agondev/release/lib/libagon.a(gets_s.o)
+                              obj/main.o (_gets_s)
+/Users/jeroen/source/agondev/release/lib/libagon.a(uscan.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(scanf.o) (__u_scan)
+/Users/jeroen/source/agondev/release/lib/libagon.a(usscan.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(uscan.o) (__u_sscan)
+/Users/jeroen/source/agondev/release/lib/libagon.a(feof.o)
+                              obj/main.o (_feof)
+/Users/jeroen/source/agondev/release/lib/libagon.a(ferror.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(gets_s.o) (_ferror)
+/Users/jeroen/source/agondev/release/lib/libagon.a(strtoul.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(uscan.o) (_strtoul)
+/Users/jeroen/source/agondev/release/lib/libagon.a(console_input.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(fflush.o) (___console_discard)
+/Users/jeroen/source/agondev/release/lib/libagon.a(nanoprintf.o)
+                              obj/main.o (_printf)
+/Users/jeroen/source/agondev/release/lib/libagon.a(fgets.o)
+                              obj/main.o (_fgets)
+/Users/jeroen/source/agondev/release/lib/libagon.a(files.o)
+                              obj/main.o (_stdin)
+/Users/jeroen/source/agondev/release/lib/libagon.a(arg_processing.o)
+                              (___arg_processing)
+/Users/jeroen/source/agondev/release/lib/libagon.a(isalpha.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(strtoul.o) (_isalpha)
+/Users/jeroen/source/agondev/release/lib/libagon.a(putch.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(console_input.o) (_putch)
+/Users/jeroen/source/agondev/release/lib/libagon.a(strcmp.o)
+                              obj/main.o (_strcmp)
+/Users/jeroen/source/agondev/release/lib/libagon.a(isxdigit.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(uscan.o) (_isxdigit)
+/Users/jeroen/source/agondev/release/lib/libagon.a(isupper.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(strtoul.o) (_isupper)
+/Users/jeroen/source/agondev/release/lib/libagon.a(isspace.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(uscan.o) (_isspace)
+/Users/jeroen/source/agondev/release/lib/libagon.a(puts.o)
+                              obj/main.o (_puts)
+/Users/jeroen/source/agondev/release/lib/libagon.a(putchar_arg_processing.o)
+                              (_putchar_arg_processing)
+/Users/jeroen/source/agondev/release/lib/libagon.a(isdigit.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(uscan.o) (_isdigit)
+/Users/jeroen/source/agondev/release/lib/libagon.a(strlen.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(console_input.o) (_strlen)
+/Users/jeroen/source/agondev/release/lib/libagon.a(getchar_arg_processing.o)
+                              (_getchar_arg_processing)
+/Users/jeroen/source/agondev/release/lib/libagon.a(crt0.o)
+                              (__start)
+/Users/jeroen/source/agondev/release/lib/libagon.a(mos_editline.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(console_input.o) (_mos_editline)
+/Users/jeroen/source/agondev/release/lib/libagon.a(ldivu.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(strtoul.o) (__ldivu)
+/Users/jeroen/source/agondev/release/lib/libagon.a(lcmpzero.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(nanoprintf.o) (__lcmpzero)
+/Users/jeroen/source/agondev/release/lib/libagon.a(sshru.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(nanoprintf.o) (__sshru)
+/Users/jeroen/source/agondev/release/lib/libagon.a(lneg.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(strtoul.o) (__lneg)
+/Users/jeroen/source/agondev/release/lib/libagon.a(ldvrmu.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(ldivu.o) (__ldvrmu)
+/Users/jeroen/source/agondev/release/lib/libagon.a(sand.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(nanoprintf.o) (__sand)
+/Users/jeroen/source/agondev/release/lib/libagon.a(lmulu.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(strtoul.o) (__lmulu)
+/Users/jeroen/source/agondev/release/lib/libagon.a(ishl.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(uscan.o) (__ishl)
+/Users/jeroen/source/agondev/release/lib/libagon.a(lshru.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(nanoprintf.o) (__lshru)
+/Users/jeroen/source/agondev/release/lib/libagon.a(fpcmp.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(nanoprintf.o) (__fcmp)
+/Users/jeroen/source/agondev/release/lib/libagon.a(frameset0.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(clearerr.o) (__frameset0)
+/Users/jeroen/source/agondev/release/lib/libagon.a(lcmps.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(nanoprintf.o) (__lcmps)
+/Users/jeroen/source/agondev/release/lib/libagon.a(imulu.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(usscan.o) (__imulu)
+/Users/jeroen/source/agondev/release/lib/libagon.a(lshl.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(nanoprintf.o) (__lshl)
+/Users/jeroen/source/agondev/release/lib/libagon.a(lcmpu.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(strtoul.o) (__lcmpu)
+/Users/jeroen/source/agondev/release/lib/libagon.a(ishrs.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(uscan.o) (__ishrs)
+/Users/jeroen/source/agondev/release/lib/libagon.a(setflag.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(uscan.o) (__setflag)
+/Users/jeroen/source/agondev/release/lib/libagon.a(indcallhl.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(nanoprintf.o) (__indcallhl)
+/Users/jeroen/source/agondev/release/lib/libagon.a(and.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(nanoprintf.o) (__land)
+/Users/jeroen/source/agondev/release/lib/libagon.a(ladd.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(strtoul.o) (__ladd)
+/Users/jeroen/source/agondev/release/lib/libagon.a(bshru.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(nanoprintf.o) (__bshru)
+/Users/jeroen/source/agondev/release/lib/libagon.a(frameset.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(scanf.o) (__frameset)
+/Users/jeroen/source/agondev/release/lib/libagon.a(xor.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(nanoprintf.o) (__ixor)
+/Users/jeroen/source/agondev/release/lib/libagon.a(idivu.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(nanoprintf.o) (__idivu)
+/Users/jeroen/source/agondev/release/lib/libagon.a(freopen.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(arg_processing.o) (_freopen)
+/Users/jeroen/source/agondev/release/lib/libagon.a(fopen.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(freopen.o) (_fopen)
+/Users/jeroen/source/agondev/release/lib/libagon.a(strtof.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(uscan.o) (_strtod)
+/Users/jeroen/source/agondev/release/lib/libagon.a(strtol.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(uscan.o) (_strtol)
+/Users/jeroen/source/agondev/release/lib/libagon.a(fseek.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(fopen.o) (_fseek)
+/Users/jeroen/source/agondev/release/lib/libagon.a(ungetc.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(uscan.o) (_ungetc)
+/Users/jeroen/source/agondev/release/lib/libagon.a(fgetc.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(uscan.o) (_fgetc)
+/Users/jeroen/source/agondev/release/lib/libagon.a(errno.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(feof.o) (_errno)
+/Users/jeroen/source/agondev/release/lib/libagon.a(fputc.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(nanoprintf.o) (_fputc)
+/Users/jeroen/source/agondev/release/lib/libagon.a(fclose.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(arg_processing.o) (_fclose)
+/Users/jeroen/source/agondev/release/lib/libagon.a(free.c.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(crt0.o) (_free)
+/Users/jeroen/source/agondev/release/lib/libagon.a(malloc.c.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(crt0.o) (_malloc)
+/Users/jeroen/source/agondev/release/lib/libagon.a(sbrk.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(malloc.c.o) (_sbrk)
+/Users/jeroen/source/agondev/release/lib/libagon.a(strchr.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(fopen.o) (_strchr)
+/Users/jeroen/source/agondev/release/lib/libagon.a(mos_getfil.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(fseek.o) (_mos_getfil)
+/Users/jeroen/source/agondev/release/lib/libagon.a(mos_fclose.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(fclose.o) (_mos_fclose)
+/Users/jeroen/source/agondev/release/lib/libagon.a(mos_fputc.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(fputc.o) (_mos_fputc)
+/Users/jeroen/source/agondev/release/lib/libagon.a(mos_feof.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(fgetc.o) (_mos_feof)
+/Users/jeroen/source/agondev/release/lib/libagon.a(mos_fopen.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(fopen.o) (_mos_fopen)
+/Users/jeroen/source/agondev/release/lib/libagon.a(mos_flseek.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(fseek.o) (_mos_flseek)
+/Users/jeroen/source/agondev/release/lib/libagon.a(mos_fread.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(fgetc.o) (_mos_fread)
+/Users/jeroen/source/agondev/release/lib/libagon.a(lshrs.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(fseek.o) (__lshrs)
+/Users/jeroen/source/agondev/release/lib/libagon.a(sor.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(strtof.o) (__sor)
+/Users/jeroen/source/agondev/release/lib/libagon.a(fpmul.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(strtof.o) (__fmul)
+/Users/jeroen/source/agondev/release/lib/libagon.a(ineg_sneg.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(strtof.o) (__ineg)
+/Users/jeroen/source/agondev/release/lib/libagon.a(idvrmu.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(idivu.o) (__idvrmu)
+/Users/jeroen/source/agondev/release/lib/libagon.a(fpltof.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(strtof.o) (__ltof)
+/Users/jeroen/source/agondev/release/lib/libagon.a(fpadd.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(strtof.o) (__fadd)
+/Users/jeroen/source/agondev/release/lib/libagon.a(fppack.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(fpmul.o) (__fppack)
+/Users/jeroen/source/agondev/release/lib/libagon.a(fpupop1.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(fpmul.o) (__fpupop1)
+/Users/jeroen/source/agondev/release/lib/libagon.a(fpupop2.o)
+                              /Users/jeroen/source/agondev/release/lib/libagon.a(fpmul.o) (__fpupop2)
+
+There are no discarded input sections
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+USERRAM          0x00040000         0x00070000         rw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+                0x00040000                        RAM_START = 0x40000
+                0x00070000                        RAM_SIZE = 0x70000
+                0x000b0000                        STACKTOP = 0xb0000
+                0x00043057                        _parse_option = ___arg_processing
+                0x0004343a                        _putchar = _putchar_arg_processing
+                0x0004347d                        _getchar = _getchar_arg_processing
+                0x00000000                        _has_exit_handler = 0x0
+                0x00040000                        . = RAM_START
+
+.init           0x00040000      0x1e1
+ *(.init .init.args .init.bss .fini)
+ .init          0x00040000       0xc8 /Users/jeroen/source/agondev/release/lib/libagon.a(crt0.o)
+                0x00040040                __mos_header
+                0x00040045                __start
+                0x000400c5                __start._main
+ .fini          0x000400c8       0xbe /Users/jeroen/source/agondev/release/lib/libagon.a(crt0.o)
+                0x000400c8                ___exithl
+                0x000400ca                _exit
+                0x00040129                __Exit
+                0x0004012d                _abort
+ .init.bss      0x00040186       0x11 /Users/jeroen/source/agondev/release/lib/libagon.a(crt0.o)
+ .init.args     0x00040197       0x4a /Users/jeroen/source/agondev/release/lib/libagon.a(crt0.o)
+                0x00040197                _parse_params
+
+.text           0x000401e1     0x44a7
+ *(.text)
+ .text          0x000401e1      0x20b obj/main.o
+                0x000401e1                _main
+ .text          0x000403ec       0x25 /Users/jeroen/source/agondev/release/lib/libagon.a(scanf.o)
+                0x000403ec                _scanf
+ .text          0x00040411       0x1b /Users/jeroen/source/agondev/release/lib/libagon.a(clearerr.o)
+                0x00040411                _clearerr
+ .text          0x0004042c       0x2e /Users/jeroen/source/agondev/release/lib/libagon.a(fflush.o)
+                0x0004042c                _fflush
+ .text          0x0004045a       0xe2 /Users/jeroen/source/agondev/release/lib/libagon.a(gets_s.o)
+                0x0004045a                _gets_s
+ .text          0x0004053c     0x114a /Users/jeroen/source/agondev/release/lib/libagon.a(uscan.o)
+                0x0004053c                __u_scan
+ .text          0x00041686      0x18a /Users/jeroen/source/agondev/release/lib/libagon.a(usscan.o)
+                0x00041686                __u_sscan
+ .text          0x00041810       0x29 /Users/jeroen/source/agondev/release/lib/libagon.a(feof.o)
+                0x00041810                _feof
+ .text          0x00041839       0x29 /Users/jeroen/source/agondev/release/lib/libagon.a(ferror.o)
+                0x00041839                _ferror
+ .text          0x00041862      0x2d3 /Users/jeroen/source/agondev/release/lib/libagon.a(strtoul.o)
+                0x00041862                _strtoul
+ .text          0x00041b35       0xbb /Users/jeroen/source/agondev/release/lib/libagon.a(console_input.o)
+                0x00041b35                ___console_discard
+                0x00041b41                ___console_getc
+ .text          0x00041bf0     0x1382 /Users/jeroen/source/agondev/release/lib/libagon.a(nanoprintf.o)
+                0x00041bf0                _npf_vpprintf
+                0x00042d19                _npf_pprintf
+                0x00042d41                _npf_snprintf
+                0x00042d69                _npf_vsnprintf
+                0x00042e27                _vprintf
+                0x00042e57                _printf
+                0x00042e76                _fprintf
+                0x00042e99                _vfprintf
+                0x00042ece                _vsprintf
+                0x00042eed                _vsnprintf
+                0x00042f21                _sprintf
+                0x00042f4a                _snprintf
+ .text          0x00042f72       0x93 /Users/jeroen/source/agondev/release/lib/libagon.a(fgets.o)
+                0x00042f72                _fgets
+ .text          0x00043005       0x52 /Users/jeroen/source/agondev/release/lib/libagon.a(files.o)
+                0x00043005                __stdio_init
+ .text          0x00043057      0x35a /Users/jeroen/source/agondev/release/lib/libagon.a(arg_processing.o)
+                0x00043057                ___arg_processing
+                0x00043078                ___parse_args
+                0x0004315b                ___check_redirect
+                0x0004334c                ___get_redir_fname
+                0x00043368                ___close_redir_files
+ .text          0x000433b1        0xe /Users/jeroen/source/agondev/release/lib/libagon.a(isalpha.o)
+                0x000433b1                _isalpha
+ .text          0x000433bf        0x7 /Users/jeroen/source/agondev/release/lib/libagon.a(putch.o)
+                0x000433bf                _putch
+                0x000433bf                __putch
+ .text          0x000433c6       0x19 /Users/jeroen/source/agondev/release/lib/libagon.a(strcmp.o)
+                0x000433c6                _strcmp
+ .text          0x000433df       0x15 /Users/jeroen/source/agondev/release/lib/libagon.a(isxdigit.o)
+                0x000433df                _isxdigit
+ .text          0x000433f4        0xb /Users/jeroen/source/agondev/release/lib/libagon.a(isupper.o)
+                0x000433f4                _isupper
+ .text          0x000433ff        0xf /Users/jeroen/source/agondev/release/lib/libagon.a(isspace.o)
+                0x000433ff                _isspace
+ .text          0x0004340e       0x2c /Users/jeroen/source/agondev/release/lib/libagon.a(puts.o)
+                0x0004340e                _puts
+ .text          0x0004343a       0x27 /Users/jeroen/source/agondev/release/lib/libagon.a(putchar_arg_processing.o)
+                0x0004343a                _putchar_arg_processing
+ .text          0x00043461        0xb /Users/jeroen/source/agondev/release/lib/libagon.a(isdigit.o)
+                0x00043461                _isdigit
+ .text          0x0004346c       0x11 /Users/jeroen/source/agondev/release/lib/libagon.a(strlen.o)
+                0x0004346c                _strlen
+ .text          0x0004347d        0xb /Users/jeroen/source/agondev/release/lib/libagon.a(getchar_arg_processing.o)
+                0x0004347d                _getchar_arg_processing
+ .text          0x00043488       0x2c /Users/jeroen/source/agondev/release/lib/libagon.a(crt0.o)
+                0x00043488                _atexit
+                0x00043488                _on_exit
+ .text          0x000434b4       0x19 /Users/jeroen/source/agondev/release/lib/libagon.a(mos_editline.o)
+                0x000434b4                _mos_editline
+ .text          0x000434cd       0x10 /Users/jeroen/source/agondev/release/lib/libagon.a(ldivu.o)
+                0x000434cd                __ldivu
+ .text          0x000434dd        0xb /Users/jeroen/source/agondev/release/lib/libagon.a(lcmpzero.o)
+                0x000434dd                __lcmpzero
+ .text          0x000434e8        0xd /Users/jeroen/source/agondev/release/lib/libagon.a(sshru.o)
+                0x000434e8                __sshru
+ .text          0x000434f5        0xd /Users/jeroen/source/agondev/release/lib/libagon.a(lneg.o)
+                0x000434f5                __lneg
+ .text          0x00043502       0x24 /Users/jeroen/source/agondev/release/lib/libagon.a(ldvrmu.o)
+                0x00043502                __ldvrmu
+ .text          0x00043526        0x9 /Users/jeroen/source/agondev/release/lib/libagon.a(sand.o)
+                0x00043526                __sand
+ .text          0x0004352f       0x5c /Users/jeroen/source/agondev/release/lib/libagon.a(lmulu.o)
+                0x0004352f                __lmuls
+                0x0004352f                __lmulu
+ .text          0x0004358b       0x26 /Users/jeroen/source/agondev/release/lib/libagon.a(ishl.o)
+                0x0004358b                __sshl
+                0x0004358b                __ishl
+ .text          0x000435b1       0x10 /Users/jeroen/source/agondev/release/lib/libagon.a(lshru.o)
+                0x000435b1                __lshru
+ .text          0x000435c1       0x1d /Users/jeroen/source/agondev/release/lib/libagon.a(fpcmp.o)
+                0x000435c1                __fcmp
+ .text          0x000435de        0xb /Users/jeroen/source/agondev/release/lib/libagon.a(frameset0.o)
+                0x000435de                __frameset0
+ .text          0x000435e9        0xd /Users/jeroen/source/agondev/release/lib/libagon.a(lcmps.o)
+                0x000435e9                __lcmps
+ .text          0x000435f6       0x30 /Users/jeroen/source/agondev/release/lib/libagon.a(imulu.o)
+                0x000435f6                __imuls
+                0x000435f6                __imulu
+ .text          0x00043626        0xd /Users/jeroen/source/agondev/release/lib/libagon.a(lshl.o)
+                0x00043626                __lshl
+ .text          0x00043633        0x8 /Users/jeroen/source/agondev/release/lib/libagon.a(lcmpu.o)
+                0x00043633                __lcmpu
+ .text          0x0004363b       0x41 /Users/jeroen/source/agondev/release/lib/libagon.a(ishrs.o)
+                0x0004363b                __ishru
+                0x00043640                __ishrs
+ .text          0x0004367c        0xf /Users/jeroen/source/agondev/release/lib/libagon.a(setflag.o)
+                0x0004367c                __setflag
+ .text          0x0004368b        0x1 /Users/jeroen/source/agondev/release/lib/libagon.a(indcallhl.o)
+                0x0004368b                __indcallhl
+ .text          0x0004368c       0x1c /Users/jeroen/source/agondev/release/lib/libagon.a(and.o)
+                0x0004368c                __land
+                0x00043691                __iand
+                0x00043692                __iand.hijack_land
+ .text          0x000436a8        0x6 /Users/jeroen/source/agondev/release/lib/libagon.a(ladd.o)
+                0x000436a8                __ladd
+ .text          0x000436ae        0xa /Users/jeroen/source/agondev/release/lib/libagon.a(bshru.o)
+                0x000436ae                __bshru
+ .text          0x000436b8        0xe /Users/jeroen/source/agondev/release/lib/libagon.a(frameset.o)
+                0x000436b8                __frameset
+ .text          0x000436c6       0x1b /Users/jeroen/source/agondev/release/lib/libagon.a(xor.o)
+                0x000436c6                __lxor
+                0x000436ca                __ixor
+ .text          0x000436e1        0x8 /Users/jeroen/source/agondev/release/lib/libagon.a(idivu.o)
+                0x000436e1                __idivu
+ .text          0x000436e9       0x53 /Users/jeroen/source/agondev/release/lib/libagon.a(freopen.o)
+                0x000436e9                _freopen
+ .text          0x0004373c      0x130 /Users/jeroen/source/agondev/release/lib/libagon.a(fopen.o)
+                0x0004373c                _fopen
+                0x00043801                ___fmodeflags
+ .text          0x0004386c      0x333 /Users/jeroen/source/agondev/release/lib/libagon.a(strtof.o)
+                0x0004386c                _strtod
+                0x0004386c                _strtof
+ .text          0x00043b9f      0x2b2 /Users/jeroen/source/agondev/release/lib/libagon.a(strtol.o)
+                0x00043b9f                _strtol
+ .text          0x00043e51      0x130 /Users/jeroen/source/agondev/release/lib/libagon.a(fseek.o)
+                0x00043e51                _fseek
+ .text          0x00043f81       0x65 /Users/jeroen/source/agondev/release/lib/libagon.a(ungetc.o)
+                0x00043f81                _ungetc
+ .text          0x00043fe6      0x14d /Users/jeroen/source/agondev/release/lib/libagon.a(fgetc.o)
+                0x00043fe6                _fgetc
+ .text          0x00044133        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(errno.o)
+ .text          0x00044133       0xb6 /Users/jeroen/source/agondev/release/lib/libagon.a(fputc.o)
+                0x00044133                _fputc
+                0x000441c3                _fput_char
+ .text          0x000441e9       0x44 /Users/jeroen/source/agondev/release/lib/libagon.a(fclose.o)
+                0x000441e9                _fclose
+ .text          0x0004422d       0xbd /Users/jeroen/source/agondev/release/lib/libagon.a(free.c.o)
+                0x0004422d                _free
+ .text          0x000442ea       0x9f /Users/jeroen/source/agondev/release/lib/libagon.a(malloc.c.o)
+                0x000442ea                _malloc
+ .text          0x00044389       0x22 /Users/jeroen/source/agondev/release/lib/libagon.a(sbrk.o)
+                0x00044389                _sbrk
+ .text          0x000443ab       0x1f /Users/jeroen/source/agondev/release/lib/libagon.a(strchr.o)
+                0x000443ab                _strchr
+ .text          0x000443ca        0xa /Users/jeroen/source/agondev/release/lib/libagon.a(mos_getfil.o)
+                0x000443ca                _mos_getfil
+ .text          0x000443d4        0x9 /Users/jeroen/source/agondev/release/lib/libagon.a(mos_fclose.o)
+                0x000443d4                _mos_fclose
+ .text          0x000443dd       0x16 /Users/jeroen/source/agondev/release/lib/libagon.a(mos_fputc.o)
+                0x000443dd                _mos_fputc
+ .text          0x000443f3        0x9 /Users/jeroen/source/agondev/release/lib/libagon.a(mos_feof.o)
+                0x000443f3                _mos_feof
+ .text          0x000443fc       0x16 /Users/jeroen/source/agondev/release/lib/libagon.a(mos_fopen.o)
+                0x000443fc                _mos_fopen
+ .text          0x00044412       0x1d /Users/jeroen/source/agondev/release/lib/libagon.a(mos_flseek.o)
+                0x00044412                _mos_flseek
+ .text          0x0004442f       0x1a /Users/jeroen/source/agondev/release/lib/libagon.a(mos_fread.o)
+                0x0004442f                _mos_fread
+ .text          0x00044449       0x1b /Users/jeroen/source/agondev/release/lib/libagon.a(lshrs.o)
+                0x00044449                __lshrs
+                0x00044455                __lshrs.hijack_lshru
+ .text          0x00044464        0x9 /Users/jeroen/source/agondev/release/lib/libagon.a(sor.o)
+                0x00044464                __sor
+ .text          0x0004446d       0xc0 /Users/jeroen/source/agondev/release/lib/libagon.a(fpmul.o)
+                0x0004446d                __fmul
+ .text          0x0004452d        0x9 /Users/jeroen/source/agondev/release/lib/libagon.a(ineg_sneg.o)
+                0x0004452d                __ineg
+                0x0004452d                __sneg
+ .text          0x00044536       0x18 /Users/jeroen/source/agondev/release/lib/libagon.a(idvrmu.o)
+                0x00044536                __idvrmu
+                0x0004453a                __idvrmu.hijack_a_iters_ude_dividend
+ .text          0x0004454e       0x27 /Users/jeroen/source/agondev/release/lib/libagon.a(fpltof.o)
+                0x0004454e                __ltod
+                0x0004454e                __ltof
+ .text          0x00044575       0x5f /Users/jeroen/source/agondev/release/lib/libagon.a(fpadd.o)
+                0x00044575                __fadd
+ .text          0x000445d4       0x77 /Users/jeroen/source/agondev/release/lib/libagon.a(fppack.o)
+                0x000445d4                __fppack
+ .text          0x0004464b       0x25 /Users/jeroen/source/agondev/release/lib/libagon.a(fpupop1.o)
+                0x0004464b                __fpupop1
+ .text          0x00044670       0x18 /Users/jeroen/source/agondev/release/lib/libagon.a(fpupop2.o)
+                0x00044670                __fpupop2
+
+.init_array     0x00044688        0x0
+ *(.init_array)
+ .init_array    0x00044688        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(crt0.o)
+
+.ctors          0x00044688        0x0
+ *(.ctors)
+ .ctors         0x00044688        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(crt0.o)
+
+.dtors          0x00044688        0x0
+ *(.dtors)
+ .dtors         0x00044688        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(crt0.o)
+
+.comment        0x00000000      0xc73
+ .comment       0x00000000       0x77 obj/main.o
+ .comment       0x00000077       0x77 /Users/jeroen/source/agondev/release/lib/libagon.a(scanf.o)
+ .comment       0x000000ee       0x77 /Users/jeroen/source/agondev/release/lib/libagon.a(clearerr.o)
+ .comment       0x00000165       0x77 /Users/jeroen/source/agondev/release/lib/libagon.a(fflush.o)
+ .comment       0x000001dc       0x77 /Users/jeroen/source/agondev/release/lib/libagon.a(gets_s.o)
+ .comment       0x00000253       0x77 /Users/jeroen/source/agondev/release/lib/libagon.a(uscan.o)
+ .comment       0x000002ca       0x77 /Users/jeroen/source/agondev/release/lib/libagon.a(usscan.o)
+ .comment       0x00000341       0x77 /Users/jeroen/source/agondev/release/lib/libagon.a(feof.o)
+ .comment       0x000003b8       0x77 /Users/jeroen/source/agondev/release/lib/libagon.a(ferror.o)
+ .comment       0x0000042f       0x77 /Users/jeroen/source/agondev/release/lib/libagon.a(strtoul.o)
+ .comment       0x000004a6       0x77 /Users/jeroen/source/agondev/release/lib/libagon.a(console_input.o)
+ .comment       0x0000051d       0x77 /Users/jeroen/source/agondev/release/lib/libagon.a(nanoprintf.o)
+ .comment       0x00000594       0x77 /Users/jeroen/source/agondev/release/lib/libagon.a(fgets.o)
+ .comment       0x0000060b       0x77 /Users/jeroen/source/agondev/release/lib/libagon.a(files.o)
+ .comment       0x00000682       0x77 /Users/jeroen/source/agondev/release/lib/libagon.a(arg_processing.o)
+ .comment       0x000006f9       0x77 /Users/jeroen/source/agondev/release/lib/libagon.a(freopen.o)
+ .comment       0x00000770       0x77 /Users/jeroen/source/agondev/release/lib/libagon.a(fopen.o)
+ .comment       0x000007e7       0x77 /Users/jeroen/source/agondev/release/lib/libagon.a(strtof.o)
+ .comment       0x0000085e       0x77 /Users/jeroen/source/agondev/release/lib/libagon.a(strtol.o)
+ .comment       0x000008d5       0x77 /Users/jeroen/source/agondev/release/lib/libagon.a(fseek.o)
+ .comment       0x0000094c       0x77 /Users/jeroen/source/agondev/release/lib/libagon.a(ungetc.o)
+ .comment       0x000009c3       0x77 /Users/jeroen/source/agondev/release/lib/libagon.a(fgetc.o)
+ .comment       0x00000a3a       0x77 /Users/jeroen/source/agondev/release/lib/libagon.a(errno.o)
+ .comment       0x00000ab1       0x77 /Users/jeroen/source/agondev/release/lib/libagon.a(fputc.o)
+ .comment       0x00000b28       0x77 /Users/jeroen/source/agondev/release/lib/libagon.a(fclose.o)
+ .comment       0x00000b9f       0x6a /Users/jeroen/source/agondev/release/lib/libagon.a(free.c.o)
+ .comment       0x00000c09       0x6a /Users/jeroen/source/agondev/release/lib/libagon.a(malloc.c.o)
+
+.fini_array     0x00044688        0x0
+ *(.fini_array)
+ .fini_array    0x00044688        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(crt0.o)
+
+.rodata         0x00044688      0x378
+ *(.rodata)
+ .rodata        0x00044688       0xd7 obj/main.o
+ .rodata        0x0004475f       0x63 /Users/jeroen/source/agondev/release/lib/libagon.a(uscan.o)
+ .rodata        0x000447c2      0x17a /Users/jeroen/source/agondev/release/lib/libagon.a(usscan.o)
+ .rodata        0x0004493c       0xa5 /Users/jeroen/source/agondev/release/lib/libagon.a(nanoprintf.o)
+ .rodata        0x000449e1        0x6 /Users/jeroen/source/agondev/release/lib/libagon.a(arg_processing.o)
+ .rodata        0x000449e7        0x9 /Users/jeroen/source/agondev/release/lib/libagon.a(puts.o)
+                0x000449e7                ___null_literal_str
+                0x000449ee                ___end_of_line_str
+ .rodata        0x000449f0        0xc /Users/jeroen/source/agondev/release/lib/libagon.a(crt0.o)
+ .rodata        0x000449fc        0x4 /Users/jeroen/source/agondev/release/lib/libagon.a(fopen.o)
+
+.data           0x00044a00       0x4b
+ *(.data)
+ .data          0x00044a00        0x0 obj/main.o
+ .data          0x00044a00        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(scanf.o)
+ .data          0x00044a00        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(clearerr.o)
+ .data          0x00044a00        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(fflush.o)
+ .data          0x00044a00        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(gets_s.o)
+ .data          0x00044a00        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(uscan.o)
+ .data          0x00044a00        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(usscan.o)
+ .data          0x00044a00        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(feof.o)
+ .data          0x00044a00        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(ferror.o)
+ .data          0x00044a00        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(strtoul.o)
+ .data          0x00044a00        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(console_input.o)
+ .data          0x00044a00        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(nanoprintf.o)
+ .data          0x00044a00        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(fgets.o)
+ .data          0x00044a00        0xf /Users/jeroen/source/agondev/release/lib/libagon.a(files.o)
+                0x00044a00                _stdin
+                0x00044a05                _stdout
+                0x00044a0a                _stderr
+ .data          0x00044a0f        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(arg_processing.o)
+ .data          0x00044a0f        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(isalpha.o)
+ .data          0x00044a0f        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(putch.o)
+ .data          0x00044a0f        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(strcmp.o)
+ .data          0x00044a0f        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(isxdigit.o)
+ .data          0x00044a0f        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(isupper.o)
+ .data          0x00044a0f        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(isspace.o)
+ .data          0x00044a0f        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(puts.o)
+ .data          0x00044a0f        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(putchar_arg_processing.o)
+ .data          0x00044a0f        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(isdigit.o)
+ .data          0x00044a0f        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(strlen.o)
+ .data          0x00044a0f        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(getchar_arg_processing.o)
+ .data          0x00044a0f       0x39 /Users/jeroen/source/agondev/release/lib/libagon.a(crt0.o)
+                0x00044a42                _exit.sp
+                0x00044a45                _sys_vars
+ .data          0x00044a48        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(mos_editline.o)
+ .data          0x00044a48        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(ldivu.o)
+ .data          0x00044a48        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(lcmpzero.o)
+ .data          0x00044a48        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(sshru.o)
+ .data          0x00044a48        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(lneg.o)
+ .data          0x00044a48        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(ldvrmu.o)
+ .data          0x00044a48        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(sand.o)
+ .data          0x00044a48        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(lmulu.o)
+ .data          0x00044a48        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(ishl.o)
+ .data          0x00044a48        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(lshru.o)
+ .data          0x00044a48        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(fpcmp.o)
+ .data          0x00044a48        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(frameset0.o)
+ .data          0x00044a48        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(lcmps.o)
+ .data          0x00044a48        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(imulu.o)
+ .data          0x00044a48        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(lshl.o)
+ .data          0x00044a48        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(lcmpu.o)
+ .data          0x00044a48        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(ishrs.o)
+ .data          0x00044a48        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(setflag.o)
+ .data          0x00044a48        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(indcallhl.o)
+ .data          0x00044a48        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(and.o)
+ .data          0x00044a48        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(ladd.o)
+ .data          0x00044a48        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(bshru.o)
+ .data          0x00044a48        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(frameset.o)
+ .data          0x00044a48        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(xor.o)
+ .data          0x00044a48        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(idivu.o)
+ .data          0x00044a48        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(freopen.o)
+ .data          0x00044a48        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(fopen.o)
+ .data          0x00044a48        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(strtof.o)
+ .data          0x00044a48        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(strtol.o)
+ .data          0x00044a48        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(fseek.o)
+ .data          0x00044a48        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(ungetc.o)
+ .data          0x00044a48        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(fgetc.o)
+ .data          0x00044a48        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(errno.o)
+ .data          0x00044a48        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(fputc.o)
+ .data          0x00044a48        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(fclose.o)
+ .data          0x00044a48        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(free.c.o)
+ .data          0x00044a48        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(malloc.c.o)
+ .data          0x00044a48        0x3 /Users/jeroen/source/agondev/release/lib/libagon.a(sbrk.o)
+                0x00044a48                __sbrkbase
+ .data          0x00044a4b        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(strchr.o)
+ .data          0x00044a4b        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(mos_getfil.o)
+ .data          0x00044a4b        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(mos_fclose.o)
+ .data          0x00044a4b        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(mos_fputc.o)
+ .data          0x00044a4b        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(mos_feof.o)
+ .data          0x00044a4b        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(mos_fopen.o)
+ .data          0x00044a4b        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(mos_flseek.o)
+ .data          0x00044a4b        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(mos_fread.o)
+ .data          0x00044a4b        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(lshrs.o)
+ .data          0x00044a4b        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(sor.o)
+ .data          0x00044a4b        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(fpmul.o)
+ .data          0x00044a4b        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(ineg_sneg.o)
+ .data          0x00044a4b        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(idvrmu.o)
+ .data          0x00044a4b        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(fpltof.o)
+ .data          0x00044a4b        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(fpadd.o)
+ .data          0x00044a4b        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(fppack.o)
+ .data          0x00044a4b        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(fpupop1.o)
+ .data          0x00044a4b        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(fpupop2.o)
+
+.bss            0x00044a4b      0x15b
+                0x00044a4b                        bss_start = .
+ *(.bss .bss*)
+ .bss           0x00044a4b        0x0 obj/main.o
+ .bss           0x00044a4b        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(scanf.o)
+ .bss           0x00044a4b        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(clearerr.o)
+ .bss           0x00044a4b        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(fflush.o)
+ .bss           0x00044a4b        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(gets_s.o)
+ .bss           0x00044a4b       0x24 /Users/jeroen/source/agondev/release/lib/libagon.a(uscan.o)
+                0x00044a56                _fp_fscanf
+ .bss           0x00044a6f        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(usscan.o)
+ .bss           0x00044a6f        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(feof.o)
+ .bss           0x00044a6f        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(ferror.o)
+ .bss           0x00044a6f        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(strtoul.o)
+ .bss           0x00044a6f      0x106 /Users/jeroen/source/agondev/release/lib/libagon.a(console_input.o)
+ .bss           0x00044b75        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(nanoprintf.o)
+ .bss           0x00044b75        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(fgets.o)
+ .bss           0x00044b75       0x28 /Users/jeroen/source/agondev/release/lib/libagon.a(files.o)
+                0x00044b75                __file_streams
+ .bss           0x00044b9d        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(arg_processing.o)
+ .bss           0x00044b9d        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(isalpha.o)
+ .bss           0x00044b9d        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(putch.o)
+ .bss           0x00044b9d        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(strcmp.o)
+ .bss           0x00044b9d        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(isxdigit.o)
+ .bss           0x00044b9d        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(isupper.o)
+ .bss           0x00044b9d        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(isspace.o)
+ .bss           0x00044b9d        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(puts.o)
+ .bss           0x00044b9d        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(putchar_arg_processing.o)
+ .bss           0x00044b9d        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(isdigit.o)
+ .bss           0x00044b9d        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(strlen.o)
+ .bss           0x00044b9d        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(getchar_arg_processing.o)
+ .bss           0x00044b9d        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(crt0.o)
+ .bss           0x00044b9d        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(mos_editline.o)
+ .bss           0x00044b9d        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(ldivu.o)
+ .bss           0x00044b9d        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(lcmpzero.o)
+ .bss           0x00044b9d        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(sshru.o)
+ .bss           0x00044b9d        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(lneg.o)
+ .bss           0x00044b9d        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(ldvrmu.o)
+ .bss           0x00044b9d        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(sand.o)
+ .bss           0x00044b9d        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(lmulu.o)
+ .bss           0x00044b9d        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(ishl.o)
+ .bss           0x00044b9d        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(lshru.o)
+ .bss           0x00044b9d        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(fpcmp.o)
+ .bss           0x00044b9d        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(frameset0.o)
+ .bss           0x00044b9d        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(lcmps.o)
+ .bss           0x00044b9d        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(imulu.o)
+ .bss           0x00044b9d        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(lshl.o)
+ .bss           0x00044b9d        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(lcmpu.o)
+ .bss           0x00044b9d        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(ishrs.o)
+ .bss           0x00044b9d        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(setflag.o)
+ .bss           0x00044b9d        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(indcallhl.o)
+ .bss           0x00044b9d        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(and.o)
+ .bss           0x00044b9d        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(ladd.o)
+ .bss           0x00044b9d        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(bshru.o)
+ .bss           0x00044b9d        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(frameset.o)
+ .bss           0x00044b9d        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(xor.o)
+ .bss           0x00044b9d        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(idivu.o)
+ .bss           0x00044b9d        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(freopen.o)
+ .bss           0x00044b9d        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(fopen.o)
+ .bss           0x00044b9d        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(strtof.o)
+ .bss           0x00044b9d        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(strtol.o)
+ .bss           0x00044b9d        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(fseek.o)
+ .bss           0x00044b9d        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(ungetc.o)
+ .bss           0x00044b9d        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(fgetc.o)
+ .bss           0x00044b9d        0x3 /Users/jeroen/source/agondev/release/lib/libagon.a(errno.o)
+                0x00044b9d                _errno
+ .bss           0x00044ba0        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(fputc.o)
+ .bss           0x00044ba0        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(fclose.o)
+ .bss           0x00044ba0        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(free.c.o)
+ .bss           0x00044ba0        0x6 /Users/jeroen/source/agondev/release/lib/libagon.a(malloc.c.o)
+                0x00044ba0                __alloc_base
+ .bss           0x00044ba6        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(sbrk.o)
+ .bss           0x00044ba6        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(strchr.o)
+ .bss           0x00044ba6        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(mos_getfil.o)
+ .bss           0x00044ba6        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(mos_fclose.o)
+ .bss           0x00044ba6        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(mos_fputc.o)
+ .bss           0x00044ba6        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(mos_feof.o)
+ .bss           0x00044ba6        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(mos_fopen.o)
+ .bss           0x00044ba6        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(mos_flseek.o)
+ .bss           0x00044ba6        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(mos_fread.o)
+ .bss           0x00044ba6        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(lshrs.o)
+ .bss           0x00044ba6        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(sor.o)
+ .bss           0x00044ba6        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(fpmul.o)
+ .bss           0x00044ba6        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(ineg_sneg.o)
+ .bss           0x00044ba6        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(idvrmu.o)
+ .bss           0x00044ba6        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(fpltof.o)
+ .bss           0x00044ba6        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(fpadd.o)
+ .bss           0x00044ba6        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(fppack.o)
+ .bss           0x00044ba6        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(fpupop1.o)
+ .bss           0x00044ba6        0x0 /Users/jeroen/source/agondev/release/lib/libagon.a(fpupop2.o)
+                0x00044ba6                        bss_end = .
+                0x000b0000                        __stack = STACKTOP
+                0x00044a4b                        ___low_bss = bss_start
+                0x0000015b                        ___len_bss = SIZEOF (.bss)
+                0x00044ba6                        ___heapbot = bss_end
+                0x000b0000                        ___heaptop = (RAM_START + RAM_SIZE)
+                0x00000001                        ___run_clearbss = (___len_bss > 0x0)
+                0x00000000                        ___init_array_count = (SIZEOF (.init_array) / 0x3)
+                0x00000000                        ___ctors_count = (SIZEOF (.ctors) / 0x3)
+                0x00000000                        ___dtors_count = (SIZEOF (.dtors) / 0x3)
+                0x00000000                        ___fini_array_count = (SIZEOF (.fini_array) / 0x3)
+                0x00000000                        ___init_count = (___init_array_count + ___ctors_count)
+                0x00000000                        ___fini_count = (___dtors_count + ___fini_array_count)
+                0x00000000                        ___run_init = (___init_count > 0x0)
+                0x00000000                        ___run_fini = (___fini_count > 0x0)
+                0x00000100                        ___init_count_a = ((((___init_count - 0x1) >> 0x10) & 0xff) + 0x1)
+                0x00000100                        ___init_count_b = (((___init_count - 0x1) & 0xff) + 0x1)
+                0x00000100                        ___init_count_c = ((((___init_count - 0x1) >> 0x8) & 0xff) + 0x1)
+                0x00000100                        ___fini_count_a = ((((___fini_count - 0x1) >> 0x10) & 0xff) + 0x1)
+                0x00000100                        ___fini_count_b = (((___fini_count - 0x1) & 0xff) + 0x1)
+                0x00000100                        ___fini_count_c = ((((___fini_count - 0x1) >> 0x8) & 0xff) + 0x1)
+                0x00044688                        ___init_array_functions = (SIZEOF (.init_array) + ADDR (.init_array))
+                0x00044688                        ___init_ctors_functions = (SIZEOF (.ctors) + ADDR (.ctors))
+                0x00044688                        ___fini_dtors_functions = (SIZEOF (.dtors) + ADDR (.dtors))
+                0x00044688                        ___fini_array_functions = (SIZEOF (.fini_array) + ADDR (.fini_array))
+LOAD obj/main.o
+LOAD /Users/jeroen/source/agondev/release/lib/libagon.a
+OUTPUT(bin/console-input.noname.bin binary)

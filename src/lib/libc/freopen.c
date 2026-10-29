@@ -33,6 +33,8 @@ FILE *freopen( const char *__restrict filename, const char *__restrict mode, FIL
     if ( stream == NULL ) return NULL;
 
     mos_fh = stream->fhandle;
+    if (mos_fh == FH_STDIN)
+        (void)fflush(stream);
     if ( mos_fh != FH_STDIN && mos_fh != FH_STDOUT && mos_fh != FH_STDERR )
         fclose( stream );
 

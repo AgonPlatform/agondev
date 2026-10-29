@@ -60,7 +60,7 @@ int ferror(FILE *stream);
 
 int feof(FILE *stream);
 
-//void clearerr(FILE *stream);
+void clearerr(FILE *stream);
 
 int fputs(const char *__restrict str, FILE *__restrict stream);
 
