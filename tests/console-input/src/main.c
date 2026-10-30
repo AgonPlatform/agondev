@@ -20,9 +20,10 @@ int main(void)
     printf("Enter fresh (previous suffix must be discarded): ");
     if (fgets(line, sizeof line, stdin) == NULL || strcmp(line, "fresh\n"))
         return 4;
-    printf("Press Escape: ");
-    if (getchar() != EOF || !feof(stdin)) return 5;
-    clearerr(stdin);
+    printf("Press Enter on an empty line, then Escape: ");
+    first = 0;
+    if (scanf("%d", &first) != EOF || first != 0 || feof(stdin)) return 5;
+    fflush(stdin);
     printf("Enter ok: ");
     if (gets_s(line, sizeof line) == NULL || strcmp(line, "ok")) return 6;
     printf("PASS\n");

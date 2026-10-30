@@ -24,7 +24,9 @@ int __console_getc(FILE *stream)
         {
             putch('\r');
             putch('\n');
-            stream->eof = 1;
+            /* Escape cancels this read, not the interactive input stream.
+             * Return EOF for this call so scanf/fgets can stop, but allow
+             * the next call to invoke the editor without clearerr(). */
             return EOF;
         }
         putch('\r');

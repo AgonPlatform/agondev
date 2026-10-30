@@ -12,9 +12,11 @@ Echo goes to the physical console, including the final CR/LF, even when stdout
 is redirected, matching the MOS editor's own echo. EOF and binary NUL bytes
 from redirected files retain their file semantics.
 
-Escape cancels the edited line and sets the console stream's EOF indicator.
-Further reads return EOF until `clearerr(stdin)` or successful `ungetc` clears
-it. Keyboard editing/control keys are interpreted by MOS; in particular Ctrl-C
+Escape cancels the edited line and returns EOF for that read only. It does
+not set the console EOF indicator: the next read opens the editor again,
+without requiring `clearerr(stdin)`. This is an interactive cancellation
+extension; EOF from a redirected file still sets its EOF indicator normally.
+Keyboard editing/control keys are interpreted by MOS; in particular Ctrl-C
 is no longer intercepted immediately by the former character-at-a-time scanf
 and gets_s loops. Use raw `getch` for immediate keyboard interaction. Mixing
 raw reads with stdio bypasses any characters still held in the stdio buffer.
@@ -41,7 +43,7 @@ the production C implementations against a mocked MOS editor and file reader,
 with AddressSanitizer and UndefinedBehaviorSanitizer. The host shim substitutes
 for the two small target getchar assembly wrappers. It tests mixed input APIs,
 lookahead after successful/failed scans, flush behavior, NUL pushback, blank and
-maximum-length lines, truncation, Escape, EOF recovery, and file redirection.
+maximum-length lines, truncation, Escape cancellation, blank-line/ Escape/menu retries, and file redirection.
 The MOS keyboard editor itself needs the interactive check below.
 
 ## Interactive check on hardware or emulator
