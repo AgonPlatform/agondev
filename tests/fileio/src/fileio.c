@@ -59,7 +59,7 @@ int main( void )
 	for ( int l = 0; l < num_text_lines; l++ ) {
 		putint( l );
 		puts( " line" );
-		if ( fputs( text_line[l], fp ) == EOF ) {
+		if ( fputs( text_line[l], fp ) == EOF || fputc( '\n', fp ) == EOF ) {
 			puts( "\r\nError writing to file\r\nQuiting program.\r\n" );
 			return 0;
 		}
